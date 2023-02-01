@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>0. Cheat sheet &mdash; NDLab 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/ndlab.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="0. Cheat sheet" href="programming.html" />
+    <link rel="prev" title="1. Get NDLab" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/ndlab.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">1. Get NDLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#retrieval-functions">1. Retrieval functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#the-fields-parameter">2. The fields parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#the-filter-parameter">3. The filter parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#examples">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#j-p-values">5. J <sup>p</sup> values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#decay-modes">6. Decay modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#three-lines-of-code">7. Three lines of code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sql-through-python">8. SQL through Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sql-direct-connection">9. SQL direct connection</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#programming-overview">1. Programming overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#classes-and-functions">2. Classes and functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#pandas">3. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#work-with-measurements">3. Work with Measurements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Constructing &quot;fields&quot; and &quot;filter&quot;</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">1. Legend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#entities">2. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#constants">3. Constants</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="code.html">1. ndlab module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html#ndlaborm-module">2. ndlaborm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html#ndlabdblink-module">3. ndlabdblink module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Database</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="database.html">1. The search engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NDLab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>0. Cheat sheet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/interrogation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p id="interrogation-label"><strong>This</strong> section describes how to  query the database, and how to plug the results into data analysis packages
+like <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/install.html">pandas</a> ,
+or in plotting tools like <a class="reference external" href="https://plotly.com/python/getting-started/">plotly</a>.</p>
+<p>A Notebook tutorial is available in <em>ndlab-tutorial.ipynb</em>, with also a static <a class="reference external" href="_static/ndlab-tutorial.html">HTML version</a></p>
+<p>Data can also be processed by your own code. For this purpose a set of classes, and functions to start with,  will be described in the
+<a class="reference internal" href="programming.html#programming-label"><span class="std std-ref">Programming section</span></a></p>
+<div class="section" id="cheat-sheet">
+<span id="cheat-label"></span><h1>0. Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this heading">¶</a></h1>
+<p><strong>Functions</strong> for data retrieval, you will see later the detailed explanation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ndlab</span> <span class="k">as</span> <span class="nn">nl</span>
+<span class="c1"># optional</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.Z, NUCLIDE.ATOMIC_MASS&quot;</span>   <span class="c1"># what to retrieve</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.NUC_ID = &#39;135XE&#39;&quot;</span>         <span class="c1"># condition(s) to apply</span>
+
+<span class="n">csv</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">csv_data</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>     <span class="c1"># csv</span>
+<span class="n">json</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">json_data</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>   <span class="c1"># json</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">pandas_df</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">pd</span><span class="p">)</span> <span class="c1"># dataframe</span>
+
+<span class="n">nucs</span> <span class="o">=</span> <span class="n">nuclides</span><span class="p">(</span><span class="s1">&#39;NUCLIDE.Z = 2&#39;</span><span class="p">)</span>  <span class="c1"># list of nl objects</span>
+
+<span class="n">csv</span> <span class="o">=</span>  <span class="n">csv_nl</span><span class="p">(</span><span class="n">nucs</span><span class="p">)</span>         <span class="c1"># csv</span>
+<span class="n">df</span> <span class="o">=</span>  <span class="n">pandas_df_nl</span><span class="p">(</span><span class="n">nucs</span><span class="p">,</span><span class="n">pd</span><span class="p">)</span> <span class="c1"># dataframe</span>
+<span class="n">json</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>         <span class="c1"># json from dataframe</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieval-functions">
+<span id="retrieval-func-label"></span><h1>1. Retrieval functions<a class="headerlink" href="#retrieval-functions" title="Permalink to this heading">¶</a></h1>
+<p><strong>You</strong> just need to specify what to retrieve and what filter, if any, to apply. The datamodel allows you to express
+these two parameters in a way close to the physics of the problem.</p>
+<p>Let’s start with some examples :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ndlab</span> <span class="k">as</span> <span class="nn">nl</span>
+
+<span class="c1"># what to retrieve</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.Z, NUCLIDE.ATOMIC_MASS&quot;</span>
+
+<span class="c1"># condition(s) to apply</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.NUC_ID = &#39;135XE&#39;&quot;</span>
+
+<span class="c1"># get data as csv</span>
+<span class="n">csv</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">csv_data</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span><span class="n">z</span><span class="p">,</span><span class="n">atomic_mass</span>
+<span class="o">&gt;&gt;</span><span class="mi">54</span><span class="p">,</span><span class="mf">134907231.441</span>
+</pre></div>
+</div>
+<p>now json …</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">json</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">json_data</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span><span class="p">[</span> <span class="p">{</span><span class="s1">&#39;z&#39;</span><span class="p">:</span><span class="s1">&#39;54&#39;</span>  <span class="p">,</span><span class="s1">&#39;atomic_mass&#39;</span><span class="p">:</span><span class="s1">&#39;134907231.441&#39;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>… and using pandas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">pandas_df</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">pd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span>    <span class="n">z</span>   <span class="n">atomic_mass</span>
+<span class="o">&gt;&gt;</span><span class="mi">0</span>  <span class="mi">54</span>  <span class="mf">1.349072e+08</span>
+</pre></div>
+</div>
+<p>We have just seen three functions:</p>
+<div class="line-block">
+<div class="line">1. <a class="reference internal" href="code.html#ndlab.csv_data" title="ndlab.csv_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.csv_data()</span></code></a> : data in <strong>csv</strong></div>
+<div class="line">2. <a class="reference internal" href="code.html#ndlab.json_data" title="ndlab.json_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.json_data()</span></code></a> : data in <strong>json</strong></div>
+<div class="line">3. <a class="reference internal" href="code.html#ndlab.pandas_df" title="ndlab.pandas_df"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.pandas_df()</span></code></a> : pandas dataframe (the pandas module needs to be already imported)</div>
+</div>
+<p>These functions take two parameters, which are detailed in sections <a class="reference internal" href="#fields-label"><span class="std std-ref">2</span></a> and  <a class="reference internal" href="#filter-label"><span class="std std-ref">3</span></a> :</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">fields</span></code> specifies which data to retrieve</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">filter</span></code> specifies which conditions, if any, should be applied to filter the data</p></li>
+</ul>
+<p>A powerful way to handle data is to use the third function and create a
+<strong>pandas dataframe</strong>. Besides allowing data manipulation and analysis, it offers the option to save the data in various formats.</p>
+<p>For example, to save into an Excel file, just do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">pandas_df</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">pd</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;excel_data.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you prefer to directly use SQL, refer to <a class="reference internal" href="#sql-label"><span class="std std-ref">section 8</span></a></p>
+<p>The following sections describe the grammar for constructing  <em>field</em> and <em>filter</em>  using the nuclear data model on which NDLab is built</p>
+</div>
+<div class="section" id="the-fields-parameter">
+<span id="fields-label"></span><h1>2. The fields parameter<a class="headerlink" href="#the-fields-parameter" title="Permalink to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><strong>It</strong> is a comma-separated, uppercase list of the quantites you want to retrieve. For example <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;NUCLIDE.ABUNDANCE</span> <span class="pre">,</span> <span class="pre">NUCLIDE.ATOMIC_MASS&quot;</span></code></div>
+<div class="line">or</div>
+<div class="line"><code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;GAMMA.ENERGY</span> <span class="pre">,</span> <span class="pre">GAMMA.MULTIPOLARITY</span> <span class="pre">,</span> <span class="pre">GAMMA.MIXING_RATIO&quot;</span></code>.</div>
+</div>
+<p>The simplest pattern for a field is <strong>entity</strong> <em>dot</em> <strong>quantity</strong></p>
+<div class="line-block">
+<div class="line"><strong>Entities</strong> are the basic blocks of the model : NUCLIDE, GAMMA, LEVEL, DR_ALPHA … The <a class="reference internal" href="entities.html#ndm-label"><span class="std std-ref">ndm reference</span></a> section provides the full list</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Quantities</strong> store the information  available for each entity.</div>
+</div>
+<div class="line-block">
+<div class="line">A field can also be like <code class="code docutils literal notranslate"><span class="pre">GAMMA.START_LEVEL.ENERGY</span></code> or <code class="code docutils literal notranslate"><span class="pre">DR_ALPHA.DAUGHTER_FED_LEVEL.ENERGY</span></code>.</div>
+<div class="line">This pattern is <strong>entity</strong> <em>dot</em> <strong>link</strong> <em>dot</em> <strong>quantity</strong>.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Links</strong> allow to jump from one entity to another related one. In this case from a gamma to its start level.</div>
+<div class="line">In this way the NDLab translates nuclear physics language into the data model. These link fields are marked with <em>(L)</em> in the  <a class="reference internal" href="entities.html#ndm-label"><span class="std std-ref">ndm reference</span></a></div>
+</div>
+<p>Often there is a set of three fields describing a property, let’s take for example the gamma energy:</p>
+<ul class="simple">
+<li><p>GAMMA.ENERGY      : the value</p></li>
+<li><p>GAMMA.ENERGY_UNC  : the uncertainity</p></li>
+<li><p>GAMMA.ENERGY_LIMIT : the limit (&gt;, &lt; , etc)</p></li>
+</ul>
+<p>Then for a full specification of the gamma energy you should use <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;GAMMA.ENERGY</span> <span class="pre">,</span> <span class="pre">GAMMA.ENERGY_UNC</span> <span class="pre">,</span> <span class="pre">GAMMA.ENERGY_LIMIT&quot;</span></code>.</p>
+<p>In the <a class="reference internal" href="entities.html#ndm-label"><span class="std std-ref">ndm reference</span></a>  these fields are flagged with <em>(Q)</em>. Quantities lacking the _LIMIT field are flagged with  <em>(q)</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To inspect the avalilable quantities, use the autocomplete feature avaliable in any development tool, for example type “GAMMA.” to see all the gamma-related fields.</p>
+<p><strong>If you want to use this feature, you must import the orm module in this way:</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ndlaborm</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>When coding in a Jupyter Notebook the autocompletion will not work within quotes. First write the variables :
+<code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">GAMMA.ENERGY</span> <span class="pre">,</span> <span class="pre">GAMMA.MIXING_RATIO</span></code>, then add the quotes  <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;</span> <span class="pre">GAMMA.ENERGY</span> <span class="pre">,</span> <span class="pre">GAMMA.MIXING_RATIO</span> <span class="pre">&quot;</span></code></p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>Rules</strong> for the <em>fields</em> parameter</p>
+<ol class="arabic simple">
+<li><p>use <strong>uppercase</strong></p></li>
+<li><p><strong>maximum two dots</strong> : <em>entity.quantity</em> or <em>entity.link.quantity</em></p></li>
+<li><p>a list of fields must have <strong>comma-separated items</strong></p></li>
+<li><p>a list must refer to <strong>only one entity</strong>: <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;GAMMA.ENERGY</span> <span class="pre">,</span> <span class="pre">NUCLIDE.Z</span> <span class="pre">&quot;</span></code> is <strong>not</strong> allowed. Try to use the links instead : <code class="code docutils literal notranslate"><span class="pre">&quot;GAMMA.ENERGY</span> <span class="pre">,</span> <span class="pre">GAMMA.NUC.Z&quot;`</span></code></p></li>
+<li><p>simple functions are allowed <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.Z</span> <span class="pre">+</span> <span class="pre">NUCLIDE.N</span></code></p></li>
+<li><p>use <code class="code docutils literal notranslate"><span class="pre">as</span></code> to alias for convenience in further references <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.Z</span> <span class="pre">+</span> <span class="pre">NUCLIDE.N</span> <span class="pre">as</span> <span class="pre">a</span></code></p></li>
+<li><p>use <code class="code docutils literal notranslate"><span class="pre">.ALL</span></code> to retrieve all the quantities avaliable, e.g. <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.ALL</span></code></p></li>
+</ol>
+<div class="line-block">
+<div class="line">If you do not want to use the autocompletion, you do not need to import the ndlaborm module.</div>
+<div class="line">But if ndlaborm was imported using an alias, e.g. <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">ndlaborm</span> <span class="pre">as</span> <span class="pre">no</span></code>, when using the autocompletion pay attention not include the alias in the fields variable. <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;no.GAMMA.ENERGY&quot;</span></code> is not valid, remove the ‘no.’.</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-filter-parameter">
+<span id="filter-label"></span><h1>3. The filter parameter<a class="headerlink" href="#the-filter-parameter" title="Permalink to this heading">¶</a></h1>
+<p><strong>Often</strong> one needs to apply some conditions to filter the data, for example <code class="code docutils literal notranslate"><span class="pre">filter</span> <span class="pre">=</span> <span class="pre">&quot;GAMMA.NUC.Z</span> <span class="pre">=</span> <span class="pre">5&quot;</span></code> will filter only the gamma transitions of Z = 5 nuclides.
+Here below the rules to follow when writing a filter</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>Rules</strong> for the <em>filter</em> parameter</p>
+<ol class="arabic simple">
+<li><p>use <strong>uppercase</strong></p></li>
+<li><p><strong>maximum two dots</strong> : <em>entity.quantity</em> or <em>entity.link.quantity</em></p></li>
+<li><p>conditions can by joined using the <strong>and</strong> , <strong>or</strong> logical operators</p></li>
+<li><p>conditions must refer to <strong>only one entity</strong>: <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;GAMMA.ENERGY</span> <span class="pre">&gt;</span> <span class="pre">2000</span> <span class="pre">and</span>&#160; <span class="pre">NUCLIDE.Z</span> <span class="pre">=</span> <span class="pre">5</span> <span class="pre">&quot;</span></code> is <strong>not</strong> allowed. Try to use the links instead : <code class="code docutils literal notranslate"><span class="pre">&quot;GAMMA.ENERGY</span> <span class="pre">&gt;</span> <span class="pre">2000</span> <span class="pre">and</span> <span class="pre">GAMMA.NUC.Z</span> <span class="pre">=</span> <span class="pre">5&quot;`</span></code></p></li>
+<li><p>simple functions are allowed <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.Z</span> <span class="pre">+</span> <span class="pre">NUCLIDE.N</span> <span class="pre">=</span> <span class="pre">20</span></code></p></li>
+<li><p>text conditions must be enclosed in <strong>single quotes</strong> <code class="code docutils literal notranslate"><span class="pre">GAMMA.MULTIPOLARITY</span> <span class="pre">=</span> <span class="pre">'E2+M1'</span></code>. In the <a class="reference internal" href="entities.html#ndm-label"><span class="std std-ref">ndm reference</span></a> , these quantities are flagged with <em>(S)</em></p></li>
+</ol>
+<p>Allowed comparison operators are:
+=    &gt;   &lt;  !=   &gt;=   &lt;= , for example <code class="code docutils literal notranslate"><span class="pre">GAMMA.ENERGY</span> <span class="pre">&gt;=</span> <span class="pre">1000</span></code></p>
+<p>Further operators</p>
+<ul class="simple">
+<li><p>use <strong>in</strong> to filter a set of values, e.g. <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.NUC_ID</span> <span class="pre">IN</span> <span class="pre">(</span> <span class="pre">'235U',</span> <span class="pre">'135XE'</span> <span class="pre">)</span></code> (notice the single quotes), or <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.Z</span> <span class="pre">IN</span> <span class="pre">(5,</span> <span class="pre">10)</span></code></p></li>
+<li><p>use <strong>like</strong> to filter the content of a text, e.g. <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">like</span> <span class="pre">'%2+%'</span></code> will filter the jp values containing the string “2+”. See <a class="reference internal" href="#jp-label"><span class="std std-ref">jp values</span></a> for more</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<span id="retrieve-examples-label"></span><h1>4. Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
+<p><strong>This</strong> set of examples provides a summary or the rules above, and can be used as a template for building other retrievals</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ndlab</span> <span class="k">as</span> <span class="nn">nl</span>
+<span class="kn">from</span> <span class="nn">ndlaborm</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># to use the autocompletion feature</span>
+
+<span class="c1"># Z , N and Half-life of all ground states</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;LEVEL.NUC.Z , LEVEL.NUC.N , LEVEL.HALF_LIFE_SEC&quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;LEVEL.ENERGY = 0&quot;</span> <span class="c1"># or also &quot;LEVEL.SEQNO = 0&quot;</span>
+
+<span class="c1"># Z , N and Half-life of nuclides with 10 &lt; Z &lt; 100 that decay by beta-delayed neutron emission</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;DR_DELAYED.PARENT.Z , DR_DELAYED.PARENT.N , DR_DELAYED.PARENT_LEVEL.HALF_LIFE_SEC&quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;DR_DELAYED.TYPE = DELAY_N and DR_DELAYED.PARENT.Z &gt; 10 and DR_DELAYED.PARENT.Z &lt; 100&quot;</span>
+
+<span class="c1"># Z as a magic number</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.Z  in (2,8,20,28,50,82,126)&quot;</span>
+
+<span class="c1"># Z, N, and  mixing-ratio divided by energy, with a quite complex filter</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;GAMMA.NUC.Z as z, GAMMA.NUC.N as n , abs( GAMMA.MIXING_RATIO / GAMMA.ENERGY ) as r&quot;</span>
+
+<span class="nb">filter</span>  <span class="o">=</span>  <span class="s2">&quot; ( GAMMA.NUC.Z % 2 = 0 ) and ( GAMMA.NUC.N % 2 = 0 ) &quot;</span>                  <span class="c1"># even-even nuclides</span>
+<span class="nb">filter</span> <span class="o">+=</span>  <span class="s2">&quot; and GAMMA.START_LEVEL.JP = &#39;2+&#39; and GAMMA.START_LEVEL.JP_ORDER = 2 &quot;</span>   <span class="c1"># starts from Jp=2+ ,2nd occurrence</span>
+<span class="nb">filter</span> <span class="o">+=</span>  <span class="s2">&quot; and GAMMA.END_LEVEL.JP = &#39;2+&#39;   and GAMMA.END_LEVEL.JP_ORDER = 1 &quot;</span>     <span class="c1"># ends at Jp = 2+ ,1st occurrence</span>
+<span class="nb">filter</span> <span class="o">+=</span>  <span class="s2">&quot; and (GAMMA.MULTIPOLARITY = &#39;E2+M1&#39;or GAMMA.MULTIPOLARITY = &#39;M1+E2&#39;) &quot;</span>  <span class="c1"># E2 + M1 multipolarity</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The ground states properties (Half-life, Jp, etc…) are in the LEVEL, with SEQNO = 0. For example the G.S. of Xe-135 is
+<code class="code docutils literal notranslate"><span class="pre">LEVEL.NUC.NUC_ID</span> <span class="pre">=</span> <span class="pre">'135XE'</span> <span class="pre">and</span> <span class="pre">LEVEL.SEQNO</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+</div>
+</div>
+<div class="section" id="j-p-values">
+<span id="jp-label"></span><h1>5. J <sup>p</sup> values<a class="headerlink" href="#j-p-values" title="Permalink to this heading">¶</a></h1>
+<p><strong>This</strong> section details the handling of J <sup>p</sup>. Please read it at least once, then you might just consult the <a class="reference internal" href="#jp-wrap-up-label"><span class="std std-ref">wrap-up</span></a></p>
+<p><strong>ENSDF Jp assignment</strong></p>
+<p>The angular momentum handling requires some further explanation. In many cases there is a unique J <sup>p</sup>, given as, e.g.,  <em>2+</em> ; but there are cases
+where the evaluated value is <em>(2+)</em>, meaning that the assignement is based on <em>weak arguments</em>, or even, for example, <em>0+,(1,2)</em>, where there are
+many possible values, mixing strong and weak arguments. Please consult the <a class="reference external" href="https://www.nndc.bnl.gov/ensdf/evalcorner/pdfs/ensdf-manual.pdf">ENSDF guide</a> pag. 101
+for more about weak and strong criteria</p>
+<p>The condition <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">=</span> <span class="pre">'2+'</span></code> will include only the cases is which J <sup>p</sup> has a single value, with strong assignment</p>
+<p>If you are willing to relax the criteria, you can use the following way</p>
+<p><code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">LIKE</span> <span class="pre">'%2+%'</span></code>: this will include any J <sup>p</sup>  assignements in which <em>2+</em> is present.</p>
+<p>Just for completeness, there is the field  <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_REASON</span></code> which can be  <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_REASON</span> <span class="pre">=</span> <span class="pre">JP_STRONG</span></code> or <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_REASON</span> <span class="pre">=</span> <span class="pre">JP_WEAK</span></code>.
+Using <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_REASON</span> <span class="pre">=</span> <span class="pre">JP_STRONG</span></code> will restrinct to strong assignments, but you might still get multipel values, like <em>0+,1+</em></p>
+<p>There is a further caveat: there are cases where the value is, say, <em>(0+),1,2,3,4(+)</em> . If one is interested in knowing if such assignment is compatible with the value, say, <em>2+</em>,
+<strong>NDlab</strong> at the moment does not offer a solution, and the user should develop custom code for further processing the results.</p>
+<p>In the following you see how to address the problem with the RIPL fields</p>
+<p><strong>RIPL Jp assignment</strong></p>
+<p>For the J <sup>p</sup> ambiguous cases, and, in some cases, even when the J <sup>p</sup> was not assigned, NDlab reports a unique J <sup>p</sup> value
+based on the solution devised by <a class="reference external" href="https://nds.iaea.org/RIPL/">RIPL</a> (Reference Input Parameter Library), where the single value is chosen
+using a spin continuous statistical distribution.</p>
+<p>The distribution is constructed in the following way:</p>
+<ul class="simple">
+<li><p>Using gamma transitions having final levels of known spin, or</p></li>
+<li><p>Using 10 known spins in level schema</p></li>
+</ul>
+<p>When the original evaluation assignes multiple values, the statistical distribution is constrained to one of the admissible values</p>
+<p>The fields containing RIPL assignments are <code class="code docutils literal notranslate"><span class="pre">LEVEL.J</span></code> and <code class="code docutils literal notranslate"><span class="pre">LEVEL.P</span></code></p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>the field <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_METHOD</span></code> tells how the RIPL assignment was chosen (see the <a class="reference internal" href="entities.html#ripl-const-label"><span class="std std-ref">constants</span></a>)</p>
+<ul class="simple">
+<li><p>RIPL_J_UNIQUE - the original assignment is already unique</p></li>
+<li><p>RIPL_J_DISTRIBUTION_GAMMA - spin distribution generated using gamma transitions</p></li>
+<li><p>RIPL_J_DISTRIBUTION_CONSTRAIN - spin distribution was constrained to a set of evaluated options (e.g. <em>0,1,2,3</em>)</p></li>
+<li><p>RIPL_J_DISTRIBUTION - no experimental information, value chosen with spin distribution generated using 10 known spin values</p></li>
+<li><p>RIPL_J_UNKNOWN - nothing possible, spin unknow and then J = -1 (default value for unknown spin)</p></li>
+</ul>
+<p>Refer to the <a class="reference external" href="https://nds.iaea.org/RIPL-3/handbook/ripl2.pdf">IAEA Tecdoc 1506</a>, Section 3 for the complete discussion</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>the filter <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">=</span> <span class="pre">'2+'</span></code> is equivalent to <code class="code docutils literal notranslate"><span class="pre">LEVEL.J</span> <span class="pre">=</span> <span class="pre">2'</span> <span class="pre">and</span> <span class="pre">LEVEL.P</span> <span class="pre">=</span> <span class="pre">RIPL_P_PLUS</span> <span class="pre">and</span> <span class="pre">LEVEL.JP_METHOD</span> <span class="pre">=</span> <span class="pre">RIPL_J_UNIQUE</span></code></p>
+</div>
+<p>Furher details on the RIPL database relevant for NDLab can be found <a class="reference internal" href="database.html#database-label"><span class="std std-ref">here</span></a></p>
+<p id="jp-wrap-up-label"><strong>Wrap-up : combining ENSDF and RIPL</strong></p>
+<p>The situation is getting esoteric, then let’s summarise the main options:</p>
+<div class="line-block">
+<div class="line"><code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">=</span> <span class="pre">'2+'</span></code> J <sup>p</sup> exactly 2 <sup>+</sup>, no doubts</div>
+<div class="line"><code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">LIKE</span> <span class="pre">'%2+%'</span> <span class="pre">and</span> <span class="pre">LEVEL.JP_METHOD</span> <span class="pre">=</span> <span class="pre">RIPL_J_UNIQUE</span></code>  J <sup>p</sup> is 2 <sup>+</sup> or (2  <sup>+</sup>)</div>
+<div class="line"><code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">LIKE</span> <span class="pre">'%2+%'</span> <span class="pre">and</span> <span class="pre">LEVEL.JP_REASON</span> <span class="pre">=</span> <span class="pre">JP_STRONG</span></code> J <sup>p</sup> can be  2 <sup>+</sup>, but also 2  <sup>+</sup>, 3  <sup>+</sup> , …</div>
+<div class="line"><code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">LIKE</span> <span class="pre">'%2+%'</span></code> J <sup>p</sup> as above, but also (2  <sup>+</sup>), 3  <sup>+</sup> , …</div>
+</div>
+<p>For example, let’s say you want to get the log_ft of beta decays, but only from levels having a definite Jp because later you might want to
+group the data by Jp, or transitin type. Then do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span>  <span class="s2">&quot; DR_BETA.LOGFT, DR_BETA.PARENT_LEVEL.JP, DR_BETA.TRANS_TYPE &quot;</span>
+<span class="nb">filter</span> <span class="o">=</span>  <span class="s2">&quot; DR_BETA.PARENT_LEVEL.JP_REASON = JP_STRONG and DR_BETA.PARENT_LEVEL.JP_METHOD = RIPL_J_UNIQUE &quot;</span>
+</pre></div>
+</div>
+<p>If you need a single value, and do not care about weak or strong assignements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span>  <span class="s2">&quot; DR_BETA.LOGFT, DR_BETA.PARENT_LEVEL.JP, DR_BETA.TRANS_TYPE &quot;</span>
+<span class="nb">filter</span> <span class="o">=</span>  <span class="s2">&quot; DR_BETA.PARENT_LEVEL.JP_METHOD = RIPL_J_UNIQUE &quot;</span>
+</pre></div>
+</div>
+<p>If you need a unique value, even when the ENSDF evaluation is not unique, then use the RIPL assignment, knowing that this might or might not be accurate</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span>  <span class="s2">&quot; DR_BETA.LOGFT, DR_BETA.PARENT_LEVEL.J,  DR_BETA.PARENT_LEVEL.P, DR_BETA.TRANS_TYPE &quot;</span>
+<span class="nb">filter</span> <span class="o">=</span>  <span class="s2">&quot; DR_BETA.PARENT_LEVEL.JP_METHOD != RIPL_J_UNKNOWN &quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="decay-modes">
+<h1>6. Decay modes<a class="headerlink" href="#decay-modes" title="Permalink to this heading">¶</a></h1>
+<p><strong>The</strong> various decay radiations (<em>DR_GAMMA, DR_BETAM, etc…</em>) and <em>L_DECAY</em> have the <em>MODE</em> field which indicates the type of decay. Use the set of constants <em>DECAY_*</em> to
+specify a decay mode, for example <code class="code docutils literal notranslate"><span class="pre">L_DECAY.MODE</span> <span class="pre">=</span> <span class="pre">DECAY_Bp</span></code></p>
+<p>The section <a class="reference internal" href="entities.html#decay-const-label"><span class="std std-ref">constants</span></a> provides the list of decays</p>
+</div>
+<div class="section" id="three-lines-of-code">
+<h1>7. Three lines of code<a class="headerlink" href="#three-lines-of-code" title="Permalink to this heading">¶</a></h1>
+<p><strong>Three</strong> lines of code to extract intensity vs energy for gammas emitted by the decay of Am-241, save the data in
+Excel, and then generate a plot. Refer to the Notebook <em>ndlab-tutorial.ipynb</em> for more</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ndlab</span> <span class="k">as</span> <span class="nn">nl</span>
+<span class="kn">from</span> <span class="nn">ndlaborm</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">pandas_df</span><span class="p">(</span><span class="s2">&quot;DR_GAMMA.ENERGY , DR_GAMMA.INTENSITY &quot;</span><span class="p">,</span> <span class="s2">&quot;DR_GAMMA.PARENT.NUC_ID = &#39;241AM&#39;&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;am241.xlsx&#39;</span><span class="p">)</span>
+
+<span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;intensity&quot;</span><span class="p">,</span> <span class="n">log_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sql-through-python">
+<span id="sql-label"></span><h1>8. SQL through Python<a class="headerlink" href="#sql-through-python" title="Permalink to this heading">¶</a></h1>
+<p><strong>The</strong> underlying database is SQLite, see the <a class="reference external" href="./schema/index.html">database description</a>. It is possible to directly
+write SQL to extract data, using these <a class="reference internal" href="code.html#handle-sql-label"><span class="std std-ref">functions</span></a>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">nd</span><span class="o">.</span><span class="n">query_build</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">),</span> <span class="n">nd</span><span class="o">.</span><span class="n">query_con</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>One can go forward in two ways:</p>
+<ol class="arabic simple">
+<li><p>using again the function <code class="code docutils literal notranslate"><span class="pre">pd.read_sql(</span> <span class="pre">{your</span> <span class="pre">sql},</span> <span class="pre">query_con())</span></code>, but instead of relying on NDLab to build the query, you write your own</p></li>
+<li><p>using the Python <a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">sqlite3 module</a> , like in the example below which does not involve pandas:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SQL</span> <span class="o">=</span> <span class="s2">&quot;select * from nuclides&quot;</span>
+<span class="n">result_set</span>  <span class="o">=</span> <span class="n">query_con</span><span class="p">()</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result_keys</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">field_name</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+   <span class="c1"># k is a string with the field name</span>
+
+<span class="c1"># this could be the header of a csv</span>
+<span class="n">csv_title</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keys</span><span class="p">)]</span>
+
+<span class="n">i_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result_set</span><span class="p">:</span>
+    <span class="c1"># r[n] has the value of the n-th field of the fetched row</span>
+    <span class="c1"># do something with r[n], like build a csv string</span>
+    <span class="n">csv</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">if</span>  <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="s1">&#39;None&#39;</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i_range</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the <a class="reference internal" href="code.html#ndlab.query_build" title="ndlab.query_build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.query_build()</span></code></a> function to get an initial sql that can be refined. For example, try to print the sql statements produced by the
+<a class="reference internal" href="#retrieve-examples-label"><span class="std std-ref">examples above:</span></a></p>
+</div>
+</div>
+<div class="section" id="sql-direct-connection">
+<h1>9. SQL direct connection<a class="headerlink" href="#sql-direct-connection" title="Permalink to this heading">¶</a></h1>
+<p>Using <a class="reference external" href="https://sqlitebrowser.org">DB Browser for SQLite</a> it is possible to manage the local database, see the <a class="reference external" href="./schema/index.html">database description</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="programming.html" class="btn btn-neutral float-right" title="0. Cheat sheet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="1. Get NDLab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, IAEA Nuclear Data Section.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

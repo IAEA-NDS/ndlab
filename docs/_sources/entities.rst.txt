@@ -1,0 +1,481 @@
+.. _ndm-label:
+
+**We have** seen that the :ref:`fields <fields-label>` and  :ref:`filter <filter-label>` parameters are
+relevant for both :ref:`Interrogation <interrogation-label>` and :ref:`Programming. <programming-label>` 
+Here  is presented the list of all available entities with which to construct these parameters:
+
+1. Legend
+---------
+
+| *(S)* String. When used in a filter, must be enclosed in single quotes. 
+|  |space|  example :code:`GAMMA.MULTIPOLARITY = 'M1'`
+| *(Q)* Quantity. It has also the "_UNC" and "_LIMIT" fields
+| *(q)* Quantity with only  the "_UNC" field
+| *(L)* Link to another entity. One must specify which field of the linked entity is to be referred: 
+|   |space|   example :code:`GAMMA.NUC.Z`
+
+.. |space| unicode:: U+0020 .. space
+.. |nbspc| unicode:: U+00A0 .. non-breaking space
+
+2. Entities
+-----------
+
+NUCLIDE
+~~~~~~~
+
+| properties of the nuclide 
+
+.. warning::
+
+    The ground state (Half-life, Jp, etc...) is to be found in the LEVEL, with SEQNO = 0
+
+| **ABUNDANCE** |nbspc| |nbspc|  	*(q)* natural abundance, in mole fraction
+| **ATOMIC_MASS** |nbspc| |nbspc|  	*(Q)* atomic mass, in micro AMU
+| **BETA_DECAY_EN** |nbspc| |nbspc|  	*(Q)* energy available for beta decay [keV]
+| **BINDING_EN** |nbspc| |nbspc|  	*(Q)* binding energy per nucleon [keV]
+| **CHARGE_RADIUS** |nbspc| |nbspc|  	*(Q)* Root-mean-square of the nuclear charge radius, expressed in fm. 
+| **ELEM_SYMBOL** |nbspc| |nbspc|  	*(S)* symbol of the element
+| **MASS_EXCESS** |nbspc| |nbspc|  	*(Q)* mass excess [keV]
+| **N** |nbspc| |nbspc|  		number of neutrons
+| **NUC_ID** |nbspc| |nbspc|  		*(S)* identifier, e.g. 135XE
+| **QA** |nbspc| |nbspc|  		*(Q)* alpha decay Q energy [keV]
+| **QBMN** |nbspc| |nbspc|  		*(Q)* beta- + n decay energy [keV]
+| **QEC** |nbspc| |nbspc|  		*(Q)* electron capture Q-value [keV]
+| **RESON_INT** |nbspc| |nbspc|  	*(q)* resonance integral [b]
+| **S2N** |nbspc| |nbspc|  		*(Q)* 2-neutron separation energy [keV]
+| **S2P** |nbspc| |nbspc|  		*(Q)* 2-proton separation energy [keV]
+| **SN** |nbspc| |nbspc|  		*(Q)* neutron separation energy [keV]
+| **SP** |nbspc| |nbspc|  		*(Q)* proton separation energy [keV]
+| **THER_N_CAPTURE** |nbspc| |nbspc|  	*(q)* thermal neutron capture [b]
+| **WESTCOTT_G** |nbspc| |nbspc|  	Westcott g-factor
+| **Z** |nbspc| |nbspc|  		number of protons
+
+LEVEL
+~~~~~
+
+| properties of the energy states of a nuclide
+
+| **CONFIGURATION** |nbspc| |nbspc|  	*(S)* the nuclear configuration
+| **DIPOLE_MM** |nbspc| |nbspc|  	*(Q)* magnetic dipole moment [Bohr magnetons]
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* level energy [keV]
+| **HALF_LIFE** |nbspc| |nbspc|  	*(Q)* Half-life value as given in the evaluation, see HALF_LIFE_UNITS for the units. Use HALF_LIFE_SEC for calculations 
+| **HALF_LIFE_LIMIT** |nbspc| |nbspc|  	String - > , <, >=, etc..
+| **HALF_LIFE_SEC** |nbspc| |nbspc|  	*(Q)* Half-life in [s]
+| **HALF_LIFE_UNITS** |nbspc| |nbspc|  	*(S)* - the Half-life field units
+| **ISOSPIN** |nbspc| |nbspc|  	*(S)* Isospin
+| **J** |nbspc| |nbspc|  		J value as assigned in RIPL
+| **JP** |nbspc| |nbspc|  		*(S)* Jp as given in the evaluation
+| **JP_REASON**  |nbspc| |nbspc|  reason for assigning the Jp: JP_WEAK for weak arguments; JP_STRONG for strong
+| **JP_METHOD** |nbspc| |nbspc|  	method for assigning the Jp in RIPL, see these :ref:`codes <ripl-const-label>`
+| **JP_ORDER** |nbspc| |nbspc|  	order of the Jp: 1 is the first occurence 
+| **NUC** |nbspc| |nbspc|  		*(L)*   access to the properties of the nuclide , e.g. LEVEL.NUC.Z  
+| **P** |nbspc| |nbspc|  		parity as assigned in RIPL
+| **QUADRUPOLE_EM** |nbspc| |nbspc|  	*(Q)* Electrinc quadrupole moment [b]
+| **QUESTIONABLE** |nbspc| |nbspc|  	*(S)* the existence of the level is questionable
+| **SEQNO** |nbspc| |nbspc|  		sequential number of the level, G.S. = 0
+
+GAMMA
+~~~~~~~
+
+| properties of a nuclide electromagnetic transition
+
+| **BEW** |nbspc| |nbspc|  		*(Q)* reduced electric transition probabilities in Weisskopf units
+| **BEW_ORDER** |nbspc| |nbspc|  	order of the transition
+| **BMW** |nbspc| |nbspc|  		*(Q)* reduced magnetic transition probabilities in Weisskopf units
+| **BMW_ORDER** |nbspc| |nbspc|  	order of the transition
+| **END_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the end level, e.g. GAMMA.END_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)*  energy [keV]
+| **MIXING_RATIO** |nbspc| |nbspc|  	*(Q)* mixing ratio
+| **MULTIPOLARITY** |nbspc| |nbspc|  	*(S)* - multipolarity
+| **NUC** |nbspc| |nbspc|  		*(L)* - access to the properties of the nuclide, e.g. GAMMA.NUC.Z  
+| **QUESTIONABLE** |nbspc| |nbspc|  	*(S)* the existence is questionable
+| **REL_PHOTON_INTENS** |nbspc| |nbspc|  	*(Q)* relative photon intensity [%]. The sum over the same start level is 100
+| **SEQNO** |nbspc| |nbspc|  		sequential number of the gamma with respect to the start level, 0 being the gamma with the lowest energy
+| **START_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the start level, e.g. GAMMA.START_LEVEL.ENERGY  
+| **TOT_CONV_COEFF** |nbspc| |nbspc|  	*(Q)* total conversion coefficient
+
+L_DECAY
+~~~~~~~~
+
+| properties of a decay mode of a level
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to daughter nuclide properties , e.g. L_DECAY.DAUGHTER.Z  
+| **LEVEL** |nbspc| |nbspc|  		*(L)*  access to the properties of the level, e.g. L_DECAY.LEVEL.ENERGY  
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **NUC** |nbspc| |nbspc|  		*(L)*  access to parent nuclide properties , e.g. L_DECAY.NUC.Z  
+| **PERC** |nbspc| |nbspc|  		*(Q)* decay probability per 100 decays of the parent
+| **Q_TOGS** |nbspc| |nbspc|  		*(q)* Q-value of the decay. For decay of isomeric sates, it includes the parent energy level
+
+DR_ALPHA
+~~~~~~~~~~~
+
+| alpha decay radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **HINDRANCE** |nbspc| |nbspc|  	*(Q)* hindrance factor
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+
+DR_BETAM
+~~~~~~~~~
+
+| beta- decay radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENDPOINT** |nbspc| |nbspc|  	*(Q)* end-point energy [keV]
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **LOGFT** |nbspc| |nbspc|  		*(Q)* log ft
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+| **TRANS_TYPE** |nbspc| |nbspc|  	*(S)* transition type
+
+DR_BETAP
+~~~~~~~~~~~
+
+| beta+ decay radiation
+
+| **BPEC_INTENSITY** |nbspc| |nbspc|  	*(Q)* sum of electron capture and beta+ intensites per 100 decays of the parent
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **EC_ENERGY** |nbspc| |nbspc|  	*(Q)* energy available for electron capture
+| **EC_INTENSITY** |nbspc| |nbspc|  	*(Q)* electron capture intensity per 100 decays of the parent
+| **ENDPOINT** |nbspc| |nbspc|  	*(Q)* end-point energy [keV]
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **LOGFT** |nbspc| |nbspc|  		*(Q)* log ft
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+| **TRANS_TYPE** |nbspc| |nbspc|  	*(S)* transition type
+
+DR_ANTI_NU
+~~~~~~~~~~~
+
+| anti neutrino decay radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+
+DR_NU
+~~~~~~~~~~~
+
+|  neutrino decay radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+
+DR_DELAYED
+~~~~~~~~~~~
+
+| delayed particle emission
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **ENERGY_X** |nbspc| |nbspc|  	*(Q)* energy of the intermediate state after beta decay and before emetting the particle [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+| **TYPE** |nbspc| |nbspc|  		*(S)* delayed particle: DN, DP, or DA
+
+DR_GAMMA
+~~~~~~~~~~~
+
+| gamma decay radiation
+
+| **BEW** |nbspc| |nbspc|  		*(Q)* reduced electric transition probabilities in Weisskopf units
+| **BEW_ORDER** |nbspc| |nbspc|  	order of the transition
+| **BMW** |nbspc| |nbspc|  		*(Q)* reduced magnetic transition probabilities in Weisskopf units
+| **BMW_ORDER** |nbspc| |nbspc|  	order of the transition
+| **END_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the end level, e.g. GAMMA.END_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)*  energy [keV]
+| **INTENSITY** |nbspc| |nbspc|  	*(Q)* intensity per 100 dcay of the parent
+| **MIXING_RATIO** |nbspc| |nbspc|  	*(Q)* mixing ratio
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **MULTIPOLARITY** |nbspc| |nbspc|  	String - multipolarity
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_GAMMA.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*   access to the properties of the parent level, e.g. DR_GAMMA.PARENT_LEVEL.ENERGY  
+| **QUESTIONABLE** |nbspc| |nbspc|  	*(S)* the existence is questionable
+| **REL_PHOTON_INTENS** |nbspc| |nbspc|  	*(Q)* relative photon intensity [%]
+| **SEQNO** |nbspc| |nbspc|  		sequential number of the gamma with respect to the start level, 0 being the gamma with the lowest energy
+| **START_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the start level, e.g. GAMMA.START_LEVEL.ENERGY  
+| **TOT_CONV_COEFF** |nbspc| |nbspc|  	*(Q)* total conversion coefficient
+
+DR_PHOTON_TOTAL
+~~~~~~~~~~~~~~~
+
+| photon decay radiation (regardless whether gamma or X)
+
+| **COUNT** |nbspc| |nbspc|  		number of parent decay mode is which the line is present 
+| **ENERGY** |nbspc| |nbspc|  		*(q)* energy [keV]
+| **INTENSITY** |nbspc| |nbspc|  	*(q)* intensity per 100 dcay of the parent
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **TYPE** |nbspc| |nbspc|  		*(S)* whether X or G
+
+DR_X
+~~~~
+
+| X decay radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+| **SHELL** |nbspc| |nbspc|  		*(S)* Atomic shell IUPAC notation
+
+DR_AUGER
+~~~~~~~~
+
+| Auger electron  radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+| **SHELL** |nbspc| |nbspc|  		*(S)* Atomic shell IUPAC notation
+
+DR_ANNIHIL
+~~~~~~~~~~~
+
+| gamma from annihilation 
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+
+DR_CONV_EL
+~~~~~~~~~~~
+
+| conversion electron  radiation
+
+| **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
+| **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
+| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
+| **SHELL** |nbspc| |nbspc|  		*(S)* Atomic shell IUPAC notation
+
+CUM_FY
+~~~~~~~~~~~
+
+| cumulative fission yields
+
+| **FAST_YIELD** |nbspc| |nbspc|  	*(q)* fast neutron yield
+| **MEV_14_YIELD** |nbspc| |nbspc|  	*(q)* 14 MeV neutron yield
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the fissioning nuclide, e.g. CUM_FY.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. CUM_FY.PARENT_LEVEL.ENERGY  
+| **PRODUCT** |nbspc| |nbspc|  	*(L)*  access to the properties of the product nuclide, e.g. CUM_FY.PRODUCT.Z  
+| **THER_YIELD** |nbspc| |nbspc|  	*(q)* thermal neutron yield
+
+IND_FY
+~~~~~~~~~~~
+
+| independent fission yields
+
+| **FAST_YIELD** |nbspc| |nbspc|  	*(q)* fast neutron yield
+| **MEV_14_YIELD** |nbspc| |nbspc|  	*(q)* 14 MeV neutron yield
+| **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the fissioning nuclide, e.g. IND_FY.PARENT.Z  
+| **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. IND_FY.PARENT_LEVEL.ENERGY  
+| **PRODUCT** |nbspc| |nbspc|  	*(L)*  access to the properties of the product nuclide, e.g. IND_FY.PRODUCT.Z  
+| **THER_YIELD** |nbspc| |nbspc|  	*(q)* thermal neutron yield
+
+3. Constants
+-------------
+
+.. _decay-const-label:
+
+These constants can be used instead of typing cryptic coded values
+
+Decay modes
+~~~~~~~~~~~
+
+Use them when a decay mode needs to be referred , like in :code:`L_DECAYS.MODE = DECAY_A`
+
+| **DECAY_A** = 0  alpha
+| **DECAY_Bp** = 1 beta+
+| **DECAY_Bm** = 2  beta-
+| **DECAY_IT** = 3  isomeric transition
+| **DECAY_P** = 4  proton
+| **DECAY_N** = 5  neutron
+| **DECAY_BmN** = 6  delayed neutronafter beta-
+| **DECAY_EC** = 7  electron capture
+| **DECAY_SF** = 8  spontaneous fission
+| **DECAY_D** = 9  deuterium
+| **DECAY_ECP** = 10  delayed proton after electron capture
+| **DECAY_3HE** = 11  3-He
+| **DECAY_BpP** = 12  delayed proton after beta+
+| **DECAY_3H** = 13  3-H
+| **DECAY_G** = 14  G
+| **DECAY_Bp** = 15  beta+
+| **DECAY_ECA** = 16  delayed alpha after electron capture 
+| **DECAY_Bm2N** = 17  2 delayed neutrons after beta-
+| **DECAY_8BE** = 18  8-Be
+| **DECAY_BpA** = 19  delayed alpha after beta+
+| **DECAY_2Bm** = 20  double beta-
+| **DECAY_2P** = 21  double proton
+| **DECAY_BmA** = 22  delayed alpha after beta-
+| **DECAY_14C** = 23  14-C
+| **DECAY_EC2P** = 24  2 delayed protons after electron capture
+| **DECAY_Bp2P** = 25  2 delayed protons after beta+
+| **DECAY_2Bp** = 26  double beta+
+| **DECAY_28MG** = 27 Mg-28
+| **DECAY_ECSF** = 28  spontaneous fission after electron capture
+| **DECAY_Bm3N** = 29  3 delayed neutrons after beta-
+| **DECAY_2EC** = 30  double electron capture
+| **DECAY_24NE** = 31 Ne-24
+| **DECAY_ECF** = 32  fission after electron capture
+| **DECAY_NE** = 33  Ne
+| **DECAY_ECP_EC2P** = 34  delayed proton or double delayed proton after electron capture
+| **DECAY_22NE** = 35 Ne-22
+| **DECAY_34SI** = 36 Si-34
+| **DECAY_EC_SF** = 37 EC plus spontaneous fission
+| **DECAY_24NE** = 38  24-Ne
+| **DECAY_BF** = 39  fission after beta
+| **DECAY_SF_EC_Bp** = 40 spontaneous fission - EC - beta+
+| **DECAY_SF_Bm** = 41  spntaneous fission + beta-
+| **DECAY_Bm4N** = 42  4 delayed neutrons after beta- 
+| **DECAY_SF_EC_Bm** = 44  spontaneous fission + electron capture + beta-
+| **DECAY_IT_EC_Bp** = 45  isomeric transition + electron capture + beta+
+| **DECAY_EC3P** = 46  3 delayed protons after electron capture
+| **DECAY_20NE** = 47  20-Ne
+| **DECAY_BmF** = 49  beta- fission
+| **DECAY_BpEC** = 50  electron capture + beta+
+| **DECAY_20O** = 51  20-O
+| **DECAY_MG** = 52  Mg
+| **DECAY_ECAP** = 53  delayed alpha plus delayed proton after electron capture
+| **DECAY_2e** = 54  2 e
+| **DECAY_BmP** = 55  delayed proton after beta-
+| **DECAY_12C** = 57  12-C
+| **DECAY_25NE** = 58  25-Ne
+| **DECAY_34SI** = 59  34-Si
+| **DECAY_22NE** = 60  22-Ne
+| **DECAY_2N** = 61  2 neutrons
+| **DECAY_EC_SF** = 62  electron capture + spontaneous fission
+| **DECAY_SF_EC_Bp** = 63  spontaneous fission + electron capture + beta+
+| **DECAY_BmSF** = 64  spontaneous fission after beta-
+| **DECAY_Bm5N** = 65  5 delayed neutrons after beta-
+| **DECAY_BpF** = 66  fission after beta+
+| **DECAY_28MG** = 67  28-Mg
+| **DECAY_Bm6N** = 68  6 delayed neutrons after beta-
+
+
+.. _ripl-const-label:
+
+JP assignment criteria
+~~~~~~~~~~~~~~~~~~~~~~
+
+To be used when referring to level spin values assigned by ENSDF , like in :code:`LEVEL.JP_REASON = JP_STRONG`
+
+| **JP_WEAK**  = 1
+| **JP_STRONG** = 0
+
+
+RIPL J and P assignments method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To be used when referring to level spin values assigned by RIPL , like in :code:`LEVEL.JP_METHOD = RIPL_J_UNIQUE`
+
+| **RIPL_J_UNKNOWN** = -1 not assigned
+| **RIPL_J_UNIQUE** = 0 unique value already present in ENSDF
+| **RIPL_J_DISTRIBUTION_GAMMA** = 1 spin distribution from gamma transitions
+| **RIPL_J_DISTRIBUTION** = 2 spin distribution from levels with known Jp
+| **RIPL_J_DISTRIBUTION_CONSTRAIN** = 3 spin distribution constrained to a set of possible values given in ENSDF
+
+| **RIPL_P_PLUS** = 1 parity +
+| **RIPL_P_MINUS** = 0 parity -
+
+Beta decay transition types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+like in :code:`DR_BETA.TRANS_TYPE = TRANS_1NU`
+
+| **TRANS_1NU**  first non-unique
+| **TRANS_1U**   first unique
+| **TRANS_2NU**
+| **TRANS_2U**
+| **TRANS_3NU**
+| **TRANS_3U**
+| **TRANS_4NU**
+| **TRANS_4U**
+| **TRANS_5NU**
+| **TRANS_5U**
+| **TRANS_7NU**
+| **TRANS_8U**
+| **TRANS_A**  allowed
+| **TRANS_S**  super-allowed
+
+Atomic shells and vacancies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To specify a .SHELL field, e.g. :code:`DR_AUGER.SHELL = SHELL_KLL`
+
+following IUPAC notation https://en.wikipedia.org/wiki/X-ray_notation
+
+| **SHELL_K** = 'K'
+| **SHELL_KA1** = 'KA1'
+| **SHELL_KA2** = 'KA2'
+| **SHELL_KB** = 'KB'
+| **SHELL_KLL** = 'KLL'
+| **SHELL_KLX** = 'KLX'
+| **SHELL_KXY** = 'KXY'
+| **SHELL_KpB1** = 'KpB1'
+| **SHELL_KpB2** = 'KpB2'
+| **SHELL_L** = 'L'
+| **SHELL_L1** = 'L1'
+| **SHELL_L1M2** = 'L1M2'
+| **SHELL_L1M3** = 'L1M3'
+| **SHELL_L1N2** = 'L1N2'
+| **SHELL_L1N3** = 'L1N3'
+| **SHELL_L1O23** = 'L1O23'
+| **SHELL_L2** = 'L2'
+| **SHELL_L2M1** = 'L2M1'
+| **SHELL_L2M4** = 'L2M4'
+| **SHELL_L2N1** = 'L2N1'
+| **SHELL_L2N4** = 'L2N4'
+| **SHELL_L2O1** = 'L2O1'
+| **SHELL_L2O4** = 'L2O4'
+| **SHELL_L3** = 'L3'
+| **SHELL_L3M1** = 'L3M1'
+| **SHELL_L3M4** = 'L3M4'
+| **SHELL_L3M5** = 'L3M5'
+| **SHELL_L3N1** = 'L3N1'
+| **SHELL_L3N45** = 'L3N45'
+| **SHELL_L3O1** = 'L3O1'
+| **SHELL_L3P1** = 'L3P1'
+| **SHELL_M** = 'M'
+| **SHELL_N** = 'N'
+| **SHELL_NPLUS** = 'N+'
+| **SHELL_O** = 'O'
+
+
+

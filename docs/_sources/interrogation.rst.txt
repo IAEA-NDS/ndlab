@@ -1,0 +1,431 @@
+.. _interrogation-label:
+
+
+**This** section describes how to  query the database, and how to plug the results into data analysis packages
+like `pandas <https://pandas.pydata.org/docs/getting_started/install.html>`_ ,
+or in plotting tools like `plotly <https://plotly.com/python/getting-started/>`_.  
+
+A Notebook tutorial is available in *ndlab-tutorial.ipynb*, with also a static `HTML version <_static/ndlab-tutorial.html>`_ 
+
+Data can also be processed by your own code. For this purpose a set of classes, and functions to start with,  will be described in the 
+:ref:`Programming section <programming-label>`
+
+
+.. _cheat-label:
+
+0. Cheat sheet
+--------------
+
+**Functions** for data retrieval, you will see later the detailed explanation:
+
+::
+
+    import ndlab as nl
+    # optional
+    import pandas as pd
+
+
+    fields = "NUCLIDE.Z, NUCLIDE.ATOMIC_MASS"   # what to retrieve
+    filter = "NUCLIDE.NUC_ID = '135XE'"         # condition(s) to apply
+
+    csv = nl.csv_data(fields, filter)     # csv
+    json = nl.json_data(fields, filter)   # json
+    df = nl.pandas_df(fields, filter, pd) # dataframe
+ 
+    nucs = nuclides('NUCLIDE.Z = 2')  # list of nl objects
+  
+    csv =  csv_nl(nucs)         # csv
+    df =  pandas_df_nl(nucs,pd) # dataframe
+    json = df.to_json()         # json from dataframe
+
+
+
+.. _retrieval-func-label:
+
+1. Retrieval functions
+-----------------------
+
+**You** just need to specify what to retrieve and what filter, if any, to apply. The datamodel allows you to express 
+these two parameters in a way close to the physics of the problem.
+
+Let's start with some examples :
+
+::
+
+    import ndlab as nl
+
+    # what to retrieve
+    fields = "NUCLIDE.Z, NUCLIDE.ATOMIC_MASS" 
+
+    # condition(s) to apply
+    filter = "NUCLIDE.NUC_ID = '135XE'"       
+
+    # get data as csv
+    csv = nl.csv_data(fields, filter)
+
+    print(csv)
+
+    >>z,atomic_mass
+    >>54,134907231.441
+
+now json ...
+
+::
+   
+    json = nl.json_data(fields, filter)  
+    print(json)  
+
+    >>[ {'z':'54'  ,'atomic_mass':'134907231.441'}]
+
+
+... and using pandas
+
+::
+
+    import pandas as pd    
+
+    df = nl.pandas_df(fields, filter, pd)
+    print(df)
+
+    >>    z   atomic_mass
+    >>0  54  1.349072e+08
+
+
+
+We have just seen three functions:
+
+| 1. :py:meth:`ndlab.csv_data` : data in **csv**
+| 2. :py:meth:`ndlab.json_data` : data in **json**
+| 3. :py:meth:`ndlab.pandas_df` : pandas dataframe (the pandas module needs to be already imported)
+
+
+These functions take two parameters, which are detailed in sections :ref:`2 <fields-label>` and  :ref:`3 <filter-label>` :
+
+* :code:`fields` specifies which data to retrieve
+* :code:`filter` specifies which conditions, if any, should be applied to filter the data
+
+
+
+A powerful way to handle data is to use the third function and create a
+**pandas dataframe**. Besides allowing data manipulation and analysis, it offers the option to save the data in various formats.
+
+For example, to save into an Excel file, just do  
+
+:: 
+
+    import pandas as pd
+
+    df = nd.pandas_df(fields, filter, pd)
+
+    df.to_excel('excel_data.xlsx')
+    
+
+
+If you prefer to directly use SQL, refer to :ref:`section 8 <sql-label>`
+
+The following sections describe the grammar for constructing  *field* and *filter*  using the nuclear data model on which NDLab is built
+
+.. _fields-label:
+
+2. The fields parameter
+-------------------------
+
+| **It** is a comma-separated, uppercase list of the quantites you want to retrieve. For example :code:`fields = "NUCLIDE.ABUNDANCE , NUCLIDE.ATOMIC_MASS"`
+| or
+| :code:`fields = "GAMMA.ENERGY , GAMMA.MULTIPOLARITY , GAMMA.MIXING_RATIO"`.  
+
+The simplest pattern for a field is **entity** *dot* **quantity** 
+
+| **Entities** are the basic blocks of the model : NUCLIDE, GAMMA, LEVEL, DR_ALPHA ... The :ref:`ndm reference <ndm-label>` section provides the full list 
+
+| **Quantities** store the information  available for each entity.
+
+| A field can also be like :code:`GAMMA.START_LEVEL.ENERGY` or :code:`DR_ALPHA.DAUGHTER_FED_LEVEL.ENERGY`. 
+| This pattern is **entity** *dot* **link** *dot* **quantity**.
+
+| **Links** allow to jump from one entity to another related one. In this case from a gamma to its start level. 
+| In this way the NDLab translates nuclear physics language into the data model. These link fields are marked with *(L)* in the  :ref:`ndm reference <ndm-label>` 
+
+Often there is a set of three fields describing a property, let's take for example the gamma energy:
+
+* GAMMA.ENERGY      : the value
+* GAMMA.ENERGY_UNC  : the uncertainity
+* GAMMA.ENERGY_LIMIT : the limit (>, < , etc) 
+
+Then for a full specification of the gamma energy you should use :code:`fields = "GAMMA.ENERGY , GAMMA.ENERGY_UNC , GAMMA.ENERGY_LIMIT"`.  
+ 
+
+In the :ref:`ndm reference <ndm-label>`  these fields are flagged with *(Q)*. Quantities lacking the _LIMIT field are flagged with  *(q)*
+
+.. tip::
+
+   To inspect the avalilable quantities, use the autocomplete feature avaliable in any development tool, for example type "GAMMA." to see all the gamma-related fields. 
+
+   **If you want to use this feature, you must import the orm module in this way:**
+
+    ::
+
+       from ndlaborm import *
+
+   When coding in a Jupyter Notebook the autocompletion will not work within quotes. First write the variables :
+   :code:`fields = GAMMA.ENERGY , GAMMA.MIXING_RATIO`, then add the quotes  :code:`fields = " GAMMA.ENERGY , GAMMA.MIXING_RATIO "`
+
+.. attention::
+    **Rules** for the *fields* parameter
+
+    #. use **uppercase**
+    #. **maximum two dots** : *entity.quantity* or *entity.link.quantity*
+    #. a list of fields must have **comma-separated items**
+    #. a list must refer to **only one entity**: :code:`fields = "GAMMA.ENERGY , NUCLIDE.Z "` is **not** allowed. Try to use the links instead : :code:`"GAMMA.ENERGY , GAMMA.NUC.Z"``
+    #. simple functions are allowed :code:`NUCLIDE.Z + NUCLIDE.N`
+    #. use :code:`as` to alias for convenience in further references :code:`NUCLIDE.Z + NUCLIDE.N as a` 
+    #. use :code:`.ALL` to retrieve all the quantities avaliable, e.g. :code:`NUCLIDE.ALL`
+
+    | If you do not want to use the autocompletion, you do not need to import the ndlaborm module.
+    | But if ndlaborm was imported using an alias, e.g. :code:`import ndlaborm as no`, when using the autocompletion pay attention not include the alias in the fields variable. :code:`fields = "no.GAMMA.ENERGY"` is not valid, remove the 'no.'.
+
+    
+
+.. _filter-label:
+
+3. The filter parameter
+-------------------------
+
+**Often** one needs to apply some conditions to filter the data, for example :code:`filter = "GAMMA.NUC.Z = 5"` will filter only the gamma transitions of Z = 5 nuclides. 
+Here below the rules to follow when writing a filter  
+
+.. attention::
+    **Rules** for the *filter* parameter
+
+    #. use **uppercase**
+    #. **maximum two dots** : *entity.quantity* or *entity.link.quantity*
+    #. conditions can by joined using the **and** , **or** logical operators
+    #. conditions must refer to **only one entity**: :code:`fields = "GAMMA.ENERGY > 2000 and  NUCLIDE.Z = 5 "` is **not** allowed. Try to use the links instead : :code:`"GAMMA.ENERGY > 2000 and GAMMA.NUC.Z = 5"``
+    #. simple functions are allowed :code:`NUCLIDE.Z + NUCLIDE.N = 20`
+    #. text conditions must be enclosed in **single quotes** :code:`GAMMA.MULTIPOLARITY = 'E2+M1'`. In the :ref:`ndm reference <ndm-label>` , these quantities are flagged with *(S)*
+
+    Allowed comparison operators are:
+    =    >   <  !=   >=   <= , for example :code:`GAMMA.ENERGY >= 1000`
+
+    Further operators
+
+    * use **in** to filter a set of values, e.g. :code:`NUCLIDE.NUC_ID IN ( '235U', '135XE' )` (notice the single quotes), or :code:`NUCLIDE.Z IN (5, 10)`
+    * use **like** to filter the content of a text, e.g. :code:`LEVEL.JP like '%2+%'` will filter the jp values containing the string "2+". See :ref:`jp values <jp-label>` for more
+
+.. _retrieve-examples-label:
+
+4. Examples
+-----------
+
+**This** set of examples provides a summary or the rules above, and can be used as a template for building other retrievals 
+
+
+::
+
+   import ndlab as nl
+   from ndlaborm import * # to use the autocompletion feature
+
+   # Z , N and Half-life of all ground states
+   fields = "LEVEL.NUC.Z , LEVEL.NUC.N , LEVEL.HALF_LIFE_SEC"
+   filter = "LEVEL.ENERGY = 0" # or also "LEVEL.SEQNO = 0"
+
+   # Z , N and Half-life of nuclides with 10 < Z < 100 that decay by beta-delayed neutron emission
+   fields = "DR_DELAYED.PARENT.Z , DR_DELAYED.PARENT.N , DR_DELAYED.PARENT_LEVEL.HALF_LIFE_SEC"
+   filter = "DR_DELAYED.TYPE = DELAY_N and DR_DELAYED.PARENT.Z > 10 and DR_DELAYED.PARENT.Z < 100"  
+
+   # Z as a magic number
+   filter = "NUCLIDE.Z  in (2,8,20,28,50,82,126)" 
+
+   # Z, N, and  mixing-ratio divided by energy, with a quite complex filter
+   fields = "GAMMA.NUC.Z as z, GAMMA.NUC.N as n , abs( GAMMA.MIXING_RATIO / GAMMA.ENERGY ) as r"
+
+   filter  =  " ( GAMMA.NUC.Z % 2 = 0 ) and ( GAMMA.NUC.N % 2 = 0 ) "                  # even-even nuclides
+   filter +=  " and GAMMA.START_LEVEL.JP = '2+' and GAMMA.START_LEVEL.JP_ORDER = 2 "   # starts from Jp=2+ ,2nd occurrence
+   filter +=  " and GAMMA.END_LEVEL.JP = '2+'   and GAMMA.END_LEVEL.JP_ORDER = 1 "     # ends at Jp = 2+ ,1st occurrence
+   filter +=  " and (GAMMA.MULTIPOLARITY = 'E2+M1'or GAMMA.MULTIPOLARITY = 'M1+E2') "  # E2 + M1 multipolarity
+
+.. warning::
+
+    The ground states properties (Half-life, Jp, etc...) are in the LEVEL, with SEQNO = 0. For example the G.S. of Xe-135 is
+    :code:`LEVEL.NUC.NUC_ID = '135XE' and LEVEL.SEQNO = 0`
+
+.. _jp-label:
+
+5. J :sup:`p` values
+--------------------
+
+**This** section details the handling of J :sup:`p`. Please read it at least once, then you might just consult the :ref:`wrap-up <jp-wrap-up-label>` 
+
+**ENSDF Jp assignment**
+
+The angular momentum handling requires some further explanation. In many cases there is a unique J :sup:`p`, given as, e.g.,  *2+* ; but there are cases 
+where the evaluated value is *(2+)*, meaning that the assignement is based on *weak arguments*, or even, for example, *0+,(1,2)*, where there are 
+many possible values, mixing strong and weak arguments. Please consult the `ENSDF guide <https://www.nndc.bnl.gov/ensdf/evalcorner/pdfs/ensdf-manual.pdf>`_ pag. 101 
+for more about weak and strong criteria
+
+The condition :code:`LEVEL.JP = '2+'` will include only the cases is which J :sup:`p` has a single value, with strong assignment
+
+If you are willing to relax the criteria, you can use the following way
+
+:code:`LEVEL.JP LIKE '%2+%'`: this will include any J :sup:`p`  assignements in which *2+* is present. 
+
+Just for completeness, there is the field  :code:`LEVEL.JP_REASON` which can be  :code:`LEVEL.JP_REASON = JP_STRONG` or :code:`LEVEL.JP_REASON = JP_WEAK`.
+Using :code:`LEVEL.JP_REASON = JP_STRONG` will restrinct to strong assignments, but you might still get multipel values, like *0+,1+*
+
+There is a further caveat: there are cases where the value is, say, *(0+),1,2,3,4(+)* . If one is interested in knowing if such assignment is compatible with the value, say, *2+*, 
+**NDlab** at the moment does not offer a solution, and the user should develop custom code for further processing the results.
+
+In the following you see how to address the problem with the RIPL fields
+
+**RIPL Jp assignment**
+
+For the J :sup:`p` ambiguous cases, and, in some cases, even when the J :sup:`p` was not assigned, NDlab reports a unique J :sup:`p` value 
+based on the solution devised by `RIPL <https://nds.iaea.org/RIPL/>`_ (Reference Input Parameter Library), where the single value is chosen 
+using a spin continuous statistical distribution.  
+
+The distribution is constructed in the following way:
+
+* Using gamma transitions having final levels of known spin, or 
+* Using 10 known spins in level schema
+
+When the original evaluation assignes multiple values, the statistical distribution is constrained to one of the admissible values
+
+The fields containing RIPL assignments are :code:`LEVEL.J` and :code:`LEVEL.P` 
+
+.. attention::
+    the field :code:`LEVEL.JP_METHOD` tells how the RIPL assignment was chosen (see the :ref:`constants <ripl-const-label>`)
+
+    * RIPL_J_UNIQUE - the original assignment is already unique
+    * RIPL_J_DISTRIBUTION_GAMMA - spin distribution generated using gamma transitions
+    * RIPL_J_DISTRIBUTION_CONSTRAIN - spin distribution was constrained to a set of evaluated options (e.g. *0,1,2,3*)
+    * RIPL_J_DISTRIBUTION - no experimental information, value chosen with spin distribution generated using 10 known spin values
+    * RIPL_J_UNKNOWN - nothing possible, spin unknow and then J = -1 (default value for unknown spin)
+
+
+    Refer to the `IAEA Tecdoc 1506 <https://nds.iaea.org/RIPL-3/handbook/ripl2.pdf>`_, Section 3 for the complete discussion
+    
+.. tip::
+    the filter :code:`LEVEL.JP = '2+'` is equivalent to :code:`LEVEL.J = 2' and LEVEL.P = RIPL_P_PLUS and LEVEL.JP_METHOD = RIPL_J_UNIQUE`
+    
+Furher details on the RIPL database relevant for NDLab can be found :ref:`here <database-label>`
+
+.. _jp-wrap-up-label:
+
+**Wrap-up : combining ENSDF and RIPL**
+
+The situation is getting esoteric, then let's summarise the main options:
+
+| :code:`LEVEL.JP = '2+'` J :sup:`p` exactly 2 :sup:`+`, no doubts 
+| :code:`LEVEL.JP LIKE '%2+%' and LEVEL.JP_METHOD = RIPL_J_UNIQUE`  J :sup:`p` is 2 :sup:`+` or (2  :sup:`+`)
+| :code:`LEVEL.JP LIKE '%2+%' and LEVEL.JP_REASON = JP_STRONG` J :sup:`p` can be  2 :sup:`+`, but also 2  :sup:`+`, 3  :sup:`+` , ...
+| :code:`LEVEL.JP LIKE '%2+%'` J :sup:`p` as above, but also (2  :sup:`+`), 3  :sup:`+` , ...
+
+For example, let's say you want to get the log_ft of beta decays, but only from levels having a definite Jp because later you might want to 
+group the data by Jp, or transitin type. Then do this:
+
+::
+
+    fields =  " DR_BETA.LOGFT, DR_BETA.PARENT_LEVEL.JP, DR_BETA.TRANS_TYPE "
+    filter =  " DR_BETA.PARENT_LEVEL.JP_REASON = JP_STRONG and DR_BETA.PARENT_LEVEL.JP_METHOD = RIPL_J_UNIQUE "
+
+If you need a single value, and do not care about weak or strong assignements:
+
+::
+
+    fields =  " DR_BETA.LOGFT, DR_BETA.PARENT_LEVEL.JP, DR_BETA.TRANS_TYPE "
+    filter =  " DR_BETA.PARENT_LEVEL.JP_METHOD = RIPL_J_UNIQUE "
+
+If you need a unique value, even when the ENSDF evaluation is not unique, then use the RIPL assignment, knowing that this might or might not be accurate
+
+::
+
+    fields =  " DR_BETA.LOGFT, DR_BETA.PARENT_LEVEL.J,  DR_BETA.PARENT_LEVEL.P, DR_BETA.TRANS_TYPE "
+    filter =  " DR_BETA.PARENT_LEVEL.JP_METHOD != RIPL_J_UNKNOWN "
+
+
+
+
+
+6. Decay modes 
+--------------
+
+**The** various decay radiations (*DR_GAMMA, DR_BETAM, etc...*) and *L_DECAY* have the *MODE* field which indicates the type of decay. Use the set of constants *DECAY_** to
+specify a decay mode, for example :code:`L_DECAY.MODE = DECAY_Bp` 
+
+The section :ref:`constants <decay-const-label>` provides the list of decays
+
+7. Three lines of code
+----------------------
+
+**Three** lines of code to extract intensity vs energy for gammas emitted by the decay of Am-241, save the data in 
+Excel, and then generate a plot. Refer to the Notebook *ndlab-tutorial.ipynb* for more
+
+:: 
+
+    import ndlab as nl
+    from ndlaborm import *
+    import pandas as pd
+    import plotly.express as px
+
+    df = nl.pandas_df("DR_GAMMA.ENERGY , DR_GAMMA.INTENSITY ", "DR_GAMMA.PARENT.NUC_ID = '241AM'", pd)
+
+    df.to_excel('am241.xlsx')
+
+    px.scatter(df, x="energy", y="intensity", log_y=True).show()
+
+
+.. _sql-label:
+
+8. SQL through Python
+---------------------
+
+**The** underlying database is SQLite, see the `database description <./schema/index.html>`_. It is possible to directly
+write SQL to extract data, using these :ref:`functions <handle-sql-label>`. For example:
+
+::
+
+    pd.read_sql(nd.query_build(fields, filter), nd.query_con())
+
+One can go forward in two ways:
+
+#. using again the function :code:`pd.read_sql( {your sql}, query_con())`, but instead of relying on NDLab to build the query, you write your own
+#. using the Python `sqlite3 module <https://docs.python.org/3/library/sqlite3.html>`_ , like in the example below which does not involve pandas:
+
+::
+
+        SQL = "select * from nuclides"
+        result_set  = query_con().execute()
+        keys = self._result_keys(result)
+
+        field_name = []
+        for k in keys:
+           # k is a string with the field name
+
+        # this could be the header of a csv
+        csv_title = [','.join(keys)]   
+       
+        i_range = range(len(keys))
+        for r in result_set:
+            # r[n] has the value of the n-th field of the fetched row
+            # do something with r[n], like build a csv string
+            csv = ",".join(( str(r[i]) if  str(r[i]) != 'None' else '')for i in i_range)  
+                
+.. tip::
+    Use the :py:meth:`ndlab.query_build()` function to get an initial sql that can be refined. For example, try to print the sql statements produced by the 
+    :ref:`examples above: <retrieve-examples-label>` 
+
+9. SQL direct connection
+------------------------
+
+Using `DB Browser for SQLite <https://sqlitebrowser.org>`_ it is possible to manage the local database, see the `database description <./schema/index.html>`_
+
+
+
+
+
+
+
+
+ 
+
+  

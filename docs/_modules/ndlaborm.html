@@ -1,0 +1,1222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ndlaborm &mdash; NDLab 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/ndlab.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/ndlab.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">1. Get it</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#ndlab-dependencies">2. NDLab dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#test-it-s-working">3. Test it’s working</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#optional-packages">4. Optional packages</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html">1. Retrieval functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#the-fields-parameter">2. The fields parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#the-filter-parameter">3. The filter parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#examples">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#j-p-values">5. J <sup>p</sup> values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#decay-modes">6. Decay modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#three-lines-of-code">7. Three lines of code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#sql-through-python">8. SQL through Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interrogation.html#sql-direct-connection">9. SQL direct connection</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../programming.html">1. Programming Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming.html#classes-and-functions">2. Classes and functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming.html#pandas">3. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming.html#quantities">3. Quantities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Vocabulary</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../entities.html">Legend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities.html#entities">Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../entities.html#constants">Constants</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code.html">ndlab module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code.html#ndlaborm-module">ndlaborm module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Database</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../database.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database.html#features-of-ripl">2. Features of RIPL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database.html#data-sources">3. Data Sources</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">NDLab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>ndlaborm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ndlaborm</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Defines the grammar to query the database, and its translation into sql</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">#%config IPCompleter.greedy = True</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">inspect</span><span class="o">,</span><span class="nn">sys</span>
+
+<div class="viewcode-block" id="Sqlbuilder"><a class="viewcode-back" href="../code.html#ndlaborm.Sqlbuilder">[docs]</a><span class="k">class</span> <span class="nc">Sqlbuilder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parses a string with nuclear data model tokens</span>
+
+<span class="sd">     Attributes:</span>
+<span class="sd">        force_clean (bool):  whether fields and conditions of the query will be &quot;cleaned&quot;, e.g. (NUCLIDE.Z -&gt; ( NUCLIDE.Z. </span>
+<span class="sd">        When false, the cleaning is done only if the query execution raises an exception</span>
+
+<span class="sd">        _classes (Object[]): the classes of this module, used in clean_token() to find their place in a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="c1"># if fields and conditions of the query will be &quot;cleaned&quot;, e.g. (NUCLIDE.Z -&gt; ( NUCLIDE.Z</span>
+<span class="c1"># when false, the cleaning is done only if the query execution raises an exception</span>
+    <span class="n">force_clean</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># the classes of this module, used in clean_token to find where are placed in a string     </span>
+    <span class="n">_classes</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># a string token is evaluated to convert it into an object</span>
+<span class="c1"># then it will be checked if it is an orm piece</span>
+    <span class="k">def</span> <span class="nf">interrogate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tk</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">tk</span><span class="p">)</span>
+            <span class="c1">#  &#39;241AM&#39; : when the string is between &#39;&#39;</span>
+            <span class="k">if</span> <span class="n">ret</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;str&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">tk</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># this is a string without &#39;&#39;</span>
+                <span class="k">return</span> <span class="n">ret</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;tk&quot;</span><span class="p">)</span>
+
+<span class="c1"># checks if an object is a class of this module</span>
+    <span class="k">def</span> <span class="nf">is_datamodel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">piece</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">piece</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="vm">__name__</span> <span class="ow">or</span> <span class="n">piece</span> <span class="o">==</span> <span class="n">_Base</span><span class="o">.</span><span class="n">ALL</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span> 
+
+    <span class="c1"># fills the _classes list</span>
+    <span class="k">def</span> <span class="nf">get_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># lazy</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_classes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classes</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;ndlaborm&quot;</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_classes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                <span class="c1">#print(&#39;print(description(&#39; + name + &#39;))&#39;)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classes</span>  
+
+    <span class="c1"># attributes of a class</span>
+    <span class="k">def</span> <span class="nf">get_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="n">attr</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dump</span> <span class="o">=</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;dump&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="p">{}))</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dump</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;ALL&#39;</span><span class="p">):</span>
+                <span class="n">attr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">attr</span>  
+
+    <span class="c1"># adds blanks where needed: &#39;(GAMMA.ENERGY=&#39; --&gt;  &#39;( GAMMA.ENERGY =&#39;</span>
+    <span class="k">def</span> <span class="nf">before_after_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tk</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">mclass</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        tk the token</span>
+<span class="sd">        idx the starting of the class name within the token</span>
+<span class="sd">        mclass the class found in this token</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mclass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="n">char_before</span> <span class="o">=</span> <span class="n">tk</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="n">idx</span><span class="p">]</span>
+    
+        <span class="k">if</span><span class="p">(</span><span class="n">idx</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">char_before</span> <span class="o">!=</span> <span class="s1">&#39;.&#39;</span> <span class="ow">and</span> <span class="n">char_before</span> <span class="o">!=</span> <span class="s1">&#39;_&#39;</span><span class="p">):</span> <span class="c1">#  before: cases like &quot;(GAMMA.ENERGY ...&quot;</span>
+            <span class="n">tk</span> <span class="o">=</span>  <span class="n">tk</span><span class="p">[:</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">tk</span><span class="p">[</span><span class="n">idx</span><span class="p">:]</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">length</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># after the class there is &quot;.&quot; and the fields   </span>
+        <span class="n">tks</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> 
+        <span class="c1"># only the last sub-token.</span>
+        <span class="c1"># for &quot;GAMMA.END_LEVEL.JP&quot; the last token is not a field of the GAMMA class  </span>
+        <span class="c1"># and will go unchecked now. It will be picked up when clean_tk finds END_LEVEL and passes it back here</span>
+        <span class="n">last_tk</span> <span class="o">=</span> <span class="n">tks</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tks</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+        <span class="n">attribs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">(</span><span class="n">mclass</span><span class="p">)</span> 
+        <span class="n">idx_max</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">len_max</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># check all the possible fields, take the longest name to avoid errors in cases like &quot;J&quot; and &quot;JP&quot;</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attribs</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">last_tk</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">idx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="k">continue</span>
+            <span class="n">char_after</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_tk</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span> <span class="k">else</span> <span class="n">last_tk</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span> <span class="n">idx</span><span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            
+            <span class="c1"># this is a bit ad hoc, it is to deal with :</span>
+            <span class="c1"># 1 - NUCLIDE.NUC_ID , where also N is a field of nuclide</span>
+            <span class="c1"># 2 - LEVEL.NUC.NUC_ID where NUC is a class and needs to be separated from NUC_ID</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">char_after</span> <span class="o">==</span> <span class="s2">&quot;_&quot;</span> <span class="ow">or</span>  <span class="p">(</span> <span class="n">attr</span> <span class="o">!=</span> <span class="n">last_tk</span> <span class="ow">and</span> <span class="n">last_tk</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;NUC_ID&#39;</span><span class="p">)</span> <span class="ow">and</span>  <span class="n">attr</span> <span class="o">!=</span> <span class="s1">&#39;NUC_ID&#39;</span>  <span class="p">)):</span> <span class="k">continue</span>
+
+            <span class="n">mlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+            <span class="n">len_max</span> <span class="o">=</span>  <span class="n">mlen</span> <span class="k">if</span> <span class="n">mlen</span> <span class="o">&gt;</span> <span class="n">len_max</span> <span class="k">else</span> <span class="n">len_max</span>
+            <span class="n">idx_max</span> <span class="o">=</span> <span class="n">idx</span> <span class="k">if</span> <span class="n">mlen</span> <span class="o">&gt;</span> <span class="n">len_max</span> <span class="k">else</span> <span class="n">idx_max</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">len_max</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_tk</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">len_max</span><span class="p">):</span>
+            <span class="n">last_tk</span> <span class="o">=</span>   <span class="n">last_tk</span><span class="p">[:</span><span class="n">idx_max</span> <span class="o">+</span> <span class="n">len_max</span><span class="p">]</span>  <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">last_tk</span><span class="p">[</span><span class="n">idx_max</span> <span class="o">+</span> <span class="n">len_max</span><span class="p">:]</span>
+        <span class="n">tks</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tks</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_tk</span>
+        
+        <span class="k">return</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tks</span><span class="p">)</span>
+                
+  
+    <span class="c1"># take one token (string with no blanks), look for classes and process the token</span>
+    <span class="k">def</span> <span class="nf">clean_tk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tk</span><span class="p">):</span>
+        <span class="n">classes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_classes</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">mclass</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">mclass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span> <span class="c1">#the token contains a class name</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">idx</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>      
+                <span class="n">tk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">before_after_class</span><span class="p">(</span><span class="n">tk</span><span class="p">,</span><span class="n">idx</span><span class="p">,</span> <span class="n">mclass</span><span class="p">)</span> <span class="c1"># place blanks if needed</span>
+        <span class="k">return</span> <span class="n">tk</span>
+
+    <span class="k">def</span> <span class="nf">clean_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
+        <span class="n">tks_a</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="c1"># put blanks where needed: &#39;GAMMA.ENERGY=&#39; --&gt;  &#39;GAMMA.ENERGY =&#39;</span>
+        <span class="n">clean_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">tk_a</span> <span class="ow">in</span> <span class="n">tks_a</span><span class="p">:</span>
+            <span class="n">clean_string</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_tk</span><span class="p">(</span><span class="n">tk_a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">clean_string</span>
+        <span class="c1">#tks_a = clean_string.split()</span>
+
+
+    <span class="c1">#string should have datamodel tokens separated by &#39; &#39;</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">string</span><span class="p">):</span>
+    <span class="c1"># string should be like &#39;( Gamma.start_level.energy - Gamma.end_level.energy ) = 100&#39;</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tables</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">fks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tables_nofks</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># &quot;true&quot; tables, not from a fk addition</span>
+        <span class="c1"># table.* will be prefixed with DISTINCT</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">)):</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.*&quot;</span><span class="p">,</span><span class="s2">&quot;.ALL&quot;</span><span class="p">)</span>
+
+        <span class="n">tks_a</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1"># datamodel must have blank spaces. Use clean_query to pre-process</span>
+        <span class="k">for</span> <span class="n">tk_a</span> <span class="ow">in</span> <span class="n">tks_a</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># check what kind of staff is tk_a</span>
+                <span class="n">piece</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interrogate</span><span class="p">(</span><span class="n">tk_a</span><span class="p">))</span>
+                <span class="c1"># it is not part of the datamodel: leave as it is</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_datamodel</span><span class="p">(</span><span class="n">piece</span><span class="p">):</span>
+                    <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">piece</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># it is data model</span>
+                    <span class="n">tks_b</span> <span class="o">=</span> <span class="n">tk_a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+                    <span class="n">tot</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tks_b</span><span class="p">)</span>
+                    <span class="c1">#print(&quot;tot&quot;, tot)</span>
+                    <span class="c1"># from GAMMA.START_LEVEL.ENERGY  build the array [GAMMA.START_LEVEL.ENERGY, GAMMA.START_LEVEL, GAMMA]</span>
+                    <span class="n">tks_c</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tot</span><span class="p">):</span>
+                        <span class="n">dm</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tks_b</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">tot</span> <span class="o">-</span><span class="n">i</span><span class="p">])</span>
+                        <span class="n">tks_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">dm</span><span class="p">))</span>
+                    <span class="c1"># process the pieces, so far only 3 levels are dealt with. Remeber: the pieces go backward</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tot</span><span class="p">):</span>
+                        <span class="n">tk</span> <span class="o">=</span> <span class="n">tks_c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span> <span class="c1"># this is a column</span>
+                            <span class="k">if</span><span class="p">(</span><span class="n">tk</span> <span class="o">==</span> <span class="n">_Base</span><span class="o">.</span><span class="n">ALL</span><span class="p">):</span>
+                                <span class="n">column</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">column</span> <span class="o">=</span> <span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">])</span>
+                        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">):</span> <span class="c1"># this can be a table, or a foreign key</span>
+                            <span class="k">if</span> <span class="s1">&#39;table&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">:</span> <span class="c1"># this is fk</span>
+                                <span class="n">tblnm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="p">(</span><span class="n">tk</span><span class="p">)</span> <span class="c1"># tk.data[&quot;fk&quot;][&quot;table&quot;] + (( &quot; as &quot; + tk.data[&quot;fk&quot;][&quot;alias&quot;]) if &quot;alias&quot; in tk.data[&quot;fk&quot;].keys() else &quot;&quot;)</span>
+                                <span class="n">tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tblnm</span><span class="p">)</span>
+                                <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">][</span><span class="s2">&quot;column&quot;</span><span class="p">]:</span>
+                                    <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">tks_c</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">col</span><span class="p">)</span>
+                                <span class="n">tblnm</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">][</span><span class="s2">&quot;alias&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;alias&quot;</span> <span class="ow">in</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">else</span>  <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">][</span><span class="s2">&quot;table&quot;</span><span class="p">]</span>
+                                <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tblnm</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">column</span><span class="p">)</span>
+                            <span class="k">else</span><span class="p">:</span> <span class="c1"># this is a table</span>
+                                <span class="k">if</span><span class="p">(</span><span class="n">column</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">):</span>
+                                    <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;distinct &quot;</span> <span class="o">+</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">column</span><span class="p">)</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">column</span><span class="p">)</span>
+                                <span class="n">tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">])</span>
+                                <span class="n">tables_nofks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">])</span>
+                                <span class="k">if</span> <span class="s1">&#39;where&#39;</span> <span class="ow">in</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                                    <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;where&quot;</span><span class="p">])</span>
+
+                        <span class="k">if</span><span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span>  <span class="p">):</span> <span class="c1"># it is a table</span>
+                            <span class="n">tables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">])</span>
+                            <span class="n">tables_nofks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">])</span>
+                            <span class="k">if</span> <span class="s1">&#39;where&#39;</span> <span class="ow">in</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+                                <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;where&quot;</span><span class="p">])</span>
+
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="n">tables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tables</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;tables&quot;</span><span class="p">:</span><span class="n">tables</span><span class="p">,</span> <span class="s2">&quot;fks&quot;</span><span class="p">:</span><span class="n">fks</span><span class="p">,</span> <span class="s2">&quot;fields&quot;</span><span class="p">:</span><span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;tables_nofks&quot;</span> <span class="p">:</span> <span class="n">tables_nofks</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">table_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tk</span><span class="p">):</span>    
+        <span class="sd">&quot;&quot;&quot; Table name for a foreign key</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">][</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">((</span> <span class="s2">&quot; as &quot;</span> <span class="o">+</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">][</span><span class="s2">&quot;alias&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="s2">&quot;alias&quot;</span> <span class="ow">in</span> <span class="n">tk</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">query_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fields</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>  
+        <span class="sd">&quot;&quot;&quot;No more than one table (excluding fks)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="n">select</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">where</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+
+        <span class="n">tables</span> <span class="o">=</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;tables_nofks&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">where</span><span class="p">[</span><span class="s2">&quot;tables_nofks&quot;</span><span class="p">]</span>
+        <span class="n">tables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tables</span><span class="p">))</span>
+        
+        <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">):</span> <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">query_desc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fields</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">force_clean</span> <span class="p">):</span>
+            <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_query</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+            <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_query</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+
+        <span class="n">select</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">where</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+        <span class="n">tables</span> <span class="o">=</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;tables&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">where</span><span class="p">[</span><span class="s2">&quot;tables&quot;</span><span class="p">]</span>
+        <span class="n">fks</span> <span class="o">=</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;fks&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">where</span><span class="p">[</span><span class="s2">&quot;fks&quot;</span><span class="p">]</span>
+
+        <span class="n">desc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">foreign_keys</span><span class="p">(</span><span class="n">tables</span><span class="p">,</span> <span class="n">fks</span><span class="p">)[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">foreign_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tables</span><span class="p">,</span> <span class="n">fks</span><span class="p">):</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">return</span> <span class="p">{</span> <span class="s2">&quot;fks&quot;</span><span class="p">:</span><span class="n">fks</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">:</span><span class="n">desc</span><span class="p">}</span> 
+
+        <span class="c1"># force fk for queries on multiple tables. In case of multiple insertions, the doublers are removed below  </span>
+        <span class="c1">#  PARENT_LEVEL = LEVEL(&#39;{&quot;column&quot; : &quot;parent_l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;levels_s&quot; , &quot;column&quot; : [&quot;parent_l_seqno = levels_s.l_seqno&quot;, &quot;parent_nucid = levels_s.nucid&quot;]}}&#39;)</span>
+        <span class="k">if</span> <span class="n">LEVEL</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">NUCLIDE</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+                <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;nuclides.nucid = levels.nucid&quot;</span><span class="p">)</span>
+                <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; nuclide having the level&quot;</span><span class="p">)</span>
+
+<span class="c1"># think more about</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="p">(</span><span class="n">DR_GAMMA</span><span class="o">.</span><span class="n">END_LEVEL</span><span class="p">))</span>  <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">NUCLIDE</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>    
+                <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;gammas.nucid = &quot;</span><span class="o">+</span> <span class="n">DR_GAMMA</span><span class="o">.</span><span class="n">END_LEVEL</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fk&quot;</span><span class="p">][</span><span class="s2">&quot;alias&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.nucid&quot;</span><span class="p">)</span>
+               
+<span class="c1"># this is ambiguous, it could link to the daughter        </span>
+        <span class="k">if</span> <span class="n">DR_GAMMA</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">NUCLIDE</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;nuclides.nucid = dr_gammas.parent_nucid&quot;</span><span class="p">)</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; the parent of the nuclide emitting the radiation&quot;</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="n">GAMMA</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">NUCLIDE</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;found&quot;</span><span class="p">)</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;nuclides.nucid = gammas.nucid&quot;</span><span class="p">)</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; nuclide having the gamma transition&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">GAMMA</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">LEVEL</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;levels.nucid = gammas.nucid&quot;</span><span class="p">)</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;levels.l_seqno = gammas.l_seqno&quot;</span><span class="p">)</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; level emitting the gamma&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># consider whether to add the level</span>
+        <span class="k">if</span> <span class="n">GAMMA</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">L_DECAY</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;l_decays.nucid = gammas.nucid&quot;</span><span class="p">)</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; parent nuclide having the gamma&quot;</span><span class="p">)</span>
+
+            <span class="c1">#fks.append(&quot;l_decays.l_seqno = gammas.l_seqno&quot;)</span>
+
+        <span class="k">if</span> <span class="n">GAMMA</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">_DECAY_RADIATION</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;decay_radiations.daughter_nucid = gammas.nucid&quot;</span><span class="p">)</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;decay_radiations.adopted_daughter_l_seqno = gammas.l_seqno&quot;</span><span class="p">)</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; daughter having the gamma &quot;</span><span class="p">)</span>
+
+        <span class="c1"># link to parent or daughter ?</span>
+        <span class="c1"># if L_DECAY.data[&quot;table&quot;] in tables and NUCLIDE.data[&quot;table&quot;] in tables:</span>
+        <span class="c1">#     fks.append(&quot;nuclides.nucid = l_decays.nucid&quot;)</span>
+        <span class="c1">#     desc.append(&quot; parent nuclide of the decay&quot;)</span>
+
+        <span class="c1"># link to parent or daughter ?</span>
+        <span class="c1"># if L_DECAY.data[&quot;table&quot;] in tables and LEVEL.data[&quot;table&quot;] in tables:</span>
+        <span class="c1">#     fks.append(&quot;levels.nucid = l_decays.nucid&quot;)</span>
+        <span class="c1">#     fks.append(&quot;levels.l_seqno = l_decays.l_seqno&quot;)</span>
+        <span class="c1">#     desc.append(&quot; parent level of the decay&quot;)</span>
+
+
+        <span class="c1"># in the dr there are two possible reference : parent or daughter</span>
+        <span class="c1"># if _DR_BASE.data[&quot;table&quot;] in tables and NUCLIDE.data[&quot;table&quot;] in tables:</span>
+        <span class="c1">#     fks.append(&quot;nuclides.nucid = decay_radiations.parent_nucid&quot;)</span>
+        <span class="c1">#     desc.append(&quot; parent nuclide of the decay&quot;)</span>
+            
+
+        <span class="k">if</span> <span class="n">CUM_FY</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span> <span class="ow">and</span> <span class="n">DR_GAMMA</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="n">fks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;cum_fy.daughter_nucid = dr_gammas.parent_nucid&quot;</span><span class="p">)</span>
+            <span class="n">desc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; product nuclide whose decay daughter emits the gamma&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span> <span class="s2">&quot;fks&quot;</span><span class="p">:</span><span class="n">fks</span><span class="p">,</span> <span class="s2">&quot;desc&quot;</span><span class="p">:</span><span class="n">desc</span><span class="p">}</span> 
+
+
+
+
+    <span class="k">def</span> <span class="nf">query_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fields</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">force_clean</span> <span class="p">):</span> <span class="c1"># place spaces around orm tokens</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;celan&#39;</span><span class="p">)</span>
+            <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_query</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+            <span class="n">conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clean_query</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+
+        <span class="n">select</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        <span class="n">fields_str</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">select</span><span class="p">[</span><span class="s2">&quot;fields&quot;</span><span class="p">])</span>
+
+        <span class="n">where</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">conditions</span><span class="p">)</span>
+
+        <span class="n">tables</span> <span class="o">=</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;tables&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">where</span><span class="p">[</span><span class="s2">&quot;tables&quot;</span><span class="p">]</span>
+        <span class="n">fks</span> <span class="o">=</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;fks&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">where</span><span class="p">[</span><span class="s2">&quot;fks&quot;</span><span class="p">]</span>
+
+        <span class="n">fks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">foreign_keys</span><span class="p">(</span><span class="n">tables</span><span class="p">,</span> <span class="n">fks</span><span class="p">)[</span><span class="s2">&quot;fks&quot;</span><span class="p">]</span>
+
+        <span class="n">tables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tables</span><span class="p">))</span> <span class="c1"># remove doublers</span>
+        <span class="n">tables_str</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span>
+
+        <span class="n">fks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">fks</span><span class="p">))</span>
+        <span class="n">fks_str</span> <span class="o">=</span> <span class="s2">&quot; and &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fks</span><span class="p">)</span>
+
+        <span class="n">where_str</span> <span class="o">=</span>  <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">where</span><span class="p">[</span><span class="s2">&quot;fields&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">where_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">fks_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">):</span>
+            <span class="n">where_str</span> <span class="o">=</span> <span class="n">fks_str</span> <span class="o">+</span> <span class="s2">&quot; and &quot;</span> <span class="o">+</span> <span class="n">where_str</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fks_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">where_str</span> <span class="o">=</span> <span class="n">fks_str</span>
+
+        <span class="n">where_str</span> <span class="o">=</span> <span class="n">where_str</span><span class="o">.</span><span class="n">strip</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">any</span><span class="p">([</span><span class="n">where_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;order&quot;</span><span class="p">,</span><span class="s2">&quot;group&quot;</span><span class="p">,</span><span class="s2">&quot;having&quot;</span><span class="p">]])</span> <span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">where_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">))</span> <span class="p">:</span>
+            <span class="n">where_str</span> <span class="o">=</span> <span class="s2">&quot;where &quot;</span> <span class="o">+</span> <span class="n">where_str</span>
+
+        <span class="n">qry</span> <span class="o">=</span>  <span class="s2">&quot;select &quot;</span> <span class="o">+</span> <span class="n">fields_str</span> <span class="o">+</span> <span class="s2">&quot; from &quot;</span> <span class="o">+</span> <span class="n">tables_str</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">where_str</span>
+
+        <span class="k">return</span> <span class="n">qry</span></div>
+
+<span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+         <span class="c1">#classfact =  getattr(sys.modules[__name__], name)</span>
+         <span class="c1">#obj = classfact()</span>
+         <span class="n">s</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">desc</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+         <span class="n">lst</span> <span class="o">=</span>  <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+         <span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+         <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="c1">#if(att.upper() == att):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">dsc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">att</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">dsc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">att</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span> 
+                    <span class="k">if</span><span class="p">(</span><span class="n">dsc</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+                        <span class="n">s</span> <span class="o">+=</span> <span class="n">att</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39; </span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">att</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">7</span> <span class="k">else</span> <span class="s1">&#39; </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">+</span> <span class="n">dsc</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="kc">None</span>
+
+         <span class="k">return</span> <span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">description_html</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+         <span class="c1">#classfact =  getattr(sys.modules[__name__], name)</span>
+         <span class="c1">#obj = classfact()</span>
+         <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&lt;table&gt;&lt;tr&gt;&lt;th colspan=2&gt;&#39;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">desc</span> <span class="o">+</span> <span class="s1">&#39;&lt;/th&gt;&lt;/tr&gt; </span><span class="se">\n</span><span class="s1">&#39;</span> 
+         <span class="n">lst</span> <span class="o">=</span>  <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+         <span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+         <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="c1">#if(att.upper() == att):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">dsc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">att</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">dsc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">att</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span> 
+                    <span class="k">if</span><span class="p">(</span><span class="n">dsc</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+                        <span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39;&lt;tr&gt;&lt;td&gt;&#39;</span> <span class="o">+</span> <span class="n">att</span> <span class="o">+</span> <span class="s1">&#39;&lt;/td&gt;&lt;td&gt;&#39;</span><span class="o">+</span> <span class="n">dsc</span> <span class="o">+</span> <span class="s1">&#39;&lt;/td&gt;&lt;/tr&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="kc">None</span>
+
+         <span class="k">return</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;&lt;/table&gt;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">description_sphinx</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+         <span class="n">nl</span> <span class="o">=</span> <span class="s2">&quot;| &quot;</span>
+         <span class="n">nlb</span> <span class="o">=</span> <span class="s2">&quot;| **&quot;</span>
+         <span class="n">eb</span> <span class="o">=</span> <span class="s2">&quot;** |nbspc| |nbspc| &quot;</span>
+         <span class="n">s</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;------------------&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+         <span class="n">s</span> <span class="o">+=</span> <span class="n">nl</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">desc</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+         <span class="n">lst</span> <span class="o">=</span>  <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+         <span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+         <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">dsc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">att</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">dsc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">att</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span> 
+                    <span class="k">if</span><span class="p">(</span><span class="n">dsc</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+                        <span class="n">s</span> <span class="o">+=</span> <span class="n">nlb</span> <span class="o">+</span> <span class="n">att</span> <span class="o">+</span> <span class="n">eb</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39; </span><span class="se">\t\t</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">att</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">7</span> <span class="k">else</span> <span class="s1">&#39; </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">+</span> <span class="n">dsc</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="kc">None</span>
+
+         <span class="k">return</span> <span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">sphinx_guide</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">NUCLIDE</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">LEVEL</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">GAMMA</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">L_DECAY</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_ALPHA</span><span class="p">))</span>
+
+    <span class="c1"># print(description_sphinx(DR_BETA))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_BETAM</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_BETAP</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_ANTI_NU</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_NU</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_DELAYED</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_GAMMA</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_PHOTON_TOTAL</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_X</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_AUGER</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_ANNHIL</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">DR_CONV_EL</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">CUM_FY</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">description_sphinx</span><span class="p">(</span><span class="n">IND_FY</span><span class="p">))</span>
+
+
+<span class="n">_STR</span> <span class="o">=</span> <span class="s1">&#39;*(S)* &#39;</span>
+<span class="n">_QTT</span> <span class="o">=</span> <span class="s1">&#39;*(Q)* &#39;</span>
+<span class="n">_QTTL</span> <span class="o">=</span> <span class="s1">&#39;*(q)* &#39;</span>
+<span class="n">_LNK</span> <span class="o">=</span> <span class="s1">&#39;*(L)* &#39;</span>
+
+<span class="k">class</span> <span class="nc">_Base</span><span class="p">:</span>
+    
+    <span class="n">ALL</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;*&quot;}&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  
+        
+<span class="k">class</span> <span class="nc">Column</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;&quot;, &quot;desc&quot; : &quot;&#39;</span> <span class="o">+</span> <span class="n">description</span> <span class="o">+</span> <span class="s1">&#39;&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">desc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">try</span><span class="p">:</span>
+        <span class="c1">#if self.data[&#39;column&#39;].endswith(&#39;unc&#39;): return &#39;uncertainty&#39;</span>
+        <span class="c1">#if self.data[&#39;column&#39;].endswith(&#39;limit&#39;): return &#39;GT for &gt;, LE for &lt;, ... &#39;</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+            <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">]</span>
+       <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;no&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> 
+
+<span class="k">class</span> <span class="nc">NUCLIDE</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;properties of the nuclide in its ground state&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;nuclides&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;number of protons&#39;</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;number of neutrons&#39;</span><span class="p">)</span>
+    <span class="n">NUC_ID</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;nucid&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;identifier, e.g. 135XE&#39;</span><span class="p">)</span> 
+    <span class="n">ELEM_SYMBOL</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;elem_symbol&#39;</span> <span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;symbol of the element&#39;</span><span class="p">)</span>
+    <span class="n">CHARGE_RADIUS</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;charge_radius&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;Root-mean-square of the nuclear charge radius, expressed in fm. &#39;</span><span class="p">)</span>
+    <span class="n">CHARGE_RADIUS_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;charge_radius_unc&#39;</span><span class="p">)</span>
+    <span class="n">CHARGE_RADIUS_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;charge_radius_limit&#39;</span><span class="p">)</span>
+    <span class="n">ATOMIC_MASS</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;atomic_mass&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;atomic mass, in micro AMU&#39;</span><span class="p">)</span>
+    <span class="n">ATOMIC_MASS_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;atomic_mass_unc&#39;</span><span class="p">)</span>
+    <span class="n">ATOMIC_MASS_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;atomic_mass_limit&#39;</span><span class="p">)</span>
+    <span class="n">MASS_EXCESS</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mass_excess&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;mass excess [keV]&#39;</span><span class="p">)</span>
+    <span class="n">MASS_EXCESS_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mass_excess_unc&#39;</span><span class="p">)</span>
+    <span class="n">MASS_EXCESS_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mass_excess_limit&#39;</span><span class="p">)</span>
+    <span class="n">BINDING_EN</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;binding_en&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;binding energy per nucleon [keV]&#39;</span><span class="p">)</span>
+    <span class="n">BINDING_EN_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;binding_en_unc&#39;</span><span class="p">)</span>
+    <span class="n">BINDING_EN_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;binding_en_limit&#39;</span><span class="p">)</span>
+    <span class="n">BETA_DECAY_EN</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;beta_decay_en&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;energy available for beta decay [keV]&#39;</span><span class="p">)</span>
+    <span class="n">BETA_DECAY_EN_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;beta_decay_en_unc&#39;</span><span class="p">)</span>
+    <span class="n">BETA_DECAY_EN_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;beta_decay_en_limit&#39;</span><span class="p">)</span>
+    <span class="n">S2N</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;s2n&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;2-neutron separation energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">S2N_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;s2n_unc&#39;</span><span class="p">)</span>
+    <span class="n">S2N_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;s2n_limit&#39;</span><span class="p">)</span>
+    <span class="n">S2P</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;s2p&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;2-proton separation energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">S2P_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;s2p_unc&#39;</span><span class="p">)</span>
+    <span class="n">S2P_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;s2p_limit&#39;</span><span class="p">)</span>
+    <span class="n">QA</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qa&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;alpha decay Q energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">QA_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qa_unc&#39;</span><span class="p">)</span>
+    <span class="n">QA_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qa_limit&#39;</span><span class="p">)</span>
+    <span class="n">QBMN</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qbmn&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;beta- + n decay energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">QBMN_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qbmn_unc&#39;</span><span class="p">)</span>
+    <span class="n">QBMN_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qbmn_limit&#39;</span><span class="p">)</span>
+    <span class="n">SN</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sn&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;neutron separation energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">SN_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sn_unc&#39;</span><span class="p">)</span>
+    <span class="n">SN_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sn_limit&#39;</span><span class="p">)</span>
+    <span class="n">SP</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sp&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;proton separation energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">SP_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sp_unc&#39;</span><span class="p">)</span>
+    <span class="n">SP_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;sp_limit&#39;</span><span class="p">)</span>
+    <span class="n">QEC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qec&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;electron capture Q-value [keV]&#39;</span><span class="p">)</span>
+    <span class="n">QEC_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qec_unc&#39;</span><span class="p">)</span>
+    <span class="n">QEC_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;qec_limit&#39;</span><span class="p">)</span>
+    <span class="n">ABUNDANCE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;abundance&#39;</span><span class="p">,</span><span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;natural abundance, in mole fraction&#39;</span><span class="p">)</span>
+    <span class="n">ABUNDANCE_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;abundance_unc&#39;</span><span class="p">)</span>
+   
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+   
+   
+
+<span class="k">class</span> <span class="nc">LEVEL</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;properties of the energy states of a nuclide&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;levels&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">NUC</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span><span class="s1">&#39;{ &quot;column&quot; : &quot;nucid&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;lev_nuc&quot; , &quot;column&quot; : [&quot;nucid = lev_nuc.nucid&quot;]}, &quot;desc&quot; : &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39;  access to the properties of the nuclide , e.g. LEVEL.NUC.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">SEQNO</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;l_seqno&#39;</span><span class="p">,</span><span class="s1">&#39;sequential number of the level, G.S. = 0&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;level energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_unc&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_limit&#39;</span><span class="p">)</span>
+    <span class="n">HALF_LIFE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;half_life&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;Half-life value as given in the evaluation, see HALF_LIFE_UNITS for the units. Use HALF_LIFE_SEC for calculations &#39;</span><span class="p">)</span>
+    <span class="n">HALF_LIFE_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;half_life_unc&#39;</span><span class="p">)</span>
+    <span class="n">HALF_LIFE_UNITS</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;half_life_units&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span><span class="s1">&#39; the HALF-LIFE field units&#39;</span><span class="p">)</span>
+    <span class="n">HALF_LIFE_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;half_life_limit&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span><span class="s1">&#39; - &gt; , &lt;, &gt;=, etc..&#39;</span><span class="p">)</span>
+    <span class="n">HALF_LIFE_SEC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;half_life_sec&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;H-l [s]&#39;</span><span class="p">)</span>
+    <span class="n">HALF_LIFE_SEC_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;half_life_sec_unc&#39;</span><span class="p">)</span>
+    <span class="n">JP</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;jp_str&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;Jp as given in the evaluation&#39;</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">,</span><span class="s1">&#39;J value as assigned in RIPL&#39;</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;parity&#39;</span><span class="p">,</span><span class="s1">&#39;parity as assigned in RIPL&#39;</span><span class="p">)</span>
+    <span class="n">JP_ORDER</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;jp_order&#39;</span><span class="p">,</span><span class="s1">&#39;order of the Jp: 1 is the first occurence &#39;</span><span class="p">)</span>
+    <span class="n">JP_METHOD</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;jp_method&#39;</span><span class="p">,</span><span class="s1">&#39;method for assigning the Jp, see the J_ASSIGNMENT_CODE&#39;</span><span class="p">)</span>
+    <span class="n">QUADRUPOLE_EM</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;quadrupole_em&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;Electrinc quadrupole moment [b]&#39;</span><span class="p">)</span>
+    <span class="n">QUADRUPOLE_EM_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;quadrupole_em_unc&#39;</span><span class="p">)</span>
+    <span class="n">QUADRUPOLE_EM_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;quadrupole_em_limit&#39;</span><span class="p">)</span>
+    <span class="n">DIPOLE_MM</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;dipole_mm&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;magnetic dipole moment [Bohr magnetons]&#39;</span><span class="p">)</span>
+    <span class="n">DIPOLE_MM_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;dipole_mm_unc&#39;</span><span class="p">)</span>
+    <span class="n">DIPOLE_MM_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;dipole_mm_limit&#39;</span><span class="p">)</span>
+    <span class="n">METASTABLE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;metastable&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;whether there is an evaluated decay mode with the list of radiations&#39;</span><span class="p">)</span>
+    <span class="n">QUESTIONABLE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;questionable&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;the existence of the level is questionable&#39;</span><span class="p">)</span>
+    <span class="n">CONFIGURATION</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;configuration&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;the nuclear configuration&#39;</span><span class="p">)</span>
+    <span class="n">ISOSPIN</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;isospin&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;Isospin&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DECAY_MODE</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_modes&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mode&#39;</span><span class="p">)</span>
+    <span class="n">CODE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span>
+    <span class="n">DESC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="c1"># extend to add the decay decode, decay group</span>
+<span class="k">class</span> <span class="nc">L_DECAY</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;properties of a decay mode of a level&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;l_decays&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">NUC</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span><span class="s1">&#39;{ &quot;column&quot; : &quot;nucid&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot;: &quot;dec_p_nuc&quot; , &quot;column&quot; : [&quot;nucid = dec_p_nuc.nucid&quot;]},  &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to parent nuclide properties , e.g. L_DECAY.NUC.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot;: &quot;dec_p_lev&quot; ,&quot;column&quot; : [&quot;l_seqno = dec_p_lev.l_seqno&quot;, &quot;nucid = dec_p_lev.nucid&quot;]} , &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the level, e.g. L_DECAY.LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">MODE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;decay_code&#39;</span><span class="p">,</span><span class="s1">&#39;code of the decay, specify it  using one of the DECAY_* constants&#39;</span><span class="p">)</span>
+<span class="c1">#    MODE = DECAY_MODE(&#39;{&quot;column&quot; : &quot;decay_code&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;decay_modes&quot;, &quot;column&quot; : [&quot;decay_code = decay_modes.code &quot;]}, &quot;desc&quot; : &quot;decay mode&quot;}&#39;)</span>
+<span class="c1">#    MODE = _Base(&#39;{&quot;column&quot; : &quot;decay_code&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;decay_codes&quot;, &quot;column&quot; : [&quot;decay_codes.decay_code = decay_code&quot;]}, &quot;desc&quot; : &quot;decay mode code&quot;}&#39;)</span>
+    <span class="n">DAUGHTER</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span><span class="s1">&#39;{ &quot;column&quot; : &quot;daughter_nucid&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot;: &quot;dec_d_nuc&quot; , &quot;column&quot; : [&quot;daughter_nucid = dec_d_nuc.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to daughter nuclide properties , e.g. L_DECAY.DAUGHTER.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PERC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;perc&#39;</span><span class="p">,</span><span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;decay probability per 100 decays of the parent&#39;</span><span class="p">)</span>
+    <span class="n">PERC_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;perc_unc&#39;</span><span class="p">)</span>
+    <span class="n">PERC_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;perc_limit&#39;</span><span class="p">)</span>
+    <span class="n">Q_TOGS</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;q_togs&#39;</span><span class="p">,</span><span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;Q-value of the decay. For decay of metastable sates, it includes the parent energy level&#39;</span><span class="p">)</span>
+    <span class="n">Q_TOGS_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;q_togs_unc&#39;</span><span class="p">)</span>
+    
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">_GM</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>  
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">START_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;gam_lev_s&quot; , &quot;column&quot; : [&quot;l_seqno = gam_lev_s.l_seqno&quot;, &quot;nucid = gam_lev_s.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the start level, e.g. GAMMA.START_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">END_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;final_l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;gam_lev_e&quot; , &quot;column&quot; : [&quot;final_l_seqno = gam_lev_e.l_seqno&quot;, &quot;nucid = gam_lev_e.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the end level, e.g. GAMMA.END_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">SEQNO</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;g_seqno&#39;</span><span class="p">,</span> <span class="s1">&#39;sequential number of the gamma with respect to the start level, 0 being the gamma with the lowest energy&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39; energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_unc&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_limit&#39;</span><span class="p">)</span>
+    <span class="n">REL_PHOTON_INTENS</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;rel_photon_intens&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;relative photon intensity [%]&#39;</span><span class="p">)</span>
+    <span class="n">REL_PHOTON_INTENS_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;rel_photon_intens_unc&#39;</span><span class="p">)</span>
+    <span class="n">REL_PHOTON_INTENS_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;rel_photon_intens_limit&#39;</span><span class="p">)</span>
+    <span class="n">MULTIPOLARITY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;multipolarity&#39;</span><span class="p">,</span><span class="s1">&#39;String - multipolarity&#39;</span><span class="p">)</span>
+    <span class="n">MIXING_RATIO</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mixing_ratio&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;mixing ratio&#39;</span><span class="p">)</span>
+    <span class="n">MIXING_RATIO_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mixing_ratio_unc&#39;</span><span class="p">)</span>
+    <span class="n">MIXING_RATIO_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mixing_ratio_limit&#39;</span><span class="p">)</span>
+    <span class="n">TOT_CONV_COEFF</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;tot_conv_coeff&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;total conversion coefficient&#39;</span><span class="p">)</span>
+    <span class="n">TOT_CONV_COEFF_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;tot_conv_coeff_unc&#39;</span><span class="p">)</span>
+    <span class="n">TOT_CONV_COEFF_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;tot_conv_coeff_limit&#39;</span><span class="p">)</span>
+    <span class="n">BEW</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bew&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;reduced electric transition probabilities in Weisskopf units&#39;</span><span class="p">)</span>
+    <span class="n">BEW_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bew_unc&#39;</span><span class="p">)</span>
+    <span class="n">BEW_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bew_limit&#39;</span><span class="p">)</span>
+    <span class="n">BEW_ORDER</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bew_order&#39;</span><span class="p">,</span><span class="s1">&#39;order of the transition&#39;</span><span class="p">)</span>
+    <span class="n">BMW</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bmw&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;reduced magnetic transition probabilities in Weisskopf units&#39;</span><span class="p">)</span>
+    <span class="n">BMW_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bmw_unc&#39;</span><span class="p">)</span>
+    <span class="n">BMW_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bmw_limit&#39;</span><span class="p">)</span>
+    <span class="n">BMW_ORDER</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bmw_order&#39;</span><span class="p">,</span><span class="s1">&#39;order of the transition&#39;</span><span class="p">)</span>
+    <span class="n">QUESTIONABLE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;questionable&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;the existence is questionable&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">GAMMA</span><span class="p">(</span><span class="n">_GM</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;properties of a nuclide electromagnetic transition&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;gammas&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="n">NUC</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;gam_nuc&quot;    , &quot;column&quot; : [&quot;nucid=gam_nuc.nucid&quot;]}, &quot;desc&quot; : &quot;* Link - access to the properties of the nuclide, e.g. GAMMA.NUC.Z  &quot;}&#39;</span><span class="p">)</span>
+
+   <span class="c1"># def __init__(self,name):</span>
+   <span class="c1">#     super().__init__(name)</span>
+
+<span class="k">class</span> <span class="nc">_DR_BASE</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;properties the decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;parent_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;dr_nuc_p&quot;,&quot;column&quot; : [&quot;parent_nucid=dr_nuc_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;parent_l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;dr_lev_p&quot; , &quot;column&quot; : [&quot;parent_l_seqno = dr_lev_p.l_seqno&quot;, &quot;parent_nucid = dr_lev_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">DAUGHTER</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;daughter_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;dr_nuc_d&quot; , &quot;column&quot; : [&quot;daughter_nucid=dr_nuc_d.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">DAUGHTER_FED_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;adopted_daughter_l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;dr_lev_d&quot; , &quot;column&quot; : [&quot;adopted_daughter_l_seqno = dr_lev_d.l_seqno&quot;, &quot;parent_nucid = dr_lev_d.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">MODE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;decay_code&#39;</span><span class="p">,</span><span class="s1">&#39;code of the decay, specify it  using one of the DECAY_* constants&#39;</span><span class="p">)</span> 
+    <span class="n">INTENSITY_</span><span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;absolute intensity of the radiation per 100 decays of the parent&#39;</span><span class="p">)</span>
+    <span class="n">INTENSITY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity_unc&#39;</span><span class="p">)</span>
+    <span class="n">INTENSITY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity_limit&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;energy of the radiation [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_unc&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_limit&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">_FY</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;cum_fy&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="n">THER_YIELD</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ther_yield&#39;</span><span class="p">,</span> <span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;thermal neutron yield&#39;</span><span class="p">)</span>
+    <span class="n">THER_YIELD_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ther_yield_unc&#39;</span><span class="p">)</span>
+    <span class="n">FAST_YIELD</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;fast_yield_num&#39;</span><span class="p">,</span> <span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;fast neutron yield&#39;</span><span class="p">)</span>
+    <span class="n">FAST_YIELD_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;fast_yield_unc&#39;</span><span class="p">)</span>
+    <span class="n">MEV_14_YIELD</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mev_14_yield&#39;</span><span class="p">,</span> <span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;14 MeV neutron yield&#39;</span><span class="p">)</span>
+    <span class="n">MEV_14_YIELD_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;mev_14_yield_unc&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">CUM_FY</span><span class="p">(</span><span class="n">_FY</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;cumulative fission yields&quot;</span>
+    <span class="n">PARENT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;parent_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;cfy_nuc_p&quot;, &quot;column&quot; : [&quot;parent_nucid=cfy_nuc_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the fissioning nuclide, e.g. CUM_FY.PARENT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PRODUCT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;daughter_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;cfy_nuc_d&quot;, &quot;column&quot; : [&quot;daughter_nucid=cfy_nuc_d.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the product nuclide, e.g. CUM_FY.PRODUCT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;cfy_lev_p&quot; , &quot;column&quot; : [&quot;parent_l_seqno = cfy_lev_p.l_seqno&quot;, &quot;parent_nucid = cfy_lev_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent level, e.g. CUM_FY.PARENT_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">IND_FY</span><span class="p">(</span><span class="n">_FY</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;independent fission yields&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;ind_fy&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;parent_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;ify_nuc_p&quot;, &quot;column&quot; : [&quot;parent_nucid=ify_nuc_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the fissioning nuclide, e.g. IND_FY.PARENT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PRODUCT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;daughter_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;, &quot;alias&quot; : &quot;ify_nuc_d&quot;,&quot;column&quot; : [&quot;daughter_nucid=ify_nuc_d.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the product nuclide, e.g. IND_FY.PRODUCT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;ify_lev_p&quot; , &quot;column&quot; : [&quot;parent_l_seqno = ify_lev_p.l_seqno&quot;, &quot;parent_nucid = ify_lev_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent level, e.g. IND_FY.PARENT_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+
+
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_ALPHA</span><span class="p">(</span><span class="n">_DR_BASE</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;alpha decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a=</span><span class="se">\&#39;</span><span class="s1">A</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">HINDRANCE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;a_hindrance&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;hindrance factor&#39;</span><span class="p">)</span>
+    <span class="n">HINDRANCE_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;a_hindrance_unc&#39;</span><span class="p">)</span>
+    <span class="n">HINDRANCE_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;a_hindrance_limit&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_BETA</span><span class="p">(</span><span class="n">_DR_BASE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;docstring for .&quot;&quot;&quot;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;(type_a=</span><span class="se">\&#39;</span><span class="s1">B+</span><span class="se">\&#39;</span><span class="s1"> or type_a=</span><span class="se">\&#39;</span><span class="s1">B-</span><span class="se">\&#39;</span><span class="s1">)&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="n">LOGFT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_logft&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;log ft&#39;</span><span class="p">)</span>
+    <span class="n">LOGFT_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_logft_unc&#39;</span><span class="p">)</span>
+    <span class="n">LOGFT_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_logft_limit&#39;</span><span class="p">)</span>
+
+    <span class="n">TRANS_TYPE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_trans_type&#39;</span><span class="p">,</span>  <span class="n">_STR</span> <span class="o">+</span> <span class="s2">&quot;transition type, specfy it using one of the TRANS_TYPE_* constants&quot;</span><span class="p">)</span>
+
+    <span class="n">ENDPOINT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_endpoint&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;end-point energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENDPOINT_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_endpoint_unc&#39;</span><span class="p">)</span>
+    <span class="n">ENDPOINT_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;b_endpoint_limit&#39;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+       
+
+
+<span class="k">class</span> <span class="nc">DR_BETAP</span><span class="p">(</span><span class="n">DR_BETA</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;beta+ decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a=</span><span class="se">\&#39;</span><span class="s1">B+</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="n">EC_ENERGY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ec_energy&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;energy available for electron capture&#39;</span><span class="p">)</span>
+    <span class="n">EC_ENERGY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ec_energy_unc&#39;</span><span class="p">)</span>
+    <span class="n">EC_ENERGY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ec_energy_limit&#39;</span><span class="p">)</span>
+
+    <span class="n">BPEC_INTENSITY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bpec_intensity&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;sum of electron capture and beta+ intensites per 100 decays of the parent&#39;</span><span class="p">)</span>
+    <span class="n">BPEC_INTENSITY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bpec_intensity_unc&#39;</span><span class="p">)</span>
+    <span class="n">BPEC_INTENSITY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;bpec_intensity_limit&#39;</span><span class="p">)</span>
+
+    <span class="n">EC_INTENSITY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ec_intensity&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;electron capture intensity per 100 decays of the parent&#39;</span><span class="p">)</span>
+    <span class="n">EC_INTENSITY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ec_intensity_unc&#39;</span><span class="p">)</span>
+    <span class="n">EC_INTENSITY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;ec_intensity_limit&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_BETAM</span><span class="p">(</span><span class="n">DR_BETA</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;beta- decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a=</span><span class="se">\&#39;</span><span class="s1">B-</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_ANTI_NU</span><span class="p">(</span><span class="n">_DR_BASE</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;anti neutrino decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a=</span><span class="se">\&#39;</span><span class="s1">B-</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_nu_limit&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_nu&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_nu_unc&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_NU</span><span class="p">(</span><span class="n">DR_ANTI_NU</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot; neutrino decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a=</span><span class="se">\&#39;</span><span class="s1">B+</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_DELAYED</span><span class="p">(</span><span class="n">_DR_BASE</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;delayed particle emission&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a in (</span><span class="se">\&#39;</span><span class="s1">DN</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">DP</span><span class="se">\&#39;</span><span class="s1">,</span><span class="se">\&#39;</span><span class="s1">DA</span><span class="se">\&#39;</span><span class="s1">)&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="n">TYPE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;type_a&#39;</span><span class="p">,</span>  <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;delayed particle: DN, DP, or DA&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_X</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;d_energy_x&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;energy of the intermediate state after beta decay and before emetting the particle [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_X_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;d_energy_x_unc&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_X_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;d_energy_x_limit&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_PHOTON_TOTAL</span><span class="p">(</span><span class="n">_Base</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;photon decay radiation (regardless whether gamma or X)&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;dr_photon_totals&quot;}&#39;</span><span class="p">)</span>
+                                                                                                                                                                                  
+    <span class="n">PARENT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;parent_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;,&quot;alias&quot; : &quot;pt_nuc_p&quot; ,  &quot;column&quot; : [&quot;parent_nucid=pt_nuc_p.nucid&quot;]},&quot;desc&quot;: &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;parent_l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;pt_lev_p&quot; , &quot;column&quot; : [&quot;parent_l_seqno = pt_lev_p.l_seqno&quot;, &quot;parent_nucid = pt_lev_p.nucid&quot;]}, &quot;desc&quot; :  &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+
+    <span class="n">ENERGY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;energy [keV]&#39;</span><span class="p">)</span>
+    <span class="n">ENERGY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;energy_unc&#39;</span><span class="p">)</span>
+    <span class="n">INTENSITY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity&#39;</span><span class="p">,</span> <span class="n">_QTTL</span> <span class="o">+</span> <span class="s1">&#39;intensity per 100 dcay of the parent&#39;</span><span class="p">)</span>
+    <span class="n">INTENSITY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity_unc&#39;</span><span class="p">)</span>
+    
+    <span class="n">COUNT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;cnt&#39;</span><span class="p">,</span><span class="s1">&#39;number of parent decay mode is which the line is present &#39;</span><span class="p">)</span>
+    <span class="n">TYPE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;whether X or G&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+ 
+
+<span class="k">class</span> <span class="nc">DR_GAMMA</span><span class="p">(</span><span class="n">_GM</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;gamma decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;dr_gammas&quot;}&#39;</span><span class="p">)</span>
+
+
+    <span class="n">PARENT</span> <span class="o">=</span> <span class="n">NUCLIDE</span><span class="p">(</span> <span class="s1">&#39;{&quot;column&quot; : &quot;parent_nucid&quot;, &quot;fk&quot;:{&quot;table&quot; : &quot;nuclides&quot;,&quot;alias&quot; : &quot;drg_nuc_p&quot; ,  &quot;column&quot; : [&quot;parent_nucid=drg_nuc_p.nucid&quot;]} ,&quot;desc&quot;: &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39; access to the properties of the parent nuclide, e.g. DR_GAMMA.PARENT.Z  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">PARENT_LEVEL</span> <span class="o">=</span> <span class="n">LEVEL</span><span class="p">(</span><span class="s1">&#39;{&quot;column&quot; : &quot;parent_l_seqno&quot;, &quot;fk&quot;: {&quot;table&quot; : &quot;levels&quot;, &quot;alias&quot; : &quot;drg_lev_p&quot; , &quot;column&quot; : [&quot;parent_l_seqno = drg_lev_p.l_seqno&quot;, &quot;parent_nucid = drg_lev_p.nucid&quot;]},&quot;desc&quot;: &quot;&#39;</span> <span class="o">+</span> <span class="n">_LNK</span> <span class="o">+</span> <span class="s1">&#39;  access to the properties of the parent level, e.g. DR_GAMMA.PARENT_LEVEL.ENERGY  &quot;}&#39;</span><span class="p">)</span>
+    <span class="n">MODE</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;decay_code&#39;</span><span class="p">,</span><span class="s1">&#39;code of the decay, specify it  using one of the DECAY_* constants&#39;</span><span class="p">)</span> 
+    <span class="n">INTENSITY</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity&#39;</span><span class="p">,</span> <span class="n">_QTT</span> <span class="o">+</span> <span class="s1">&#39;intensity per 100 dcay of the parent&#39;</span><span class="p">)</span>
+    <span class="n">INTENSITY_UNC</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity_unc&#39;</span><span class="p">)</span>
+    <span class="n">INTENSITY_LIMIT</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;intensity_limit&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">_DR_ATOMIC</span><span class="p">(</span><span class="n">_DR_BASE</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">SHELL</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;type_c&#39;</span><span class="p">,</span>  <span class="n">_STR</span> <span class="o">+</span> <span class="s1">&#39;Atomic shell IUPAC notation, use one of the SHELL_* constants&#39;</span> <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DR_X</span><span class="p">(</span><span class="n">_DR_ATOMIC</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;X decay radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a = </span><span class="se">\&#39;</span><span class="s1">G</span><span class="se">\&#39;</span><span class="s1"> and type_b=</span><span class="se">\&#39;</span><span class="s1">X</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_CONV_EL</span><span class="p">(</span><span class="n">_DR_ATOMIC</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;conversion electron  radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a = </span><span class="se">\&#39;</span><span class="s1">E</span><span class="se">\&#39;</span><span class="s1"> and type_b=</span><span class="se">\&#39;</span><span class="s1">CE</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_AUGER</span><span class="p">(</span><span class="n">_DR_ATOMIC</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;Auger electron  radiation&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a = </span><span class="se">\&#39;</span><span class="s1">E</span><span class="se">\&#39;</span><span class="s1"> and type_b=</span><span class="se">\&#39;</span><span class="s1">AU</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+   
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DR_ANNHIL</span><span class="p">(</span><span class="n">_DR_BASE</span><span class="p">):</span>
+    <span class="n">desc</span> <span class="o">=</span>  <span class="s2">&quot;gamma from annihilation &quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s1">&#39;{&quot;table&quot; : &quot;decay_radiations&quot;, &quot;where&quot; :&quot;type_a = </span><span class="se">\&#39;</span><span class="s1">G</span><span class="se">\&#39;</span><span class="s1"> and type_b=</span><span class="se">\&#39;</span><span class="s1">AN</span><span class="se">\&#39;</span><span class="s1">&quot;}&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># decay codes</span>
+<span class="n">DECAY_A</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DECAY_Bp</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">DECAY_Bm</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">DECAY_IT</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">DECAY_P</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">DECAY_N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">DECAY_BmN</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">DECAY_EC</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">DECAY_SF</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">DECAY_D</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">DECAY_ECP</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">DECAY_3HE</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">DECAY_BpP</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">DECAY_3H</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">DECAY_G</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">DECAY_Bp</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">DECAY_ECA</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">DECAY_Bm2N</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">DECAY_8BE</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">DECAY_BpA</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">DECAY_2Bm</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">DECAY_2P</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">DECAY_BmA</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">DECAY_14C</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">DECAY_EC2P</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">DECAY_Bp2P</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">DECAY_2Bp</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="n">DECAY_28MG</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">DECAY_ECSF</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">DECAY_Bm3N</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="n">DECAY_2EC</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">DECAY_24NE</span> <span class="o">=</span> <span class="mi">31</span>
+<span class="n">DECAY_ECF</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">DECAY_NE</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="n">DECAY_ECP_EC2P</span> <span class="o">=</span> <span class="mi">34</span>
+<span class="n">DECAY_22NE</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">DECAY_34SI</span> <span class="o">=</span> <span class="mi">36</span>
+<span class="n">DECAY_EC_SF</span> <span class="o">=</span> <span class="mi">37</span>
+<span class="n">DECAY_24NE</span> <span class="o">=</span> <span class="mi">38</span>
+<span class="n">DECAY_BF</span> <span class="o">=</span> <span class="mi">39</span>
+<span class="n">DECAY_SF_EC_Bp</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">DECAY_SF_Bm</span> <span class="o">=</span> <span class="mi">41</span>
+<span class="n">DECAY_Bm4N</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">DECAY_SF_EC_Bm</span> <span class="o">=</span> <span class="mi">44</span>
+<span class="n">DECAY_IT_EC_Bp</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">DECAY_EC3P</span> <span class="o">=</span> <span class="mi">46</span>
+<span class="n">DECAY_20NE</span> <span class="o">=</span> <span class="mi">47</span>
+<span class="n">DECAY_BmF</span> <span class="o">=</span> <span class="mi">49</span>
+<span class="n">DECAY_BpEC</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">DECAY_20O</span> <span class="o">=</span> <span class="mi">51</span>
+<span class="n">DECAY_MG</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="n">DECAY_ECAP</span> <span class="o">=</span> <span class="mi">53</span>
+<span class="n">DECAY_2e</span> <span class="o">=</span> <span class="mi">54</span>
+<span class="n">DECAY_BmP</span> <span class="o">=</span> <span class="mi">55</span>
+<span class="n">DECAY_12C</span> <span class="o">=</span> <span class="mi">57</span>
+<span class="n">DECAY_25NE</span> <span class="o">=</span> <span class="mi">58</span>
+<span class="n">DECAY_34SI</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">DECAY_22NE</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">DECAY_2N</span> <span class="o">=</span> <span class="mi">61</span>
+<span class="n">DECAY_EC_SF</span> <span class="o">=</span> <span class="mi">62</span>
+<span class="n">DECAY_SF_EC_Bp</span> <span class="o">=</span> <span class="mi">63</span>
+<span class="n">DECAY_Bp3P</span> <span class="o">=</span> <span class="mi">46</span>
+<span class="n">DECAY_BmSF</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">DECAY_Bm5N</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">DECAY_BpF</span> <span class="o">=</span> <span class="mi">66</span>
+<span class="n">DECAY_28MG</span> <span class="o">=</span> <span class="mi">67</span>
+<span class="n">DECAY_Bm6N</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="n">DECAY_Bm7N</span> <span class="o">=</span> <span class="mi">69</span>
+
+<span class="c1"># delayed particle</span>
+<span class="n">DELAY_N</span> <span class="o">=</span> <span class="s1">&#39;DN&#39;</span>
+<span class="n">DELAY_A</span> <span class="o">=</span> <span class="s1">&#39;DA&#39;</span>
+<span class="n">DELAY_P</span> <span class="o">=</span> <span class="s1">&#39;DP&#39;</span>
+
+<span class="c1"># ripl J assignment methods</span>
+<span class="n">RIPL_J_UNKNOWN</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">RIPL_J_UNIQUE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">RIPL_J_DISTRIBUTION_GAMMA</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">RIPL_J_DISTRIBUTION</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">RIPL_J_DISTRIBUTION_CONSTRAIN</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># ripl parity codes</span>
+<span class="n">RIPL_P_PLUS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">RIPL_P_MINUS</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># beta transition types</span>
+<span class="n">TRANS_1NU</span> <span class="o">=</span> <span class="s1">&#39;1NU&#39;</span>
+<span class="n">TRANS_1U</span> <span class="o">=</span> <span class="s1">&#39;1U&#39;</span>
+<span class="n">TRANS_2NU</span> <span class="o">=</span> <span class="s1">&#39;2NU&#39;</span>
+<span class="n">TRANS_2U</span> <span class="o">=</span> <span class="s1">&#39;2U&#39;</span>
+<span class="n">TRANS_3NU</span> <span class="o">=</span> <span class="s1">&#39;3NU&#39;</span>
+<span class="n">TRANS_3U</span> <span class="o">=</span> <span class="s1">&#39;3U&#39;</span>
+<span class="n">TRANS_4NU</span> <span class="o">=</span> <span class="s1">&#39;4NU&#39;</span>
+<span class="n">TRANS_4U</span> <span class="o">=</span> <span class="s1">&#39;4U&#39;</span>
+<span class="n">TRANS_5NU</span> <span class="o">=</span> <span class="s1">&#39;5NU&#39;</span>
+<span class="n">TRANS_5U</span> <span class="o">=</span> <span class="s1">&#39;5U&#39;</span>
+<span class="n">TRANS_7NU</span> <span class="o">=</span> <span class="s1">&#39;7NU&#39;</span>
+<span class="n">TRANS_8U</span> <span class="o">=</span> <span class="s1">&#39;8U&#39;</span>
+<span class="n">TRANS_A</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="n">TRANS_S</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span>
+
+
+<span class="n">SHELL_K</span> <span class="o">=</span> <span class="s1">&#39;K&#39;</span>
+<span class="n">SHELL_KA1</span> <span class="o">=</span> <span class="s1">&#39;KA1&#39;</span>
+<span class="n">SHELL_KA2</span> <span class="o">=</span> <span class="s1">&#39;KA2&#39;</span>
+<span class="n">SHELL_KB</span> <span class="o">=</span> <span class="s1">&#39;KB&#39;</span>
+<span class="n">SHELL_KLL</span> <span class="o">=</span> <span class="s1">&#39;KLL&#39;</span>
+<span class="n">SHELL_KLX</span> <span class="o">=</span> <span class="s1">&#39;KLX&#39;</span>
+<span class="n">SHELL_KXY</span> <span class="o">=</span> <span class="s1">&#39;KXY&#39;</span>
+<span class="n">SHELL_KpB1</span> <span class="o">=</span> <span class="s1">&#39;KpB1&#39;</span>
+<span class="n">SHELL_KpB2</span> <span class="o">=</span> <span class="s1">&#39;KpB2&#39;</span>
+<span class="n">SHELL_L</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
+<span class="n">SHELL_L1</span> <span class="o">=</span> <span class="s1">&#39;L1&#39;</span>
+<span class="n">SHELL_L1M2</span> <span class="o">=</span> <span class="s1">&#39;L1M2&#39;</span>
+<span class="n">SHELL_L1M3</span> <span class="o">=</span> <span class="s1">&#39;L1M3&#39;</span>
+<span class="n">SHELL_L1N2</span> <span class="o">=</span> <span class="s1">&#39;L1N2&#39;</span>
+<span class="n">SHELL_L1N3</span> <span class="o">=</span> <span class="s1">&#39;L1N3&#39;</span>
+<span class="n">SHELL_L1O23</span> <span class="o">=</span> <span class="s1">&#39;L1O23&#39;</span>
+<span class="n">SHELL_L2</span> <span class="o">=</span> <span class="s1">&#39;L2&#39;</span>
+<span class="n">SHELL_L2M1</span> <span class="o">=</span> <span class="s1">&#39;L2M1&#39;</span>
+<span class="n">SHELL_L2M4</span> <span class="o">=</span> <span class="s1">&#39;L2M4&#39;</span>
+<span class="n">SHELL_L2N1</span> <span class="o">=</span> <span class="s1">&#39;L2N1&#39;</span>
+<span class="n">SHELL_L2N4</span> <span class="o">=</span> <span class="s1">&#39;L2N4&#39;</span>
+<span class="n">SHELL_L2O1</span> <span class="o">=</span> <span class="s1">&#39;L2O1&#39;</span>
+<span class="n">SHELL_L2O4</span> <span class="o">=</span> <span class="s1">&#39;L2O4&#39;</span>
+<span class="n">SHELL_L3</span> <span class="o">=</span> <span class="s1">&#39;L3&#39;</span>
+<span class="n">SHELL_L3M1</span> <span class="o">=</span> <span class="s1">&#39;L3M1&#39;</span>
+<span class="n">SHELL_L3M4</span> <span class="o">=</span> <span class="s1">&#39;L3M4&#39;</span>
+<span class="n">SHELL_L3M5</span> <span class="o">=</span> <span class="s1">&#39;L3M5&#39;</span>
+<span class="n">SHELL_L3N1</span> <span class="o">=</span> <span class="s1">&#39;L3N1&#39;</span>
+<span class="n">SHELL_L3N45</span> <span class="o">=</span> <span class="s1">&#39;L3N45&#39;</span>
+<span class="n">SHELL_L3O1</span> <span class="o">=</span> <span class="s1">&#39;L3O1&#39;</span>
+<span class="n">SHELL_L3P1</span> <span class="o">=</span> <span class="s1">&#39;L3P1&#39;</span>
+<span class="n">SHELL_M</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span>
+<span class="n">SHELL_N</span> <span class="o">=</span> <span class="s1">&#39;N&#39;</span>
+<span class="n">SHELL_NPLUS</span> <span class="o">=</span> <span class="s1">&#39;N+&#39;</span>
+<span class="n">SHELL_O</span> <span class="o">=</span> <span class="s1">&#39;O&#39;</span>
+
+<span class="k">def</span> <span class="nf">get_const</span><span class="p">():</span>
+      
+        <span class="kn">import</span> <span class="nn">ndlabdblink</span> <span class="k">as</span> <span class="nn">dl</span>
+        <span class="n">dbl</span> <span class="o">=</span> <span class="n">dl</span><span class="o">.</span><span class="n">Dblink</span><span class="p">(</span><span class="s1">&#39;ndlab_db.s3db&#39;</span><span class="p">)</span>
+        
+        <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">):</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s2">&quot;ndlaborm&quot;</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;DECAY&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;DECAY_MODE&#39;</span><span class="p">):</span>
+                <span class="nb">property</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="vm">__name__</span><span class="p">],</span><span class="n">name</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">property</span><span class="p">)</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;select &#39;&quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;&#39;, desc from decay_modes where code=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">property</span><span class="p">))</span>
+                <span class="n">rs</span> <span class="o">=</span> <span class="n">dbl</span><span class="o">.</span><span class="n">_cur_lite</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;| **&#39;</span> <span class="o">+</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;**&#39;</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">property</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">lst</span><span class="p">[</span><span class="nb">property</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;| **&#39;</span> <span class="o">+</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;**&#39;</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">property</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+                    
+            
+                
+       
+
+
+
+          
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, IAEA Nuclear Data Section.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

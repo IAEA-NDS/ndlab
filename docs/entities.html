@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Legend &mdash; NDLab 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/ndlab.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. ndlab module" href="code.html" />
+    <link rel="prev" title="1. Programming overview" href="programming.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/ndlab.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">1. Get NDLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html">1. Retrieval functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-fields-parameter">2. The fields parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-filter-parameter">3. The filter parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#examples">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#j-p-values">5. J <sup>p</sup> values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#decay-modes">6. Decay modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#three-lines-of-code">7. Three lines of code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#sql-through-python">8. SQL through Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#sql-direct-connection">9. SQL direct connection</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">1. Programming overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#classes-and-functions">2. Classes and functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#pandas">3. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#work-with-measurements">3. Work with Measurements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Constructing &quot;fields&quot; and &quot;filter&quot;</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Legend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#entities">2. Entities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nuclide">NUCLIDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#level">LEVEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gamma">GAMMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#l-decay">L_DECAY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-alpha">DR_ALPHA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-betam">DR_BETAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-betap">DR_BETAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-anti-nu">DR_ANTI_NU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-nu">DR_NU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-delayed">DR_DELAYED</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-gamma">DR_GAMMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-photon-total">DR_PHOTON_TOTAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-x">DR_X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-auger">DR_AUGER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-annihil">DR_ANNIHIL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dr-conv-el">DR_CONV_EL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cum-fy">CUM_FY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ind-fy">IND_FY</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#constants">3. Constants</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#decay-modes">Decay modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jp-assignment-criteria">JP assignment criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ripl-j-and-p-assignments-method">RIPL J and P assignments method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beta-decay-transition-types">Beta decay transition types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atomic-shells-and-vacancies">Atomic shells and vacancies</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="code.html">1. ndlab module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html#ndlaborm-module">2. ndlaborm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html#ndlabdblink-module">3. ndlabdblink module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Database</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="database.html">1. The search engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NDLab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>1. Legend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/entities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p id="ndm-label"><strong>We have</strong> seen that the <a class="reference internal" href="interrogation.html#fields-label"><span class="std std-ref">fields</span></a> and  <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a> parameters are
+relevant for both <a class="reference internal" href="interrogation.html#interrogation-label"><span class="std std-ref">Interrogation</span></a> and <a class="reference internal" href="programming.html#programming-label"><span class="std std-ref">Programming.</span></a>
+Here  is presented the list of all available entities with which to construct these parameters:</p>
+<div class="section" id="legend">
+<h1>1. Legend<a class="headerlink" href="#legend" title="Permalink to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><em>(S)</em> String. When used in a filter, must be enclosed in single quotes.</div>
+<div class="line-block">
+<div class="line">   example <code class="code docutils literal notranslate"><span class="pre">GAMMA.MULTIPOLARITY</span> <span class="pre">=</span> <span class="pre">'M1'</span></code></div>
+</div>
+<div class="line"><em>(Q)</em> Quantity. It has also the “_UNC” and “_LIMIT” fields</div>
+<div class="line"><em>(q)</em> Quantity with only  the “_UNC” field</div>
+<div class="line"><em>(L)</em> Link to another entity. One must specify which field of the linked entity is to be referred:</div>
+<div class="line-block">
+<div class="line">    example <code class="code docutils literal notranslate"><span class="pre">GAMMA.NUC.Z</span></code></div>
+</div>
+</div>
+</div>
+<div class="section" id="entities">
+<h1>2. Entities<a class="headerlink" href="#entities" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="nuclide">
+<h2>NUCLIDE<a class="headerlink" href="#nuclide" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">properties of the nuclide</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The ground state (Half-life, Jp, etc…) is to be found in the LEVEL, with SEQNO = 0</p>
+</div>
+<div class="line-block">
+<div class="line"><strong>ABUNDANCE</strong>             <em>(q)</em> natural abundance, in mole fraction</div>
+<div class="line"><strong>ATOMIC_MASS</strong>           <em>(Q)</em> atomic mass, in micro AMU</div>
+<div class="line"><strong>BETA_DECAY_EN</strong>         <em>(Q)</em> energy available for beta decay [keV]</div>
+<div class="line"><strong>BINDING_EN</strong>            <em>(Q)</em> binding energy per nucleon [keV]</div>
+<div class="line"><strong>CHARGE_RADIUS</strong>         <em>(Q)</em> Root-mean-square of the nuclear charge radius, expressed in fm.</div>
+<div class="line"><strong>ELEM_SYMBOL</strong>           <em>(S)</em> symbol of the element</div>
+<div class="line"><strong>MASS_EXCESS</strong>           <em>(Q)</em> mass excess [keV]</div>
+<div class="line"><strong>N</strong>                     number of neutrons</div>
+<div class="line"><strong>NUC_ID</strong>                <em>(S)</em> identifier, e.g. 135XE</div>
+<div class="line"><strong>QA</strong>                    <em>(Q)</em> alpha decay Q energy [keV]</div>
+<div class="line"><strong>QBMN</strong>                  <em>(Q)</em> beta- + n decay energy [keV]</div>
+<div class="line"><strong>QEC</strong>                   <em>(Q)</em> electron capture Q-value [keV]</div>
+<div class="line"><strong>RESON_INT</strong>             <em>(q)</em> resonance integral [b]</div>
+<div class="line"><strong>S2N</strong>                   <em>(Q)</em> 2-neutron separation energy [keV]</div>
+<div class="line"><strong>S2P</strong>                   <em>(Q)</em> 2-proton separation energy [keV]</div>
+<div class="line"><strong>SN</strong>                    <em>(Q)</em> neutron separation energy [keV]</div>
+<div class="line"><strong>SP</strong>                    <em>(Q)</em> proton separation energy [keV]</div>
+<div class="line"><strong>THER_N_CAPTURE</strong>        <em>(q)</em> thermal neutron capture [b]</div>
+<div class="line"><strong>WESTCOTT_G</strong>            Westcott g-factor</div>
+<div class="line"><strong>Z</strong>                     number of protons</div>
+</div>
+</div>
+<div class="section" id="level">
+<h2>LEVEL<a class="headerlink" href="#level" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">properties of the energy states of a nuclide</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>CONFIGURATION</strong>         <em>(S)</em> the nuclear configuration</div>
+<div class="line"><strong>DIPOLE_MM</strong>             <em>(Q)</em> magnetic dipole moment [Bohr magnetons]</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> level energy [keV]</div>
+<div class="line"><strong>HALF_LIFE</strong>             <em>(Q)</em> Half-life value as given in the evaluation, see HALF_LIFE_UNITS for the units. Use HALF_LIFE_SEC for calculations</div>
+<div class="line"><strong>HALF_LIFE_LIMIT</strong>       String - &gt; , &lt;, &gt;=, etc..</div>
+<div class="line"><strong>HALF_LIFE_SEC</strong>         <em>(Q)</em> Half-life in [s]</div>
+<div class="line"><strong>HALF_LIFE_UNITS</strong>       <em>(S)</em> - the Half-life field units</div>
+<div class="line"><strong>ISOSPIN</strong>       <em>(S)</em> Isospin</div>
+<div class="line"><strong>J</strong>                     J value as assigned in RIPL</div>
+<div class="line"><strong>JP</strong>                    <em>(S)</em> Jp as given in the evaluation</div>
+<div class="line"><strong>JP_REASON</strong>       reason for assigning the Jp: JP_WEAK for weak arguments; JP_STRONG for strong</div>
+<div class="line"><strong>JP_METHOD</strong>             method for assigning the Jp in RIPL, see these <a class="reference internal" href="#ripl-const-label"><span class="std std-ref">codes</span></a></div>
+<div class="line"><strong>JP_ORDER</strong>              order of the Jp: 1 is the first occurence</div>
+<div class="line"><strong>NUC</strong>                   <em>(L)</em>   access to the properties of the nuclide , e.g. LEVEL.NUC.Z</div>
+<div class="line"><strong>P</strong>                     parity as assigned in RIPL</div>
+<div class="line"><strong>QUADRUPOLE_EM</strong>         <em>(Q)</em> Electrinc quadrupole moment [b]</div>
+<div class="line"><strong>QUESTIONABLE</strong>          <em>(S)</em> the existence of the level is questionable</div>
+<div class="line"><strong>SEQNO</strong>                 sequential number of the level, G.S. = 0</div>
+</div>
+</div>
+<div class="section" id="gamma">
+<h2>GAMMA<a class="headerlink" href="#gamma" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">properties of a nuclide electromagnetic transition</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>BEW</strong>                   <em>(Q)</em> reduced electric transition probabilities in Weisskopf units</div>
+<div class="line"><strong>BEW_ORDER</strong>             order of the transition</div>
+<div class="line"><strong>BMW</strong>                   <em>(Q)</em> reduced magnetic transition probabilities in Weisskopf units</div>
+<div class="line"><strong>BMW_ORDER</strong>             order of the transition</div>
+<div class="line"><strong>END_LEVEL</strong>             <em>(L)</em>  access to the properties of the end level, e.g. GAMMA.END_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em>  energy [keV]</div>
+<div class="line"><strong>MIXING_RATIO</strong>          <em>(Q)</em> mixing ratio</div>
+<div class="line"><strong>MULTIPOLARITY</strong>         <em>(S)</em> - multipolarity</div>
+<div class="line"><strong>NUC</strong>                   <em>(L)</em> - access to the properties of the nuclide, e.g. GAMMA.NUC.Z</div>
+<div class="line"><strong>QUESTIONABLE</strong>          <em>(S)</em> the existence is questionable</div>
+<div class="line"><strong>REL_PHOTON_INTENS</strong>             <em>(Q)</em> relative photon intensity [%]. The sum over the same start level is 100</div>
+<div class="line"><strong>SEQNO</strong>                 sequential number of the gamma with respect to the start level, 0 being the gamma with the lowest energy</div>
+<div class="line"><strong>START_LEVEL</strong>           <em>(L)</em>  access to the properties of the start level, e.g. GAMMA.START_LEVEL.ENERGY</div>
+<div class="line"><strong>TOT_CONV_COEFF</strong>        <em>(Q)</em> total conversion coefficient</div>
+</div>
+</div>
+<div class="section" id="l-decay">
+<h2>L_DECAY<a class="headerlink" href="#l-decay" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">properties of a decay mode of a level</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to daughter nuclide properties , e.g. L_DECAY.DAUGHTER.Z</div>
+<div class="line"><strong>LEVEL</strong>                 <em>(L)</em>  access to the properties of the level, e.g. L_DECAY.LEVEL.ENERGY</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>NUC</strong>                   <em>(L)</em>  access to parent nuclide properties , e.g. L_DECAY.NUC.Z</div>
+<div class="line"><strong>PERC</strong>                  <em>(Q)</em> decay probability per 100 decays of the parent</div>
+<div class="line"><strong>Q_TOGS</strong>                <em>(q)</em> Q-value of the decay. For decay of isomeric sates, it includes the parent energy level</div>
+</div>
+</div>
+<div class="section" id="dr-alpha">
+<h2>DR_ALPHA<a class="headerlink" href="#dr-alpha" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">alpha decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>HINDRANCE</strong>             <em>(Q)</em> hindrance factor</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+</div>
+</div>
+<div class="section" id="dr-betam">
+<h2>DR_BETAM<a class="headerlink" href="#dr-betam" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">beta- decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENDPOINT</strong>              <em>(Q)</em> end-point energy [keV]</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>LOGFT</strong>                 <em>(Q)</em> log ft</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>TRANS_TYPE</strong>            <em>(S)</em> transition type</div>
+</div>
+</div>
+<div class="section" id="dr-betap">
+<h2>DR_BETAP<a class="headerlink" href="#dr-betap" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">beta+ decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>BPEC_INTENSITY</strong>        <em>(Q)</em> sum of electron capture and beta+ intensites per 100 decays of the parent</div>
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>EC_ENERGY</strong>             <em>(Q)</em> energy available for electron capture</div>
+<div class="line"><strong>EC_INTENSITY</strong>          <em>(Q)</em> electron capture intensity per 100 decays of the parent</div>
+<div class="line"><strong>ENDPOINT</strong>              <em>(Q)</em> end-point energy [keV]</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>LOGFT</strong>                 <em>(Q)</em> log ft</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>TRANS_TYPE</strong>            <em>(S)</em> transition type</div>
+</div>
+</div>
+<div class="section" id="dr-anti-nu">
+<h2>DR_ANTI_NU<a class="headerlink" href="#dr-anti-nu" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">anti neutrino decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+</div>
+</div>
+<div class="section" id="dr-nu">
+<h2>DR_NU<a class="headerlink" href="#dr-nu" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">neutrino decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+</div>
+</div>
+<div class="section" id="dr-delayed">
+<h2>DR_DELAYED<a class="headerlink" href="#dr-delayed" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">delayed particle emission</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>ENERGY_X</strong>              <em>(Q)</em> energy of the intermediate state after beta decay and before emetting the particle [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>TYPE</strong>                  <em>(S)</em> delayed particle: DN, DP, or DA</div>
+</div>
+</div>
+<div class="section" id="dr-gamma">
+<h2>DR_GAMMA<a class="headerlink" href="#dr-gamma" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">gamma decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>BEW</strong>                   <em>(Q)</em> reduced electric transition probabilities in Weisskopf units</div>
+<div class="line"><strong>BEW_ORDER</strong>             order of the transition</div>
+<div class="line"><strong>BMW</strong>                   <em>(Q)</em> reduced magnetic transition probabilities in Weisskopf units</div>
+<div class="line"><strong>BMW_ORDER</strong>             order of the transition</div>
+<div class="line"><strong>END_LEVEL</strong>             <em>(L)</em>  access to the properties of the end level, e.g. GAMMA.END_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em>  energy [keV]</div>
+<div class="line"><strong>INTENSITY</strong>             <em>(Q)</em> intensity per 100 dcay of the parent</div>
+<div class="line"><strong>MIXING_RATIO</strong>          <em>(Q)</em> mixing ratio</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>MULTIPOLARITY</strong>         String - multipolarity</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_GAMMA.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>   access to the properties of the parent level, e.g. DR_GAMMA.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>QUESTIONABLE</strong>          <em>(S)</em> the existence is questionable</div>
+<div class="line"><strong>REL_PHOTON_INTENS</strong>             <em>(Q)</em> relative photon intensity [%]</div>
+<div class="line"><strong>SEQNO</strong>                 sequential number of the gamma with respect to the start level, 0 being the gamma with the lowest energy</div>
+<div class="line"><strong>START_LEVEL</strong>           <em>(L)</em>  access to the properties of the start level, e.g. GAMMA.START_LEVEL.ENERGY</div>
+<div class="line"><strong>TOT_CONV_COEFF</strong>        <em>(Q)</em> total conversion coefficient</div>
+</div>
+</div>
+<div class="section" id="dr-photon-total">
+<h2>DR_PHOTON_TOTAL<a class="headerlink" href="#dr-photon-total" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">photon decay radiation (regardless whether gamma or X)</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>COUNT</strong>                 number of parent decay mode is which the line is present</div>
+<div class="line"><strong>ENERGY</strong>                <em>(q)</em> energy [keV]</div>
+<div class="line"><strong>INTENSITY</strong>             <em>(q)</em> intensity per 100 dcay of the parent</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>TYPE</strong>                  <em>(S)</em> whether X or G</div>
+</div>
+</div>
+<div class="section" id="dr-x">
+<h2>DR_X<a class="headerlink" href="#dr-x" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">X decay radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>SHELL</strong>                 <em>(S)</em> Atomic shell IUPAC notation</div>
+</div>
+</div>
+<div class="section" id="dr-auger">
+<h2>DR_AUGER<a class="headerlink" href="#dr-auger" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">Auger electron  radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>SHELL</strong>                 <em>(S)</em> Atomic shell IUPAC notation</div>
+</div>
+</div>
+<div class="section" id="dr-annihil">
+<h2>DR_ANNIHIL<a class="headerlink" href="#dr-annihil" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">gamma from annihilation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+</div>
+</div>
+<div class="section" id="dr-conv-el">
+<h2>DR_CONV_EL<a class="headerlink" href="#dr-conv-el" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">conversion electron  radiation</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
+<div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
+<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>SHELL</strong>                 <em>(S)</em> Atomic shell IUPAC notation</div>
+</div>
+</div>
+<div class="section" id="cum-fy">
+<h2>CUM_FY<a class="headerlink" href="#cum-fy" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">cumulative fission yields</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>FAST_YIELD</strong>            <em>(q)</em> fast neutron yield</div>
+<div class="line"><strong>MEV_14_YIELD</strong>          <em>(q)</em> 14 MeV neutron yield</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the fissioning nuclide, e.g. CUM_FY.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. CUM_FY.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>PRODUCT</strong>       <em>(L)</em>  access to the properties of the product nuclide, e.g. CUM_FY.PRODUCT.Z</div>
+<div class="line"><strong>THER_YIELD</strong>            <em>(q)</em> thermal neutron yield</div>
+</div>
+</div>
+<div class="section" id="ind-fy">
+<h2>IND_FY<a class="headerlink" href="#ind-fy" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">independent fission yields</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>FAST_YIELD</strong>            <em>(q)</em> fast neutron yield</div>
+<div class="line"><strong>MEV_14_YIELD</strong>          <em>(q)</em> 14 MeV neutron yield</div>
+<div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the fissioning nuclide, e.g. IND_FY.PARENT.Z</div>
+<div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. IND_FY.PARENT_LEVEL.ENERGY</div>
+<div class="line"><strong>PRODUCT</strong>       <em>(L)</em>  access to the properties of the product nuclide, e.g. IND_FY.PRODUCT.Z</div>
+<div class="line"><strong>THER_YIELD</strong>            <em>(q)</em> thermal neutron yield</div>
+</div>
+</div>
+</div>
+<div class="section" id="constants">
+<h1>3. Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h1>
+<p id="decay-const-label">These constants can be used instead of typing cryptic coded values</p>
+<div class="section" id="decay-modes">
+<h2>Decay modes<a class="headerlink" href="#decay-modes" title="Permalink to this heading">¶</a></h2>
+<p>Use them when a decay mode needs to be referred , like in <code class="code docutils literal notranslate"><span class="pre">L_DECAYS.MODE</span> <span class="pre">=</span> <span class="pre">DECAY_A</span></code></p>
+<div class="line-block">
+<div class="line"><strong>DECAY_A</strong> = 0  alpha</div>
+<div class="line"><strong>DECAY_Bp</strong> = 1 beta+</div>
+<div class="line"><strong>DECAY_Bm</strong> = 2  beta-</div>
+<div class="line"><strong>DECAY_IT</strong> = 3  isomeric transition</div>
+<div class="line"><strong>DECAY_P</strong> = 4  proton</div>
+<div class="line"><strong>DECAY_N</strong> = 5  neutron</div>
+<div class="line"><strong>DECAY_BmN</strong> = 6  delayed neutronafter beta-</div>
+<div class="line"><strong>DECAY_EC</strong> = 7  electron capture</div>
+<div class="line"><strong>DECAY_SF</strong> = 8  spontaneous fission</div>
+<div class="line"><strong>DECAY_D</strong> = 9  deuterium</div>
+<div class="line"><strong>DECAY_ECP</strong> = 10  delayed proton after electron capture</div>
+<div class="line"><strong>DECAY_3HE</strong> = 11  3-He</div>
+<div class="line"><strong>DECAY_BpP</strong> = 12  delayed proton after beta+</div>
+<div class="line"><strong>DECAY_3H</strong> = 13  3-H</div>
+<div class="line"><strong>DECAY_G</strong> = 14  G</div>
+<div class="line"><strong>DECAY_Bp</strong> = 15  beta+</div>
+<div class="line"><strong>DECAY_ECA</strong> = 16  delayed alpha after electron capture</div>
+<div class="line"><strong>DECAY_Bm2N</strong> = 17  2 delayed neutrons after beta-</div>
+<div class="line"><strong>DECAY_8BE</strong> = 18  8-Be</div>
+<div class="line"><strong>DECAY_BpA</strong> = 19  delayed alpha after beta+</div>
+<div class="line"><strong>DECAY_2Bm</strong> = 20  double beta-</div>
+<div class="line"><strong>DECAY_2P</strong> = 21  double proton</div>
+<div class="line"><strong>DECAY_BmA</strong> = 22  delayed alpha after beta-</div>
+<div class="line"><strong>DECAY_14C</strong> = 23  14-C</div>
+<div class="line"><strong>DECAY_EC2P</strong> = 24  2 delayed protons after electron capture</div>
+<div class="line"><strong>DECAY_Bp2P</strong> = 25  2 delayed protons after beta+</div>
+<div class="line"><strong>DECAY_2Bp</strong> = 26  double beta+</div>
+<div class="line"><strong>DECAY_28MG</strong> = 27 Mg-28</div>
+<div class="line"><strong>DECAY_ECSF</strong> = 28  spontaneous fission after electron capture</div>
+<div class="line"><strong>DECAY_Bm3N</strong> = 29  3 delayed neutrons after beta-</div>
+<div class="line"><strong>DECAY_2EC</strong> = 30  double electron capture</div>
+<div class="line"><strong>DECAY_24NE</strong> = 31 Ne-24</div>
+<div class="line"><strong>DECAY_ECF</strong> = 32  fission after electron capture</div>
+<div class="line"><strong>DECAY_NE</strong> = 33  Ne</div>
+<div class="line"><strong>DECAY_ECP_EC2P</strong> = 34  delayed proton or double delayed proton after electron capture</div>
+<div class="line"><strong>DECAY_22NE</strong> = 35 Ne-22</div>
+<div class="line"><strong>DECAY_34SI</strong> = 36 Si-34</div>
+<div class="line"><strong>DECAY_EC_SF</strong> = 37 EC plus spontaneous fission</div>
+<div class="line"><strong>DECAY_24NE</strong> = 38  24-Ne</div>
+<div class="line"><strong>DECAY_BF</strong> = 39  fission after beta</div>
+<div class="line"><strong>DECAY_SF_EC_Bp</strong> = 40 spontaneous fission - EC - beta+</div>
+<div class="line"><strong>DECAY_SF_Bm</strong> = 41  spntaneous fission + beta-</div>
+<div class="line"><strong>DECAY_Bm4N</strong> = 42  4 delayed neutrons after beta-</div>
+<div class="line"><strong>DECAY_SF_EC_Bm</strong> = 44  spontaneous fission + electron capture + beta-</div>
+<div class="line"><strong>DECAY_IT_EC_Bp</strong> = 45  isomeric transition + electron capture + beta+</div>
+<div class="line"><strong>DECAY_EC3P</strong> = 46  3 delayed protons after electron capture</div>
+<div class="line"><strong>DECAY_20NE</strong> = 47  20-Ne</div>
+<div class="line"><strong>DECAY_BmF</strong> = 49  beta- fission</div>
+<div class="line"><strong>DECAY_BpEC</strong> = 50  electron capture + beta+</div>
+<div class="line"><strong>DECAY_20O</strong> = 51  20-O</div>
+<div class="line"><strong>DECAY_MG</strong> = 52  Mg</div>
+<div class="line"><strong>DECAY_ECAP</strong> = 53  delayed alpha plus delayed proton after electron capture</div>
+<div class="line"><strong>DECAY_2e</strong> = 54  2 e</div>
+<div class="line"><strong>DECAY_BmP</strong> = 55  delayed proton after beta-</div>
+<div class="line"><strong>DECAY_12C</strong> = 57  12-C</div>
+<div class="line"><strong>DECAY_25NE</strong> = 58  25-Ne</div>
+<div class="line"><strong>DECAY_34SI</strong> = 59  34-Si</div>
+<div class="line"><strong>DECAY_22NE</strong> = 60  22-Ne</div>
+<div class="line"><strong>DECAY_2N</strong> = 61  2 neutrons</div>
+<div class="line"><strong>DECAY_EC_SF</strong> = 62  electron capture + spontaneous fission</div>
+<div class="line"><strong>DECAY_SF_EC_Bp</strong> = 63  spontaneous fission + electron capture + beta+</div>
+<div class="line"><strong>DECAY_BmSF</strong> = 64  spontaneous fission after beta-</div>
+<div class="line"><strong>DECAY_Bm5N</strong> = 65  5 delayed neutrons after beta-</div>
+<div class="line"><strong>DECAY_BpF</strong> = 66  fission after beta+</div>
+<div class="line"><strong>DECAY_28MG</strong> = 67  28-Mg</div>
+<div class="line"><strong>DECAY_Bm6N</strong> = 68  6 delayed neutrons after beta-</div>
+</div>
+</div>
+<div class="section" id="jp-assignment-criteria">
+<span id="ripl-const-label"></span><h2>JP assignment criteria<a class="headerlink" href="#jp-assignment-criteria" title="Permalink to this heading">¶</a></h2>
+<p>To be used when referring to level spin values assigned by ENSDF , like in <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_REASON</span> <span class="pre">=</span> <span class="pre">JP_STRONG</span></code></p>
+<div class="line-block">
+<div class="line"><strong>JP_WEAK</strong>  = 1</div>
+<div class="line"><strong>JP_STRONG</strong> = 0</div>
+</div>
+</div>
+<div class="section" id="ripl-j-and-p-assignments-method">
+<h2>RIPL J and P assignments method<a class="headerlink" href="#ripl-j-and-p-assignments-method" title="Permalink to this heading">¶</a></h2>
+<p>To be used when referring to level spin values assigned by RIPL , like in <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP_METHOD</span> <span class="pre">=</span> <span class="pre">RIPL_J_UNIQUE</span></code></p>
+<div class="line-block">
+<div class="line"><strong>RIPL_J_UNKNOWN</strong> = -1 not assigned</div>
+<div class="line"><strong>RIPL_J_UNIQUE</strong> = 0 unique value already present in ENSDF</div>
+<div class="line"><strong>RIPL_J_DISTRIBUTION_GAMMA</strong> = 1 spin distribution from gamma transitions</div>
+<div class="line"><strong>RIPL_J_DISTRIBUTION</strong> = 2 spin distribution from levels with known Jp</div>
+<div class="line"><strong>RIPL_J_DISTRIBUTION_CONSTRAIN</strong> = 3 spin distribution constrained to a set of possible values given in ENSDF</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>RIPL_P_PLUS</strong> = 1 parity +</div>
+<div class="line"><strong>RIPL_P_MINUS</strong> = 0 parity -</div>
+</div>
+</div>
+<div class="section" id="beta-decay-transition-types">
+<h2>Beta decay transition types<a class="headerlink" href="#beta-decay-transition-types" title="Permalink to this heading">¶</a></h2>
+<p>like in <code class="code docutils literal notranslate"><span class="pre">DR_BETA.TRANS_TYPE</span> <span class="pre">=</span> <span class="pre">TRANS_1NU</span></code></p>
+<div class="line-block">
+<div class="line"><strong>TRANS_1NU</strong>  first non-unique</div>
+<div class="line"><strong>TRANS_1U</strong>   first unique</div>
+<div class="line"><strong>TRANS_2NU</strong></div>
+<div class="line"><strong>TRANS_2U</strong></div>
+<div class="line"><strong>TRANS_3NU</strong></div>
+<div class="line"><strong>TRANS_3U</strong></div>
+<div class="line"><strong>TRANS_4NU</strong></div>
+<div class="line"><strong>TRANS_4U</strong></div>
+<div class="line"><strong>TRANS_5NU</strong></div>
+<div class="line"><strong>TRANS_5U</strong></div>
+<div class="line"><strong>TRANS_7NU</strong></div>
+<div class="line"><strong>TRANS_8U</strong></div>
+<div class="line"><strong>TRANS_A</strong>  allowed</div>
+<div class="line"><strong>TRANS_S</strong>  super-allowed</div>
+</div>
+</div>
+<div class="section" id="atomic-shells-and-vacancies">
+<h2>Atomic shells and vacancies<a class="headerlink" href="#atomic-shells-and-vacancies" title="Permalink to this heading">¶</a></h2>
+<p>To specify a .SHELL field, e.g. <code class="code docutils literal notranslate"><span class="pre">DR_AUGER.SHELL</span> <span class="pre">=</span> <span class="pre">SHELL_KLL</span></code></p>
+<p>following IUPAC notation <a class="reference external" href="https://en.wikipedia.org/wiki/X-ray_notation">https://en.wikipedia.org/wiki/X-ray_notation</a></p>
+<div class="line-block">
+<div class="line"><strong>SHELL_K</strong> = ‘K’</div>
+<div class="line"><strong>SHELL_KA1</strong> = ‘KA1’</div>
+<div class="line"><strong>SHELL_KA2</strong> = ‘KA2’</div>
+<div class="line"><strong>SHELL_KB</strong> = ‘KB’</div>
+<div class="line"><strong>SHELL_KLL</strong> = ‘KLL’</div>
+<div class="line"><strong>SHELL_KLX</strong> = ‘KLX’</div>
+<div class="line"><strong>SHELL_KXY</strong> = ‘KXY’</div>
+<div class="line"><strong>SHELL_KpB1</strong> = ‘KpB1’</div>
+<div class="line"><strong>SHELL_KpB2</strong> = ‘KpB2’</div>
+<div class="line"><strong>SHELL_L</strong> = ‘L’</div>
+<div class="line"><strong>SHELL_L1</strong> = ‘L1’</div>
+<div class="line"><strong>SHELL_L1M2</strong> = ‘L1M2’</div>
+<div class="line"><strong>SHELL_L1M3</strong> = ‘L1M3’</div>
+<div class="line"><strong>SHELL_L1N2</strong> = ‘L1N2’</div>
+<div class="line"><strong>SHELL_L1N3</strong> = ‘L1N3’</div>
+<div class="line"><strong>SHELL_L1O23</strong> = ‘L1O23’</div>
+<div class="line"><strong>SHELL_L2</strong> = ‘L2’</div>
+<div class="line"><strong>SHELL_L2M1</strong> = ‘L2M1’</div>
+<div class="line"><strong>SHELL_L2M4</strong> = ‘L2M4’</div>
+<div class="line"><strong>SHELL_L2N1</strong> = ‘L2N1’</div>
+<div class="line"><strong>SHELL_L2N4</strong> = ‘L2N4’</div>
+<div class="line"><strong>SHELL_L2O1</strong> = ‘L2O1’</div>
+<div class="line"><strong>SHELL_L2O4</strong> = ‘L2O4’</div>
+<div class="line"><strong>SHELL_L3</strong> = ‘L3’</div>
+<div class="line"><strong>SHELL_L3M1</strong> = ‘L3M1’</div>
+<div class="line"><strong>SHELL_L3M4</strong> = ‘L3M4’</div>
+<div class="line"><strong>SHELL_L3M5</strong> = ‘L3M5’</div>
+<div class="line"><strong>SHELL_L3N1</strong> = ‘L3N1’</div>
+<div class="line"><strong>SHELL_L3N45</strong> = ‘L3N45’</div>
+<div class="line"><strong>SHELL_L3O1</strong> = ‘L3O1’</div>
+<div class="line"><strong>SHELL_L3P1</strong> = ‘L3P1’</div>
+<div class="line"><strong>SHELL_M</strong> = ‘M’</div>
+<div class="line"><strong>SHELL_N</strong> = ‘N’</div>
+<div class="line"><strong>SHELL_NPLUS</strong> = ‘N+’</div>
+<div class="line"><strong>SHELL_O</strong> = ‘O’</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="code.html" class="btn btn-neutral float-right" title="1. ndlab module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="programming.html" class="btn btn-neutral float-left" title="1. Programming overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, IAEA Nuclear Data Section.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

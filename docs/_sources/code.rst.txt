@@ -1,0 +1,309 @@
+**This Section** details the classes and functions on which the :ref:`Programming <programming-label>` section is built
+
+1. ndlab module
+===============
+
+**This** is the user entry point to interrogate the database and to write custom software. It provides:
+
+* Functions to :ref:`retrieve data <retrieve-label>`
+* Functions to :ref:`handle SQL <handle-sql-label>`
+* Classes to :ref:`handle values and uncertainites <qtt-label>`
+* Classes modelling :ref:`nuclear structure <ndm-classes-label>` 
+* Functions to :ref:`create them <ndm-function-label>`
+* :ref:`Static classes <orm-label>` to build  the :ref:`fields <fields-label>` and  :ref:`filter <filter-label>` parameters  
+
+This page documents the main functions the user should call, for full documentation see the `source code <_modules/ndlab.html>`_
+   
+Querying the database 
+---------------------
+
+.. _retrieve-label:
+
+Functions to retrieve data
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+These take two parameters , see :ref:`1. Retrieval functions`.
+Some of them are specific for feeding data into a pandas dataframe
+
+.. autofunction:: ndlab.csv_data
+
+:: 
+
+    fields = "NUCLIDE.Z, NUCLIDE.ATOMIC_MASS"
+    filter = "NUCLIDE.NUC_ID = '135XE'"
+
+    csv = nl.csv_data(fields, filter)
+
+    print(csv)
+
+    >>z,atomic_mass
+    >>54,134907231.441
+
+
+.. autofunction:: ndlab.json_data
+
+::
+
+    fields = "NUCLIDE.Z, NUCLIDE.ATOMIC_MASS"
+    filter = "NUCLIDE.NUC_ID = '135XE'"
+
+    json = nl.json_data(fields, filter)
+    print(json)
+
+    >>[ {'z':'54'  ,'atomic_mass':'134907231.441'}]
+
+
+.. autofunction:: ndlab.pandas_df
+
+:: 
+
+    import pandas as pd
+    
+    fields = "NUCLIDE.Z, NUCLIDE.ATOMIC_MASS"
+    filter = "NUCLIDE.NUC_ID = '135XE'"
+
+    df = nl.pandas_df(fields, filter, pd)
+    print(df)
+
+    >>    z   atomic_mass
+    >>0  54  1.349072e+08
+
+.. autofunction:: ndlab.pandas_df_nl
+
+:: 
+
+    import pandas as pd
+
+    nuc = nl.nuclide("135XE")
+    levels = nuc.levels()
+
+    df = nl.pandas_df_nl(levels, pd)
+
+    df
+
+        z	n	nucid	l_seqno	energy	energy_unc	half_life	half_life_unc	half_life_units	half_life_sec	...	jp_order	jp_method	jp_str	quadrupole_em	quadrupole_em_unc	dipole_mm	dipole_mm_unc	questionable	configuration	isospin
+    0	54	81	135XE	0	0.000	0.000000	9.14	0.02	h	32904.0	...	1	0	3/2+	0.214	0.007	0.9032	0.0007	NaN	NaN	NaN
+    1	54	81	135XE	1	288.455	0.000015	0.00	0.00	NaN	0.0	...	1	0	1/2+	0.000	0.000	0.0000	0.0000	NaN	NaN	NaN
+    2	54	81	135XE	2	526.551	0.000013	15.29	0.05	m
+
+.. autofunction:: ndlab.csv_nl
+
+:: 
+
+    nuc = nl.nuclide("135XE")
+    levels = nuc.levels()
+    
+    print(nl.csv_ndm(levels))
+
+    z,n,nucid,l_seqno,energy,energy_unc,half_life,half_life_unc,half_life_units,half_life_sec,half_life_sec_unc,j,parity,jp_order,jp_method,jp_str,quadrupole_em,quadrupole_em_unc,dipole_mm,dipole_mm_unc,questionable,configuration,isospin
+    54,81,135XE,0,0.0,0,9.14,0.02,h,32904.0,72.0,1.5,0,1,0,3/2+,0.214,0.007,0.9032,0.0007,,,
+    54,81,135XE,1,288.455,1.5e-05,0,0,,0,0,0.5,0,1,0,1/2+,0,0,0,0,,,
+    54,81,135XE,2,526.551,1.3e-05,15.29,0.05,m,917.4,3.0,5.5,1,1,0,11/2-,0,0,0,0,,,
+
+
+.. autofunction:: ndlab.pandas_csv_nl
+
+::
+
+    nuc = nl.nuclide("135XE")
+    levels = nuc.levels()
+
+    stream = nl.pandas_csv_nl(levels)
+
+    stream
+
+    <_io.StringIO at 0x7f7e20420d30>
+
+.. _handle-sql-label:
+
+Functions to handle SQL
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autofunction:: ndlab.query_build
+
+:: 
+
+    fields = " GAMMA.ENERGY "
+    filter = "GAMMA.NUC.Z = 4 and GAMMA.START_LEVEL.ENERGY > 700"
+
+    sql = nl.query_build(fields, filter)
+    sql
+    
+    'select gammas.energy from gammas,nuclides as gam_nuc,levels as gam_lev_s where gammas.nucid=gam_nuc.nucid and gammas.nucid = gam_lev_s.nucid and gammas.l_seqno = gam_lev_s.l_seqno and gam_nuc.z = 4 and gam_lev_s.energy > 700'
+
+.. autofunction:: ndlab.query_con
+
+::
+
+    pd.read_sql(" select * from nuclides ", nl.query_con())
+
+.. _qtt-label:
+
+Managing Values and Uncertainities
+----------------------------------
+
+Implementing the  `ISO Vocabulary <https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html>`_,
+these classes are used as instance variables, see :ref:`below <ndm-classes-label>`
+
+.. autoclass:: ndlab.Property
+.. autoclass:: ndlab.Nominal
+.. autoclass:: ndlab.Quantity
+     :members:
+.. autoclass:: ndlab.Operator
+     :members:
+.. autoclass:: ndlab.Unit
+    :members:
+
+.. _ndm-function-label:
+
+Functions creating data model classes
+-------------------------------------
+
+| The following functions directly populate the classes representing the nuclear data model.
+| They accept the optional :ref:`filter <filter-label>` parameter to apply conditions to the selection
+| For example, the :py:meth:`ndlab.levels` will populate  instances of :py:class:`ndlab.Level`.
+
+A :py:class:`ndlab.Level` can also be indirectly created from an instance of :py:class:`ndlab.Nuclide`
+by accessing its :py:meth:`ndlab.Nuclide.levels` method
+
+.. autofunction:: ndlab.nuclide
+.. autofunction:: ndlab.nuclides
+.. autofunction:: ndlab.levels
+.. autofunction:: ndlab.gammas
+.. autofunction:: ndlab.l_decays
+.. autofunction:: ndlab.dr_gammas
+.. autofunction:: ndlab.dr_alphas
+.. autofunction:: ndlab.dr_beta_ms
+.. autofunction:: ndlab.dr_anti_nus
+.. autofunction:: ndlab.dr_beta_ps
+.. autofunction:: ndlab.dr_nus
+.. autofunction:: ndlab.dr_xs
+.. autofunction:: ndlab.dr_convels
+.. autofunction:: ndlab.dr_augers
+.. autofunction:: ndlab.cum_fys
+.. autofunction:: ndlab.ind_fys
+.. autofunction:: ndlab.check_filter
+    
+.. _ndm-classes-label:
+
+Data model classes  
+------------------
+
+ndlab.Nuclide
+~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Nuclide
+    :members: levels, gammas
+    :inherited-members:
+
+ndlab.Level
+~~~~~~~~~~~
+
+.. autoclass:: ndlab.Level
+    :members:
+    :inherited-members:
+
+ndlab.Gamma
+~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Gamma
+    :members:
+    :inherited-members:
+
+ndlab.L_decay
+~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.L_decay
+    :members:
+    :inherited-members:
+
+ndlab.Cum_fy
+~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Cum_fy
+    :members:
+    :inherited-members:
+
+ndlab.Ind_fy
+~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Ind_fy
+    :members:
+    :inherited-members:
+
+ndlab.Decay_radiation
+~~~~~~~~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Decay_radiation
+    :members:
+
+ndlab.Dr_gamma
+~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_gamma
+    :members:
+    :inherited-members:
+
+ndlab.Dr_alpha
+~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_alpha
+    :members:
+    :inherited-members:
+
+ndlab.Dr_betam
+~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_betam
+    :members:
+    :inherited-members:
+
+ndlab.Dr_betap
+~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_betap
+    :members:
+    :inherited-members:
+
+ndlab.Dr_anti_nu
+~~~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_anti_nu
+    :members:
+    :inherited-members:
+
+ndlab.Dr_nu
+~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_nu
+    :members:
+    :inherited-members:
+
+ndlab.Dr_delayed
+~~~~~~~~~~~~~~~~
+
+.. autoclass:: ndlab.Dr_delayed
+    :members:
+    :inherited-members:
+
+.. _orm-label:
+
+2. ndlaborm module
+==================
+
+The static classes in this module are described in :ref:`here <ndm-label>`. They are the building blocks of the 
+:ref:`fields <fields-label>` and :ref:`filter <filter-label>` parameters of 
+the data-retrieval :ref:`functions <Querying the database>`. 
+
+For example to refer to the level-energy, use :code:`LEVEL.ENERGY` 
+
+You can access the code and its comments `here <_modules/ndlaborm.html>`_
+
+3. ndlabdblink module
+=====================
+
+Talks with the database and retrieves the data. You can access `the code and its comments <_modules/ndlabdblink.html>`_
+
+
+    
+  

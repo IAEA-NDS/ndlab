@@ -1,0 +1,401 @@
+.. _programming-label:
+
+0. Cheat sheet
+==============
+**Examples** of use, you will se below the detailed explanation and more complex cases when writing algorithms
+
+::
+
+    nucs = nuclides("NUCLIDE.Z = 2")
+
+    nuc = nucs[0]
+    nuc.levels()
+    nuc.levels("LEVEL.JP = '2+' ")
+
+    nuclide("135XE").gammas("GAMMA.ENERGY < 300")
+
+    nuc = nuclide("135XE")
+    nuc.gs
+    nuc.parents
+    nuc.decays
+    nuc.daughters_chain
+    nuc.parents_chain
+    nuc.levels()[20].gammas("GAMMA.ENERGY < 300")
+
+    dr_alphas("DR_ALPHA.PARENT_NUC_ID = '238U'")
+
+
+1. Programming overview
+=======================
+
+**The** previous section addressed typical data analysis topics like filtering, grouping, binning, plotting, 
+statistics.
+
+Now we deal with writing your own processing code, going beyond what is offered by the direct query of the 
+data model. 
+
+For example, one might want to have the energy balance of a decay,  the entire decay-chain of a nuclide with
+all possible ancestors and offsprings, or perform simulations and modelling.
+
+NDLab provides as a set of Python classes and functions pushing the data extraction to the background.
+Not to loose the power of pandas, NDLab gives the options of dumping the content of the Python classes
+into pandas dataframes, then reverting back to Python code if needed
+
+A Notebook tutorial is available in *ndlab-tutorial.ipynb*
+
+The project is meant to be open to contributions. In case you are interested, please write to nds.contact-point@iaea.org 
+
+
+2. Classes and functions
+========================
+
+**Let's start** with a couple of examples before the details: 
+
+The function below returns the chain of daughters from the decays of a given nuclide 
+
+
+:: 
+
+    def _offsprings(nuclide, offsprings = []):
+        _daugs = nuclide.daughters         # direct daughters
+        go = False                         # turns true when a new daughter is found
+        for d in _daugs:                   # loop on direct daughters
+            if not d.nucid in offsprings:  # if not already added, add to the list
+                offsprings.append(d.nucid)
+                go = True                  # nuclide added, need to call this again to find its daughters
+            
+        if(not go): return offsprings      # nothing added, stop here
+    
+        for d in _daugs:                   # process the newly added
+            _offsprings(d, offsprings)
+        
+        return offsprings                  # return the list of offsprings
+
+
+For the next example, assume that the Xe-135 level @ 1927.294 keV is populated by some type of reaction,
+we want to have the list of levels form the photon cascade, with probability:
+
+:: 
+    
+    class Cascader:
+     
+        def __init__(self, nuc_id):
+            
+            self.nuclide = nl.nuclide(nuc_id)
+            self.levels = self.nuclide.levels()
+            
+            self.todo = {}
+            self.done = []
+            self.result = {}
+                
+        
+        
+        def calculate(self,start_seqno):
+        
+            self.todo = {start_seqno : self.levels[start_seqno] }
+            self.done = []
+            self.result = {start_seqno : 1.0}
+            
+            self._cascade(self.todo[start_seqno])
+            return self.result
+            
+            
+
+        def _cascade( self, my_level):
+
+                for g in my_level.gammas() : 
+                    
+                    # add the gamma end-level to the list, if not there already
+                    if(g.end_level.l_seqno != 0 and not (g.end_level.l_seqno in self.todo)):
+                        self.todo[g.end_level.l_seqno] = g.end_level
+                        
+                    # the contribution of the gamma to the population of its end-level    
+                    fed_intens = self.result[my_level.l_seqno] * g.rel_photon_intens/100 
+
+                    if not g.end_level.l_seqno in self.result: 
+                        self.result[g.end_level.l_seqno] = fed_intens     
+                    else:
+                        self.result[g.end_level.l_seqno] += fed_intens        
+
+                # mark the start level as done
+                if not my_level.l_seqno in self.done: 
+                    self.done.append(my_level.l_seqno)
+
+                self.todo = dict(sorted(self.todo.items(), reverse=True))  
+
+                myrun = self.todo.copy()
+
+                for r in myrun:
+                    if( not r in self.done):
+                        self._cascade(self.levels[r])
+
+                return self.result
+
+    nuc_id = "135XE"
+    start_level = 35
+
+    casc = Cascader(nuc_id)
+    result = casc.calculate(start_level)
+
+    print("level #", " energy [keV] ", " population %" ,"\n")
+    for k in sorted(result):
+        print(casc.levels[k].pk, casc.levels[k].energy, "\t  ", result[k]*100.0)
+    
+:: 
+
+    level   energy [keV]              population [%]
+
+    135XE-0  0.0+/-0 	                100+/-8
+    135XE-1  288.455000+/-0.000015        0.0041+/-0.0007
+    135XE-2  526.551000+/-0.000013       34+/-5
+    135XE-3  1131.512000+/-0.000011 	  7+/-5
+    135XE-4  1260.416000+/-0.000013 	  0.137+/-0.024
+    135XE-8  1565.288000+/-0.000016 	 37+/-5
+    135XE-15 1927.294000+/-0.000023 	100.0
+
+    
+
+
+
+Here below the list of classes, for which the name tells the meaning:
+
+| :py:class:`ndlab.Nuclide`
+| :py:class:`ndlab.Level`
+| :py:class:`ndlab.Gamma`
+| :py:class:`ndlab.L_decay`
+| :py:class:`ndlab.Dr_alphas` 
+| :py:class:`ndlab.Dr_beta_ms`   
+| :py:class:`ndlab.Dr_beta_ps`  
+| :py:class:`ndlab.Dr_alphas` 
+| :py:class:`ndlab.Dr_nus`  
+| :py:class:`ndlab.Dr_anti_nus` 
+| :py:class:`ndlab.Dr_xs`  
+| :py:class:`ndlab.Dr_convels`  
+| :py:class:`ndlab.Dr_augers`   
+| :py:class:`ndlab.Dr_annihil` 
+| :py:class:`ndlab.Cum_fys` 
+| :py:class:`ndlab.Ind_fys` 
+
+
+.. _gs-warning-label:
+
+.. warning::
+
+    The ground state (Half-life, Jp, etc...) of a nuclide is one of its levels, the one with l_seqno = 0. 
+    For convenience, it is also accessible with nuclide.gs 
+
+ ::
+
+        nuc = nuclide("135XE")
+
+        # one way to access the G.S.
+        gs = nuc.gs 
+
+        # another way
+        gs = nuc.levels[0]
+
+ 
+
+These classes can be populated using the following functions:
+
+| :py:meth:`ndlab.nuclide` creates :py:meth:`ndlab.Nuclide`
+| :py:meth:`ndlab.nuclides` creates a list of :py:meth:`ndlab.Nuclide`
+| :py:meth:`ndlab.levels` creates a list of :py:meth:`ndlab.Level`
+| :py:meth:`ndlab.gammas` creates a list of :py:meth:`ndlab.Gamma`
+| :py:meth:`ndlab.l_decays` creates a list of :py:meth:`ndlab.L_decay`
+| :py:meth:`ndlab.dr_alphas` creates a list of :py:meth:`ndlab.Dr_alpha`
+| :py:meth:`ndlab.dr_beta_ms`   
+| :py:meth:`ndlab.dr_beta_ps`  
+| :py:meth:`ndlab.dr_alphas` 
+| :py:meth:`ndlab.dr_nus`  
+| :py:meth:`ndlab.dr_anti_nus` 
+| :py:meth:`ndlab.dr_xs`  
+| :py:meth:`ndlab.dr_convels`  
+| :py:meth:`ndlab.dr_augers`   
+| :py:meth:`ndlab.cum_fys` creates a list of :py:meth:`ndlab.Cum_fy`
+| :py:meth:`ndlab.ind_fys` 
+
+| :py:meth:`ndlab.remove_doublers` removes double entries from a list (see example below)
+
+| Each the these accepts the  *filter* parameter already described :ref:`here <filter-label>` 
+| For example, the code below returns a list of class instances for the cumulative fission yields :py:meth:`ndlab.cum_fys`  of U-235
+
+::
+
+   cfs = nd.cum_fys("CUM_FY.PARENT.NUC_ID = '235U' ")
+
+.. warning::
+    The filter may only refer to the same entity that is created, for example in :code:`gamma(filter)` the filter can only 
+    contain "GAMMA", and so on
+
+    In case of doubt, use the :py:meth:`ndlab.check_filter`, which returns True or False:
+
+    ::
+
+        # the filter should contains only 'NUCLIDE'
+        check_filter("GAMMA.NUC.ABUNDANCE >  50",nuclides) 
+
+        >>False
+
+
+| Sometimes a retrieval might result in multiple copies of a same entity:
+| the following retrieves the parent of each delayed neutron.
+
+:: 
+
+    nucs = [ ld.parent for ld in nl.dr_delayeds( "DR_DELAYED.TYPE = DELAY_N ")]
+
+| Since many of the neutrons have the same parent, the resulting list contains multiple copies of these nuclides.
+| To remove the doublers, and be sure of having a list of unique items, use the :py:meth:`ndlab.remove_doublers` function:
+
+:: 
+
+  nucs = nl.remove_doublers([ ld.parent for ld in nl.dr_delayeds( "DR_DELAYED.TYPE = DELAY_N ")])
+
+
+
+Classes can be accessed from within other classes instances. For example :py:meth:`ndlab.Nuclide.levels` returns the list of :py:class:`ndlab.Level` of that nuclide.
+
+
+3. Pandas
+=========
+
+**Once** a list with class instances is obtained, it is possible to dump its content into a dataframe to perform
+futher analysis, or plotting, using the :py:meth:`ndlab.pandas_df_nl`
+
+::
+
+    import pandas as pd
+    import plotly.express as px
+
+    df = nl.pandas_df_nl( nl.nuclide("241AM").daughters_chain, pd )
+    df["a"] = df.n + df.z
+
+    # plot charge radius vs a
+    px.scatter(df, x=df.a, y=df.charge_radius, log_y=True).show()
+
+    # plot Half-life vs a
+    px.scatter(df, 
+           x=df.a, 
+           y=[ n.gs.half_life_sec.value for n in  nl.nuclide("241AM").daughters_chain],
+           log_y=True).show()
+
+
+
+The various approaches can be mixed:
+
+::
+
+    import pandas as pd 
+    import plotly.express as px
+
+    # 1) use the data model to extract the data:
+
+    #    gamma from nuclides with z or n closed shells
+    many_gammas = gammas("GAMMA.NUC.Z in (2,8,20,28,50,82,126) or  GAMMA.NUC.N in (2,8,20,28,50,82,126)") 
+
+    # 2) go further using the Python code 
+    #   ( no real physical meaning in this example )
+    my_levels = []
+    for gamma in many_gammas:
+        nuclide = gamma.nuclide                  # get the nuclide emitting this gamma
+        if nuclide.sn.value < nuclide.sp.value : # check if neutron separation <  proton separation
+            nuc_levels = nuclide.levels()        # get the levels of this nuclide
+            if (nuc_levels[1].jp_str == '2+'):   # check if the first level above g.s. has Jp = '2+'
+                my_levels.append(nuc_levels[1])  # collect it
+
+    # 3) export into a dataframe and plot           
+    df = pd.read_csv( pandas_csv_ndm( my_levels) )        
+    px.scatter(df, x="energy", y="half_life_sec", log_y=True).show()
+
+
+3. Work with Measurements 
+=========================
+
+**Describing** the :ref:`field parameter  <fields-label>`, we have seen that many measured properties are described by three fields with value, uncertainity, limit.
+This is implemented also in the classes above, where most properties are stored in the :ref:`Quantity <qtt-label>` class
+
+Quantities are modelled according to the 3 :sup:`rd` edition of the `International vocabulary of basic and general terms in metrology <https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html>`_.  
+To summarize, a **Quantity** has a *name*, a *value* an *uncertainity* , an *operator* (like >, <=, etc...), a *unit of measure*
+
+Example of quantities are *energy, Half-life, intensity, Q-values, mixing-ratios, etc...*
+
+With NDLab, you can handle quantities like you handle numbers:
+
+::
+
+    levels = nuclide("135XE").levels()
+
+    sum_en = sum (l.energy for l in levels )  # sum quantities
+    
+    sum_en = sum_en * 3 + 17.4     # sum quantities and numbers
+
+    sum_en > levels[0].energy      # compare quantities
+
+
+This is beacause mathematical and comparison operators are overloaded. 
+If you need, you can access separately the various components:
+
+::
+    
+    sum_en.value    # the value
+    sum_en.unc      # the uncertainity
+    sum_en.operator # the operator
+
+See futher details here :py:class:`ndlab.Quantity`
+
+Let's now see how the Quantity class manages error propagation 
+
+
+Values,  Uncertainties, and Limits
+----------------------------------
+
+| The Quantity class embeds the package `uncertainties <https://pythonhosted.org/uncertainties/>`_ to handle error propagation. 
+| Mathematical operations will propagate the uncertainties and the rounding, keeping track of the unrounded values.
+
+
+| For example, let's single out a gamma-ray *gr* , with 
+| energy : 709.13 +/- 0.15 
+| intensity :  % 72 +/- 12
+| ( this is actually from the decay of 204-Bi to 204-Pb, one can load it, together with all the other gammas, with :code:`nuclide("204BI").dr_photon_total()` ). 
+
+When multiplying energy * intensity, this is what happens
+
+::
+
+    print(gr.energy)
+    709.13 +/- 0.15
+
+    print(gr.intensity)
+    72 +/- 12
+
+    ei = gr.energy * gr.intensity
+    print(e1)
+    (5.1+/-0.9)e+02 # rounded 
+
+    print(ei.value, ei.unc)
+    510.5736 85.09566853465574 # unrounded
+
+
+Quantities have the *operator* field, which can be one of the following (:py:class:`ndlab.Operator`):
+
+::
+
+    lt = "<"
+    gt = ">"
+    eq = "="
+    ge = ">="
+    le = "<="
+    approx = "~"
+    calculated = "CA"
+    problem = "?"
+
+.. warning::
+  
+    When performing operations, the *operator* is propagated (see the :py:class:`ndlab.Operator` source for the implementations).
+
+   In cases like *>3 + <4*, when the composed operator cannot be assigned, the resulting operator is *?*. 
+
+
+
+  

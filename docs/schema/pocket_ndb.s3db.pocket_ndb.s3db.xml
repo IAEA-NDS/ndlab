@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="./pocket_ndb.s3db" schema="pocket_ndb.s3db" type="SQLite - 3.7.2">
+   <tables>
+      <table name="cum_fy" numRows="9092" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="PARENT_NUCID" nullable="false" remarks="" size="2000000000" type="VARCHAR(5)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="DAUGHTER_NUCID" nullable="false" remarks="" size="2000000000" type="VARCHAR(5)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="L_SEQNO" nullable="false" remarks="" size="2000000000" type="INT(11)"/>
+         <column autoUpdated="false" digits="10" id="2" name="THER_YIELD_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="3" name="THER_YIELD_UNC_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="4" name="FAST_YIELD_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="5" name="FAST_YIELD_UNC_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="6" name="MEV_14_YIELD_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="7" name="MEV_14_YIELD_UNC_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <index name="idx_cfy_dau" unique="false">
+            <column ascending="true" name="DAUGHTER_NUCID"/>
+         </index>
+         <index name="idx_cfy_parent" unique="false">
+            <column ascending="true" name="PARENT_NUCID"/>
+         </index>
+         <index name="sqlite_autoindex_cum_fy_1" unique="true">
+            <column ascending="true" name="PARENT_NUCID"/>
+            <column ascending="true" name="DAUGHTER_NUCID"/>
+            <column ascending="true" name="L_SEQNO"/>
+         </index>
+      </table>
+      <table name="decay_codes" numRows="64" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="ensdf_code" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="decay_code" nullable="false" remarks="" size="2000000000" type="INT(10)">
+            <child column="decay_code" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="decay_code" foreignKey="" implied="false" onDeleteCascade="false" table="l_decays"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="dataset_code" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <index name="sqlite_autoindex_decay_codes_1" unique="true">
+            <column ascending="true" name="decay_code"/>
+         </index>
+      </table>
+      <table name="decay_radiations" numRows="165033" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="parent_nucid" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="parent_l_seqno" nullable="true" remarks="" size="2000000000" type="INT(10)">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="z" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="2" name="n" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="3" name="daughter_nucid" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="4" name="z_dau" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="5" name="n_dau" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="6" name="daughter_l_seqno" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="7" name="daughter_l_en" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="8" name="daughter_l_en_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="9" name="daughter_l_en_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="10" name="daughter_l_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="11" name="daughter_l_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="12" name="daughter_l_jp" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="13" name="daughter_g_seqno" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="14" name="decay_code" nullable="true" remarks="" size="2000000000" type="INT(10)">
+            <parent column="decay_code" foreignKey="" implied="false" onDeleteCascade="false" table="decay_codes"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="15" name="type_a" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="16" name="type_b" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="17" name="type_c" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="18" name="ec_energy" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="19" name="ec_energy_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="20" name="ec_energy_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="21" name="ec_energy_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="22" name="ec_energy_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="23" name="bpec_intensity" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="24" name="bpec_intensity_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="25" name="bpec_intensity_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="26" name="bpec_intensity_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="27" name="bpec_intensity_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="28" name="ec_intensity" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="29" name="ec_intensity_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="30" name="ec_intensity_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="31" name="ec_intensity_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="32" name="ec_intensity_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="33" name="b_logft" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="34" name="b_logft_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="35" name="b_logft_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="36" name="b_logft_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="37" name="b_logft_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="38" name="intensity" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="39" name="intensity_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="40" name="intensity_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="41" name="intensity_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="42" name="intensity_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="43" name="b_trans_type" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="44" name="energy" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="45" name="energy_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="46" name="energy_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="47" name="energy_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="48" name="energy_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="49" name="a_hindrance" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="50" name="a_hindrance_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="51" name="a_hindrance_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="52" name="a_hindrance_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="53" name="a_hindrance_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="54" name="b_endpoint" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="55" name="b_endpoint_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="56" name="b_endpoint_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="57" name="b_endpoint_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="58" name="b_endpoint_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="59" name="d_energy_x" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="60" name="d_energy_x_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="61" name="d_energy_x_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="62" name="d_energy_x_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="63" name="d_energy_x_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="64" name="g_conv_coeff" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="65" name="g_conv_coeff_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="66" name="g_conv_coeff_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="67" name="g_conv_coeff_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="68" name="g_conv_coeff_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="69" name="g_mr" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="70" name="g_mr_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="71" name="g_mr_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="72" name="g_mr_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="73" name="g_mr_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="74" name="g_multip" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="75" name="g_final_l_jp" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="76" name="g_final_l_en" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="77" name="g_final_l_en_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="78" name="g_final_l_en_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="79" name="g_final_l_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="80" name="g_final_l_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="81" name="g_final_l_seqno" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="82" name="r_seqno" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <index name="idx_decay_radiations_daughter" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+         <index name="idx_decay_radiations_decay" unique="false">
+            <column ascending="true" name="decay_code"/>
+         </index>
+         <index name="idx_decay_radiations_en" unique="false">
+            <column ascending="true" name="energy_num"/>
+         </index>
+         <index name="idx_decay_radiations_int" unique="false">
+            <column ascending="true" name="intensity_num"/>
+         </index>
+         <index name="idx_decay_radiations_nucid" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+         </index>
+         <index name="idx_decay_radiations_type_a" unique="false">
+            <column ascending="true" name="type_a"/>
+         </index>
+         <index name="idx_decay_radiations_type_b" unique="false">
+            <column ascending="true" name="type_b"/>
+         </index>
+         <index name="idx_decay_radiations_type_c" unique="false">
+            <column ascending="true" name="type_c"/>
+         </index>
+         <index name="idx_decay_radiations_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="idx_decay_radiations_za_dau" unique="false">
+            <column ascending="true" name="z_dau"/>
+            <column ascending="true" name="n_dau"/>
+         </index>
+         <index name="sqlite_autoindex_decay_radiations_1" unique="true">
+            <column ascending="true" name="r_seqno"/>
+         </index>
+      </table>
+      <table name="descriptions" numRows="5" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="item" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="short_desc" nullable="true" remarks="" size="2000000000" type="VARCHAR(50)"/>
+         <column autoUpdated="false" digits="10" id="1" name="long_desc" nullable="true" remarks="" size="2000000000" type="VARCHAR(200)"/>
+         <index name="sqlite_autoindex_descriptions_1" unique="true">
+            <column ascending="true" name="item"/>
+         </index>
+      </table>
+      <table name="ensdf" numRows="7355" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="file" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="idenfification" nullable="true" remarks="" size="2000000000" type="VARCHAR(60)"/>
+         <column autoUpdated="false" digits="10" id="1" name="date_ensdf" nullable="true" remarks="" size="2000000000" type="VARCHAR(20)"/>
+         <column autoUpdated="false" digits="10" id="2" name="eval_type" nullable="true" remarks="" size="2000000000" type="VARCHAR(20)"/>
+         <column autoUpdated="false" digits="10" id="3" name="authors" nullable="true" remarks="" size="2000000000" type="VARCHAR(60)"/>
+         <column autoUpdated="false" digits="10" id="4" name="date_cut" nullable="true" remarks="" size="2000000000" type="VARCHAR(60)"/>
+         <index name="sqlite_autoindex_ensdf_1" unique="true">
+            <column ascending="true" name="file"/>
+         </index>
+      </table>
+      <table name="gammas" numRows="282079" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="g_seqno" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="3" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INT(10)">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="4" name="energy" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="5" name="energy_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="6" name="energy_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="7" name="energy_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="8" name="energy_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="9" name="energy_series" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="10" name="rel_photon_intens" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="11" name="rel_photon_intens_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="12" name="rel_photon_intens_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="13" name="rel_photon_intens_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="14" name="rel_photon_intens_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="15" name="multipolarity" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="16" name="mixing_ratio" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="17" name="mixing_ratio_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="18" name="mixing_ratio_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="19" name="mixing_ratio_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="20" name="mixing_ratio_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="21" name="tot_conv_coeff" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="22" name="tot_conv_coeff_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="23" name="tot_conv_coeff_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="24" name="tot_conv_coeff_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="25" name="tot_conv_coeff_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="26" name="bew" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="27" name="bew_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="28" name="bew_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="29" name="bew_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="30" name="bew_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="31" name="bew_order" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="32" name="bmw" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="33" name="bmw_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="34" name="bmw_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="35" name="bmw_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="36" name="bmw_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="37" name="bmw_order" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="38" name="questionable" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="39" name="final_l_seqno" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <index name="idx_gammas__nucid" unique="false">
+            <column ascending="true" name="nucid"/>
+         </index>
+         <index name="idx_gammas_cc" unique="false">
+            <column ascending="true" name="tot_conv_coeff"/>
+         </index>
+         <index name="idx_gammas_energy" unique="false">
+            <column ascending="true" name="energy_num"/>
+         </index>
+         <index name="idx_gammas_final_l_seqno" unique="false">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="final_l_seqno"/>
+         </index>
+         <index name="idx_gammas_l_seqno" unique="false">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+         <index name="idx_gammas_mix" unique="false">
+            <column ascending="true" name="mixing_ratio_num"/>
+         </index>
+         <index name="idx_gammas_multip" unique="false">
+            <column ascending="true" name="multipolarity"/>
+         </index>
+         <index name="idx_gammas_series" unique="false">
+            <column ascending="true" name="energy_series"/>
+         </index>
+         <index name="idx_gammas_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="sqlite_autoindex_gammas_1" unique="true">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="g_seqno"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+      </table>
+      <table name="ind_fy" numRows="9092" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="PARENT_NUCID" nullable="false" remarks="" size="2000000000" type="VARCHAR(5)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="DAUGHTER_NUCID" nullable="false" remarks="" size="2000000000" type="VARCHAR(5)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="L_SEQNO" nullable="false" remarks="" size="2000000000" type="INT(11)"/>
+         <column autoUpdated="false" digits="10" id="2" name="THER_YIELD_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="3" name="THER_YIELD_UNC_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="4" name="FAST_YIELD_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="5" name="FAST_YIELD_UNC_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="6" name="MEV_14_YIELD_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="7" name="MEV_14_YIELD_UNC_NUM" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <index name="idx_ify_dau" unique="false">
+            <column ascending="true" name="DAUGHTER_NUCID"/>
+         </index>
+         <index name="idx_ify_parent" unique="false">
+            <column ascending="true" name="PARENT_NUCID"/>
+         </index>
+         <index name="sqlite_autoindex_ind_fy_1" unique="true">
+            <column ascending="true" name="PARENT_NUCID"/>
+            <column ascending="true" name="DAUGHTER_NUCID"/>
+            <column ascending="true" name="L_SEQNO"/>
+         </index>
+      </table>
+      <table name="l_decays" numRows="9358" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INT(10)">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="3" name="decay_code" nullable="false" remarks="" size="2000000000" type="INT(10)">
+            <parent column="decay_code" foreignKey="" implied="false" onDeleteCascade="false" table="decay_codes"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="4" name="daughter_nucid" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="5" name="z_dau" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="6" name="n_dau" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="7" name="perc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="8" name="perc_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="9" name="perc_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="10" name="perc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="11" name="perc_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="12" name="alpha_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="13" name="alpha_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="14" name="beta_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="15" name="beta_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="16" name="ce_auger_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="17" name="ce_auger_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="18" name="photon_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="19" name="photon_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="20" name="unplaced_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="21" name="unplaced_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="22" name="recoil_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="23" name="recoil_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="24" name="neutrino_tot_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="25" name="neutrino_tot_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="26" name="q_gsgs_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="27" name="q_gsgs_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="28" name="file_decay" nullable="true" remarks="" size="2000000000" type="VARCHAR(20)"/>
+         <index name="idx_l_decays_daughter" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+         <index name="idx_l_decays_decay" unique="false">
+            <column ascending="true" name="decay_code"/>
+         </index>
+         <index name="idx_l_decays_nucid" unique="false">
+            <column ascending="true" name="nucid"/>
+         </index>
+         <index name="idx_l_decays_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="idx_l_decays_za_dau" unique="false">
+            <column ascending="true" name="z_dau"/>
+            <column ascending="true" name="n_dau"/>
+         </index>
+         <index name="sqlite_autoindex_l_decays_1" unique="true">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="l_seqno"/>
+            <column ascending="true" name="decay_code"/>
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+      </table>
+      <table name="levels" numRows="184450" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="false" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)">
+            <child column="parent_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="gammas"/>
+            <child column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="l_decays"/>
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INT(10)">
+            <child column="parent_l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="gammas"/>
+            <child column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="l_decays"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="3" name="energy" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="4" name="energy_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="5" name="energy_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="6" name="energy_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="7" name="energy_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="8" name="energy_series" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="9" name="half_life" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="10" name="half_life_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="11" name="half_life_units" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="12" name="half_life_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="13" name="half_life_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="14" name="half_life_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="15" name="half_life_sec" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="16" name="half_life_sec_unc" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="17" name="jp" nullable="true" remarks="" size="2000000000" type="VARCHAR(30)"/>
+         <column autoUpdated="false" digits="10" id="18" name="parity" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="19" name="jp_order" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="20" name="jp_weak" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="21" name="quadrupole_em" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="22" name="quadrupole_em_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="23" name="quadrupole_em_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="24" name="quadrupole_em_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="25" name="quadrupole_em_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="26" name="dipole_mm" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="27" name="dipole_mm_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="28" name="dipole_mm_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="29" name="dipole_mm_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="30" name="dipole_mm_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="31" name="metastable" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="32" name="questionable" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="33" name="configuration" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="34" name="isospin" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <index name="idx_levels_energy" unique="false">
+            <column ascending="true" name="energy_num"/>
+         </index>
+         <index name="idx_levels_hl" unique="false">
+            <column ascending="true" name="half_life_sec"/>
+         </index>
+         <index name="idx_levels_nucid" unique="false">
+            <column ascending="true" name="nucid"/>
+         </index>
+         <index name="idx_levels_series" unique="false">
+            <column ascending="true" name="energy_series"/>
+         </index>
+         <index name="idx_levels_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="sqlite_autoindex_levels_1" unique="true">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+      </table>
+      <table name="nuclides" numRows="3380" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="true" remarks="" size="2000000000" type="INT(10)"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="VARCHAR(10)">
+            <child column="DAUGHTER_NUCID" foreignKey="" implied="false" onDeleteCascade="false" table="cum_fy"/>
+            <child column="PARENT_NUCID" foreignKey="" implied="false" onDeleteCascade="false" table="cum_fy"/>
+            <child column="daughter_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="DAUGHTER_NUCID" foreignKey="" implied="false" onDeleteCascade="false" table="ind_fy"/>
+            <child column="PARENT_NUCID" foreignKey="" implied="false" onDeleteCascade="false" table="ind_fy"/>
+            <child column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="elem_symbol" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="3" name="charge_radius" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="4" name="charge_radius_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="5" name="charge_radius_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="6" name="charge_radius_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="7" name="charge_radius_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="8" name="atomic_mass" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="9" name="atomic_mass_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="10" name="atomic_mass_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="11" name="atomic_mass_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="12" name="atomic_mass_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="13" name="mass_excess" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="14" name="mass_excess_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="15" name="mass_excess_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="16" name="mass_excess_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="17" name="mass_excess_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="18" name="binding_en" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="19" name="binding_en_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="20" name="binding_en_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="21" name="binding_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="22" name="binding_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="23" name="beta_decay_en" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="24" name="beta_decay_en_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="25" name="beta_decay_en_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="26" name="beta_decay_en_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="27" name="beta_decay_en_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="28" name="s2n" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="29" name="s2n_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="30" name="s2n_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="31" name="s2n_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="32" name="s2n_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="33" name="s2p" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="34" name="s2p_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="35" name="s2p_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="36" name="s2p_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="37" name="s2p_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="38" name="qa" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="39" name="qa_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="40" name="qa_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="41" name="qa_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="42" name="qa_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="43" name="qbmn" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="44" name="qbmn_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="45" name="qbmn_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="46" name="qbmn_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="47" name="qbmn_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="48" name="sn" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="49" name="sn_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="50" name="sn_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="51" name="sn_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="52" name="sn_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="53" name="sp" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="54" name="sp_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="55" name="sp_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="56" name="sp_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="57" name="sp_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="58" name="qec" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="59" name="qec_unc" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="60" name="qec_limit" nullable="true" remarks="" size="2000000000" type="VARCHAR(10)"/>
+         <column autoUpdated="false" digits="10" id="61" name="qec_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="62" name="qec_unc_num" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="63" name="abundance" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="64" name="abundance_unc" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="65" name="ther_n_capture" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="66" name="ther_n_capture_unc" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="67" name="westcott_g" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="68" name="reson_int" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="69" name="reson_int_unc" nullable="true" remarks="" size="2000000000" type="DOUBLE"/>
+         <column autoUpdated="false" digits="10" id="70" name="file" nullable="true" remarks="" size="2000000000" type="VARCHAR(20)"/>
+         <index name="idx_nuclides__n" unique="false">
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="idx_nuclides__z" unique="false">
+            <column ascending="true" name="z"/>
+         </index>
+         <index name="sqlite_autoindex_nuclides_1" unique="true">
+            <column ascending="true" name="nucid"/>
+         </index>
+      </table>
+   </tables>
+</database>

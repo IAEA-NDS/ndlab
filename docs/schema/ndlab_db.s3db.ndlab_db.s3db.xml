@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="./ndlab_db.s3db" schema="ndlab_db.s3db" type="SQLite - 3.7.2">
+   <tables>
+      <table name="cum_fy" numRows="9060" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="parent_nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="daughter_nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="2" name="ther_yield" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="3" name="ther_yield_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="4" name="fast_yield" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="fast_yield_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="6" name="mev_14_yield" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="7" name="mev_14_yield_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <index name="idx_cfy_dau" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+         <index name="idx_cfy_parent" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+         </index>
+         <index name="idx_pt_parent" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+         </index>
+         <index name="sqlite_autoindex_cum_fy_1" unique="true">
+            <column ascending="true" name="parent_nucid"/>
+            <column ascending="true" name="daughter_nucid"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+      </table>
+      <table name="decay_modes" numRows="68" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="mode" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="0" name="code" nullable="false" remarks="" size="2000000000" type="INTEGER">
+            <child column="decay_code" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="decay_code" foreignKey="" implied="false" onDeleteCascade="false" table="l_decays"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="desc" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+      </table>
+      <table name="decay_radiations" numRows="156558" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="parent_nucid" nullable="true" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="parent_l_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="z" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="2" name="n" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="3" name="daughter_nucid" nullable="true" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="4" name="z_dau" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="5" name="n_dau" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="6" name="adopted_daughter_l_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="7" name="adopted_daughter_g_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="8" name="decay_code" nullable="true" remarks="" size="2000000000" type="INTEGER">
+            <parent column="code" foreignKey="" implied="false" onDeleteCascade="false" table="decay_modes"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="9" name="type_a" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="10" name="type_b" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="11" name="type_c" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="12" name="ec_energy" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="13" name="ec_energy_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="14" name="ec_energy_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="15" name="bpec_intensity" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="16" name="bpec_intensity_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="17" name="bpec_intensity_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="18" name="ec_intensity" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="19" name="ec_intensity_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="20" name="ec_intensity_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="21" name="b_logft" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="22" name="b_logft_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="23" name="b_logft_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="24" name="intensity" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="25" name="intensity_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="26" name="intensity_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="27" name="b_trans_type" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="28" name="energy" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="29" name="energy_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="30" name="energy_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="31" name="a_hindrance" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="32" name="a_hindrance_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="33" name="a_hindrance_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="34" name="b_endpoint" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="35" name="b_endpoint_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="36" name="b_endpoint_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="37" name="d_energy_x" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="38" name="d_energy_x_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="39" name="d_energy_x_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="40" name="r_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="41" name="energy_nu" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="42" name="energy_nu_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="43" name="energy_nu_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <index name="idx_decay_radiations_d_level" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+            <column ascending="true" name="adopted_daughter_l_seqno"/>
+         </index>
+         <index name="idx_decay_radiations_daughter" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+         <index name="idx_decay_radiations_decay" unique="false">
+            <column ascending="true" name="decay_code"/>
+         </index>
+         <index name="idx_decay_radiations_nucid" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+         </index>
+         <index name="idx_decay_radiations_p_level" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+            <column ascending="true" name="parent_l_seqno"/>
+         </index>
+         <index name="idx_decay_radiations_type_a" unique="false">
+            <column ascending="true" name="type_a"/>
+         </index>
+         <index name="idx_decay_radiations_type_b" unique="false">
+            <column ascending="true" name="type_b"/>
+         </index>
+         <index name="idx_decay_radiations_type_c" unique="false">
+            <column ascending="true" name="type_c"/>
+         </index>
+         <index name="idx_decay_radiations_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="idx_decay_radiations_za_dau" unique="false">
+            <column ascending="true" name="z_dau"/>
+            <column ascending="true" name="n_dau"/>
+         </index>
+      </table>
+      <table name="descriptions" numRows="5" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="item" nullable="false" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="0" name="short_desc" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="1" name="long_desc" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <index name="sqlite_autoindex_descriptions_1" unique="true">
+            <column ascending="true" name="item"/>
+         </index>
+      </table>
+      <table name="dr_gammas" numRows="0" remarks="" type="VIEW">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="2" name="g_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="3" name="l_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="4" name="energy" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="energy_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="6" name="energy_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="7" name="rel_photon_intens" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="8" name="rel_photon_intens_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="9" name="rel_photon_intens_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="10" name="multipolarity" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="11" name="mixing_ratio" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="12" name="mixing_ratio_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="13" name="mixing_ratio_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="14" name="tot_conv_coeff" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="15" name="tot_conv_coeff_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="16" name="tot_conv_coeff_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="17" name="bew" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="18" name="bew_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="19" name="bew_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="20" name="bew_order" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="21" name="bmw" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="22" name="bmw_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="23" name="bmw_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="24" name="bmw_order" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="25" name="questionable" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="26" name="final_l_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="27" name="parent_nucid" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="28" name="parent_l_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="29" name="decay_code" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="30" name="intensity" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="31" name="intensity_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="32" name="intensity_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+      </table>
+      <table name="dr_photon_totals" numRows="84860" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="parent_nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="parent_l_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="1" name="energy" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="2" name="energy_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="3" name="intensity" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="4" name="intensity_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="cnt" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="6" name="type" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <index name="idx_ptot_energy" unique="false">
+            <column ascending="true" name="energy"/>
+         </index>
+         <index name="idx_ptot_parent" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+         </index>
+         <index name="sqlite_autoindex_dr_photon_totals_1" unique="true">
+            <column ascending="true" name="parent_nucid"/>
+            <column ascending="true" name="parent_l_seqno"/>
+            <column ascending="true" name="energy"/>
+         </index>
+      </table>
+      <table name="gammas" numRows="273479" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="g_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="3" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="4" name="energy" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="energy_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="6" name="energy_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="7" name="rel_photon_intens" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="8" name="rel_photon_intens_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="9" name="rel_photon_intens_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="10" name="multipolarity" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="11" name="mixing_ratio" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="12" name="mixing_ratio_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="13" name="mixing_ratio_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="14" name="tot_conv_coeff" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="15" name="tot_conv_coeff_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="16" name="tot_conv_coeff_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="17" name="bew" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="18" name="bew_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="19" name="bew_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="20" name="bew_order" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="21" name="bmw" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="22" name="bmw_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="23" name="bmw_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="24" name="bmw_order" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="25" name="questionable" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="26" name="final_l_seqno" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <index name="idx_gammas__nucid" unique="false">
+            <column ascending="true" name="nucid"/>
+         </index>
+         <index name="idx_gammas_cc" unique="false">
+            <column ascending="true" name="tot_conv_coeff"/>
+         </index>
+         <index name="idx_gammas_energy" unique="false">
+            <column ascending="true" name="energy"/>
+         </index>
+         <index name="idx_gammas_final_l_seqno" unique="false">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="final_l_seqno"/>
+         </index>
+         <index name="idx_gammas_l_seqno" unique="false">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+         <index name="idx_gammas_mix" unique="false">
+            <column ascending="true" name="mixing_ratio"/>
+         </index>
+         <index name="idx_gammas_multip" unique="false">
+            <column ascending="true" name="multipolarity"/>
+         </index>
+         <index name="idx_gammas_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="sqlite_autoindex_gammas_1" unique="true">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="g_seqno"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+      </table>
+      <table name="ind_fy" numRows="9060" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="parent_nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="0" name="daughter_nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="1" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="2" name="ther_yield" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="3" name="ther_yield_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="4" name="fast_yield" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="fast_yield_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="6" name="mev_14_yield" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="7" name="mev_14_yield_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <index name="idx_ify_dau" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+         <index name="idx_ify_parent" unique="false">
+            <column ascending="true" name="parent_nucid"/>
+         </index>
+         <index name="sqlite_autoindex_ind_fy_1" unique="true">
+            <column ascending="true" name="parent_nucid"/>
+            <column ascending="true" name="daughter_nucid"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+      </table>
+      <table name="l_decays" numRows="9729" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER">
+            <parent column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="3" name="decay_code" nullable="false" remarks="" size="2000000000" type="INTEGER">
+            <parent column="code" foreignKey="" implied="false" onDeleteCascade="false" table="decay_modes"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="4" name="daughter_nucid" nullable="false" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="5" name="z_dau" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="6" name="n_dau" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="7" name="perc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="8" name="perc_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="9" name="perc_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="10" name="q_togs" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="11" name="q_togs_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <index name="idx_l_decays_daughter" unique="false">
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+         <index name="idx_l_decays_decay" unique="false">
+            <column ascending="true" name="decay_code"/>
+         </index>
+         <index name="idx_l_decays_nucid" unique="false">
+            <column ascending="true" name="nucid"/>
+         </index>
+         <index name="idx_l_decays_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="idx_l_decays_za_dau" unique="false">
+            <column ascending="true" name="z_dau"/>
+            <column ascending="true" name="n_dau"/>
+         </index>
+         <index name="sqlite_autoindex_l_decays_1" unique="true">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="l_seqno"/>
+            <column ascending="true" name="decay_code"/>
+            <column ascending="true" name="daughter_nucid"/>
+         </index>
+      </table>
+      <table name="levels" numRows="176065" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="false" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <child column="daughter_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="parent_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="gammas"/>
+            <child column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="l_decays"/>
+            <parent column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="nuclides"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="l_seqno" nullable="false" remarks="" size="2000000000" type="INTEGER">
+            <child column="adopted_daughter_l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="parent_l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="decay_radiations"/>
+            <child column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="gammas"/>
+            <child column="l_seqno" foreignKey="" implied="false" onDeleteCascade="false" table="l_decays"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="3" name="energy" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="4" name="energy_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="energy_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="6" name="half_life" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="7" name="half_life_unc" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="8" name="half_life_units" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="9" name="half_life_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="10" name="half_life_sec" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="11" name="half_life_sec_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="12" name="jp_str" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="13" name="j" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="14" name="parity" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="15" name="jp_order" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="16" name="jp_method" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="17" name="quadrupole_em" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="18" name="quadrupole_em_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="19" name="quadrupole_em_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="20" name="dipole_mm" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="21" name="dipole_mm_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="22" name="dipole_mm_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="23" name="metastable" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="24" name="questionable" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="25" name="configuration" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="26" name="isospin" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <index name="idx_levels_energy" unique="false">
+            <column ascending="true" name="energy"/>
+         </index>
+         <index name="idx_levels_hl" unique="false">
+            <column ascending="true" name="half_life_sec"/>
+         </index>
+         <index name="idx_levels_j" unique="false">
+            <column ascending="true" name="j"/>
+         </index>
+         <index name="idx_levels_jp" unique="false">
+            <column ascending="true" name="j"/>
+            <column ascending="true" name="parity"/>
+         </index>
+         <index name="idx_levels_jp_ord" unique="false">
+            <column ascending="true" name="j"/>
+            <column ascending="true" name="parity"/>
+            <column ascending="true" name="jp_order"/>
+         </index>
+         <index name="idx_levels_jps" unique="false">
+            <column ascending="true" name="jp_str"/>
+         </index>
+         <index name="idx_levels_nucid" unique="false">
+            <column ascending="true" name="nucid"/>
+         </index>
+         <index name="idx_levels_za" unique="false">
+            <column ascending="true" name="z"/>
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="sqlite_autoindex_levels_1" unique="true">
+            <column ascending="true" name="nucid"/>
+            <column ascending="true" name="l_seqno"/>
+         </index>
+      </table>
+      <table name="nuclides" numRows="3423" remarks="" type="TABLE">
+         <column autoUpdated="false" digits="10" id="-1" name="z" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="0" name="n" nullable="true" remarks="" size="2000000000" type="INTEGER"/>
+         <column autoUpdated="false" digits="10" id="1" name="nucid" nullable="false" remarks="" size="2000000000" type="TEXT">
+            <child column="daughter_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="cum_fy"/>
+            <child column="parent_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="cum_fy"/>
+            <child column="parent_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="dr_photon_totals"/>
+            <child column="daughter_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="ind_fy"/>
+            <child column="parent_nucid" foreignKey="" implied="false" onDeleteCascade="false" table="ind_fy"/>
+            <child column="nucid" foreignKey="" implied="false" onDeleteCascade="false" table="levels"/>
+         </column>
+         <column autoUpdated="false" digits="10" id="2" name="elem_symbol" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="3" name="charge_radius" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="4" name="charge_radius_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="5" name="charge_radius_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="6" name="atomic_mass" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="7" name="atomic_mass_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="8" name="atomic_mass_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="9" name="mass_excess" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="10" name="mass_excess_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="11" name="mass_excess_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="12" name="binding_en" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="13" name="binding_en_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="14" name="binding_en_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="15" name="beta_decay_en" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="16" name="beta_decay_en_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="17" name="beta_decay_en_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="18" name="s2n" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="19" name="s2n_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="20" name="s2n_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="21" name="s2p" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="22" name="s2p_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="23" name="s2p_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="24" name="qa" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="25" name="qa_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="26" name="qa_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="27" name="qbmn" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="28" name="qbmn_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="29" name="qbmn_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="30" name="sn" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="31" name="sn_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="32" name="sn_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="33" name="sp" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="34" name="sp_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="35" name="sp_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="36" name="qec" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="37" name="qec_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="38" name="qec_limit" nullable="true" remarks="" size="2000000000" type="TEXT"/>
+         <column autoUpdated="false" digits="10" id="39" name="abundance" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <column autoUpdated="false" digits="10" id="40" name="abundance_unc" nullable="true" remarks="" size="2000000000" type="REAL"/>
+         <index name="idx_nuclides__n" unique="false">
+            <column ascending="true" name="n"/>
+         </index>
+         <index name="idx_nuclides__z" unique="false">
+            <column ascending="true" name="z"/>
+         </index>
+         <index name="sqlite_autoindex_nuclides_1" unique="true">
+            <column ascending="true" name="nucid"/>
+         </index>
+      </table>
+   </tables>
+</database>

@@ -1,0 +1,2609 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>./ndlab_db.s3db Database</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="bower/admin-lte/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower/ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+  <!-- Code Mirror -->
+  <link rel="stylesheet" href="bower/codemirror/codemirror.css">
+  <!-- Fonts -->
+  <link href='fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+  <link href='fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower/admin-lte/dist/css/AdminLTE.min.css">
+  <!-- Salvattore -->
+  <link rel="stylesheet" href="bower/salvattore/salvattore.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="bower/admin-lte/dist/css/skins/_all-skins.min.css">
+  <!-- SchemaSpy -->
+  <link rel="stylesheet" href="schemaSpy.css">
+  
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="bower/html5shiv/html5shiv.min.js"></script>
+  <script src="bower/respond/respond.min.js"></script>
+  <![endif]-->
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
+  <header class="main-header">
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><b>./ndlab_db.s3db</b> Database</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>
+			<li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+			<li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+			<li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+			<li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>				
+			<li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+			<li><a href="routines.html" title="Procedures and functions">Routines</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </header>
+  <!-- Main content -->
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>Columns</h1>
+      </section>
+      <!-- Main content -->
+      <section class="content">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+			  <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+              <h3 class="box-title">Columns</h3>
+            </div>	
+            <div class="box-body">
+				<div class="row">
+					<div id="button_group_one" class="col-md-3 col-sm-6"></div>
+					<div id="button_group_two" class="col-md-2 col-sm-4 pull-right text-right"></div>
+				</div>
+				<table id="column_table" class="table table-bordered table-striped dataTable" role="grid">
+				<thead align='left'>
+					<tr>
+					  <th>Table</th>
+					  <th>Type</th>
+					  <th>Column</th>
+					  <th>Type</th>
+					  <th>Size</th>
+					  <th title='Are nulls allowed?'>Nulls</th>
+					  <th title='Is column automatically updated?'>Auto</th>
+					  <th title='Default value'>Default</th>
+					  <th title='Comments' class="toggle"><span>Comments</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>beta_decay_en</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>energy_nu_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>final_l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>bpec_intensity</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td>mev_14_yield_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>ec_intensity_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>energy_nu</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>parent_l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>d_energy_x_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bew</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>daughter_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>s2n_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>descriptions</td>
+					 <td>Table</td>
+					 <td>short_desc</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bew_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>daughter_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>abundance</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>mixing_ratio</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_modes</td>
+					 <td>Table</td>
+					 <td>mode</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>parity</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>tot_conv_coeff</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>dipole_mm_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bmw_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bew_order</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qbmn_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_endpoint_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>quadrupole_em</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>questionable</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>intensity</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>intensity_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>tot_conv_coeff</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_trans_type</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qa_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>energy_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>dipole_mm</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n_dau</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>sp_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>tot_conv_coeff_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bmw</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qec_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>charge_radius_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>energy_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>mixing_ratio_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td>q_togs</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_logft_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>a_hindrance_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>sp_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bew_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bmw_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qbmn_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>mixing_ratio_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>half_life_sec</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>ec_intensity</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>bpec_intensity_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td>mev_14_yield_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>tot_conv_coeff_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>energy_nu_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>energy</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>energy_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>charge_radius</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qec</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>sn_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>energy_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bew_order</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>z</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>g_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>tot_conv_coeff_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>sp</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>multipolarity</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>mass_excess_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>parent_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>intensity_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>bpec_intensity_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>questionable</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>energy_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>final_l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>s2p_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>intensity</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>a_hindrance</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>binding_en</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>daughter_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>ec_energy_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td>intensity</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>half_life_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>mixing_ratio_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bew</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td>q_togs_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>half_life_unc</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>g_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_modes</td>
+					 <td>Table</td>
+					 <td>desc</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>tot_conv_coeff_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>multipolarity</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>beta_decay_en_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>s2n_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>energy</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>energy_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>adopted_daughter_g_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>rel_photon_intens</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>ec_energy_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td>energy_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>descriptions</td>
+					 <td>Table</td>
+					 <td>long_desc</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>parent_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>mass_excess_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>half_life_units</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td>ther_yield_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qa</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>j</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qec_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td>cnt</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>energy_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td>fast_yield_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>intensity_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>r_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>binding_en_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qa_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>rel_photon_intens_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z_dau</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>half_life</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_logft</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td>ther_yield_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>n_dau</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>s2p_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td>type</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>qbmn</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>intensity_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>rel_photon_intens_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_endpoint_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>parent_l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_photon_totals</td>
+					 <td>Table</td>
+					 <td>intensity_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td>mev_14_yield</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bmw_order</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td>fast_yield_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bew_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td>perc_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_endpoint</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>charge_radius_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>metastable</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>energy</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bmw</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>atomic_mass</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>decay_code</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_modes</td>
+					 <td>Table</td>
+					 <td>code</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>jp_str</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>sn</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>parent_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>s2n</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>quadrupole_em_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bmw_order</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>beta_decay_en_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td>perc_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>rel_photon_intens</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>parent_l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>bew_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>z_dau</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>n</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>elem_symbol</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>atomic_mass_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>a_hindrance_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>half_life_sec_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bmw_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>sn_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>d_energy_x_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>configuration</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>energy_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>decay_code</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>parent_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td>ther_yield</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td>fast_yield</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>descriptions</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>item</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>daughter_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>ec_energy</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>bmw_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>b_logft_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>type_b</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>decay_code</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>ec_intensity_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>questionable</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>isospin</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td>ther_yield</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>type_a</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>mixing_ratio_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td>mev_14_yield</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>rel_photon_intens_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>d_energy_x</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>type_c</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>atomic_mass_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>mass_excess</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td>energy</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>mixing_ratio</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>ind_fy</td>
+					 <td>Table</td>
+					 <td>fast_yield</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>cum_fy</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>parent_nucid</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title=''></td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>dipole_mm_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>jp_method</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td>quadrupole_em_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>decay_radiations</td>
+					 <td>Table</td>
+					 <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i>adopted_daughter_l_seqno</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>s2p</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>abundance_unc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>nuclides</td>
+					 <td>Table</td>
+					 <td>binding_en_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>dr_gammas</td>
+					 <td>View</td>
+					 <td>energy</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>levels</td>
+					 <td>Table</td>
+					 <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i>jp_order</td>
+					 <td>INTEGER</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>gammas</td>
+					 <td>Table</td>
+					 <td>rel_photon_intens_limit</td>
+					 <td>TEXT</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+					<tr>
+					 <td>l_decays</td>
+					 <td>Table</td>
+					 <td>perc</td>
+					 <td>REAL</td>
+					 <td>2000000000</td>
+					 <td title='nullable'>√</td>
+					 <td title=''></td>
+					 <td>null</td>
+					 <td></td>
+					</tr>
+								</tbody>
+				</table>				
+			</div>
+		</div>	
+      </section>
+	  <script>
+          var config = {
+	          pagination: true
+          }
+	  </script>    
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div>
+      <div class="pull-right hidden-xs">
+        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+      </div>
+      <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.0.0</a></strong>
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="bower/datatables.net/jquery.dataTables.min.js"></script>
+<script src="bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+<script src="bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="bower/datatables.net-buttons/buttons.html5.min.js"></script>
+<script src="bower/datatables.net-buttons/buttons.print.min.js"></script>
+<script src="bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+<!-- SheetJS -->
+<script src="bower/js-xlsx/xlsx.full.min.js"></script>
+<!-- pdfmake -->
+<script src="bower/pdfmake/pdfmake.min.js"></script>
+<script src="bower/pdfmake/vfs_fonts.js"></script>
+<!-- SlimScroll -->
+<script src="bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+<!-- Salvattore -->
+<script src="bower/salvattore/salvattore.min.js"></script>
+<!-- AnchorJS -->
+<script src="bower/anchor-js/anchor.min.js"></script>
+<!-- CodeMirror -->
+<script src="bower/codemirror/codemirror.js"></script>
+<script src="bower/codemirror/sql.js"></script>
+<!-- AdminLTE App -->
+<script src="bower/admin-lte/dist/js/app.min.js"></script>
+<script src="column.js"></script>
+<script src="schemaSpy.js"></script>
+</body>
+</html>

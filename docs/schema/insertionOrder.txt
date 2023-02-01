@@ -1,0 +1,10 @@
+nuclides
+decay_modes
+levels
+dr_photon_totals
+cum_fy
+gammas
+ind_fy
+l_decays
+decay_radiations
+descriptions

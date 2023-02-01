@@ -1,0 +1,34 @@
+Introduction
+=============
+
+| **NDlab** is a package for nuclear (mainly)structure data analysis, calculation, and modelling. 
+| It caters for users that need to process and navigate the data via software, having no knowledge about the formats and data structures of the original data libraries. 
+
+.. attention::
+
+   Please consult the :ref:`Database section <database-label>` to assess whether the NDLab dabase fits your needs, 
+   and note that for accurate structure and decay description, one should revert to the `ENSDF <https://nndc.bnl.gov/ensdf>`_ database.
+
+
+| Ndlab is available on GitHub ???
+| and it comprises:
+
+* an engine to retrive data and plug them into data manipulation tools like `pandas <https://pandas.pydata.org/docs/user_guide/10min.html>`_ and `plotly <https://plotly.com/python/>`_
+
+* a set of Python classes and functions to write custom code 
+* a Notebook with tutorial 
+
+Its main features are:
+
+* intuitive way to interrogate the database
+* smooth connection to Python data analysis and plotting packages
+* customizable Pyhton modules to write algorithms and simulations
+* automatic propagation of uncertainties when performing calculations
+* option to directly access the underlying SQL database
+
+
+| In case you wanted to collaborate to the development, you should write
+| to nds.contact-point@iaea.org
+
+Besides this documentation, the package comprises ndlab-tutorial.ipynb, a Notebook with live exercises and examples.
+

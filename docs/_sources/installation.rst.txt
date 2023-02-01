@@ -1,0 +1,83 @@
+.. _installation-label:
+
+1. Get NDLab
+------------
+
+**NDLab** can be downloaded from `GitHub <https://github.com/IAEA-NDS/ndlab/>`_ 
+
+
+Decompress the file *ndlab_db.s3db.zip* in the same directory, keeping the resulting file name as *ndlab_db.s3db*.
+This is what should be listed in the installation directory:
+
+ ::
+
+    ndlab_db.s3db
+    ndlab_db.s3db.zip
+    ndlab-tutorial.ipynb
+    ndlab.py
+    ndlabdblink.py
+    ndlaborm.py
+
+| The zip file can then be removed. 
+| A Notebook tutorial is available in *ndlab-tutorial.ipynb*
+
+2. Dependencies
+---------------
+
+**NDLab** uses the `uncertainties <https://pythonhosted.org/uncertainties/>`_ page, wich can be installed using 
+
+ ::
+
+    $ pip install --upgrade uncertainties
+
+3. Test it's working
+---------------------
+
+**Open** a Python shell and issue the following statements
+
+::
+
+ >>> 
+ >>> import ndlab as nl
+ >>> 
+ >>> # check if the database is reachable
+ >>> nl.dblink.connected
+ True
+ >>> 
+ >>> # try a simple data retrieval
+ >>> print(nl.csv_data("NUCLIDE.Z","NUCLIDE.NUC_ID = '135XE'"))
+ z
+ 54
+ >>> 
+
+4. Optional packages
+--------------------
+
+Pandas and Plotly 
+~~~~~~~~~~~~~~~~~
+
+To run the NDLab Notebook tutorial you will find useful `plotly <https://plotly.com/python/getting-started/>`_ for data visualization, and `pandas <https://pandas.pydata.org/docs/getting_started/install.html>`_ for data analysis
+
+To install plotly:
+
+ ::
+
+    $ pip install plotly
+
+    # to work with Jupyter lab
+    $ pip install ipywidgets
+    $ jupyter labextension install jupyterlab-plotly
+
+To install pandas:
+
+ ::
+
+    $ pip install pandas
+
+
+
+SQLite DB Browser
+~~~~~~~~~~~~~~~~~
+
+| Description and schema of the underlying SQL database are presented `here <./schema/index.html>`_.
+| The engine is `SQLite <https://sqlite.org/index.html>`_. To directly access it with a graphical interface, download the  `DB Browser for SQLite <https://sqlitebrowser.org>`_

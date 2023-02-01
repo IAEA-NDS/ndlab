@@ -1,0 +1,1574 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. ndlab module &mdash; NDLab 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/ndlab.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. The search engine" href="database.html" />
+    <link rel="prev" title="1. Legend" href="entities.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/ndlab.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">1. Get NDLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#retrieval-functions">1. Retrieval functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-fields-parameter">2. The fields parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-filter-parameter">3. The filter parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#examples">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#j-p-values">5. J <sup>p</sup> values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#decay-modes">6. Decay modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#three-lines-of-code">7. Three lines of code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#sql-through-python">8. SQL through Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#sql-direct-connection">9. SQL direct connection</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#programming-overview">1. Programming overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#classes-and-functions">2. Classes and functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#pandas">3. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#work-with-measurements">3. Work with Measurements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Constructing &quot;fields&quot; and &quot;filter&quot;</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">1. Legend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#entities">2. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#constants">3. Constants</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. ndlab module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#querying-the-database">Querying the database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions-to-retrieve-data">Functions to retrieve data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions-to-handle-sql">Functions to handle SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-values-and-uncertainities">Managing Values and Uncertainities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions-creating-data-model-classes">Functions creating data model classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-model-classes">Data model classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-nuclide">ndlab.Nuclide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-level">ndlab.Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-gamma">ndlab.Gamma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-l-decay">ndlab.L_decay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-cum-fy">ndlab.Cum_fy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-ind-fy">ndlab.Ind_fy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-decay-radiation">ndlab.Decay_radiation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-gamma">ndlab.Dr_gamma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-alpha">ndlab.Dr_alpha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-betam">ndlab.Dr_betam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-betap">ndlab.Dr_betap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-anti-nu">ndlab.Dr_anti_nu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-nu">ndlab.Dr_nu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ndlab-dr-delayed">ndlab.Dr_delayed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#ndlaborm-module">2. ndlaborm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#ndlabdblink-module">3. ndlabdblink module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Database</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="database.html">1. The search engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NDLab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>1. ndlab module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/code.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><strong>This Section</strong> details the classes and functions on which the <a class="reference internal" href="programming.html#programming-label"><span class="std std-ref">Programming</span></a> section is built</p>
+<div class="section" id="ndlab-module">
+<h1>1. ndlab module<a class="headerlink" href="#ndlab-module" title="Permalink to this heading">¶</a></h1>
+<p><strong>This</strong> is the user entry point to interrogate the database and to write custom software. It provides:</p>
+<ul class="simple">
+<li><p>Functions to <a class="reference internal" href="#retrieve-label"><span class="std std-ref">retrieve data</span></a></p></li>
+<li><p>Functions to <a class="reference internal" href="#handle-sql-label"><span class="std std-ref">handle SQL</span></a></p></li>
+<li><p>Classes to <a class="reference internal" href="#qtt-label"><span class="std std-ref">handle values and uncertainites</span></a></p></li>
+<li><p>Classes modelling <a class="reference internal" href="#ndm-classes-label"><span class="std std-ref">nuclear structure</span></a></p></li>
+<li><p>Functions to <a class="reference internal" href="#ndm-function-label"><span class="std std-ref">create them</span></a></p></li>
+<li><p><a class="reference internal" href="#orm-label"><span class="std std-ref">Static classes</span></a> to build  the <a class="reference internal" href="interrogation.html#fields-label"><span class="std std-ref">fields</span></a> and  <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a> parameters</p></li>
+</ul>
+<p>This page documents the main functions the user should call, for full documentation see the <a class="reference external" href="_modules/ndlab.html">source code</a></p>
+<div class="section" id="querying-the-database">
+<h2>Querying the database<a class="headerlink" href="#querying-the-database" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="functions-to-retrieve-data">
+<span id="retrieve-label"></span><h3>Functions to retrieve data<a class="headerlink" href="#functions-to-retrieve-data" title="Permalink to this heading">¶</a></h3>
+<p>These take two parameters , see <a class="reference internal" href="interrogation.html#retrieval-functions"><span class="std std-ref">1. Retrieval functions</span></a>.
+Some of them are specific for feeding data into a pandas dataframe</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.csv_data">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">csv_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#csv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.csv_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSV data from a query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fields</strong> (<em>str</em>) – list of comma-separated <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+<li><p><strong>filter</strong> (<em>str</em>) – filter condition built with <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>CSV structure with the data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.Z, NUCLIDE.ATOMIC_MASS&quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.NUC_ID = &#39;135XE&#39;&quot;</span>
+
+<span class="n">csv</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">csv_data</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span><span class="n">z</span><span class="p">,</span><span class="n">atomic_mass</span>
+<span class="o">&gt;&gt;</span><span class="mi">54</span><span class="p">,</span><span class="mf">134907231.441</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.json_data">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">json_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#json_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.json_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>JSON data from a query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fields</strong> (<em>str</em>) – list of comma-separated <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+<li><p><strong>filter</strong> (<em>str</em>) – filter condition built with <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON structure with the result set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.Z, NUCLIDE.ATOMIC_MASS&quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.NUC_ID = &#39;135XE&#39;&quot;</span>
+
+<span class="n">json</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">json_data</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span><span class="p">[</span> <span class="p">{</span><span class="s1">&#39;z&#39;</span><span class="p">:</span><span class="s1">&#39;54&#39;</span>  <span class="p">,</span><span class="s1">&#39;atomic_mass&#39;</span><span class="p">:</span><span class="s1">&#39;134907231.441&#39;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.pandas_df">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">pandas_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pandas</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#pandas_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.pandas_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dataframe</p>
+<p>If the database is local, calls pandas’  read_sql method using <a class="reference internal" href="#ndlab.query_build" title="ndlab.query_build"><code class="xref py py-class docutils literal notranslate"><span class="pre">query_build</span></code></a> to build the query, and <a class="reference internal" href="#ndlab.query_con" title="ndlab.query_con"><code class="xref py py-class docutils literal notranslate"><span class="pre">query_con</span></code></a>
+to get the db connection</p>
+<p>If the database is remote, calls the server API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fields</strong> (<em>str</em>) – list of comma-separated <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+<li><p><strong>filter</strong> (<em>str</em>) – filter condition built with <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+<li><p><strong>pandas</strong> (<em>Object</em>) – the pandas module imported in the calling environment. E.g. pass when <code class="code docutils literal notranslate"><span class="pre">pd</span></code> when using <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the pandas dataframe</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.Z, NUCLIDE.ATOMIC_MASS&quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;NUCLIDE.NUC_ID = &#39;135XE&#39;&quot;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">pandas_df</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="n">pd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span>    <span class="n">z</span>   <span class="n">atomic_mass</span>
+<span class="o">&gt;&gt;</span><span class="mi">0</span>  <span class="mi">54</span>  <span class="mf">1.349072e+08</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.pandas_df_nl">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">pandas_df_nl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pandas</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#pandas_df_nl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.pandas_df_nl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Dataframe from a list of ndlab classes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>list</strong> (<em>List</em>) – list of ndlab class instances
+pandas (Object): the pandas module imported in the calling environment. E.g. pass when <code class="code docutils literal notranslate"><span class="pre">pd</span></code> when using <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the pandas dataframe</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">nuc</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">nuclide</span><span class="p">(</span><span class="s2">&quot;135XE&quot;</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">nuc</span><span class="o">.</span><span class="n">levels</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">pandas_df_nl</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">pd</span><span class="p">)</span>
+
+<span class="n">df</span>
+
+    <span class="n">z</span>       <span class="n">n</span>       <span class="n">nucid</span>   <span class="n">l_seqno</span> <span class="n">energy</span>  <span class="n">energy_unc</span>      <span class="n">half_life</span>       <span class="n">half_life_unc</span>   <span class="n">half_life_units</span> <span class="n">half_life_sec</span>   <span class="o">...</span>     <span class="n">jp_order</span>        <span class="n">jp_method</span>       <span class="n">jp_str</span>  <span class="n">quadrupole_em</span>   <span class="n">quadrupole_em_unc</span>       <span class="n">dipole_mm</span>       <span class="n">dipole_mm_unc</span>   <span class="n">questionable</span>    <span class="n">configuration</span>   <span class="n">isospin</span>
+<span class="mi">0</span>   <span class="mi">54</span>      <span class="mi">81</span>      <span class="mi">135</span><span class="n">XE</span>   <span class="mi">0</span>       <span class="mf">0.000</span>   <span class="mf">0.000000</span>        <span class="mf">9.14</span>    <span class="mf">0.02</span>    <span class="n">h</span>       <span class="mf">32904.0</span> <span class="o">...</span>     <span class="mi">1</span>       <span class="mi">0</span>       <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span>    <span class="mf">0.214</span>   <span class="mf">0.007</span>   <span class="mf">0.9032</span>  <span class="mf">0.0007</span>  <span class="n">NaN</span>     <span class="n">NaN</span>     <span class="n">NaN</span>
+<span class="mi">1</span>   <span class="mi">54</span>      <span class="mi">81</span>      <span class="mi">135</span><span class="n">XE</span>   <span class="mi">1</span>       <span class="mf">288.455</span> <span class="mf">0.000015</span>        <span class="mf">0.00</span>    <span class="mf">0.00</span>    <span class="n">NaN</span>     <span class="mf">0.0</span>     <span class="o">...</span>     <span class="mi">1</span>       <span class="mi">0</span>       <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span>    <span class="mf">0.000</span>   <span class="mf">0.000</span>   <span class="mf">0.0000</span>  <span class="mf">0.0000</span>  <span class="n">NaN</span>     <span class="n">NaN</span>     <span class="n">NaN</span>
+<span class="mi">2</span>   <span class="mi">54</span>      <span class="mi">81</span>      <span class="mi">135</span><span class="n">XE</span>   <span class="mi">2</span>       <span class="mf">526.551</span> <span class="mf">0.000013</span>        <span class="mf">15.29</span>   <span class="mf">0.05</span>    <span class="n">m</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.csv_nl">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">csv_nl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nl_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#csv_nl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.csv_nl" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSV from a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Ndm_base</span></code> classes</p>
+<p>for each instance, calls its csv() method and composes the overall result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nl_items</strong> (<em>Object</em><em>[</em><em>]</em>) – list with ndlab class instances</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the CSV</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>String</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nuc</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">nuclide</span><span class="p">(</span><span class="s2">&quot;135XE&quot;</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">nuc</span><span class="o">.</span><span class="n">levels</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">nl</span><span class="o">.</span><span class="n">csv_ndm</span><span class="p">(</span><span class="n">levels</span><span class="p">))</span>
+
+<span class="n">z</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">nucid</span><span class="p">,</span><span class="n">l_seqno</span><span class="p">,</span><span class="n">energy</span><span class="p">,</span><span class="n">energy_unc</span><span class="p">,</span><span class="n">half_life</span><span class="p">,</span><span class="n">half_life_unc</span><span class="p">,</span><span class="n">half_life_units</span><span class="p">,</span><span class="n">half_life_sec</span><span class="p">,</span><span class="n">half_life_sec_unc</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">parity</span><span class="p">,</span><span class="n">jp_order</span><span class="p">,</span><span class="n">jp_method</span><span class="p">,</span><span class="n">jp_str</span><span class="p">,</span><span class="n">quadrupole_em</span><span class="p">,</span><span class="n">quadrupole_em_unc</span><span class="p">,</span><span class="n">dipole_mm</span><span class="p">,</span><span class="n">dipole_mm_unc</span><span class="p">,</span><span class="n">questionable</span><span class="p">,</span><span class="n">configuration</span><span class="p">,</span><span class="n">isospin</span>
+<span class="mi">54</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">135</span><span class="n">XE</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">9.14</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="mf">32904.0</span><span class="p">,</span><span class="mf">72.0</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">,</span><span class="mf">0.214</span><span class="p">,</span><span class="mf">0.007</span><span class="p">,</span><span class="mf">0.9032</span><span class="p">,</span><span class="mf">0.0007</span><span class="p">,,,</span>
+<span class="mi">54</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">135</span><span class="n">XE</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">288.455</span><span class="p">,</span><span class="mf">1.5e-05</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,,,</span>
+<span class="mi">54</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">135</span><span class="n">XE</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">526.551</span><span class="p">,</span><span class="mf">1.3e-05</span><span class="p">,</span><span class="mf">15.29</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="mf">917.4</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">5.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,,,</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.pandas_csv_nl">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">pandas_csv_nl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nl_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#pandas_csv_nl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.pandas_csv_nl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text stream with CSV from a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Ndm_base</span></code> classes</p>
+<p>Ready to be plugged into pandas. For each instance, calls its csv() method and composes the overall result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nl_items</strong> (<em>Object</em><em>[</em><em>]</em>) – list with ndlab class instances</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>text stream  with the CSV</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>StringIO</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nuc</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">nuclide</span><span class="p">(</span><span class="s2">&quot;135XE&quot;</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">nuc</span><span class="o">.</span><span class="n">levels</span><span class="p">()</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">pandas_csv_nl</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span>
+
+<span class="n">stream</span>
+
+<span class="o">&lt;</span><span class="n">_io</span><span class="o">.</span><span class="n">StringIO</span> <span class="n">at</span> <span class="mh">0x7f7e20420d30</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functions-to-handle-sql">
+<span id="handle-sql-label"></span><h3>Functions to handle SQL<a class="headerlink" href="#functions-to-handle-sql" title="Permalink to this heading">¶</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.query_build">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">query_build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#query_build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.query_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>The SQL query associated with fields and filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fields</strong> (<em>str</em>) – list of comma-separated <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+<li><p><strong>filter</strong> (<em>str</em>) – filter condition built with <code class="xref py py-mod docutils literal notranslate"><span class="pre">ndlaborm</span></code> fields</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the SQL</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>String</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot; GAMMA.ENERGY &quot;</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;GAMMA.NUC.Z = 4 and GAMMA.START_LEVEL.ENERGY &gt; 700&quot;</span>
+
+<span class="n">sql</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">query_build</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+<span class="n">sql</span>
+
+<span class="s1">&#39;select gammas.energy from gammas,nuclides as gam_nuc,levels as gam_lev_s where gammas.nucid=gam_nuc.nucid and gammas.nucid = gam_lev_s.nucid and gammas.l_seqno = gam_lev_s.l_seqno and gam_nuc.z = 4 and gam_lev_s.energy &gt; 700&#39;</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.query_con">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">query_con</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#query_con"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.query_con" title="Permalink to this definition">¶</a></dt>
+<dd><p>The connection to the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The connection to the database</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot; select * from nuclides &quot;</span><span class="p">,</span> <span class="n">nl</span><span class="o">.</span><span class="n">query_con</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="managing-values-and-uncertainities">
+<span id="qtt-label"></span><h2>Managing Values and Uncertainities<a class="headerlink" href="#managing-values-and-uncertainities" title="Permalink to this heading">¶</a></h2>
+<p>Implementing the  <a class="reference external" href="https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html">ISO Vocabulary</a>,
+these classes are used as instance variables, see <a class="reference internal" href="#ndm-classes-label"><span class="std std-ref">below</span></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models the ISO VIM</p>
+<p>Upper class with only the name of the property</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Nominal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Nominal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Nominal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Nominal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models the ISO VIM</p>
+<p>Quantities without magnitude</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Quantity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Quantity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Quantity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Quantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models the ISO VIM and handles the uncertainties propagation with ufloat from the <a class="reference external" href="https://pythonhosted.org/uncertainties/">uncertainties</a> package</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ndlab.Quantity.sep">
+<span class="sig-name descname"><span class="pre">sep</span></span><a class="headerlink" href="#ndlab.Quantity.sep" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CSV separator to be used when dumping to CSV</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nominal</strong> (<em>string</em>) – name</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – float value</p></li>
+<li><p><strong>unc</strong> (<em>string</em>) – uncertainity as string</p></li>
+<li><p><strong>unc_num</strong> (<em>float</em>) – uncertainity as float</p></li>
+<li><p><strong>Operator</strong> – Operator</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Quantity.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'='</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Quantity.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Quantity.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Quantity from a value, and uncertainty, and an operator.</p>
+<p>Used internally from overloaded mathematical functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float</em>) – value</p></li>
+<li><p><strong>unc</strong> (<em>float</em>) – uncertainty</p></li>
+<li><p><strong>operator</strong> (<a class="reference internal" href="#ndlab.Operator" title="ndlab.Operator"><em>Operator</em></a>) – operator</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Quantity.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Quantity.csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Quantity.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the CSV representation of the quantity</p>
+<p>Returns:
+String: the CSV</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Quantity.ufloat">
+<span class="sig-name descname"><span class="pre">ufloat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Quantity.ufloat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Quantity.ufloat" title="Permalink to this definition">¶</a></dt>
+<dd><p>ufloat of the <a href="#id1"><span class="problematic" id="id2">`uncertainties &lt;https://pythonhosted.org/uncertainties/`__</span></a> package from <code class="xref py py-attr docutils literal notranslate"><span class="pre">value</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">uncertainty</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Operator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Operator</span></span><a class="reference internal" href="_modules/ndlab.html#Operator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Qualifier of a value, e.g. &gt;</p>
+<p>Contains the allowed modifiers and the rules of composition to handle matemathical operations between quantities</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Operator.compose">
+<span class="sig-name descname"><span class="pre">compose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ob</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Operator.compose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Operator.compose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rule for operators composition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oa</strong> (<a class="reference internal" href="#ndlab.Operator" title="ndlab.Operator"><em>Operator</em></a>) – operator of the first quantity</p></li>
+<li><p><strong>ob</strong> (<a class="reference internal" href="#ndlab.Operator" title="ndlab.Operator"><em>Operator</em></a>) – operator of the second quantity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>oa composed with ob</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ndlab.Operator" title="ndlab.Operator">Operator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Unit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Unit</span></span><a class="reference internal" href="_modules/ndlab.html#Unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Units of measure</p>
+</dd></dl>
+
+</div>
+<div class="section" id="functions-creating-data-model-classes">
+<span id="ndm-function-label"></span><h2>Functions creating data model classes<a class="headerlink" href="#functions-creating-data-model-classes" title="Permalink to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">The following functions directly populate the classes representing the nuclear data model.</div>
+<div class="line">They accept the optional <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a> parameter to apply conditions to the selection</div>
+<div class="line">For example, the <a class="reference internal" href="#ndlab.levels" title="ndlab.levels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.levels()</span></code></a> will populate  instances of <a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Level</span></code></a>.</div>
+</div>
+<p>A <a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Level</span></code></a> can also be indirectly created from an instance of <a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Nuclide</span></code></a>
+by accessing its <a class="reference internal" href="#ndlab.Nuclide.levels" title="ndlab.Nuclide.levels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.Nuclide.levels()</span></code></a> method</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.nuclide">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">nuclide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nucid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#nuclide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.nuclide" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Nuclide</span></code></a> from its identifyer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nucid</strong> (<em>str</em>) – mass+element symbol, e.g.135XE</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the <a class="reference internal" href="entities.html#nuclide"><span class="std std-ref">NUCLIDE</span></a> with this id</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide">Nuclide</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.nuclides">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">nuclides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#nuclides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.nuclides" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Nuclide</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#nuclide"><span class="std std-ref">NUCLIDE</span></a> entity</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide">Nuclide</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.levels">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#levels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Level</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#level"><span class="std std-ref">LEVEL</span></a> entity</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.Level" title="ndlab.Level">Level</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.gammas">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">gammas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#gammas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.gammas" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <a class="reference internal" href="#ndlab.Gamma" title="ndlab.Gamma"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Gamma</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#gamma"><span class="std std-ref">GAMMA</span></a> entity</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.Gamma" title="ndlab.Gamma">Gamma</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.l_decays">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">l_decays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#l_decays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.l_decays" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.L_decays</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#l-decay"><span class="std std-ref">L_DECAY</span></a> entity</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.L_decay" title="ndlab.L_decay">L_decay</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_gammas">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_gammas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_gammas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_gammas" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <a class="reference internal" href="#ndlab.Dr_gamma" title="ndlab.Dr_gamma"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_gamma</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-gamma"><span class="std std-ref">DR_GAMMA</span></a> entity</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.Dr_gamma" title="ndlab.Dr_gamma">Dr_gamma</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_alphas">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_alphas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_alphas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_alphas" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <a class="reference internal" href="#ndlab.Dr_alpha" title="ndlab.Dr_alpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_alpha</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-alpha"><span class="std std-ref">DR_ALPHA</span></a> entity</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.Dr_alpha" title="ndlab.Dr_alpha">Dr_alpha</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_beta_ms">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_beta_ms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_beta_ms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_beta_ms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_anti_nus">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_anti_nus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_anti_nus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_anti_nus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_beta_ps">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_beta_ps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_beta_ps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_beta_ps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_nus">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_nus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_nus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_nus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_xs">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_xs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_xs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_xs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_convels">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_convels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_convels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_convels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.dr_augers">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">dr_augers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#dr_augers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.dr_augers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.cum_fys">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">cum_fys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#cum_fys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.cum_fys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.ind_fys">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">ind_fys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#ind_fys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.ind_fys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ndlab.check_filter">
+<span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">check_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#check_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.check_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether a filter is okay when applied to a given function</p>
+<p>Filter should query only one table (besides embedded foreign keys)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filter</strong> (<em>str</em>) – the filter</p></li>
+<li><p><strong>function</strong> (<em>Function</em>) – the ndlab function accepting the filter</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="data-model-classes">
+<span id="ndm-classes-label"></span><h2>Data model classes<a class="headerlink" href="#data-model-classes" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="ndlab-nuclide">
+<h3>ndlab.Nuclide<a class="headerlink" href="#ndlab-nuclide" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Nuclide">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Nuclide</span></span><a class="reference internal" href="_modules/ndlab.html#Nuclide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Nuclide" title="Permalink to this definition">¶</a></dt>
+<dd><p>The properties of given Z and N pair</p>
+<p>Note that properties like Half-life, etc are to be accessed through its ground state (gs)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>int</em>) – number of protons</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of neutrons</p></li>
+<li><p><strong>nucid</strong> (<em>str</em>) – nuclide id mass + element symbol 135XE</p></li>
+<li><p><strong>charge_radius</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – charge radius</p></li>
+<li><p><strong>atomic_mass</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – atomic mass</p></li>
+<li><p><strong>mass_excess</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – mass excess</p></li>
+<li><p><strong>binding_en</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – binding en</p></li>
+<li><p><strong>beta_decay_en</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – beta decay energy</p></li>
+<li><p><strong>s2n</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – 2-neutron separation energy</p></li>
+<li><p><strong>s2p</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – 2-protons separation energy</p></li>
+<li><p><strong>qa</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – Q-value for alpha decay</p></li>
+<li><p><strong>abundance</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – natural abundance in mole fraction</p></li>
+<li><p><strong>gs</strong> (<a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><em>Level</em></a>) – ground state</p></li>
+<li><p><strong>daughters</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a><em>[</em><em>]</em>) – direct daughters of the nuclide, including excited states decays</p></li>
+<li><p><strong>parents</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a><em>[</em><em>]</em>) – parents of the nuclide</p></li>
+<li><p><strong>daughters_chain</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a><em>[</em><em>]</em>) – all possible offsprings of the nuclide</p></li>
+<li><p><strong>parents_chain</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a><em>[</em><em>]</em>) – all possible ancestors of the nuclide</p></li>
+<li><p><strong>decays</strong> (<em>Decay</em><em>[</em><em>]</em>) – all decays, including fron metastable states, for which decay radiations are given</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Nuclide.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Nuclide.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Nuclide.gammas">
+<span class="sig-name descname"><span class="pre">gammas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Nuclide.gammas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Nuclide.gammas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gamma transitions between levels of this nuclide</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#nuclide"><span class="std std-ref">NUCLIDE</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Gamma" title="ndlab.Gamma"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Gamma</span></code></a> of this nuclide</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Nuclide.levels">
+<span class="sig-name descname"><span class="pre">levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Nuclide.levels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Nuclide.levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Energy levels of this nuclide</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#nuclide"><span class="std std-ref">NUCLIDE</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Level</span></code></a> of this nuclide</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-level">
+<h3>ndlab.Level<a class="headerlink" href="#ndlab-level" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Level">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Level</span></span><a class="reference internal" href="_modules/ndlab.html#Level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Properties of an energy eigenstate of a Nuclide</p>
+<p>z, n, and nucid are for convenience. The can be accessed also through the ‘nuclide’ property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>int</em>) – number of protons of the nuclide</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of neutron of the nuclide</p></li>
+<li><p><strong>nucid</strong> (<em>string</em>) – nuclide’s indentifier, e.g. 135XE</p></li>
+<li><p><strong>l_seqno</strong> (<em>int</em>) – sequential number or the level, 0 being the g.s.</p></li>
+<li><p><strong>energy</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – energy in keV</p></li>
+<li><p><strong>half_life</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – H-l in the units given by the evaluation</p></li>
+<li><p><strong>half_life_units</strong> (<em>string</em>) – units given by the evaluation</p></li>
+<li><p><strong>half_life_sec</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – H-l given in seconds</p></li>
+<li><p><strong>jp_str</strong> (<em>string</em>) – Jp given in the evaluation</p></li>
+<li><p><strong>jp_order</strong> (<em>int</em>) – occurrence of this Jp value, 0 being the one closest to the g.s.</p></li>
+<li><p><strong>j</strong> (<em>float</em>) – Angular momentum assignment given by <a class="reference internal" href="interrogation.html#jp-label"><span class="std std-ref">RIPL</span></a></p></li>
+<li><p><strong>parity</strong> (<em>int</em>) – parity assignment given by <a class="reference internal" href="interrogation.html#jp-label"><span class="std std-ref">RIPL</span></a></p></li>
+<li><p><strong>jp_method</strong> (<em>string</em>) – method of jp assignment by <a class="reference internal" href="interrogation.html#jp-label"><span class="std std-ref">RIPL</span></a></p></li>
+<li><p><strong>quadrupole_em</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – Quadrupole electric moment in barn</p></li>
+<li><p><strong>dipole_mm</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – Dipole magnetic moment in nuclear magnetons</p></li>
+<li><p><strong>questionable</strong> (<em>string</em>) – whether the existence  is questionable</p></li>
+<li><p><strong>configuration</strong> (<em>string</em>) – nuclear configuration</p></li>
+<li><p><strong>isospin</strong> (<em>string</em>) – isospin</p></li>
+<li><p><strong>nuclide</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – access to the nuclide</p></li>
+<li><p><strong>daughters</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a><em>[</em><em>]</em>) – the direct daughters of the level decay, if any</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Level.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Level.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Level.decays">
+<span class="sig-name descname"><span class="pre">decays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Level.decays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Level.decays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decay modes of this level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#nuclide"><span class="std std-ref">NUCLIDE</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.L_decays</span></code> of this level</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Level.gammas">
+<span class="sig-name descname"><span class="pre">gammas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#Level.gammas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Level.gammas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gamma transitions starting from this level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#level"><span class="std std-ref">LEVEL</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Gamma" title="ndlab.Gamma"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Gamma</span></code></a> starting from this level</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-gamma">
+<h3>ndlab.Gamma<a class="headerlink" href="#ndlab-gamma" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Gamma">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Gamma</span></span><a class="reference internal" href="_modules/ndlab.html#Gamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Electromagnetic transition between levels of the same nuclide</p>
+<p>z, n, and nucid can be accessed also through the ‘nuclide’ property. l_seqno can be accessed though the ‘level’ property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> (<em>int</em>) – number of protons of the nuclide</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – number of neutron of the nuclide</p></li>
+<li><p><strong>nucid</strong> (<em>string</em>) – nuclide’s indentifier, e.g. 135XE</p></li>
+<li><p><strong>l_seqno</strong> (<em>int</em>) – sequential number of the start level, 0 being the g.s.</p></li>
+<li><p><strong>g_seqno</strong> (<em>int</em>) – sequential number of this gamma within the start level gammas, 0 being the lowest energy one</p></li>
+<li><p><strong>nuclide</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the  nuclide</p></li>
+<li><p><strong>start_level</strong> (<a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><em>Level</em></a>) – the start level</p></li>
+<li><p><strong>end_level</strong> (<a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><em>Level</em></a>) – the start level</p></li>
+<li><p><strong>energy</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – energy [keV]</p></li>
+<li><p><strong>rel_photon_intens</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – relative photon intensity %</p></li>
+<li><p><strong>multipolarity</strong> (<em>string</em>) – multipolarity</p></li>
+<li><p><strong>mixing_ratio</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – mixing ratio</p></li>
+<li><p><strong>tot_conv_coeff</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – total conversion coefficient</p></li>
+<li><p><strong>bew</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – reduced electric transition probabilities in Weisskopf units</p></li>
+<li><p><strong>bew_order</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – bew order</p></li>
+<li><p><strong>bmw</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – reduced magnetic transition probabilities in Weisskopf units</p></li>
+<li><p><strong>bmw_order</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – bmx order</p></li>
+<li><p><strong>questionable</strong> (<em>string</em>) – whether the existence  is questionable</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Gamma.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Gamma.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-l-decay">
+<h3>ndlab.L_decay<a class="headerlink" href="#ndlab-l-decay" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.L_decay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">L_decay</span></span><a class="reference internal" href="_modules/ndlab.html#L_decay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decay process</p>
+<p>Description of a level decay: parent, daughter, radiations, etc…
+nucid , l_seqno, and daughter_nucid are for convenience. The can be accessed also through the ‘nuclide’, ‘daughter’, and ‘level’ properties, respectively</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nucid</strong> (<em>string</em>) – decaying nuclide indentifier, e.g. 135XE</p></li>
+<li><p><strong>l_seqno</strong> (<em>int</em>) – sequential number or the decaying level, 0 being the g.s.</p></li>
+<li><p><strong>daughter_nucid</strong> (<em>string</em>) – daughter nuclide indentifier, e.g. 135XE</p></li>
+<li><p><strong>perc</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – decays per 100 decay of the parent</p></li>
+<li><p><strong>nuclide</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the parent nuclide</p></li>
+<li><p><strong>level</strong> (<a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><em>Level</em></a>) – the parent level</p></li>
+<li><p><strong>daughters</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a><em>[</em><em>]</em>) – the direct daughters of the  decay</p></li>
+<li><p><strong>nuclide</strong> – the parent nuclide</p></li>
+<li><p><strong>mode</strong> (<em>Decay_mode</em>) – the decay mode</p></li>
+<li><p><strong>toten_recoil</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – total recoil energy [keV]</p></li>
+<li><p><strong>q_togs</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – Q-value  [keV]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.alphas">
+<span class="sig-name descname"><span class="pre">alphas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.alphas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.alphas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alpha radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-alpha"><span class="std std-ref">DR_ALPHA</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Dr_alpha" title="ndlab.Dr_alpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_alpha</span></code></a> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.annihil">
+<span class="sig-name descname"><span class="pre">annihil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.annihil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.annihil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Annihilation radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-annihil"><span class="std std-ref">DR_ANNIHIL</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_annihil</span></code> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.anti_nus">
+<span class="sig-name descname"><span class="pre">anti_nus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.anti_nus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.anti_nus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Anti neutrino radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-anti-nu"><span class="std std-ref">DR_ANTI_NU</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Dr_anti_nu" title="ndlab.Dr_anti_nu"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_anti_nu</span></code></a> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.augers">
+<span class="sig-name descname"><span class="pre">augers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.augers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.augers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auger electrons from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-auger"><span class="std std-ref">DR_AUGER</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_auger</span></code> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.betas_m">
+<span class="sig-name descname"><span class="pre">betas_m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.betas_m"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.betas_m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta- radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-betam"><span class="std std-ref">DR_BETAM</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Dr_betam" title="ndlab.Dr_betam"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_betam</span></code></a> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.betas_p">
+<span class="sig-name descname"><span class="pre">betas_p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.betas_p"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.betas_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta+ radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-betap"><span class="std std-ref">DR_BETAP</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Dr_betap" title="ndlab.Dr_betap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_betap</span></code></a> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.convels">
+<span class="sig-name descname"><span class="pre">convels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.convels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.convels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conversion electrons from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-conv-el"><span class="std std-ref">DR_CONV_EL</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.dr_conv_el</span></code> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.L_decay.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.dr_photon_tot">
+<span class="sig-name descname"><span class="pre">dr_photon_tot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.dr_photon_tot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.dr_photon_tot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Photons emitted in the decay process, if any, regardless of the daughter or the radiation type (X- or Gamma- ray)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-photon-total"><span class="std std-ref">DR_PHOTON_TOTAL</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_photon_tot</span></code> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.gammas">
+<span class="sig-name descname"><span class="pre">gammas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.gammas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.gammas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gamma radiation from this decay</p>
+<p>The radiation is emitted by the daughter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-gamma"><span class="std std-ref">DR_GAMMA</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <a class="reference internal" href="#ndlab.Dr_gamma" title="ndlab.Dr_gamma"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_gamma</span></code></a> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.nus">
+<span class="sig-name descname"><span class="pre">nus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.nus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.nus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neutrino radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-nu"><span class="std std-ref">DR_NU</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_Nu</span></code> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.tot_measured_en">
+<span class="sig-name descname"><span class="pre">tot_measured_en</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.tot_measured_en"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.tot_measured_en" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total energy emitted per 100 decays of the parent</p>
+<p>calculated as sum (energy * intensity / 100 ) * Q_togs over all radiations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the total energy</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity">Quantity</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.tot_rad_en">
+<span class="sig-name descname"><span class="pre">tot_rad_en</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radiations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.tot_rad_en"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.tot_rad_en" title="Permalink to this definition">¶</a></dt>
+<dd><p>Energy emitted by a set of radiations</p>
+<p>calculated as energy * intensity / 100</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>radiations</strong> (<a class="reference internal" href="#ndlab.Decay_radiation" title="ndlab.Decay_radiation"><em>Decay_radiation</em></a>) – list of any decay radiations</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the energy</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity">Quantity</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.L_decay.xs">
+<span class="sig-name descname"><span class="pre">xs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NO_PARAM'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ndlab.html#L_decay.xs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.L_decay.xs" title="Permalink to this definition">¶</a></dt>
+<dd><p>X-rays radiation from this decay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<em>str</em>) – <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a>  passed to the function by the user. It may contain only fields of the <a class="reference internal" href="entities.html#dr-x"><span class="std std-ref">DR_X</span></a> entity</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the  list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Dr_x</span></code> from this decay</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-cum-fy">
+<h3>ndlab.Cum_fy<a class="headerlink" href="#ndlab-cum-fy" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Cum_fy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Cum_fy</span></span><a class="reference internal" href="_modules/ndlab.html#Cum_fy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Cum_fy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cumulative fission yield</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the fissioning nuclide</p></li>
+<li><p><strong>daughter</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the product nuclide</p></li>
+<li><p><strong>thermal</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – thermal neutron fission yield</p></li>
+<li><p><strong>fast</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – fast neutron fission yield</p></li>
+<li><p><strong>mev_14</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – 14 MeV neutron fission yield</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Cum_fy.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Cum_fy.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-ind-fy">
+<h3>ndlab.Ind_fy<a class="headerlink" href="#ndlab-ind-fy" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Ind_fy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Ind_fy</span></span><a class="reference internal" href="_modules/ndlab.html#Ind_fy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Ind_fy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Independent fission yield</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the fissioning nuclide</p></li>
+<li><p><strong>daughter</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the product nuclide</p></li>
+<li><p><strong>thermal</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – thermal neutron fission yield</p></li>
+<li><p><strong>fast</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – fast neutron fission yield</p></li>
+<li><p><strong>mev_14</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – 14 MeV neutron fission yield</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Ind_fy.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Ind_fy.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-decay-radiation">
+<h3>ndlab.Decay_radiation<a class="headerlink" href="#ndlab-decay-radiation" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Decay_radiation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Decay_radiation</span></span><a class="reference internal" href="_modules/ndlab.html#Decay_radiation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Decay_radiation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for decay radiations</p>
+<p>Its Attributes are inherited by all the Dr_* classes describing each type of radiation</p>
+<p>parent_nucid , parent_l_seqno, daughter_nucid, and daughter_l_seqno are for convenience. The can be accessed also through the ‘nuclide’, ‘daughter’, and ‘level’ properties, respectively</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent_nucid</strong> (<em>string</em>) – parent nuclide indentifier, e.g. 135XE</p></li>
+<li><p><strong>parent_l_seqno</strong> (<em>int</em>) – sequential number or the parent level, 0 being the g.s.</p></li>
+<li><p><strong>daughter_nucid</strong> (<em>string</em>) – daughter nuclide indentifier, e.g. 135XE</p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="#ndlab.Nuclide" title="ndlab.Nuclide"><em>Nuclide</em></a>) – the  parent nuclide</p></li>
+<li><p><strong>daughter</strong> (<a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><em>Level</em></a>) – the daughter nuclide</p></li>
+<li><p><strong>fed_level</strong> (<a class="reference internal" href="#ndlab.Level" title="ndlab.Level"><em>Level</em></a>) – the daughter level populated by the decay</p></li>
+<li><p><strong>decay</strong> (<a class="reference internal" href="#ndlab.L_decay" title="ndlab.L_decay"><em>L_decay</em></a>) – access to the level decay, with all the other radiations emitted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-gamma">
+<h3>ndlab.Dr_gamma<a class="headerlink" href="#ndlab-dr-gamma" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_gamma">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_gamma</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_gamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gamma decay radiation</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Gamma" title="ndlab.Gamma"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gamma</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_gamma.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_gamma.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-alpha">
+<h3>ndlab.Dr_alpha<a class="headerlink" href="#ndlab-dr-alpha" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_alpha">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_alpha</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_alpha"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alpha decay radiation</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Decay_radiation" title="ndlab.Decay_radiation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decay_radiation</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><strong>hindrance</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – hindrance factor</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_alpha.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_alpha.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-betam">
+<h3>ndlab.Dr_betam<a class="headerlink" href="#ndlab-dr-betam" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_betam">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_betam</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_betam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_betam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta- decay radiation</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Decay_radiation" title="ndlab.Decay_radiation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decay_radiation</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logft</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – Log ft</p></li>
+<li><p><strong>endpoint</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – end point energy [keV]</p></li>
+<li><p><strong>trans_type</strong> (<em>String</em>) – transition type</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_betam.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_betam.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-betap">
+<h3>ndlab.Dr_betap<a class="headerlink" href="#ndlab-dr-betap" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_betap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_betap</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_betap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_betap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta+/Electron Capture decay radiation</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Dr_betam" title="ndlab.Dr_betam"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dr_betam</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ec_energy</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – electron capture energy</p></li>
+<li><p><strong>intensity</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – beta+ intensity</p></li>
+<li><p><strong>ec_intensity</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – electron capture intensity</p></li>
+<li><p><strong>bpec_intensity</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – beta+ + electron capture intensity</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_betap.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_betap.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-anti-nu">
+<h3>ndlab.Dr_anti_nu<a class="headerlink" href="#ndlab-dr-anti-nu" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_anti_nu">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_anti_nu</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_anti_nu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_anti_nu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Anti neutrino  decay radiation</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Decay_radiation" title="ndlab.Decay_radiation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decay_radiation</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_anti_nu.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_anti_nu.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-nu">
+<h3>ndlab.Dr_nu<a class="headerlink" href="#ndlab-dr-nu" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_nu">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_nu</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_nu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_nu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neutrino decay radiation</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Decay_radiation" title="ndlab.Decay_radiation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decay_radiation</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_nu.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_nu.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ndlab-dr-delayed">
+<h3>ndlab.Dr_delayed<a class="headerlink" href="#ndlab-dr-delayed" title="Permalink to this heading">¶</a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="ndlab.Dr_delayed">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ndlab.</span></span><span class="sig-name descname"><span class="pre">Dr_delayed</span></span><a class="reference internal" href="_modules/ndlab.html#Dr_delayed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ndlab.Dr_delayed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delayed particle emission</p>
+<p>Inherits all the attributes of <a class="reference internal" href="#ndlab.Decay_radiation" title="ndlab.Decay_radiation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decay_radiation</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy_x</strong> (<a class="reference internal" href="#ndlab.Quantity" title="ndlab.Quantity"><em>Quantity</em></a>) – energy of the intermediate state</p></li>
+<li><p><strong>particle</strong> (<em>string</em>) – delayed particle</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ndlab.Dr_delayed.csv">
+<span class="sig-name descname"><span class="pre">csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ndlab.Dr_delayed.csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a String with the CSV representation for an instance of class</p>
+<p>the attribute _cst_title stores the first row of the csv with the field names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the csv</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="ndlaborm-module">
+<span id="orm-label"></span><h1>2. ndlaborm module<a class="headerlink" href="#ndlaborm-module" title="Permalink to this heading">¶</a></h1>
+<p>The static classes in this module are described in <a class="reference internal" href="entities.html#ndm-label"><span class="std std-ref">here</span></a>. They are the building blocks of the
+<a class="reference internal" href="interrogation.html#fields-label"><span class="std std-ref">fields</span></a> and <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">filter</span></a> parameters of
+the data-retrieval <a class="reference internal" href="#querying-the-database"><span class="std std-ref">functions</span></a>.</p>
+<p>For example to refer to the level-energy, use <code class="code docutils literal notranslate"><span class="pre">LEVEL.ENERGY</span></code></p>
+<p>You can access the code and its comments <a class="reference external" href="_modules/ndlaborm.html">here</a></p>
+</div>
+<div class="section" id="ndlabdblink-module">
+<h1>3. ndlabdblink module<a class="headerlink" href="#ndlabdblink-module" title="Permalink to this heading">¶</a></h1>
+<p>Talks with the database and retrieves the data. You can access <a class="reference external" href="_modules/ndlabdblink.html">the code and its comments</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="database.html" class="btn btn-neutral float-right" title="1. The search engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="entities.html" class="btn btn-neutral float-left" title="1. Legend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, IAEA Nuclear Data Section.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

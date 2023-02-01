@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat.ttf");
+}
+
+.keys {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+body {
+  color: rgb(50, 50, 50);
+  font-family: "Montserrat", sans-serif;
+}
+
+b, strong {
+    font-weight:600;
+    color: #666
+}
+
+.fa-home:before, .icon-home:before {
+    content: url('../home.png');
+    padding-bottom: 0px;
+    /*border: 1px solid rgb(70, 105, 200);
+    border-radius:4px;
+   background : rgb(70, 105, 200)*/
+   
+}
+
+.rst-content .toctree-wrapper > p.caption, h1, h2, h3, h4, h5, h6, legend {
+    margin-top: 0;
+    font-weight: 600;
+    color: #666;
+    font-family:Montserrat, ff-tisa-web-pro, Georgia, Arial, sans-serif
+}
+
+.wy-nav-content {
+    padding: 1.618em 3.236em;
+    height: 100%;
+    max-width: 850px;
+    margin:auto
+}
+
+
+.wy-nav-top {
+  background: rgb(72, 108, 200)
+}
+
+.wy-side-nav-search {
+  background: rgb(70, 105, 200)
+    /*    rgb(97,120,166)  */
+}
+
+/*
+.icon-home:before {
+   content: url(iaea.PNG)
+}
+.rst-content .admonition-title:before{
+  content:'Rules'
+}
+*/
+
+
+.wy-nav-side {
+  background: rgb(90, 90, 90)
+}
+
+.wy-menu-vertical p.caption {
+  color: rgb(112, 148, 240)
+}
