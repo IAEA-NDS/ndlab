@@ -643,7 +643,7 @@ class _DR_BASE(_Base):
     DAUGHTER = NUCLIDE( '{"column" : "daughter_nucid", "fk":{"table" : "nuclides", "alias" : "dr_nuc_d" , "column" : ["daughter_nucid=dr_nuc_d.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  "}')
     DAUGHTER_FED_LEVEL = LEVEL('{"column" : "adopted_daughter_l_seqno", "fk": {"table" : "levels", "alias" : "dr_lev_d" , "column" : ["adopted_daughter_l_seqno = dr_lev_d.l_seqno", "parent_nucid = dr_lev_d.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  "}')
     MODE = Column('decay_code','code of the decay, specify it  using one of the DECAY_* constants') 
-    INTENSITY_= Column('intensity', _QTT + 'absolute intensity of the radiation per 100 decays of the parent')
+    INTENSITY = Column('intensity', _QTT + 'absolute intensity of the radiation per 100 decays of the parent')
     INTENSITY_UNC = Column('intensity_unc')
     INTENSITY_LIMIT = Column('intensity_limit')
     ENERGY = Column('energy', _QTT + 'energy of the radiation [keV]')
@@ -763,8 +763,14 @@ class DR_ANTI_NU(_DR_BASE):
 class DR_NU(DR_ANTI_NU):
     desc =  "neutrino decay radiation"
     data = json.loads('{"table" : "decay_radiations", "where" :"type_a=\'B+\'"}')
-    ENERGY_EC = Column('energy_ec', _QTTL + 'energy [keV]')
+    ENERGY_EC = Column('energy_nu_ec', _QTTL + 'energy [keV] for emission via electron capture')
     ENERGY_EC_UNC = Column('energy_ec_unc')
+    ENERGY_EC_LIMIT = Column('energy_ec_unc')
+    INTENSITY_EC = Column('ec_intensity', _QTT + 'electron capture intensity per 100 decays of the parent')
+    INTENSITY_EC_UNC = Column('ec_intensity_unc')
+    INTENSITY_EC_LIMIT = Column('ec_intensity_limit')
+    
+
     def __init__(self,name):
         super().__init__(name)
 
@@ -781,7 +787,7 @@ class DR_DELAYED(_DR_BASE):
         super().__init__(name)
 
 class DR_PHOTON_TOTAL(_Base):
-    desc =  "photon decay radiation (regardless whether gamma or X)"
+    desc =  "photon decay radiation (regardless whether gamma or X, and summed on all the branching modes)"
     data = json.loads('{"table" : "dr_photon_totals"}')
                                                                                                                                                                                   
     PARENT = NUCLIDE( '{"column" : "parent_nucid", "fk":{"table" : "nuclides","alias" : "pt_nuc_p" ,  "column" : ["parent_nucid=pt_nuc_p.nucid"]},"desc": "' + _LNK + ' access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  "}')
@@ -814,6 +820,8 @@ class DR_GAMMA(_GM):
     INTENSITY_UNC = Column('intensity_unc')
     INTENSITY_LIMIT = Column('intensity_limit')
 
+    PARENT_Z =  Column('parent_z')
+    PARENT_N = Column('parent_n')
     PARENT_NUC_ID =  Column('parent_nucid')
     PARENT_LEVEL_SEQNO = Column('parent_l_seqno')
 

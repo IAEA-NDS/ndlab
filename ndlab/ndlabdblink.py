@@ -49,6 +49,7 @@ class Dblink:
     def _query_exec(self,fields, conditions=""):
         """From users' parameters parses an sql query, and executes it
         """
+       
         try:
             return self._con_lite.execute(self.query_build(fields, conditions))
         except:
@@ -61,7 +62,8 @@ class Dblink:
                 try:
                     return self._con_lite.execute(sql)
                 except sqlite3.Error as er:
-                    print('Query error: %s' % (' '.join(er.args)))
+                    print('"Error , check the rules for the fields and filter parameters\n": %s' % (' '.join(er.args)))
+                    print(sql)
                     #print("Exception class is: ", er.__class__)
                     #print('SQLite traceback: ')
                     #exc_type, exc_value, exc_tb = sys.exc_info()

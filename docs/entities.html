@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. ndlab module" href="code.html" />
-    <link rel="prev" title="1. Programming overview" href="programming.html" /> 
+    <link rel="prev" title="0. Cheat sheet" href="programming.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,10 +97,12 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#change-log">5. Change log</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="interrogation.html">1. Retrieval functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#retrieval-functions">1. Retrieval functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-fields-parameter">2. The fields parameter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-filter-parameter">3. The filter parameter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interrogation.html#examples">4. Examples</a></li>
@@ -112,7 +114,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Programming</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="programming.html">1. Programming overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#programming-overview">1. Programming overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programming.html#classes-and-functions">2. Classes and functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programming.html#pandas">3. Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programming.html#work-with-measurements">3. Work with Measurements</a></li>
@@ -352,7 +355,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
 <div class="line"><strong>HINDRANCE</strong>             <em>(Q)</em> hindrance factor</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -368,7 +371,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENDPOINT</strong>              <em>(Q)</em> end-point energy [keV]</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>LOGFT</strong>                 <em>(Q)</em> log ft</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
@@ -389,7 +392,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>EC_INTENSITY</strong>          <em>(Q)</em> electron capture intensity per 100 decays of the parent</div>
 <div class="line"><strong>ENDPOINT</strong>              <em>(Q)</em> end-point energy [keV]</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>LOGFT</strong>                 <em>(Q)</em> log ft</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
@@ -406,7 +409,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -420,8 +423,10 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line-block">
 <div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
-<div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>ENERGY_</strong>               <em>(Q)</em> average energy [keV] when emitted via b+</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent when emitted via b+</div>
+<div class="line"><strong>ENERGY_EC_</strong>                    <em>(Q)</em> average energy [keV] when emitted via electron capture</div>
+<div class="line"><strong>INTENSITY_EC_</strong>         <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent when emitted via electron capture</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -437,7 +442,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
 <div class="line"><strong>ENERGY_X</strong>              <em>(Q)</em> energy of the intermediate state after beta decay and before emetting the particle [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -491,7 +496,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -507,7 +512,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -523,7 +528,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -538,7 +543,7 @@ Here  is presented the list of all available entities with which to construct th
 <div class="line"><strong>DAUGHTER</strong>              <em>(L)</em>  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY</div>
 <div class="line"><strong>DAUGHTER_FED_LEVEL</strong>            <em>(L)</em>  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY</div>
 <div class="line"><strong>ENERGY</strong>                <em>(Q)</em> energy of the radiation [keV]</div>
-<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiatio per 100 decays of the parent</div>
+<div class="line"><strong>INTENSITY_</strong>            <em>(Q)</em> absolute intensity of the radiation per 100 decays of the parent</div>
 <div class="line"><strong>MODE</strong>                  code of the decay, specify it  using one of the DECAY_* constants</div>
 <div class="line"><strong>PARENT</strong>                <em>(L)</em>  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z</div>
 <div class="line"><strong>PARENT_LEVEL</strong>          <em>(L)</em>  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY</div>
@@ -743,7 +748,7 @@ Here  is presented the list of all available entities with which to construct th
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="code.html" class="btn btn-neutral float-right" title="1. ndlab module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="programming.html" class="btn btn-neutral float-left" title="1. Programming overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="programming.html" class="btn btn-neutral float-left" title="0. Cheat sheet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

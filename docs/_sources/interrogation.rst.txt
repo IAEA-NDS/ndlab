@@ -11,7 +11,7 @@ Data can also be processed by your own code. For this purpose a set of classes, 
 :ref:`Programming section <programming-label>`
 
 
-.. _cheat-label:
+.. _cheat-interr_label:
 
 0. Cheat sheet
 --------------
@@ -34,9 +34,9 @@ Data can also be processed by your own code. For this purpose a set of classes, 
  
     nucs = nuclides('NUCLIDE.Z = 2')  # list of nl objects
   
-    csv =  csv_nl(nucs)         # csv
-    df =  pandas_df_nl(nucs,pd) # dataframe
-    json = df.to_json()         # json from dataframe
+    csv =  nl.csv_nl(nucs)         # csv
+    df =  nl.pandas_df_nl(nucs,pd) # dataframe
+    json = df.to_json()         # json (or csv, excel, ...) from dataframe
 
 
 

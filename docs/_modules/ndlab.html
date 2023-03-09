@@ -253,7 +253,7 @@
 <span class="n">last_filter</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
 <span class="n">CSV_SEP</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
-<span class="n">ERROR_FILTER_NOT_VALID</span> <span class="o">=</span> <span class="s2">&quot;Filter not valid&quot;</span>
+<span class="n">ERROR_FILTER_NOT_VALID</span> <span class="o">=</span> <span class="s2">&quot;Fields or Filter not valid, check the rules&quot;</span>
 
 
 <span class="k">def</span> <span class="nf">_float_check</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
@@ -1221,13 +1221,14 @@
 <span class="sd">           the  list of :py:class:`ndlab.Dr_Nu` from this decay</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">dm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_property_filler</span><span class="p">(</span><span class="s2">&quot;_nu&quot;</span><span class="p">,</span><span class="s2">&quot;dr_nus&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sql_decrad</span> <span class="p">)</span>   
-        <span class="n">ddm</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span> 
-        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dm</span><span class="p">:</span>
-            <span class="n">dd</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-            <span class="n">dd</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">energy_ec</span>
-            <span class="n">dd</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">intensity_ec</span>
-            <span class="n">ddm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_nu</span> <span class="o">=</span> <span class="n">ddm</span>
+        <span class="c1">#ddm = copy.deepcopy(dm) </span>
+        <span class="c1">#for d in dm:</span>
+        <span class="c1">#    dd = copy.deepcopy(d)</span>
+        <span class="c1">#    dd.energy = d.energy_ec</span>
+        <span class="c1">#    dd.intensity = d.intensity_ec</span>
+        <span class="c1">#    ddm.append(dd)</span>
+        <span class="c1">#self._nu = ddm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nu</span> <span class="o">=</span> <span class="n">dm</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nu</span></div>
 
 <div class="viewcode-block" id="L_decay.betas_p"><a class="viewcode-back" href="../code.html#ndlab.L_decay.betas_p">[docs]</a>    <span class="k">def</span> <span class="nf">betas_p</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">DEFAULT</span><span class="p">):</span>
@@ -1460,15 +1461,21 @@
 
 <span class="sd">    parent_nucid , parent_l_seqno, daughter_nucid, and daughter_l_seqno are for convenience. The can be accessed also through the &#39;nuclide&#39;, &#39;daughter&#39;, and &#39;level&#39; properties, respectively</span>
 
+<span class="sd">    :ivar Nuclide parent: the  parent nuclide</span>
+<span class="sd">    :ivar Nuclide daughter: the daughter nuclide</span>
+<span class="sd">    :ivar Level parent_level: the parent level </span>
+<span class="sd">    :ivar Level fed_level: the daughter level populated by the decay</span>
+<span class="sd">    :ivar L_decay decay: access to the level decay, with all the other radiations emitted </span>
+<span class="sd">    :ivar Quantity energy: energy [keV]</span>
+<span class="sd">    :ivar Quantity intensity: for 100 decays of the parent</span>
 
 <span class="sd">    :ivar string parent_nucid: parent nuclide indentifier, e.g. 135XE</span>
 <span class="sd">    :ivar int parent_l_seqno: sequential number or the parent level, 0 being the g.s.</span>
 <span class="sd">    :ivar string daughter_nucid: daughter nuclide indentifier, e.g. 135XE</span>
+<span class="sd">    :ivar int daughter_l_seqno: sequential number or the daughter level populated, 0 being the g.s.</span>
+<span class="sd">    :ivar int decay_code: code of the decay, see the DECAY_* constants in ndlaborm</span>
 
-<span class="sd">    :ivar Nuclide parent: the  parent nuclide</span>
-<span class="sd">    :ivar Level daughter: the daughter nuclide</span>
-<span class="sd">    :ivar Level fed_level: the daughter level populated by the decay</span>
-<span class="sd">    :ivar L_decay decay: access to the level decay, with all the other radiations emitted </span>
+
 <span class="sd">   </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1682,10 +1689,12 @@
     <span class="sd">&quot;&quot;&quot;Beta- decay radiation</span>
 
 <span class="sd">    Inherits all the attributes of :py:class:`Decay_radiation`</span>
+<span class="sd">    Contains the energy of the associated anti-neutrino</span>
 
 <span class="sd">    :ivar Quantity logft: Log ft</span>
 <span class="sd">    :ivar Quantity endpoint: end point energy [keV]</span>
 <span class="sd">    :ivar String trans_type: transition type</span>
+<span class="sd">    :ivar Quantity anti_nu_energy: energy ino</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_csv_title</span> <span class="o">=</span> <span class="n">Decay_radiation</span><span class="o">.</span><span class="n">_csv_title_short</span> <span class="o">+</span>   <span class="s1">&#39;,logft,logft_unc,logft_limit,trans_type,endpoint,endpoint_unc,endpoint_limit,anti_nu_energy,anti_nu_energy_unc,anti_nu_energy_limit&#39;</span>
@@ -1711,40 +1720,79 @@
     <span class="sd">&quot;&quot;&quot;Anti neutrino  decay radiation</span>
 
 <span class="sd">    Inherits all the attributes of :py:class:`Decay_radiation`</span>
+<span class="sd">    Contains the energy of the associated electron</span>
+
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_csv_title</span> <span class="o">=</span> <span class="n">Decay_radiation</span><span class="o">.</span><span class="n">_csv_title_short</span> <span class="o">+</span>   <span class="s1">&#39;,logft,logft_unc,logft_limit,trans_type,endpoint,endpoint_unc,endpoint_limit,bm_energy,bm_energy_unc,bm_energy_limit&#39;</span>
+
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;energy_nu&quot;</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">logft</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;logft&quot;</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">trans_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;b_endpoint&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bm_energy</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;energy&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logft</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trans_type</span> <span class="o">=</span>  <span class="n">_str_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;b_trans_type&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bm_energy</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="Dr_nu"><a class="viewcode-back" href="../code.html#ndlab.Dr_nu">[docs]</a><span class="k">class</span> <span class="nc">Dr_nu</span><span class="p">(</span><span class="n">Decay_radiation</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Neutrino decay radiation</span>
 
 <span class="sd">    Inherits all the attributes of :py:class:`Decay_radiation`</span>
+<span class="sd">    The fields energy, intensity, log_ft, trans_type, endpoint, bp_energy refer to the emission via beta+ process</span>
+<span class="sd">    The fields intensity_ec, energy_ec refer to the emission via electron capture</span>
 
+<span class="sd">    :ivar Quantity intensity: intensity for emission via beta+ process</span>
+<span class="sd">    :ivar Quantity energy: mean energy for emission via beta+ capture process</span>
+
+<span class="sd">    :ivar Quantity intensity_ec: intensity for emission via electron capture process</span>
+<span class="sd">    :ivar Quantity energy_ec: mean energy for emission via electron capture process</span>
+
+<span class="sd">    :ivar Quantity logft: Log ft for the beta+ decay</span>
+<span class="sd">    :ivar Quantity endpoint: end point energy [keV] the beta+ decay</span>
+<span class="sd">    :ivar String trans_type: transition type</span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_csv_title</span> <span class="o">=</span> <span class="n">Decay_radiation</span><span class="o">.</span><span class="n">_csv_title_short</span> <span class="o">+</span>   <span class="s1">&#39;,logft,logft_unc,logft_limit,trans_type,endpoint,endpoint_unc,endpoint_limit,bp_energy,bp_energy_unc,bp_energy_limit,energy_ec,energy_ec_unc,energy_ec_limit,intensity_ec,intensity_ec_unc,intensity_ec_limit&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;intensity&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;energy_nu&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">intensity_ec</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;ec_intensity&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">energy_ec</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;ec_energy&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intensity_ec</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;intensity_ec&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energy_ec</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;energy_nu_ec&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logft</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;logft&quot;</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">trans_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;b_endpoint&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bp_energy</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;energy&quot;</span><span class="p">)</span>
+
 
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intensity_ec</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">energy_ec</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energy_ec</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">logft</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trans_type</span> <span class="o">=</span>  <span class="n">_str_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;b_trans_type&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bp_energy</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+       
 <div class="viewcode-block" id="Dr_betap"><a class="viewcode-back" href="../code.html#ndlab.Dr_betap">[docs]</a><span class="k">class</span> <span class="nc">Dr_betap</span><span class="p">(</span><span class="n">Dr_betam</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Beta+/Electron Capture decay radiation</span>
 
 <span class="sd">    Inherits all the attributes of :py:class:`Dr_betam`</span>
+<span class="sd">    Contains the energy of the associated neutrino</span>
 
 <span class="sd">    :ivar Quantity ec_energy: electron capture energy</span>
 <span class="sd">    :ivar Quantity intensity: beta+ intensity</span>
@@ -1801,9 +1849,19 @@
 
 <span class="sd">    Inherits all the attributes of :py:class:`Gamma`</span>
 
+<span class="sd">    :ivar Nuclide parent: the  parent nuclide</span>
+<span class="sd">    :ivar Level parent_level: the parent level </span>
+<span class="sd">    :ivar L_decay decay: access to the level decay, with all the other radiations emitted </span>
+<span class="sd">    :ivar Quantity intensity: for 100 decays of the parent</span>
+
+<span class="sd">    :ivar string parent_nucid: parent nuclide indentifier, e.g. 135XE</span>
+<span class="sd">    :ivar int parent_l_seqno: sequential number or the parent level, 0 being the g.s.</span>
+<span class="sd">    :ivar int decay_code: code of the decay, see the DECAY_* constants in ndlaborm</span>
+
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">_csv_title</span> <span class="o">=</span> <span class="s1">&#39;z,n,nucid,g_seqno,l_seqno,energy,energy_unc,energy_limit,rel_photon_intens,rel_photon_intens_unc,rel_photon_intens_limit,multipolarity,mixing_ratio,mixing_ratio_unc,mixing_ratio_limit,tot_conv_coeff,tot_conv_coeff_unc,tot_conv_coeff_limit,bew,bew_unc,bew_limit,bew_order,bmw,bmw_unc,bmw_limit,bmw_order,questionable,final_l_seqno,parent_nucid,parent_l_seqno,decay_code,intensity,intensity_limit,intensity_unc&#39;</span>
+    <span class="n">_csv_title</span> <span class="o">=</span> <span class="s1">&#39;parent_z,parent_n,parent_nucid,parent_l_seqno,decay_code,z,n,nucid,g_seqno,l_seqno,final_l_seqno,energy,energy_unc,energy_limit,,intensity,intensity_limit,intensity_unc,rel_photon_intens,rel_photon_intens_unc,rel_photon_intens_limit,multipolarity,mixing_ratio,mixing_ratio_unc,mixing_ratio_limit,tot_conv_coeff,tot_conv_coeff_unc,tot_conv_coeff_limit,bew,bew_unc,bew_limit,bew_order,bmw,bmw_unc,bmw_limit,bmw_order,questionable&#39;</span>
   
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1811,19 +1869,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;intensity&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parent_level</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_decay</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_z</span> <span class="o">=</span>  <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_n</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent_level</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_decay</span> <span class="o">=</span> <span class="kc">None</span>
 
 
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_z</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_z&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent_n</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_n&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent_nucid</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_nucid&quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent_l_seqno</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_l_seqno&quot;</span><span class="p">])</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;decay_code&quot;</span><span class="p">])</span>
-    
         <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1844,6 +1905,20 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <span class="k">class</span> <span class="nc">Dr_photon_tot</span><span class="p">(</span><span class="n">Ndm_base</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Total photon radiation emitted from a parent, regardless of the decay branch and whether is X- or gamma-ray</span>
+
+<span class="sd">    :ivar Nuclide parent: the  parent nuclide</span>
+<span class="sd">    :ivar Level parent_level: the parent level </span>
+<span class="sd">    :ivar Quantity intensity: for 100 decays of the parent</span>
+<span class="sd">    :ivar Quantity energy: photon energy [keV]</span>
+
+<span class="sd">    :ivar string parent_nucid: parent nuclide indentifier, e.g. 135XE</span>
+<span class="sd">    :ivar string type: type of the radiation: X, G, AU, CE</span>
+<span class="sd">    :ivar int parent_l_seqno: sequential number or the parent level, 0 being the g.s.</span>
+<span class="sd">    :ivar int decay_code: code of the decay, see the DECAY_* constants in ndlaborm</span>
+<span class="sd">    :ivar int count: number of decay branches in which this energy is present</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">_csv_title</span> <span class="o">=</span> <span class="s2">&quot;parent_nucid,parent_l_seqno,energy,energy_unc,energy_limit,intensity,intensity_unc,intensity_limit,type,count&quot;</span>
    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1855,7 +1930,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="kc">None</span>
 
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent_level</span> <span class="o">=</span> <span class="kc">None</span>
+       
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent_nucid</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_nucid&quot;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent_l_seqno</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_l_seqno&quot;</span><span class="p">]</span>
@@ -1890,29 +1967,38 @@
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">Dr_atomic</span><span class="p">(</span><span class="n">Ndm_base</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Dr_atomic</span><span class="p">(</span><span class="n">Decay_radiation</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Radiation emitted by atomic processes: X-rays, Conversion Electrons, Auger Electrons </span>
+
+<span class="sd">    Inherits all the attributes of :py:class:`Decay_radiation`</span>
+<span class="sd">    </span>
+<span class="sd">    :ivar String shell: the atomic shell involved</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
     <span class="n">_csv_title</span> <span class="o">=</span> <span class="s2">&quot;parent_nucid,parent_l_seqno,decay_code,intensity,intensity_unc,intensity_limit,energy,energy_unc,energy_limit,shell&quot;</span>
    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_nucid</span> <span class="o">=</span>  <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_l_seqno</span> <span class="o">=</span>  <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;energy&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="s2">&quot;intensity&quot;</span><span class="p">);</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+       
         <span class="bp">self</span><span class="o">.</span><span class="n">shell</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_nucid</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_nucid&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parent_l_seqno</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;parent_l_seqno&quot;</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;decay_code&quot;</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">intensity</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shell</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;type_c&quot;</span><span class="p">]</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">pk</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;r_seqno&quot;</span><span class="p">])</span>
 
+   
+
 <span class="k">class</span> <span class="nc">Dr_x</span><span class="p">(</span><span class="n">Dr_atomic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; X-rays emitted </span>
+
+<span class="sd">    Inherits all the attributes of :py:class:`Dr_atomic` restricted to X</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1920,6 +2006,12 @@
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Dr_conv_el</span><span class="p">(</span><span class="n">Dr_atomic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Conversion Electrons emitted </span>
+
+<span class="sd">    Inherits all the attributes of :py:class:`Dr_atomic` restricted to CE</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1927,6 +2019,11 @@
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_populate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Dr_auger</span><span class="p">(</span><span class="n">Dr_atomic</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Auger Electrons emitted </span>
+
+<span class="sd">    Inherits all the attributes of :py:class:`Dr_atomic` restricted to AU</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -2084,39 +2181,137 @@
     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_GAMMA&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_gamma&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">dr_annihil</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_ANNIHIL&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_annihil&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span> 
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_annihil`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_annihil : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_ANNIHIL&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_annihil&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span> 
 
 <div class="viewcode-block" id="dr_beta_ms"><a class="viewcode-back" href="../code.html#ndlab.dr_beta_ms">[docs]</a><span class="k">def</span> <span class="nf">dr_beta_ms</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_BETAM&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_betam&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_betam`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_betam : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_BETAM&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_betam&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="dr_anti_nus"><a class="viewcode-back" href="../code.html#ndlab.dr_anti_nus">[docs]</a><span class="k">def</span> <span class="nf">dr_anti_nus</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_anti_nu`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_anti_nu : </span>
+<span class="sd">    &quot;&quot;&quot;</span>     
+     
      <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_ANTI_NU&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_anti_nu&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="dr_nus"><a class="viewcode-back" href="../code.html#ndlab.dr_nus">[docs]</a><span class="k">def</span> <span class="nf">dr_nus</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_NU&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_nu&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_nu`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_nu : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_NU&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_nu&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="dr_beta_ps"><a class="viewcode-back" href="../code.html#ndlab.dr_beta_ps">[docs]</a><span class="k">def</span> <span class="nf">dr_beta_ps</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_BETAP&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_betap&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_betap`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_betap : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+     
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_BETAP&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_betap&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="dr_xs"><a class="viewcode-back" href="../code.html#ndlab.dr_xs">[docs]</a><span class="k">def</span> <span class="nf">dr_xs</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_X&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_x&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_x`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_x : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+     
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_X&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_x&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">dr_photon_tot</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_PHOTON_TOTAL&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_photon_tot&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>     
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_photon_tot`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_photon_tot : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_PHOTON_TOTAL&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_photon_tot&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>     
 
 <div class="viewcode-block" id="dr_convels"><a class="viewcode-back" href="../code.html#ndlab.dr_convels">[docs]</a><span class="k">def</span> <span class="nf">dr_convels</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_CONV_EL&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_conv_el&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_conv_el`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_conv_el : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_CONV_EL&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_conv_el&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="dr_augers"><a class="viewcode-back" href="../code.html#ndlab.dr_augers">[docs]</a><span class="k">def</span> <span class="nf">dr_augers</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_AUGER&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_auger&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_Augher`  </span>
+
+<span class="sd">    Shells included are K and L</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_Auger : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_AUGER&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_auger&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">dr_delayeds</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_DELAYED&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_delayed&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Dr_delayed`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dr_delayed : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_DELAYED&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_delayed&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
 
 <div class="viewcode-block" id="cum_fys"><a class="viewcode-back" href="../code.html#ndlab.cum_fys">[docs]</a><span class="k">def</span> <span class="nf">cum_fys</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Cum_fy`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Cum_fy : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;CUM_FY&quot;</span><span class="p">,</span><span class="s2">&quot;Cum_fy&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ind_fys"><a class="viewcode-back" href="../code.html#ndlab.ind_fys">[docs]</a><span class="k">def</span> <span class="nf">ind_fys</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A list of :py:class:`ndlab.Ind_fy`  </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">       filter (str): :ref:`filter &lt;filter-label&gt;`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA &lt;DR_GAMMA&gt;` entity  </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Ind_fy : </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;IND_FY&quot;</span><span class="p">,</span><span class="s2">&quot;Ind_fy&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">setfilter</span><span class="p">(</span><span class="n">where</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -2199,6 +2394,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">this</span><span class="o">.</span><span class="n">last_fields</span> <span class="o">=</span> <span class="n">fields</span>
     <span class="n">this</span><span class="o">.</span><span class="n">last_filter</span> <span class="o">=</span> <span class="nb">filter</span>
+
+
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">dblink</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span><span class="nb">filter</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">ERROR_FILTER_NOT_VALID</span>
+
     <span class="k">if</span><span class="p">(</span><span class="n">dblink</span><span class="o">.</span><span class="n">connected</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">dblink</span><span class="o">.</span><span class="n">data_deliverer</span> <span class="p">(</span><span class="n">return_type</span><span class="p">,</span> <span class="n">fields</span> <span class="p">,</span> <span class="nb">filter</span> <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2306,7 +2506,8 @@
                 <span class="n">qry</span> <span class="o">=</span> <span class="n">query_build</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
                 <span class="n">dblink</span><span class="o">.</span><span class="n">force_clean_query</span><span class="p">(</span><span class="n">force</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">qry</span><span class="p">,</span> <span class="n">query_con</span><span class="p">())</span>
-            <span class="k">except</span><span class="p">:</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error , check the rules for the fields and filter parameters</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
                 <span class="k">return</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pandas_csv_web</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span> <span class="p">)</span></div>

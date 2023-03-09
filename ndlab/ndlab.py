@@ -1019,13 +1019,14 @@ class L_decay(Ndm_base):
            the  list of :py:class:`ndlab.Dr_Nu` from this decay
         """
         dm = self._property_filler("_nu","dr_nus", filter, self._sql_decrad )   
-        ddm = copy.deepcopy(dm) 
-        for d in dm:
-            dd = copy.deepcopy(d)
-            dd.energy = d.energy_ec
-            dd.intensity = d.intensity_ec
-            ddm.append(dd)
-        self._nu = ddm
+        #ddm = copy.deepcopy(dm) 
+        #for d in dm:
+        #    dd = copy.deepcopy(d)
+        #    dd.energy = d.energy_ec
+        #    dd.intensity = d.intensity_ec
+        #    ddm.append(dd)
+        #self._nu = ddm
+        self._nu = dm
         return self._nu
 
     def betas_p(self, filter=DEFAULT):
@@ -1258,15 +1259,21 @@ class Decay_radiation(Ndm_base):
 
     parent_nucid , parent_l_seqno, daughter_nucid, and daughter_l_seqno are for convenience. The can be accessed also through the 'nuclide', 'daughter', and 'level' properties, respectively
 
+    :ivar Nuclide parent: the  parent nuclide
+    :ivar Nuclide daughter: the daughter nuclide
+    :ivar Level parent_level: the parent level 
+    :ivar Level fed_level: the daughter level populated by the decay
+    :ivar L_decay decay: access to the level decay, with all the other radiations emitted 
+    :ivar Quantity energy: energy [keV]
+    :ivar Quantity intensity: for 100 decays of the parent
 
     :ivar string parent_nucid: parent nuclide indentifier, e.g. 135XE
     :ivar int parent_l_seqno: sequential number or the parent level, 0 being the g.s.
     :ivar string daughter_nucid: daughter nuclide indentifier, e.g. 135XE
+    :ivar int daughter_l_seqno: sequential number or the daughter level populated, 0 being the g.s.
+    :ivar int decay_code: code of the decay, see the DECAY_* constants in ndlaborm
 
-    :ivar Nuclide parent: the  parent nuclide
-    :ivar Level daughter: the daughter nuclide
-    :ivar Level fed_level: the daughter level populated by the decay
-    :ivar L_decay decay: access to the level decay, with all the other radiations emitted 
+
    
     """
 
@@ -1480,10 +1487,12 @@ class Dr_betam(Decay_radiation):
     """Beta- decay radiation
 
     Inherits all the attributes of :py:class:`Decay_radiation`
+    Contains the energy of the associated anti-neutrino
 
     :ivar Quantity logft: Log ft
     :ivar Quantity endpoint: end point energy [keV]
     :ivar String trans_type: transition type
+    :ivar Quantity anti_nu_energy: energy ino
 
     """
     _csv_title = Decay_radiation._csv_title_short +   ',logft,logft_unc,logft_limit,trans_type,endpoint,endpoint_unc,endpoint_limit,anti_nu_energy,anti_nu_energy_unc,anti_nu_energy_limit'
@@ -1509,40 +1518,79 @@ class Dr_anti_nu(Decay_radiation):
     """Anti neutrino  decay radiation
 
     Inherits all the attributes of :py:class:`Decay_radiation`
+    Contains the energy of the associated electron
+
 
     """
+
+    _csv_title = Decay_radiation._csv_title_short +   ',logft,logft_unc,logft_limit,trans_type,endpoint,endpoint_unc,endpoint_limit,bm_energy,bm_energy_unc,bm_energy_limit'
+
 
     def __init__(self):
         super().__init__()
         self.energy.name = "energy_nu"
 
+        self.logft = Quantity("logft")  
+        self.trans_type = None
+        self.endpoint = Quantity("b_endpoint")
+        self.bm_energy = Quantity("energy")
+
     def _populate(self,data):
         super()._populate(data)
+        self.logft._populate(data)
+        self.trans_type =  _str_check(data["b_trans_type"])
+        self.endpoint._populate(data)
+        self.bm_energy._populate(data)
+
 
 class Dr_nu(Decay_radiation):
     """Neutrino decay radiation
 
     Inherits all the attributes of :py:class:`Decay_radiation`
+    The fields energy, intensity, log_ft, trans_type, endpoint, bp_energy refer to the emission via beta+ process
+    The fields intensity_ec, energy_ec refer to the emission via electron capture
 
+    :ivar Quantity intensity: intensity for emission via beta+ process
+    :ivar Quantity energy: mean energy for emission via beta+ capture process
+
+    :ivar Quantity intensity_ec: intensity for emission via electron capture process
+    :ivar Quantity energy_ec: mean energy for emission via electron capture process
+
+    :ivar Quantity logft: Log ft for the beta+ decay
+    :ivar Quantity endpoint: end point energy [keV] the beta+ decay
+    :ivar String trans_type: transition type
+    
     """
+    _csv_title = Decay_radiation._csv_title_short +   ',logft,logft_unc,logft_limit,trans_type,endpoint,endpoint_unc,endpoint_limit,bp_energy,bp_energy_unc,bp_energy_limit,energy_ec,energy_ec_unc,energy_ec_limit,intensity_ec,intensity_ec_unc,intensity_ec_limit'
 
     def __init__(self):
         super().__init__()
-        self.intensity = Quantity("intensity")
         self.energy.name = "energy_nu"
 
-        self.intensity_ec = Quantity("ec_intensity")
-        self.energy_ec = Quantity("ec_energy")
+        self.intensity_ec = Quantity("intensity_ec")
+        self.energy_ec = Quantity("energy_nu_ec")
+
+        self.logft = Quantity("logft")  
+        self.trans_type = None
+        self.endpoint = Quantity("b_endpoint")
+        self.bp_energy = Quantity("energy")
+
 
     def _populate(self,data):
         super()._populate(data)
         self.intensity_ec._populate(data)
         self.energy_ec._populate(data)
 
+        self.logft._populate(data)
+        self.trans_type =  _str_check(data["b_trans_type"])
+        self.endpoint._populate(data)
+        self.bp_energy._populate(data)
+       
 class Dr_betap(Dr_betam):
     """Beta+/Electron Capture decay radiation
 
     Inherits all the attributes of :py:class:`Dr_betam`
+    Contains the energy of the associated neutrino
 
     :ivar Quantity ec_energy: electron capture energy
     :ivar Quantity intensity: beta+ intensity
@@ -1599,9 +1647,19 @@ class Dr_gamma(Gamma):
 
     Inherits all the attributes of :py:class:`Gamma`
 
+    :ivar Nuclide parent: the  parent nuclide
+    :ivar Level parent_level: the parent level 
+    :ivar L_decay decay: access to the level decay, with all the other radiations emitted 
+    :ivar Quantity intensity: for 100 decays of the parent
+
+    :ivar string parent_nucid: parent nuclide indentifier, e.g. 135XE
+    :ivar int parent_l_seqno: sequential number or the parent level, 0 being the g.s.
+    :ivar int decay_code: code of the decay, see the DECAY_* constants in ndlaborm
+
+
     """
 
-    _csv_title = 'z,n,nucid,g_seqno,l_seqno,energy,energy_unc,energy_limit,rel_photon_intens,rel_photon_intens_unc,rel_photon_intens_limit,multipolarity,mixing_ratio,mixing_ratio_unc,mixing_ratio_limit,tot_conv_coeff,tot_conv_coeff_unc,tot_conv_coeff_limit,bew,bew_unc,bew_limit,bew_order,bmw,bmw_unc,bmw_limit,bmw_order,questionable,final_l_seqno,parent_nucid,parent_l_seqno,decay_code,intensity,intensity_limit,intensity_unc'
+    _csv_title = 'parent_z,parent_n,parent_nucid,parent_l_seqno,decay_code,z,n,nucid,g_seqno,l_seqno,final_l_seqno,energy,energy_unc,energy_limit,,intensity,intensity_limit,intensity_unc,rel_photon_intens,rel_photon_intens_unc,rel_photon_intens_limit,multipolarity,mixing_ratio,mixing_ratio_unc,mixing_ratio_limit,tot_conv_coeff,tot_conv_coeff_unc,tot_conv_coeff_limit,bew,bew_unc,bew_limit,bew_order,bmw,bmw_unc,bmw_limit,bmw_order,questionable'
   
     def __init__(self):
         super().__init__()
@@ -1609,19 +1667,22 @@ class Dr_gamma(Gamma):
         self.decay_code = None
         self.intensity = Quantity("intensity")
 
-        self._parent = []
-        self._parent_level = []
-        self._decay = []
+        self.parent_z =  None
+        self.parent_n = None
+        self._parent = None
+        self._parent_level = None
+        self._decay = None
 
 
     def _populate(self,data):
         super()._populate(data)
+        self.parent_z =  _int_check(data["parent_z"])
+        self.parent_n =  _int_check(data["parent_n"])
         self.parent_nucid =  data["parent_nucid"]
         self.parent_l_seqno =  _int_check(data["parent_l_seqno"])
-
         self.decay_code =  _int_check(data["decay_code"])
-    
         self.intensity._populate(data)
+
 
     @property
     def parent(self):
@@ -1642,6 +1703,20 @@ class Dr_gamma(Gamma):
         return self._decay[0]
 
 class Dr_photon_tot(Ndm_base):
+    """Total photon radiation emitted from a parent, regardless of the decay branch and whether is X- or gamma-ray
+
+    :ivar Nuclide parent: the  parent nuclide
+    :ivar Level parent_level: the parent level 
+    :ivar Quantity intensity: for 100 decays of the parent
+    :ivar Quantity energy: photon energy [keV]
+
+    :ivar string parent_nucid: parent nuclide indentifier, e.g. 135XE
+    :ivar string type: type of the radiation: X, G, AU, CE
+    :ivar int parent_l_seqno: sequential number or the parent level, 0 being the g.s.
+    :ivar int decay_code: code of the decay, see the DECAY_* constants in ndlaborm
+    :ivar int count: number of decay branches in which this energy is present
+    """
+
     _csv_title = "parent_nucid,parent_l_seqno,energy,energy_unc,energy_limit,intensity,intensity_unc,intensity_limit,type,count"
    
     def __init__(self):
@@ -1653,7 +1728,9 @@ class Dr_photon_tot(Ndm_base):
         self.count = 0
         self.type = None
 
-
+        self._parent = None
+        self._parent_level = None
+       
     def _populate(self,data):
         self.parent_nucid =  data["parent_nucid"]
         self.parent_l_seqno = data["parent_l_seqno"]
@@ -1688,29 +1765,38 @@ class Dr_annihil(Decay_radiation):
     def _populate(self,data):
         super()._populate(data)
 
-class Dr_atomic(Ndm_base):
+class Dr_atomic(Decay_radiation):
+    """Radiation emitted by atomic processes: X-rays, Conversion Electrons, Auger Electrons 
+
+    Inherits all the attributes of :py:class:`Decay_radiation`
+    
+    :ivar String shell: the atomic shell involved
+    
+    """
+
+
     _csv_title = "parent_nucid,parent_l_seqno,decay_code,intensity,intensity_unc,intensity_limit,energy,energy_unc,energy_limit,shell"
    
     def __init__(self):
-        self.parent_nucid =  None
-        self.parent_l_seqno =  None
-        self.decay_code = None
-        self.energy = Quantity("energy")
-        self.intensity = Quantity("intensity");
+        super().__init__()
+       
         self.shell = None
 
     def _populate(self,data):
+        super()._populate(data)
 
-        self.parent_nucid =  data["parent_nucid"]
-        self.parent_l_seqno =  _int_check(data["parent_l_seqno"])
-        self.decay_code =  _int_check(data["decay_code"])
-        self.intensity._populate(data)
-        self.energy._populate(data)
         self.shell = data["type_c"]
-
         self.pk = str(data["r_seqno"])
 
+   
+
 class Dr_x(Dr_atomic):
+    """ X-rays emitted 
+
+    Inherits all the attributes of :py:class:`Dr_atomic` restricted to X
+    
+    """
+
 
     def __init__(self):
             super().__init__()
@@ -1718,6 +1804,12 @@ class Dr_x(Dr_atomic):
             super()._populate(data)
 
 class Dr_conv_el(Dr_atomic):
+    """ Conversion Electrons emitted 
+
+    Inherits all the attributes of :py:class:`Dr_atomic` restricted to CE
+    
+    """
+
 
     def __init__(self):
             super().__init__()
@@ -1725,6 +1817,11 @@ class Dr_conv_el(Dr_atomic):
             super()._populate(data)
 
 class Dr_auger(Dr_atomic):
+    """ Auger Electrons emitted 
+
+    Inherits all the attributes of :py:class:`Dr_atomic` restricted to AU
+    
+    """
 
     def __init__(self):
             super().__init__()
@@ -1882,39 +1979,137 @@ def dr_gammas(filter = ""):
     return _generator("DR_GAMMA","Dr_gamma", filter)
 
 def dr_annihil(filter = ""):
-     return _generator("DR_ANNIHIL","Dr_annihil", filter) 
+    """A list of :py:class:`ndlab.Dr_annihil`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_annihil : 
+    """
+
+    return _generator("DR_ANNIHIL","Dr_annihil", filter) 
 
 def dr_beta_ms(filter = ""):
-     return _generator("DR_BETAM","Dr_betam", filter)
+    """A list of :py:class:`ndlab.Dr_betam`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_betam : 
+    """
+    
+    return _generator("DR_BETAM","Dr_betam", filter)
 
 def dr_anti_nus(filter = ""):
+     """A list of :py:class:`ndlab.Dr_anti_nu`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_anti_nu : 
+    """     
+     
      return _generator("DR_ANTI_NU","Dr_anti_nu", filter)
 
 def dr_nus(filter = ""):
-     return _generator("DR_NU","Dr_nu", filter)
+    """A list of :py:class:`ndlab.Dr_nu`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_nu : 
+    """
+
+    return _generator("DR_NU","Dr_nu", filter)
 
 def dr_beta_ps(filter = ""):
-     return _generator("DR_BETAP","Dr_betap", filter)
+    """A list of :py:class:`ndlab.Dr_betap`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_betap : 
+    """
+     
+    return _generator("DR_BETAP","Dr_betap", filter)
 
 def dr_xs(filter = ""):
-     return _generator("DR_X","Dr_x", filter)
+    """A list of :py:class:`ndlab.Dr_x`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_x : 
+    """
+     
+    return _generator("DR_X","Dr_x", filter)
 
 def dr_photon_tot(filter = ""):
-     return _generator("DR_PHOTON_TOTAL","Dr_photon_tot", filter)     
+    """A list of :py:class:`ndlab.Dr_photon_tot`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_photon_tot : 
+    """
+
+    return _generator("DR_PHOTON_TOTAL","Dr_photon_tot", filter)     
 
 def dr_convels(filter = ""):
-     return _generator("DR_CONV_EL","Dr_conv_el", filter)
+    """A list of :py:class:`ndlab.Dr_conv_el`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_conv_el : 
+    """
+
+    return _generator("DR_CONV_EL","Dr_conv_el", filter)
 
 def dr_augers(filter = ""):
-     return _generator("DR_AUGER","Dr_auger", filter)
+    """A list of :py:class:`ndlab.Dr_Augher`  
+
+    Shells included are K and L
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_Auger : 
+    """
+
+    return _generator("DR_AUGER","Dr_auger", filter)
 
 def dr_delayeds(filter = ""):
-     return _generator("DR_DELAYED","Dr_delayed", filter)
+    """A list of :py:class:`ndlab.Dr_delayed`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Dr_delayed : 
+    """
+
+    return _generator("DR_DELAYED","Dr_delayed", filter)
 
 def cum_fys(filter = ""):
+    """A list of :py:class:`ndlab.Cum_fy`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Cum_fy : 
+    """
+
     return _generator("CUM_FY","Cum_fy", filter)
 
 def ind_fys(filter = ""):
+    """A list of :py:class:`ndlab.Ind_fy`  
+    
+    Args:
+       filter (str): :ref:`filter <filter-label>`  passed to the function by the user. It may contain only fields of the :ref:`DR_GAMMA <DR_GAMMA>` entity  
+    Returns:
+        Ind_fy : 
+    """
+
     return _generator("IND_FY","Ind_fy", filter)
 
 def setfilter(where: str):
@@ -2109,7 +2304,8 @@ def pandas_df(fields, filter, pandas):
                 qry = query_build(fields, filter)
                 dblink.force_clean_query(force)
                 return pandas.read_sql(qry, query_con())
-            except:
+            except Exception as e:
+                print("Error , check the rules for the fields and filter parameters\n" +str(e))
                 return None
     else:
         return pandas.read_csv(pandas_csv_web(fields, filter) )

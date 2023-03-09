@@ -115,7 +115,7 @@ DR_ALPHA
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
 | **HINDRANCE** |nbspc| |nbspc|  	*(Q)* hindrance factor
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -129,7 +129,7 @@ DR_BETAM
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENDPOINT** |nbspc| |nbspc|  	*(Q)* end-point energy [keV]
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **LOGFT** |nbspc| |nbspc|  		*(Q)* log ft
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
@@ -148,7 +148,7 @@ DR_BETAP
 | **EC_INTENSITY** |nbspc| |nbspc|  	*(Q)* electron capture intensity per 100 decays of the parent
 | **ENDPOINT** |nbspc| |nbspc|  	*(Q)* end-point energy [keV]
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **LOGFT** |nbspc| |nbspc|  		*(Q)* log ft
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
@@ -163,7 +163,7 @@ DR_ANTI_NU
 | **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -175,8 +175,10 @@ DR_NU
 
 | **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
-| **ENERGY** |nbspc| |nbspc|  		*(Q)* energy [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **ENERGY_** |nbspc| |nbspc|  		*(Q)* average energy [keV] when emitted via b+ 
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent when emitted via b+ 
+| **ENERGY_EC_** |nbspc| |nbspc|  		*(Q)* average energy [keV] when emitted via electron capture
+| **INTENSITY_EC_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent when emitted via electron capture 
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -190,7 +192,7 @@ DR_DELAYED
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
 | **ENERGY_X** |nbspc| |nbspc|  	*(Q)* energy of the intermediate state after beta decay and before emetting the particle [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -238,7 +240,7 @@ DR_X
 | **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -252,7 +254,7 @@ DR_AUGER
 | **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -266,7 +268,7 @@ DR_ANNIHIL
 | **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  
@@ -279,7 +281,7 @@ DR_CONV_EL
 | **DAUGHTER** |nbspc| |nbspc|  	*(L)*  access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  
 | **DAUGHTER_FED_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* energy of the radiation [keV]
-| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiatio per 100 decays of the parent
+| **INTENSITY_** |nbspc| |nbspc|  	*(Q)* absolute intensity of the radiation per 100 decays of the parent
 | **MODE** |nbspc| |nbspc|  		code of the decay, specify it  using one of the DECAY_* constants
 | **PARENT** |nbspc| |nbspc|  		*(L)*  access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  
 | **PARENT_LEVEL** |nbspc| |nbspc|  	*(L)*  access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  

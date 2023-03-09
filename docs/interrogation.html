@@ -210,7 +210,7 @@ or in plotting tools like <a class="reference external" href="https://plotly.com
 <p>Data can also be processed by your own code. For this purpose a set of classes, and functions to start with,  will be described in the
 <a class="reference internal" href="programming.html#programming-label"><span class="std std-ref">Programming section</span></a></p>
 <div class="section" id="cheat-sheet">
-<span id="cheat-label"></span><h1>0. Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this heading">¶</a></h1>
+<span id="cheat-interr-label"></span><h1>0. Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this heading">¶</a></h1>
 <p><strong>Functions</strong> for data retrieval, you will see later the detailed explanation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ndlab</span> <span class="k">as</span> <span class="nn">nl</span>
 <span class="c1"># optional</span>
@@ -226,9 +226,9 @@ or in plotting tools like <a class="reference external" href="https://plotly.com
 
 <span class="n">nucs</span> <span class="o">=</span> <span class="n">nuclides</span><span class="p">(</span><span class="s1">&#39;NUCLIDE.Z = 2&#39;</span><span class="p">)</span>  <span class="c1"># list of nl objects</span>
 
-<span class="n">csv</span> <span class="o">=</span>  <span class="n">csv_nl</span><span class="p">(</span><span class="n">nucs</span><span class="p">)</span>         <span class="c1"># csv</span>
-<span class="n">df</span> <span class="o">=</span>  <span class="n">pandas_df_nl</span><span class="p">(</span><span class="n">nucs</span><span class="p">,</span><span class="n">pd</span><span class="p">)</span> <span class="c1"># dataframe</span>
-<span class="n">json</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>         <span class="c1"># json from dataframe</span>
+<span class="n">csv</span> <span class="o">=</span>  <span class="n">nl</span><span class="o">.</span><span class="n">csv_nl</span><span class="p">(</span><span class="n">nucs</span><span class="p">)</span>         <span class="c1"># csv</span>
+<span class="n">df</span> <span class="o">=</span>  <span class="n">nl</span><span class="o">.</span><span class="n">pandas_df_nl</span><span class="p">(</span><span class="n">nucs</span><span class="p">,</span><span class="n">pd</span><span class="p">)</span> <span class="c1"># dataframe</span>
+<span class="n">json</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>         <span class="c1"># json (or csv, excel, ...) from dataframe</span>
 </pre></div>
 </div>
 </div>

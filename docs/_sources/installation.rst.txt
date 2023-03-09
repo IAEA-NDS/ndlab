@@ -81,3 +81,18 @@ SQLite DB Browser
 
 | Description and schema of the underlying SQL database are presented `here <./schema/index.html>`_.
 | The engine is `SQLite <https://sqlite.org/index.html>`_. To directly access it with a graphical interface, download the  `DB Browser for SQLite <https://sqlitebrowser.org>`_
+
+
+5. Change log
+--------------------
+
+Version v.0.1.1.db.0.1.1-beta
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First test release
+
+Version v.0.1.1.db.0.2.2-beta
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| The energy and intensities of neutrini emitted by electron capture process where added to the database.
+| See the `ndlab.Dr_nu <code.html#ndlab.Dr_nu>`_  class, and the  `ndlaborm.DR_NU entity <entities.html#dr-nu>`_ 
