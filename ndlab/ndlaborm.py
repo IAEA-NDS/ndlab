@@ -6,6 +6,7 @@ Defines the grammar to query the database, and its translation into sql
 
 import json
 import inspect,sys
+import re
 from operator import truediv
 
 class Sqlbuilder:
@@ -24,6 +25,11 @@ class Sqlbuilder:
 
 # the classes of this module, used in clean_token to find where are placed in a string     
     _classes = []
+# characters in the query that need to have a space before and after
+    _to_clean_both = ", ) / % =".split(" ") 
+
+    _to_clean_right = ".ALL ) ] }".split(" ")
+    _to_clean_left = "( [ {".split(" ")
 
 # a string token is evaluated to convert it into an object
 # then it will be checked if it is an orm piece
@@ -93,8 +99,10 @@ class Sqlbuilder:
         # check all the possible fields, take the longest name to avoid errors in cases like "J" and "JP"
         for attr in attribs:
             idx = last_tk.find(attr)
+          
             if(idx == -1): continue
             char_after = "" if len(last_tk) == len(attr) else last_tk[idx + len(attr): idx+ len(attr)+1]
+         
             
             # this is a bit ad hoc, it is to deal with :
             # 1 - NUCLIDE.NUC_ID , where also N is a field of nuclide
@@ -108,17 +116,36 @@ class Sqlbuilder:
         if(len_max > 0 and len(last_tk) > len_max):
             last_tk =   last_tk[:idx_max + len_max]  + ' ' + last_tk[idx_max + len_max:]
         tks[len(tks)-1] = last_tk
-        
+       
         return ".".join(tks)
                 
   
     # take one token (string with no blanks), look for classes and process the token
     def clean_tk(self,tk):
+        
+        for ch in self._to_clean_both:
+            tk = tk.replace(ch, ' ' + ch + ' ')
+
+        for ch in self._to_clean_right: 
+            tk = tk.replace(ch, ch + ' ')
+    
+        for ch in self._to_clean_left: 
+            tk = tk.replace(ch, ' ' + ch )
+        
+        #remove multiple blanks
+        tk = re.sub(r"\s+", " ", tk)  
+
         classes = self.get_classes()
         for mclass in classes:
-            idx = tk.find(mclass.__name__) #the token contains a class name
-            if(idx > -1):      
-                tk = self.before_after_class(tk,idx, mclass) # place blanks if needed
+            idx = tk.find(mclass.__name__,0)
+            while(idx != -1):
+                idx = tk.find(mclass.__name__,idx) #the token contains a class name
+                if(idx > -1):   
+                    len_bef = len(tk)   
+                    tk = self.before_after_class(tk,idx, mclass) # place blanks if needed
+                    len_aft = len(tk)
+                    idx = idx + len_aft - len_bef + 1
+
         return tk
 
     def clean_query(self,str):
@@ -127,6 +154,7 @@ class Sqlbuilder:
         clean_string = ''
         for tk_a in tks_a:
             clean_string += ' ' + self.clean_tk(tk_a)
+
         return clean_string
         #tks_a = clean_string.split()
 
@@ -140,38 +168,41 @@ class Sqlbuilder:
     #string should have datamodel tokens separated by ' '
     def parse(self,string):
     # string should be like '( Gamma.start_level.energy - Gamma.end_level.energy ) = 100'
-
+      
         fields = []
         tables = []
         fks = []
         tables_nofks = [] # "true" tables, not from a fk addition
+        errors = []
         # table.* will be prefixed with DISTINCT
         if(string.endswith(".*")):
             string = string.replace(".*",".ALL")
 
         tks_a = string.split() # datamodel must have blank spaces. Use clean_query to pre-process
+       
         for tk_a in tks_a:
             try:
                 # check what kind of staff is tk_a
                 piece = (self.interrogate(tk_a))
-              
                 # if it is one of the constants, like DELAY_N
                 dummy = self.is_constant(str(tk_a)) 
                 if(dummy[0]):
                     if(dummy[1].__class__.__name__ == "str"):
                         # string, add quotes
                         dummy[1] = "'" + dummy[1] + "'" 
-
                     fields.append(str(dummy[1])) # str in case is an integer
 
                 elif not self.is_datamodel(piece):
-                      # it is not part of the datamodel: leave as it is
-                    fields.append(str(piece))
+                      # it is not part of the datamodel: leave as it is.
+                      # dont use 'piece', it can be the description of a built in function or object
+                    fields.append(str(tk_a)) #fields.append(str(piece))
                   
                 else:  # it is data model
                     tks_b = tk_a.split(".")
                     tot = len(tks_b)
-                    #print("tot", tot)
+                    if(tot > 3):
+                        errors.append('"token_counts":"' +str(tot)+'"')
+                        break
                     # from GAMMA.START_LEVEL.ENERGY  build the array [GAMMA.START_LEVEL.ENERGY, GAMMA.START_LEVEL, GAMMA]
                     tks_c = []
                     for i in range(0, tot):
@@ -179,6 +210,7 @@ class Sqlbuilder:
                         tks_c.append(eval(dm))
                     # process the pieces, so far only 3 levels are dealt with. Remeber: the pieces go backward
                     for i in range(0, tot):
+                        
                         tk = tks_c[i]
                         if(i == 0): # this is a column
                             if(tk == _Base.ALL):
@@ -187,7 +219,7 @@ class Sqlbuilder:
                                 column = (tk.data["column"])
                         if(i == 1 ): # this can be a table, or a foreign key
                             if 'table' not in tk.data: # this is fk
-                                tblnm = self.table_name(tk) # tk.data["fk"]["table"] + (( " as " + tk.data["fk"]["alias"]) if "alias" in tk.data["fk"].keys() else "")
+                                tblnm = self.table_name(tk) 
                                 tables.append(tblnm)
                                 for col in tk.data["fk"]["column"]:
                                     fks.append( tks_c[i+1].data["table"] + "." + col)
@@ -195,7 +227,8 @@ class Sqlbuilder:
                                 fields.append(tblnm + "." + column)
                             else: # this is a table
                                 if(column == "*"):
-                                    fields.append("distinct " + tk.data["table"] + "." + column)
+                                    #fields.append("distinct " + tk.data["table"] + "." + column)
+                                    fields.append(tk.data["table"] + "." + column)
                                 else:
                                     fields.append(tk.data["table"] + "." + column)
                                 tables.append(tk.data["table"])
@@ -208,33 +241,51 @@ class Sqlbuilder:
                             tables_nofks.append(tk.data["table"])
                             if 'where' in tk.data:
                                 fks.append(tk.data["where"])
+                        
 
 
-            except Exception as e:
-                print(e)
+            except Exception as e:              
+                msg =('%s' % (' '.join(e.args)))
+                errors.append('"error_generic":"' +(msg)+'"')
+                
 
         tables = list(set(tables))
 
-        return {"tables":tables, "fks":fks, "fields":fields, "tables_nofks" : tables_nofks}
+        #print("tables " + str(tables) + " fks " +str(fks)+ " fields " +str(fields) + " tables_nofks " + str(tables_nofks) + " errors " + str(errors) )
+
+        return {"tables":tables, "fks":fks, "fields":fields, "tables_nofks" : tables_nofks , "errors" : errors}
 
     def table_name(self, tk):    
         """ Table name for a foreign key
         """
         return tk.data["fk"]["table"] + (( " as " + tk.data["fk"]["alias"]) if "alias" in tk.data["fk"].keys() else "")
 
+# add error when no table is found (error in building the token): GAMMA.Z
     def query_check(self,fields, conditions=""):  
-        """No more than one table (excluding fks)
+        """Parse the parameters and report the errors
         """
-        
-        select = self.parse(fields)
-        where = self.parse(conditions)
 
+        _fields = self.clean_query(fields)
+        _conditions = self.clean_query(conditions)
+        
+        select = self.parse(_fields)
+        where = self.parse(_conditions)
+
+        errors = select["errors"] + where["errors"]
         tables = select["tables_nofks"] + where["tables_nofks"]
         tables = list(set(tables))
-        #print("query check",fields,select, tables)
-        
-        if(len(tables) != 1): return False
-
+       
+        if(len(tables) > 1): 
+            errors.append('"table_counts":"' +str(len(tables))+'"')        
+       
+        return errors
+    
+    def is_query_ok(self,fields, conditions=""):  
+        """Parse the parameters and return true/false
+        """
+        errors = self.query_check(fields, conditions) 
+        if(len(errors) != 0): return False
+       
         return True
 
     def query_desc(self,fields, conditions=""):
@@ -308,7 +359,7 @@ class Sqlbuilder:
 
 
         # in the dr there are two possible reference : parent or daughter
-        # if _DR_BASE.data["table"] in tables and NUCLIDE.data["table"] in tables:
+        # if DECAY_RAD.data["table"] in tables and NUCLIDE.data["table"] in tables:
         #     fks.append("nuclides.nucid = decay_radiations.parent_nucid")
         #     desc.append(" parent nuclide of the decay")
             
@@ -320,19 +371,18 @@ class Sqlbuilder:
         return { "fks":fks, "desc":desc} 
 
 
-
+#query_build -> parse
 
     def query_build(self,fields, conditions=""):
-
+         
         if(self.force_clean ): # place spaces around orm tokens
             fields = self.clean_query(fields)
             conditions = self.clean_query(conditions)
-
+ 
         select = self.parse(fields)
         fields_str = " ".join(select["fields"])
-
         where = self.parse(conditions)
-
+  
         tables = select["tables"] + where["tables"]
         fks = select["fks"] + where["fks"]
 
@@ -355,7 +405,7 @@ class Sqlbuilder:
         if ( (not any([where_str.startswith(s) for s in ["order","group","having"]]) ) and (len(where_str) > 0 )) :
             where_str = "where " + where_str
 
-        qry =  "select " + fields_str + " from " + tables_str + " " + where_str
+        qry =  "select distinct " + fields_str + " from " + tables_str + " " + where_str
 
         return qry
 
@@ -635,13 +685,13 @@ class GAMMA(_GM):
    # def __init__(self,name):
    #     super().__init__(name)
 
-class _DR_BASE(_Base):
+class DECAY_RAD(_Base):
     desc =  "properties the decay radiation"
     data = json.loads('{"table" : "decay_radiations"}')
     PARENT = NUCLIDE( '{"column" : "parent_nucid", "fk":{"table" : "nuclides", "alias" : "dr_nuc_p","column" : ["parent_nucid=dr_nuc_p.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the parent nuclide, e.g. DR_*.PARENT.Z  "}')
     PARENT_LEVEL = LEVEL('{"column" : "parent_l_seqno", "fk": {"table" : "levels", "alias" : "dr_lev_p" , "column" : ["parent_l_seqno = dr_lev_p.l_seqno", "parent_nucid = dr_lev_p.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the parent level, e.g. DR_*.PARENT_LEVEL.ENERGY  "}')
     DAUGHTER = NUCLIDE( '{"column" : "daughter_nucid", "fk":{"table" : "nuclides", "alias" : "dr_nuc_d" , "column" : ["daughter_nucid=dr_nuc_d.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the daughter nuclide, e.g. DR_*.DAUGHTER.ENERGY  "}')
-    DAUGHTER_FED_LEVEL = LEVEL('{"column" : "adopted_daughter_l_seqno", "fk": {"table" : "levels", "alias" : "dr_lev_d" , "column" : ["adopted_daughter_l_seqno = dr_lev_d.l_seqno", "parent_nucid = dr_lev_d.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  "}')
+    DAUGHTER_FED_LEVEL = LEVEL('{"column" : "adopted_daughter_l_seqno", "fk": {"table" : "levels", "alias" : "dr_lev_d" , "column" : ["adopted_daughter_l_seqno = dr_lev_d.l_seqno", "daughter_nucid = dr_lev_d.nucid"]}, "desc" :  "' + _LNK + ' access to the properties of the level in which the daughter nuclide is created , e.g. DR_*.DAUGHTER_FED_LEVEL.ENERGY  "}')
     MODE = Column('decay_code','code of the decay, specify it  using one of the DECAY_* constants') 
     INTENSITY = Column('intensity', _QTT + 'absolute intensity of the radiation per 100 decays of the parent')
     INTENSITY_UNC = Column('intensity_unc')
@@ -694,7 +744,7 @@ class IND_FY(_FY):
     def __init__(self,name):
         super().__init__(name)
 
-class DR_ALPHA(_DR_BASE):
+class DR_ALPHA(DECAY_RAD):
     desc =  "alpha decay radiation"
     data = json.loads('{"table" : "decay_radiations", "where" :"type_a=\'A\'"}')
     HINDRANCE = Column('a_hindrance', _QTT + 'hindrance factor')
@@ -704,7 +754,7 @@ class DR_ALPHA(_DR_BASE):
     def __init__(self,name):
         super().__init__(name)
 
-class DR_BETA(_DR_BASE):
+class DR_BETA(DECAY_RAD):
     """docstring for ."""
 
     data = json.loads('{"table" : "decay_radiations", "where" :"(type_a=\'B+\' or type_a=\'B-\')"}')
@@ -751,7 +801,7 @@ class DR_BETAM(DR_BETA):
     def __init__(self,name):
         super().__init__(name)
 
-class DR_ANTI_NU(_DR_BASE):
+class DR_ANTI_NU(DECAY_RAD):
     desc =  "anti neutrino decay radiation"
     data = json.loads('{"table" : "decay_radiations", "where" :"type_a=\'B-\'"}')
     ENERGY_LIMIT = Column('energy_nu_limit')
@@ -774,7 +824,7 @@ class DR_NU(DR_ANTI_NU):
     def __init__(self,name):
         super().__init__(name)
 
-class DR_DELAYED(_DR_BASE):
+class DR_DELAYED(DECAY_RAD):
     desc =  "delayed particle emission"
     data = json.loads('{"table" : "decay_radiations", "where" :"type_a in (\'DN\',\'DP\',\'DA\')"}')
 
@@ -828,9 +878,12 @@ class DR_GAMMA(_GM):
     def __init__(self,name):
         super().__init__(name)
 
-class _DR_ATOMIC(_DR_BASE):
+class _DR_ATOMIC(DECAY_RAD):
     desc = ''
     SHELL = Column('type_c',  _STR + 'Atomic shell IUPAC notation, use one of the SHELL_* constants' )
+
+    def __init__(self,name):
+        super().__init__(name)
 
 
 class DR_X(_DR_ATOMIC):
@@ -854,7 +907,7 @@ class DR_AUGER(_DR_ATOMIC):
     def __init__(self,name):
         super().__init__(name)
 
-class DR_ANNIHIL(_DR_BASE):
+class DR_ANNIHIL(DECAY_RAD):
     desc =  "gamma from annihilation "
     data = json.loads('{"table" : "decay_radiations", "where" :"type_a = \'G\' and type_b=\'AN\'"}')
 

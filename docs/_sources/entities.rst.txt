@@ -59,7 +59,7 @@ LEVEL
 | **DIPOLE_MM** |nbspc| |nbspc|  	*(Q)* magnetic dipole moment [Bohr magnetons]
 | **ENERGY** |nbspc| |nbspc|  		*(Q)* level energy [keV]
 | **HALF_LIFE** |nbspc| |nbspc|  	*(Q)* Half-life value as given in the evaluation, see HALF_LIFE_UNITS for the units. Use HALF_LIFE_SEC for calculations 
-| **HALF_LIFE_LIMIT** |nbspc| |nbspc|  	String - > , <, >=, etc..
+| **HALF_LIFE_LIMIT** |nbspc| |nbspc|  	(S) - > , <, >=, etc..
 | **HALF_LIFE_SEC** |nbspc| |nbspc|  	*(Q)* Half-life in [s]
 | **HALF_LIFE_UNITS** |nbspc| |nbspc|  	*(S)* - the Half-life field units
 | **ISOSPIN** |nbspc| |nbspc|  	*(S)* Isospin

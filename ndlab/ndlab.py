@@ -1,26 +1,58 @@
 
 """
 The user entry point to interrogate the database, and to write custom software
+==============================================================================
 
-Direct database interrogation is through :py:meth:`ndlab.csv_data`, :py:meth:`ndlab.json_data`, :py:meth:`ndlab.csv_nl`,
+Direct database interrogation is through these functions
+:py:meth:`ndlab.csv_data`, :py:meth:`ndlab.json_data`, :py:meth:`ndlab.csv_nl`,
 :py:meth:`ndlab.pandas_csv_nl`, :py:meth:`ndlab.pandas_csv_web`.
 
-For how to specify the query parameters, see :py:mod:`ndlaborm`
+Data retrieval cheat sheets
+---------------------------
 
-The  :py:class:`ndlab.Property`,  :py:class:`ndlab.Nominal`, :py:class:`ndlab.Quantity` implement the ISO Vocabulary (VIM) 
-https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html using also :py:class:`ndlab.Operator` and :py:class:`ndlab.Unit`
+fields='GAMMA.NUC.Z, GAMMA.NUC.N, GAMMA.ENERGY'
+filter='GAMMA.ENERGY >  560'
+
+* Data in json format
+  json_data(fields , filter)"
+
+* Data in csv format 
+  csv_data(fields , filter )
+
+* Data in csv format from a list of ndlab classes 
+  csv_nl(nl_items)
+
+* Creates a pandas dataframe 
+  import pandas as pd
+  pandas_df(fields, filter, pd)
+
+* Creates a dataframe from a list of ndlab classes                
+  pandas_df_nl(list, pandas)
 
 
-- The :py:class:`ndlab.Quantity` is the most relevant, and it embeds the uncerainities propagation using the 'uncertainities' packages 
+For how to specify the fields and filter parameters, see :py:mod:`ndlaborm`
+
+Data model and programming
+---------------------------
+
+The Base for the classes representing the  nuclear model is  :py:class:`ndlab.NdmBase`. 
+Their instance variables are intialized with a json structure
+that is passed to each of the instance variables of type :py:class:`ndlab.Quantity` 
+
+A set of functions then initialize these classes, querying the database
+
+The  :py:class:`ndlab.Property`,  :py:class:`ndlab.Nominal`, :py:class:`ndlab.Quantity`, 
+:py:class:`ndlab.Operator` and :py:class:`ndlab.Unit`
+implement the ISO Vocabulary (VIM) 
+https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html 
+
+- The :py:class:`ndlab.Quantity` embeds the uncerainities propagation using the 'uncertainities' packages 
   (https://pythonhosted.org/uncertainties/).
 - A Quantity is initialised with  a json structure.
 - The classes representing the model contain variables of type Quantity to store the data
 
 
-The Base for the classes of the  nuclear model is  :py:class:`ndlab.NdmBase`. Their instance variables are intialized with a json structure
-that is passed to each of their instance variables of type :py:class:`ndlab.Quantity` 
 
-A set of functions initialize these classes querying the database through http 
 
 
 """
@@ -53,6 +85,38 @@ last_filter = ''
 CSV_SEP = ','
 ERROR_FILTER_NOT_VALID = "Fields or Filter not valid, check the rules"
 
+help = ("See https://iaea-nds.github.io/ndlab/interrogation.html on how to construct the fields and filter parameters\n\n"
+        
+"fields='GAMMA.NUC.Z, GAMMA.NUC.N, GAMMA.ENERGY'\n"
+"filter='GAMMA.ENERGY >  560'\n\n"
+
+"* Data in json format *\n"
+"json_data(fields , filter) \n\n"
+
+"* Data in csv format *\n"
+"csv_data(fields , filter )\n\n"
+
+"* Data in csv format from a list of ndlab classes *\n"
+"csv_nl(nl_items)\n\n"
+
+"* Creates a dataframe *\n"
+"import pandas as pd\n"
+"pandas_df(fields, filter, pd)\n\n"
+
+"* Creates a dataframe from a list of ndlab classes *\n"
+"pandas_df_nl(list, pandas)" )
+
+
+if __spec__ is not None:
+    file_path = '''C:/other_file  
+                trtrr'''
+    name =  __spec__.name #'new_name'
+
+    __spec__.origin = file_path
+
+    if name != __spec__.name:
+        sys.modules[name] = sys.modules[__spec__.name]
+        __spec__.name = name
 
 def _float_check(val):
     """ Check if a value retrieved from the database is a float
@@ -688,12 +752,15 @@ class Nuclide(Ndm_base):
     @property
     def decays(self):
         if(self._decays == None):
-            self._decays = this._generator("L_DECAY.ALL", "L_decay", " L_DECAY.NUC_ID = '" + self.nucid + "' ORDER BY L_DECAY.LEVEL_SEQNO , L_DECAY.MODE" ) #_DR_BASE.PARENT_NUC_ID = L_DECAY.NUC_ID and
+            self._decays = this._generator("L_DECAY.ALL", "L_decay", " L_DECAY.NUC_ID = '" + self.nucid + "' ORDER BY L_DECAY.LEVEL_SEQNO , L_DECAY.MODE" ) #DECAY_RAD.PARENT_NUC_ID = L_DECAY.NUC_ID and
         return self._decays
        
     @property
     def gs(self):
-        return self.levels( " LEVEL.SEQNO = 0 ")[0]
+        mygs = self.levels( " LEVEL.SEQNO = 0 ")
+        if(len(mygs) > 0):
+            return self.levels( " LEVEL.SEQNO = 0 ")[0]
+        return None
 
     @property
     def daughters_chain(self):
@@ -933,7 +1000,7 @@ class L_decay(Ndm_base):
 
         self._nuclide = None
         self._levels = None
-        self._daughter = None
+        self._daughters = None
         self._mode = None
 
     def _populate(self,data):
@@ -953,7 +1020,7 @@ class L_decay(Ndm_base):
         self.pk = self.nucid + '-' + str(self.l_seqno) + '-' + str(self.code)
 
 
-        self._sql_decrad =  " _DR_BASE.PARENT_NUC_ID = '" + self.nucid + "' and _DR_BASE.PARENT_LEVEL_SEQNO = " + str(self.l_seqno) + " and _DR_BASE.MODE = " + str(self.code) + " ORDER BY _DR_BASE.ENERGY"
+        self._sql_decrad =  " DECAY_RAD.PARENT_NUC_ID = '" + self.nucid + "' and DECAY_RAD.PARENT_LEVEL_SEQNO = " + str(self.l_seqno) + " and DECAY_RAD.MODE = " + str(self.code) + " ORDER BY DECAY_RAD.ENERGY"
 
     def gammas(self, filter=DEFAULT):
         """Gamma radiation from this decay
@@ -1085,8 +1152,8 @@ class L_decay(Ndm_base):
     @property
     def mode(self):
          if(self._mode == None):
-            self._mode =  this._generator("DECAY_MODE","Decay_mode" " DECAY_MODE.DECAY_CODE = '" + str(self.code) + "' ")
-         return self._mode[0].dataset_code
+            self._mode =  this._generator("DECAY_MODE","Decay_mode" ," DECAY_MODE.CODE = '" + str(self.code) + "' ")
+         return self._mode[0]
 
     @property
     def toten_recoil(self):
@@ -1144,7 +1211,7 @@ class L_decay(Ndm_base):
     def tot_measured_en(self):
         """ Total energy emitted per 100 decays of the parent
 
-        calculated as sum (energy * intensity / 100 ) * Q_togs over all radiations
+        calculated as sum (energy * intensity / 100 )  over all radiations
 
         Returns:
             Quantity: the total energy
@@ -1155,7 +1222,7 @@ class L_decay(Ndm_base):
         for r in rads:
             sm.append(self.tot_rad_en(r))
         sm.append(self.toten_recoil)
-        return sum(sm)*self.q_togs   
+        return sum(sm)  
 
 
 class Gamma(Ndm_base):
@@ -1364,17 +1431,21 @@ class Decay_mode(Ndm_base):
   
     def __init__(self):
         super().__init__()
-        self.ensdf_code = None
-        self.decay_code = None
-        self.dataset_code = None
+        self.name = None
+        self.code = None
+        self.desc = None
+
+        #self.ensdf_code = None
+        #self.decay_code = None
+        #self.dataset_code = None
 
 
     def _populate(self,data):
-        self.ensdf_code =  data["ensdf_code"]
-        self.decay_code =  _int_check(data["decay_code"])
-        self.dataset_code =  data["dataset_code"]
+        self.name =  data["mode"]
+        self.code =  _int_check(data["code"])
+        self.desc =  data["desc"]
 
-        self.pk = str(self.decay_code)
+        self.pk = str(self.code)
 
 
 
@@ -1854,14 +1925,14 @@ def _generator(orm_table: str, nl_class_name: str , filter : str = ''):
 
     #print("class ",nl_class_name, " filter ",filter, " _filter ", _filter, dblink.query_check(orm_table+".*",filter), "orm_table" , orm_table)
     
-    if(not dblink.query_check(orm_table+".*",filter)):
+    if(not dblink.is_query_ok(orm_table+".*",filter)):
         return ERROR_FILTER_NOT_VALID
     
     tablename = orm_table if orm_table.endswith("ALL") else orm_table + ".*"
     
     # call to the database
     jss = json.loads(json_data(tablename , _filter ))
-
+    #print(" tablename ",tablename)
     #print(" sql ", dblink.lastsql)
     #print(" json ", jss)
     #print("")
@@ -1881,6 +1952,20 @@ def _generator(orm_table: str, nl_class_name: str , filter : str = ''):
 
     return objs
 
+def query_check(table, conditions=""):  
+    """ Check if users parameters produce a valid query, return errors if any
+
+    interface to sqlbuilder
+    """
+    return dblink.query_check(table, conditions)
+
+def is_query_ok(table, conditions=""):  
+    """ Check if users parameters produce a valid query, return true/false
+
+    interface to sqlbuilder
+    """
+    return dblink.is_query_ok(table, conditions)
+
 def check_filter(filter, function):
     """Whether a filter is okay when applied to a given function
 
@@ -1894,7 +1979,7 @@ def check_filter(filter, function):
      
     """
     table = function.__name__[:-1].upper() + ".*"
-    return dblink.query_check(table,filter)
+    return dblink.is_query_ok(table,filter)
 
 def nuclide(nucid):
     """A :py:class:`ndlab.Nuclide` from its identifyer
@@ -1975,7 +2060,6 @@ def dr_gammas(filter = ""):
     Returns:
         Dr_gamma : 
     """
-
     return _generator("DR_GAMMA","Dr_gamma", filter)
 
 def dr_annihil(filter = ""):
@@ -2194,7 +2278,7 @@ def _data_deliverer(return_type,fields , filter):
     this.last_filter = filter
 
 
-    if(not dblink.query_check(fields,filter)):
+    if(not dblink.is_query_ok(fields,filter)):
         return ERROR_FILTER_NOT_VALID
 
     if(dblink.connected):
@@ -2250,7 +2334,7 @@ def pandas_csv_nl( nl_items):
     return  io.StringIO(csv_nl(nl_items))
 
 def pandas_df_nl(list, pandas):
-    """ Returns a Dataframe from a list of ndlab classes
+    """ Returns a Dataframe from a list of :py:class:`ndlab.Ndm_base` classes
 
     Args:
        list (List): list of ndlab class instances
@@ -2390,3 +2474,10 @@ def print_transition():
     res = dblink.query_exec("select distinct  b_trans_type from decay_radiations order by 1")
     for r in res:
         print("TRANS_" + r[0] + " = '" + r[0]+ "'")
+
+
+
+
+
+
+

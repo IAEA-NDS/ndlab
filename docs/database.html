@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1. The search engine &mdash; NDLab 0.1 documentation</title>
@@ -45,6 +46,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Getting the data from the Web" href="api.html" />
     <link rel="prev" title="1. ndlab module" href="code.html" /> 
 </head>
 
@@ -96,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#change-log">5. Change log</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
 <ul>
@@ -139,6 +142,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#data-sources">3. Data sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">1. Getting the data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#parameters-and-return-formats">2. Parameters and return formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#examples">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#deal-with-http-error-403">4. Deal with HTTP Error 403</a></li>
 </ul>
 
             
@@ -206,12 +216,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="the-search-engine">
+  <section id="the-search-engine">
 <h1>1. The search engine<a class="headerlink" href="#the-search-engine" title="Permalink to this heading">¶</a></h1>
 <p><strong>Data</strong> are stored in a SQLite database, and normally users do not need direct access to it, and do not use SQL language to retrieve the data.</p>
 <p>Description and schema of the database are presented <a class="reference external" href="./schema/index.html">here</a></p>
-</div>
-<div class="section" id="underlying-databases">
+</section>
+<section id="underlying-databases">
 <span id="database-label"></span><h1>2. Underlying databases<a class="headerlink" href="#underlying-databases" title="Permalink to this heading">¶</a></h1>
 <p><strong>The main</strong> source is the <a class="reference external" href="https://www.nndc.bnl.gov/ensdf/">ENSDF</a> database (Evaluated Nuclear Structure Data Files), it is the only database that covers the entire chart of nuclides.
 It is produced by the International Network of Nuclear Structure and Decay Data Evaluators (<a class="reference external" href="https://nds.iaea.org/nsdd/history.html">NSDD</a>), under the auspices of the <a class="reference external" href="https://nds.iaea.org">IAEA</a></p>
@@ -220,7 +230,7 @@ It is produced by the International Network of Nuclear Structure and Decay Data 
 of levels and gamma transitions</p>
 <p>A relevant new feature of the NDLab database is the relational link between levels and gammas in the <a class="reference external" href="https://www.nndc.bnl.gov/ensdf/">ENSDF</a> decay datasets and their
 counterpart in the adopted datasets.</p>
-<div class="section" id="levels-and-gamma-transitions">
+<section id="levels-and-gamma-transitions">
 <h2>Levels and gamma transitions<a class="headerlink" href="#levels-and-gamma-transitions" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference external" href="https://www-nds.iaea.org/RIPL-3/levels/">RIPL</a> database is derived from the <a class="reference external" href="https://www.nndc.bnl.gov/ensdf/">ENSDF</a> database, with contribution
 from <a class="reference external" href="https://www.anl.gov/phy/atomic-mass-data-resources">NUBASE</a> and <a class="reference external" href="https://www.anl.gov/phy/atomic-mass-data-resources">AME</a> databases.
@@ -236,17 +246,18 @@ present in the database and should be used for accurate structure and decay desc
 <li><p><a class="reference external" href="https://www-nds.iaea.org/RIPL-3/levels/">RIPL Levels database</a></p></li>
 <li><p><a class="reference external" href="https://www-nds.iaea.org/RIPL/levels/levels-readme.html">List of “+X” energies assignments</a></p></li>
 </ul>
-</div>
-<div class="section" id="linking-adopted-and-decay-datasets">
+</section>
+<section id="linking-adopted-and-decay-datasets">
 <h2>Linking Adopted and Decay datasets<a class="headerlink" href="#linking-adopted-and-decay-datasets" title="Permalink to this heading">¶</a></h2>
-<p>For a given nuclide, the ENSDF database places the evaluated levels and gamma transitions properties in the “Adopted” dataset.
-These are derived by making an overall fit of various “Decay” (and “Reaction”) datasets.
-It can happen that the same level, or the same gamma, is present in more than one of these datasets with, for example, an energy slightly different
-in each occurrence. With data scattered in various datasets, and with no easy linking between them, it becames difficult
-for end users to navigate the data.</p>
+<p>For a given nuclide, the ENSDF database places the evaluated levels and gamma transitions properties in the “Adopted”, which
+are derived by making an overall fit of various “Decay” (and “Reaction”) datasets.</p>
+<p>It can happen that the same level, or the same gamma, is present in more than one of these datasets with, for example, an energy slightly different
+in each occurrence.</p>
+<p>With data scattered in various datasets, and with no easy linking between them, it becames difficult
+for users to navigate the data.</p>
 <p>Take the following Sm-152 gamma transition as example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gamma</span>    <span class="n">start</span> <span class="n">level</span>  <span class="n">end</span> <span class="n">level</span>  <span class="n">dataset</span>
-<span class="n">energy</span>   <span class="n">energy</span>       <span class="n">energy</span>     <span class="n">category</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gamma</span>    <span class="n">Start</span> <span class="n">level</span>  <span class="n">End</span> <span class="n">level</span>  <span class="n">Dataset</span>
+<span class="n">energy</span>        <span class="n">energy</span>     <span class="n">energy</span>
 
 <span class="mf">119.46</span>   <span class="mf">1082.842</span>     <span class="mf">963.358</span>    <span class="n">Adopted</span> <span class="n">Sm</span><span class="o">-</span><span class="mi">152</span>
 
@@ -256,26 +267,31 @@ for end users to navigate the data.</p>
 <span class="o">....</span>
 </pre></div>
 </div>
-<p>This redundancy is removed in the NDlab database by linking each gamma and level
-in the “Decay” dataset to the corresponding one in the “Adopted”, removing the
-hurdle of multiple, but different, occurrences of a same entity.</p>
+<p>The NDlab database links each gamma and each level
+in the “Decay” dataset to the “Adopted” one, removing the multiple, but different, occurrences of a same entity.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Please note that for accurate structure and decay description, one should revert back to the ENSDF original datasets</p>
 </div>
-</div>
-</div>
-<div class="section" id="data-sources">
+</section>
+</section>
+<section id="data-sources">
 <h1>3. Data sources<a class="headerlink" href="#data-sources" title="Permalink to this heading">¶</a></h1>
 <p><strong>When</strong> not otherwise stated, data are from the <a class="reference external" href="https://www.nndc.bnl.gov/ensdf/">ENSDF</a> database</p>
 <ul class="simple">
-<li><p>Masses and Q-values are from <a class="reference external" href="https://www.anl.gov/phy/atomic-mass-data-resources">AME2020</a>, published in <a class="reference external" href="https://doi.org/10.1088/1674-1137/abddb0">Chinese Phys. C 45, 030002 (2021) and Chinese Phys. C 45, 030003 (2021)</a></p></li>
-<li><p>Abundances are from <a class="reference external" href="https://www.anl.gov/phy/atomic-mass-data-resources">NUBASE2020</a> published  in <a class="reference external" href="https://doi.org/10.1088/1674-1137/abddae">Chinese Phys. C 45, 030001 (2021).</a></p></li>
-<li><p>Fission Yields are from Joint Evaluated Fission and Fusion File (JEFF) 3.1.1</p></li>
-<li><p>Charge Radii are from: I.Angeli, K.P. Marinova, <em>Atomic Data and Nuclear Data Tables</em> <strong>99</strong> (2013) 69-95 <a class="reference external" href="http://dx.doi.org/10.1016/j.adt.2011.12.006">DOI:10.1016/j.adt.2011.12.006</a></p></li>
-<li><p>Atomic radiations, calculated following  <a class="reference external" href="https://doi.org/10.1016/S0969-8043(99)00216-X">E.Schönfeld, H.Janßen</a> and its references.</p></li>
+<li><p><strong>Masses and Q-values</strong>: <a class="reference external" href="https://www.anl.gov/phy/atomic-mass-data-resources">AME2020</a>, published in <a class="reference external" href="https://doi.org/10.1088/1674-1137/abddb0">Chinese Phys. C 45, 030002 (2021) and Chinese Phys. C 45, 030003 (2021)</a></p></li>
+<li><p><strong>Abundances</strong>: <a class="reference external" href="https://www.anl.gov/phy/atomic-mass-data-resources">NUBASE2020</a> published  in <a class="reference external" href="https://doi.org/10.1088/1674-1137/abddae">Chinese Phys. C 45, 030001 (2021).</a></p></li>
+<li><p><strong>Fission Yields</strong>: Joint Evaluated Fission and Fusion File (JEFF) 3.1.1</p></li>
+<li><p><strong>Charge Radii</strong>: I.Angeli, K.P. Marinova, <em>Atomic Data and Nuclear Data Tables</em> <strong>99</strong> (2013) 69-95 <a class="reference external" href="http://dx.doi.org/10.1016/j.adt.2011.12.006">DOI:10.1016/j.adt.2011.12.006</a></p></li>
+<li><p><strong>Atomic radiations</strong> calculated following:  <a class="reference external" href="https://doi.org/10.1016/S0969-8043(99)00216-X">E.Schönfeld, H.Janßen</a> and its references.</p></li>
 </ul>
+<div class="line-block">
+<div class="line"><strong>Nuclear Moments</strong>: Tables produced by N.J. Stone:</div>
+<div class="line">Table of Recommended Nuclear Magnetic Dipole Moments: Part I - Long-lived States <a class="reference external" href="https://nds.iaea.org/publications/indc/indc-nds-0794/">indc-nds-0794</a>,</div>
+<div class="line">Table of Recommended Nuclear Magnetic Dipole Moments - Part II, Short-lived States <a class="reference external" href="https://nds.iaea.org/publications/indc/indc-nds-0816/">indc-nds-0816</a>,</div>
+<div class="line">Table of Nuclear Electric Quadrupole Moments <a class="reference external" href="https://nds.iaea.org/publications/indc/indc-nds-0833/">indc-nds-0833</a></div>
 </div>
+</section>
 
 
            </div>
@@ -283,6 +299,7 @@ hurdle of multiple, but different, occurrences of a same entity.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-right" title="1. Getting the data from the Web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="code.html" class="btn btn-neutral float-left" title="1. ndlab module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

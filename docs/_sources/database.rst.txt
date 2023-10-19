@@ -46,18 +46,21 @@ The `RIPL <https://www-nds.iaea.org/RIPL-3/levels/>`_ Discrete Levels database i
 Linking Adopted and Decay datasets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For a given nuclide, the ENSDF database places the evaluated levels and gamma transitions properties in the "Adopted" dataset.
-These are derived by making an overall fit of various "Decay" (and "Reaction") datasets.  
+For a given nuclide, the ENSDF database places the evaluated levels and gamma transitions properties in the "Adopted", which
+are derived by making an overall fit of various "Decay" (and "Reaction") datasets.  
+
 It can happen that the same level, or the same gamma, is present in more than one of these datasets with, for example, an energy slightly different
-in each occurrence. With data scattered in various datasets, and with no easy linking between them, it becames difficult
-for end users to navigate the data.
+in each occurrence. 
+
+With data scattered in various datasets, and with no easy linking between them, it becames difficult
+for users to navigate the data.
 
 Take the following Sm-152 gamma transition as example:
 
 ::
     
-    gamma    start level  end level  dataset
-    energy   energy       energy     category       
+    Gamma    Start level  End level  Dataset
+    energy        energy     energy            
 
     119.46   1082.842     963.358    Adopted Sm-152
 
@@ -67,9 +70,8 @@ Take the following Sm-152 gamma transition as example:
     ....
 
 
-This redundancy is removed in the NDlab database by linking each gamma and level 
-in the "Decay" dataset to the corresponding one in the "Adopted", removing the 
-hurdle of multiple, but different, occurrences of a same entity.
+The NDlab database links each gamma and each level 
+in the "Decay" dataset to the "Adopted" one, removing the multiple, but different, occurrences of a same entity.
 
 .. attention::
 
@@ -81,15 +83,14 @@ hurdle of multiple, but different, occurrences of a same entity.
 
 **When** not otherwise stated, data are from the `ENSDF <https://www.nndc.bnl.gov/ensdf/>`_ database
 
-* Masses and Q-values are from `AME2020 <https://www.anl.gov/phy/atomic-mass-data-resources>`_, published in `Chinese Phys. C 45, 030002 (2021) and Chinese Phys. C 45, 030003 (2021) <https://doi.org/10.1088/1674-1137/abddb0>`_
-* Abundances are from `NUBASE2020 <https://www.anl.gov/phy/atomic-mass-data-resources>`_ published  in `Chinese Phys. C 45, 030001 (2021). <https://doi.org/10.1088/1674-1137/abddae>`_
-* Fission Yields are from Joint Evaluated Fission and Fusion File (JEFF) 3.1.1
-* Charge Radii are from: I.Angeli, K.P. Marinova, *Atomic Data and Nuclear Data Tables* **99** (2013) 69-95 `DOI:10.1016/j.adt.2011.12.006 <http://dx.doi.org/10.1016/j.adt.2011.12.006>`_
-* Atomic radiations, calculated following  `E.Schönfeld, H.Janßen <https://doi.org/10.1016/S0969-8043(99)00216-X>`_ and its references. 
-
-
-
-
-
+* **Masses and Q-values**: `AME2020 <https://www.anl.gov/phy/atomic-mass-data-resources>`_, published in `Chinese Phys. C 45, 030002 (2021) and Chinese Phys. C 45, 030003 (2021) <https://doi.org/10.1088/1674-1137/abddb0>`_
+* **Abundances**: `NUBASE2020 <https://www.anl.gov/phy/atomic-mass-data-resources>`_ published  in `Chinese Phys. C 45, 030001 (2021). <https://doi.org/10.1088/1674-1137/abddae>`_
+* **Fission Yields**: Joint Evaluated Fission and Fusion File (JEFF) 3.1.1
+* **Charge Radii**: I.Angeli, K.P. Marinova, *Atomic Data and Nuclear Data Tables* **99** (2013) 69-95 `DOI:10.1016/j.adt.2011.12.006 <http://dx.doi.org/10.1016/j.adt.2011.12.006>`_
+* **Atomic radiations** calculated following:  `E.Schönfeld, H.Janßen <https://doi.org/10.1016/S0969-8043(99)00216-X>`_ and its references.
+| **Nuclear Moments**: Tables produced by N.J. Stone:
+| Table of Recommended Nuclear Magnetic Dipole Moments: Part I - Long-lived States `indc-nds-0794 <https://nds.iaea.org/publications/indc/indc-nds-0794/>`_, 
+| Table of Recommended Nuclear Magnetic Dipole Moments - Part II, Short-lived States `indc-nds-0816 <https://nds.iaea.org/publications/indc/indc-nds-0816/>`_, 
+| Table of Nuclear Electric Quadrupole Moments `indc-nds-0833 <https://nds.iaea.org/publications/indc/indc-nds-0833/>`_
 
 

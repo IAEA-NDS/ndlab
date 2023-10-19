@@ -184,7 +184,17 @@ In the :ref:`ndm reference <ndm-label>`  these fields are flagged with *(Q)*. Qu
     | If you do not want to use the autocompletion, you do not need to import the ndlaborm module.
     | But if ndlaborm was imported using an alias, e.g. :code:`import ndlaborm as no`, when using the autocompletion pay attention not include the alias in the fields variable. :code:`fields = "no.GAMMA.ENERGY"` is not valid, remove the 'no.'.
 
+ .. tip::
+
+    In case of doubt, or unexpected errors, one can use the following two functions 
     
+    ::
+
+        # returns false if there are issues
+        nl.is_query_ok(fields, filter)
+
+        # returns a list with the errors found
+        errors = nl.query_check(fields, filter)
 
 .. _filter-label:
 
@@ -211,6 +221,18 @@ Here below the rules to follow when writing a filter
 
     * use **in** to filter a set of values, e.g. :code:`NUCLIDE.NUC_ID IN ( '235U', '135XE' )` (notice the single quotes), or :code:`NUCLIDE.Z IN (5, 10)`
     * use **like** to filter the content of a text, e.g. :code:`LEVEL.JP like '%2+%'` will filter the jp values containing the string "2+". See :ref:`jp values <jp-label>` for more
+
+ .. tip::
+
+    In case of doubt, or unexpected errors, one can use the following two functions 
+    
+    ::
+
+        # returns false if there are issues
+        nl.is_query_ok(fields, filter)
+
+        # returns a list with the errors found
+        errors = nl.query_check(fields, filter)
 
 .. _retrieve-examples-label:
 
@@ -248,6 +270,7 @@ Here below the rules to follow when writing a filter
 
     The ground states properties (Half-life, Jp, etc...) are in the LEVEL, with SEQNO = 0. For example the G.S. of Xe-135 is
     :code:`LEVEL.NUC.NUC_ID = '135XE' and LEVEL.SEQNO = 0`
+
 
 .. _jp-label:
 
@@ -344,7 +367,7 @@ If you need a unique value, even when the ENSDF evaluation is not unique, then u
 
 
 
-
+.. _decaymodes-label:
 
 6. Decay modes 
 --------------

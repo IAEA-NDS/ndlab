@@ -1,0 +1,132 @@
+.. _api-label:
+
+1. Getting the data from the Web
+--------------------------------
+
+**It** is possible to retrieve NDLab data from the Nuclear Data Section servers using its data API. This might be useful
+in case one does not want to download the NDLab package, or is not using Python.
+
+Here how to construct the request:
+
+::
+
+    https://nds.iaea.org/cgi-bin/ndlab_server.py?fields=<fields list>&filter=<filter to apply>
+
+and here a concrete example to retrive the gamma transition energies and multipolarities of Lithium isotopes
+
+::
+
+    https://nds.iaea.org/cgi-bin/ndlab_server.py?fields=GAMMA.ENERGY,GAMMA.MULTIPOLARITY&filter=GAMMA.NUC.Z=3
+
+The sections of the guide relevant to the API are: 
+
+| :ref:`The Index <index-label>` : gives an overview of NDLab
+| :ref:`The fields parameter <fields-label>` : explains how to construct the **fields** 
+| :ref:`The filter parameter <filter-label>` : for the **filter**
+| :ref:`Examples <retrieve-examples-label>` : provides some cases with explanation, and the 
+| :ref:`Jp values <jp-label>` and :ref:`Decay modes <decaymodes-label>` : gives further details about these fields
+| :ref:`Constructing "Fields" and "Filter" <ndm-label>` : gives the list of fields that can be retireved
+
+:ref:`The Database <database-label>` page explains how the database is constructed, what are the sources, 
+and what are the differences with the `Livechart data API <https://www-nds.iaea.org/relnsd/vcharthtml/api_v0_guide.html>`_
+
+2. Parameters and return formats
+---------------------------------
+
+| **The base** URL of the service is
+| https://nds.iaea.org/cgi-bin/ndlab_server.py?
+
+and accepts the following parametres:
+
+| **fields**, mandatory, see :ref:`The fields parameter <fields-label>`
+| **filter**, optional,  see :ref:`The filter parameter <filter-label>`
+| **return_type**, optional, can be *csv* or *json*. If not specified, the data are returned as csv
+| **action**, optional, can only be *check*, performs a test of the validity of the *fields* and *filter* parameters
+
+3. Examples
+------------
+
+**Any** of the *fields* and *filter* values given in this guide can be passed as parameters, here below some samples: 
+
+* Xe-135 levels in json `[try it] <http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.ALL&filter=LEVEL.NUC.NUC_ID='135XE'&return_type=json>`_
+
+:: 
+
+    http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.ALL&filter=LEVEL.NUC.NUC_ID='135XE'&return_type=json
+
+| Remember the *rule 6* of the :ref:`The filter parameter <filter-label>`: 135XE must be between single quotes 
+
+* Ground state properties `[try it] <http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.HALF_LIFE_SEC,LEVEL.NUC.BINDING_EN,LEVEL.NUC.SN&filter=LEVEL.SEQNO=0>`_ 
+
+:: 
+
+    http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.HALF_LIFE_SEC,LEVEL.NUC.BINDING_EN,LEVEL.NUC.SN&filter=LEVEL.SEQNO=0
+
+| The ground state is the LEVEL with SEQNO=0. To access the overall properites of the nuclide, use LEVEL.NUC. 
+
+* Auger electrons from the decay of Xe-135 `[try it] <http://localhost:8123/cgi-bin/ndlab_server.py?fields=DR_AUGER.ALL&filter=DR_AUGER.PARENT.NUC_ID='135XE'>`_ 
+
+:: 
+
+    http://localhost:8123/cgi-bin/ndlab_server.py?fields=DR_AUGER.ALL&filter=DR_AUGER.PARENT.NUC_ID='135XE'
+
+* All Xe-135 levels that decay, with decay properties `[try it] <http://localhost:8123/cgi-bin/ndlab_server.py?fields=L_DECAY.LEVEL.ALL,L_DECAY.ALL&filter=L_DECAY.NUC.NUC_ID='135XE'>`_ 
+
+:: 
+
+   http://localhost:8123/cgi-bin/ndlab_server.py?fields=L_DECAY.LEVEL.ALL,L_DECAY.ALL&filter=L_DECAY.NUC.NUC_ID='135XE'
+
+4. Deal with HTTP Error 403
+---------------------------
+
+**There** have been cases in which the service returns an *HTTP Error 403: Forbidden* 
+The workaround is to add an user agent to the request.
+
+Python:
+
+::
+
+    def lc_read_csv(url):
+        req = urllib.request.Request(url)
+        req.add_header('User-Agent', 
+            'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0')
+        content = urllib.request.urlopen(req)
+        return content
+
+Java:
+
+:: 
+
+    protected String lc_read_csv(url){
+
+        URL murl = new URL(url);
+        URLConnection conn = murl.openConnection();
+        conn.setRequestProperty("User-Agent",
+        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0");
+        
+        BufferedReader br = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()));
+
+        String inputLine;
+        StringBuffer sb = new StringBuffer();
+        while ((inputLine = br.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        br.close();
+        return sb.toString();
+    }
+
+For other languages, add the suggested user agent to the request using the avaliable function
+
+
+
+
+
+
+
+
+
+
+
+
+

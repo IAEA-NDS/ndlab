@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>0. Cheat sheet &mdash; NDLab 0.1 documentation</title>
@@ -97,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#change-log">5. Change log</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
 <ul>
@@ -139,6 +141,13 @@
 <li class="toctree-l1"><a class="reference internal" href="database.html">1. The search engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">1. Getting the data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#parameters-and-return-formats">2. Parameters and return formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#examples">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#deal-with-http-error-403">4. Deal with HTTP Error 403</a></li>
 </ul>
 
             
@@ -206,7 +215,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cheat-sheet">
+  <section id="cheat-sheet">
 <span id="programming-label"></span><h1>0. Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Permalink to this heading">¶</a></h1>
 <p><strong>Examples</strong> of use, you will se below the detailed explanation and more complex cases when writing algorithms</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nucs</span> <span class="o">=</span> <span class="n">nuclides</span><span class="p">(</span><span class="s2">&quot;NUCLIDE.Z = 2&quot;</span><span class="p">)</span>
@@ -228,8 +237,8 @@
 <span class="n">dr_alphas</span><span class="p">(</span><span class="s2">&quot;DR_ALPHA.PARENT_NUC_ID = &#39;238U&#39;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="programming-overview">
+</section>
+<section id="programming-overview">
 <h1>1. Programming overview<a class="headerlink" href="#programming-overview" title="Permalink to this heading">¶</a></h1>
 <p><strong>The</strong> previous section addressed typical data analysis topics like filtering, grouping, binning, plotting,
 statistics.</p>
@@ -242,8 +251,8 @@ Not to loose the power of pandas, NDLab gives the options of dumping the content
 into pandas dataframes, then reverting back to Python code if needed</p>
 <p>A Notebook tutorial is available in <em>ndlab-tutorial.ipynb</em></p>
 <p>The project is meant to be open to contributions. In case you are interested, please write to <a class="reference external" href="mailto:nds&#46;contact-point&#37;&#52;&#48;iaea&#46;org">nds<span>&#46;</span>contact-point<span>&#64;</span>iaea<span>&#46;</span>org</a></p>
-</div>
-<div class="section" id="classes-and-functions">
+</section>
+<section id="classes-and-functions">
 <h1>2. Classes and functions<a class="headerlink" href="#classes-and-functions" title="Permalink to this heading">¶</a></h1>
 <p><strong>Let’s start</strong> with a couple of examples before the details:</p>
 <p>The function below returns the chain of daughters from the decays of a given nuclide</p>
@@ -432,8 +441,8 @@ contain “GAMMA”, and so on</p>
 </pre></div>
 </div>
 <p>Classes can be accessed from within other classes instances. For example <a class="reference internal" href="code.html#ndlab.Nuclide.levels" title="ndlab.Nuclide.levels"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.Nuclide.levels()</span></code></a> returns the list of <a class="reference internal" href="code.html#ndlab.Level" title="ndlab.Level"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Level</span></code></a> of that nuclide.</p>
-</div>
-<div class="section" id="pandas">
+</section>
+<section id="pandas">
 <h1>3. Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">¶</a></h1>
 <p><strong>Once</strong> a list with class instances is obtained, it is possible to dump its content into a dataframe to perform
 futher analysis, or plotting, using the <a class="reference internal" href="code.html#ndlab.pandas_df_nl" title="ndlab.pandas_df_nl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ndlab.pandas_df_nl()</span></code></a></p>
@@ -477,8 +486,8 @@ futher analysis, or plotting, using the <a class="reference internal" href="code
 <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;half_life_sec&quot;</span><span class="p">,</span> <span class="n">log_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="work-with-measurements">
+</section>
+<section id="work-with-measurements">
 <h1>3. Work with Measurements<a class="headerlink" href="#work-with-measurements" title="Permalink to this heading">¶</a></h1>
 <p><strong>Describing</strong> the <a class="reference internal" href="interrogation.html#fields-label"><span class="std std-ref">field parameter</span></a>, we have seen that many measured properties are described by three fields with value, uncertainity, limit.
 This is implemented also in the classes above, where most properties are stored in the <a class="reference internal" href="code.html#qtt-label"><span class="std std-ref">Quantity</span></a> class</p>
@@ -504,7 +513,7 @@ If you need, you can access separately the various components:</p>
 </div>
 <p>See futher details here <a class="reference internal" href="code.html#ndlab.Quantity" title="ndlab.Quantity"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndlab.Quantity</span></code></a></p>
 <p>Let’s now see how the Quantity class manages error propagation</p>
-<div class="section" id="values-uncertainties-and-limits">
+<section id="values-uncertainties-and-limits">
 <h2>Values,  Uncertainties, and Limits<a class="headerlink" href="#values-uncertainties-and-limits" title="Permalink to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">The Quantity class embeds the package <a class="reference external" href="https://pythonhosted.org/uncertainties/">uncertainties</a> to handle error propagation.</div>
@@ -549,8 +558,8 @@ If you need, you can access separately the various components:</p>
 </div></blockquote>
 <p>In cases like <em>&gt;3 + &lt;4</em>, when the composed operator cannot be assigned, the resulting operator is <em>?</em>.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

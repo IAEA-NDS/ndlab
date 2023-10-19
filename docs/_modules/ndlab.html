@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html#dependencies">2. Dependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html#test-it-s-working">3. Test it’s working</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html#optional-packages">4. Optional packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#change-log">5. Change log</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
 <ul>
@@ -134,6 +135,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../database.html">1. The search engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../database.html#underlying-databases">2. Underlying databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../database.html#data-sources">3. Data sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">1. Getting the data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html#parameters-and-return-formats">2. Parameters and return formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html#examples">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html#deal-with-http-error-403">4. Deal with HTTP Error 403</a></li>
 </ul>
 
             
@@ -203,26 +211,58 @@
 <span></span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">The user entry point to interrogate the database, and to write custom software</span>
+<span class="sd">==============================================================================</span>
 
-<span class="sd">Direct database interrogation is through :py:meth:`ndlab.csv_data`, :py:meth:`ndlab.json_data`, :py:meth:`ndlab.csv_nl`,</span>
+<span class="sd">Direct database interrogation is through these functions</span>
+<span class="sd">:py:meth:`ndlab.csv_data`, :py:meth:`ndlab.json_data`, :py:meth:`ndlab.csv_nl`,</span>
 <span class="sd">:py:meth:`ndlab.pandas_csv_nl`, :py:meth:`ndlab.pandas_csv_web`.</span>
 
-<span class="sd">For how to specify the query parameters, see :py:mod:`ndlaborm`</span>
+<span class="sd">Data retrieval cheat sheets</span>
+<span class="sd">---------------------------</span>
 
-<span class="sd">The  :py:class:`ndlab.Property`,  :py:class:`ndlab.Nominal`, :py:class:`ndlab.Quantity` implement the ISO Vocabulary (VIM) </span>
-<span class="sd">https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html using also :py:class:`ndlab.Operator` and :py:class:`ndlab.Unit`</span>
+<span class="sd">fields=&#39;GAMMA.NUC.Z, GAMMA.NUC.N, GAMMA.ENERGY&#39;</span>
+<span class="sd">filter=&#39;GAMMA.ENERGY &gt;  560&#39;</span>
+
+<span class="sd">* Data in json format</span>
+<span class="sd">  json_data(fields , filter)&quot;</span>
+
+<span class="sd">* Data in csv format </span>
+<span class="sd">  csv_data(fields , filter )</span>
+
+<span class="sd">* Data in csv format from a list of ndlab classes </span>
+<span class="sd">  csv_nl(nl_items)</span>
+
+<span class="sd">* Creates a pandas dataframe </span>
+<span class="sd">  import pandas as pd</span>
+<span class="sd">  pandas_df(fields, filter, pd)</span>
+
+<span class="sd">* Creates a dataframe from a list of ndlab classes                </span>
+<span class="sd">  pandas_df_nl(list, pandas)</span>
 
 
-<span class="sd">- The :py:class:`ndlab.Quantity` is the most relevant, and it embeds the uncerainities propagation using the &#39;uncertainities&#39; packages </span>
+<span class="sd">For how to specify the fields and filter parameters, see :py:mod:`ndlaborm`</span>
+
+<span class="sd">Data model and programming</span>
+<span class="sd">---------------------------</span>
+
+<span class="sd">The Base for the classes representing the  nuclear model is  :py:class:`ndlab.NdmBase`. </span>
+<span class="sd">Their instance variables are intialized with a json structure</span>
+<span class="sd">that is passed to each of the instance variables of type :py:class:`ndlab.Quantity` </span>
+
+<span class="sd">A set of functions then initialize these classes, querying the database</span>
+
+<span class="sd">The  :py:class:`ndlab.Property`,  :py:class:`ndlab.Nominal`, :py:class:`ndlab.Quantity`, </span>
+<span class="sd">:py:class:`ndlab.Operator` and :py:class:`ndlab.Unit`</span>
+<span class="sd">implement the ISO Vocabulary (VIM) </span>
+<span class="sd">https://www.iso.org/sites/JCGM/VIM/JCGM_200e_FILES/MAIN_JCGM_200e/Start_e.html </span>
+
+<span class="sd">- The :py:class:`ndlab.Quantity` embeds the uncerainities propagation using the &#39;uncertainities&#39; packages </span>
 <span class="sd">  (https://pythonhosted.org/uncertainties/).</span>
 <span class="sd">- A Quantity is initialised with  a json structure.</span>
 <span class="sd">- The classes representing the model contain variables of type Quantity to store the data</span>
 
 
-<span class="sd">The Base for the classes of the  nuclear model is  :py:class:`ndlab.NdmBase`. Their instance variables are intialized with a json structure</span>
-<span class="sd">that is passed to each of their instance variables of type :py:class:`ndlab.Quantity` </span>
 
-<span class="sd">A set of functions initialize these classes querying the database through http </span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -255,6 +295,38 @@
 <span class="n">CSV_SEP</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
 <span class="n">ERROR_FILTER_NOT_VALID</span> <span class="o">=</span> <span class="s2">&quot;Fields or Filter not valid, check the rules&quot;</span>
 
+<span class="n">help</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;See https://iaea-nds.github.io/ndlab/interrogation.html on how to construct the fields and filter parameters</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        
+<span class="s2">&quot;fields=&#39;GAMMA.NUC.Z, GAMMA.NUC.N, GAMMA.ENERGY&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;filter=&#39;GAMMA.ENERGY &gt;  560&#39;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+<span class="s2">&quot;* Data in json format *</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;json_data(fields , filter) </span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+<span class="s2">&quot;* Data in csv format *</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;csv_data(fields , filter )</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+<span class="s2">&quot;* Data in csv format from a list of ndlab classes *</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;csv_nl(nl_items)</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+<span class="s2">&quot;* Creates a dataframe *</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;import pandas as pd</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;pandas_df(fields, filter, pd)</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+<span class="s2">&quot;* Creates a dataframe from a list of ndlab classes *</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="s2">&quot;pandas_df_nl(list, pandas)&quot;</span> <span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__spec__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;C:/other_file  </span>
+<span class="s1">                trtrr&#39;&#39;&#39;</span>
+    <span class="n">name</span> <span class="o">=</span>  <span class="n">__spec__</span><span class="o">.</span><span class="n">name</span> <span class="c1">#&#39;new_name&#39;</span>
+
+    <span class="n">__spec__</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">file_path</span>
+
+    <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="n">__spec__</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">__spec__</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="n">__spec__</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
 <span class="k">def</span> <span class="nf">_float_check</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Check if a value retrieved from the database is a float</span>
@@ -890,12 +962,15 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">decays</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decays</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_decays</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;L_DECAY.ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;L_decay&quot;</span><span class="p">,</span> <span class="s2">&quot; L_DECAY.NUC_ID = &#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucid</span> <span class="o">+</span> <span class="s2">&quot;&#39; ORDER BY L_DECAY.LEVEL_SEQNO , L_DECAY.MODE&quot;</span> <span class="p">)</span> <span class="c1">#_DR_BASE.PARENT_NUC_ID = L_DECAY.NUC_ID and</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_decays</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;L_DECAY.ALL&quot;</span><span class="p">,</span> <span class="s2">&quot;L_decay&quot;</span><span class="p">,</span> <span class="s2">&quot; L_DECAY.NUC_ID = &#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucid</span> <span class="o">+</span> <span class="s2">&quot;&#39; ORDER BY L_DECAY.LEVEL_SEQNO , L_DECAY.MODE&quot;</span> <span class="p">)</span> <span class="c1">#DECAY_RAD.PARENT_NUC_ID = L_DECAY.NUC_ID and</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decays</span>
        
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">gs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">(</span> <span class="s2">&quot; LEVEL.SEQNO = 0 &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">mygs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">(</span> <span class="s2">&quot; LEVEL.SEQNO = 0 &quot;</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mygs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">levels</span><span class="p">(</span> <span class="s2">&quot; LEVEL.SEQNO = 0 &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">daughters_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1135,7 +1210,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_nuclide</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_levels</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_daughter</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_daughters</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
@@ -1155,7 +1230,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucid</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l_seqno</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
 
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sql_decrad</span> <span class="o">=</span>  <span class="s2">&quot; _DR_BASE.PARENT_NUC_ID = &#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucid</span> <span class="o">+</span> <span class="s2">&quot;&#39; and _DR_BASE.PARENT_LEVEL_SEQNO = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l_seqno</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and _DR_BASE.MODE = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; ORDER BY _DR_BASE.ENERGY&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sql_decrad</span> <span class="o">=</span>  <span class="s2">&quot; DECAY_RAD.PARENT_NUC_ID = &#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucid</span> <span class="o">+</span> <span class="s2">&quot;&#39; and DECAY_RAD.PARENT_LEVEL_SEQNO = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l_seqno</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; and DECAY_RAD.MODE = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; ORDER BY DECAY_RAD.ENERGY&quot;</span>
 
 <div class="viewcode-block" id="L_decay.gammas"><a class="viewcode-back" href="../code.html#ndlab.L_decay.gammas">[docs]</a>    <span class="k">def</span> <span class="nf">gammas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">DEFAULT</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Gamma radiation from this decay</span>
@@ -1287,8 +1362,8 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
          <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span>  <span class="n">this</span><span class="o">.</span><span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DECAY_MODE&quot;</span><span class="p">,</span><span class="s2">&quot;Decay_mode&quot;</span> <span class="s2">&quot; DECAY_MODE.DECAY_CODE = &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; &quot;</span><span class="p">)</span>
-         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dataset_code</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span>  <span class="n">this</span><span class="o">.</span><span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DECAY_MODE&quot;</span><span class="p">,</span><span class="s2">&quot;Decay_mode&quot;</span> <span class="p">,</span><span class="s2">&quot; DECAY_MODE.CODE = &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; &quot;</span><span class="p">)</span>
+         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">toten_recoil</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1346,7 +1421,7 @@
 <div class="viewcode-block" id="L_decay.tot_measured_en"><a class="viewcode-back" href="../code.html#ndlab.L_decay.tot_measured_en">[docs]</a>    <span class="k">def</span> <span class="nf">tot_measured_en</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Total energy emitted per 100 decays of the parent</span>
 
-<span class="sd">        calculated as sum (energy * intensity / 100 ) * Q_togs over all radiations</span>
+<span class="sd">        calculated as sum (energy * intensity / 100 )  over all radiations</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Quantity: the total energy</span>
@@ -1357,7 +1432,7 @@
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rads</span><span class="p">:</span>
             <span class="n">sm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tot_rad_en</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
         <span class="n">sm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toten_recoil</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">q_togs</span>   </div></div>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span>  </div></div>
 
 
 <div class="viewcode-block" id="Gamma"><a class="viewcode-back" href="../code.html#ndlab.Gamma">[docs]</a><span class="k">class</span> <span class="nc">Gamma</span><span class="p">(</span><span class="n">Ndm_base</span><span class="p">):</span>
@@ -1566,17 +1641,21 @@
   
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ensdf_code</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_code</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1">#self.ensdf_code = None</span>
+        <span class="c1">#self.decay_code = None</span>
+        <span class="c1">#self.dataset_code = None</span>
 
 
     <span class="k">def</span> <span class="nf">_populate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ensdf_code</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ensdf_code&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;decay_code&quot;</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dataset_code</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dataset_code&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span>  <span class="n">_int_check</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">pk</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decay_code</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pk</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
 
 
 
@@ -2056,14 +2135,14 @@
 
     <span class="c1">#print(&quot;class &quot;,nl_class_name, &quot; filter &quot;,filter, &quot; _filter &quot;, _filter, dblink.query_check(orm_table+&quot;.*&quot;,filter), &quot;orm_table&quot; , orm_table)</span>
     
-    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">dblink</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">orm_table</span><span class="o">+</span><span class="s2">&quot;.*&quot;</span><span class="p">,</span><span class="nb">filter</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">dblink</span><span class="o">.</span><span class="n">is_query_ok</span><span class="p">(</span><span class="n">orm_table</span><span class="o">+</span><span class="s2">&quot;.*&quot;</span><span class="p">,</span><span class="nb">filter</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">ERROR_FILTER_NOT_VALID</span>
     
     <span class="n">tablename</span> <span class="o">=</span> <span class="n">orm_table</span> <span class="k">if</span> <span class="n">orm_table</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">orm_table</span> <span class="o">+</span> <span class="s2">&quot;.*&quot;</span>
     
     <span class="c1"># call to the database</span>
     <span class="n">jss</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_data</span><span class="p">(</span><span class="n">tablename</span> <span class="p">,</span> <span class="n">_filter</span> <span class="p">))</span>
-
+    <span class="c1">#print(&quot; tablename &quot;,tablename)</span>
     <span class="c1">#print(&quot; sql &quot;, dblink.lastsql)</span>
     <span class="c1">#print(&quot; json &quot;, jss)</span>
     <span class="c1">#print(&quot;&quot;)</span>
@@ -2083,6 +2162,20 @@
 
     <span class="k">return</span> <span class="n">objs</span>
 
+<span class="k">def</span> <span class="nf">query_check</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>  
+    <span class="sd">&quot;&quot;&quot; Check if users parameters produce a valid query, return errors if any</span>
+
+<span class="sd">    interface to sqlbuilder</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dblink</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_query_ok</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>  
+    <span class="sd">&quot;&quot;&quot; Check if users parameters produce a valid query, return true/false</span>
+
+<span class="sd">    interface to sqlbuilder</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dblink</span><span class="o">.</span><span class="n">is_query_ok</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+
 <div class="viewcode-block" id="check_filter"><a class="viewcode-back" href="../code.html#ndlab.check_filter">[docs]</a><span class="k">def</span> <span class="nf">check_filter</span><span class="p">(</span><span class="nb">filter</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Whether a filter is okay when applied to a given function</span>
 
@@ -2096,7 +2189,7 @@
 <span class="sd">     </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">table</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;.*&quot;</span>
-    <span class="k">return</span> <span class="n">dblink</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">table</span><span class="p">,</span><span class="nb">filter</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">dblink</span><span class="o">.</span><span class="n">is_query_ok</span><span class="p">(</span><span class="n">table</span><span class="p">,</span><span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="nuclide"><a class="viewcode-back" href="../code.html#ndlab.nuclide">[docs]</a><span class="k">def</span> <span class="nf">nuclide</span><span class="p">(</span><span class="n">nucid</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A :py:class:`ndlab.Nuclide` from its identifyer</span>
@@ -2177,7 +2270,6 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Dr_gamma : </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">return</span> <span class="n">_generator</span><span class="p">(</span><span class="s2">&quot;DR_GAMMA&quot;</span><span class="p">,</span><span class="s2">&quot;Dr_gamma&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">dr_annihil</span><span class="p">(</span><span class="nb">filter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
@@ -2396,7 +2488,7 @@
     <span class="n">this</span><span class="o">.</span><span class="n">last_filter</span> <span class="o">=</span> <span class="nb">filter</span>
 
 
-    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">dblink</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span><span class="nb">filter</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">dblink</span><span class="o">.</span><span class="n">is_query_ok</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span><span class="nb">filter</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">ERROR_FILTER_NOT_VALID</span>
 
     <span class="k">if</span><span class="p">(</span><span class="n">dblink</span><span class="o">.</span><span class="n">connected</span><span class="p">):</span>
@@ -2452,7 +2544,7 @@
     <span class="k">return</span>  <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">csv_nl</span><span class="p">(</span><span class="n">nl_items</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="pandas_df_nl"><a class="viewcode-back" href="../code.html#ndlab.pandas_df_nl">[docs]</a><span class="k">def</span> <span class="nf">pandas_df_nl</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">pandas</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Returns a Dataframe from a list of ndlab classes</span>
+    <span class="sd">&quot;&quot;&quot; Returns a Dataframe from a list of :py:class:`ndlab.Ndm_base` classes</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">       list (List): list of ndlab class instances</span>
@@ -2592,6 +2684,13 @@
     <span class="n">res</span> <span class="o">=</span> <span class="n">dblink</span><span class="o">.</span><span class="n">query_exec</span><span class="p">(</span><span class="s2">&quot;select distinct  b_trans_type from decay_radiations order by 1&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TRANS_&quot;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; = &#39;&quot;</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+
+
+
+
+
+
+
 </pre></div>
 
            </div>

@@ -12,8 +12,10 @@ import sqlite3
 import traceback
 
 class Dblink:
-    """ trt
-    """
+    
+    """Whether to print the sql in case of error"""
+    print_sql = True;
+    print_debug = False;
 
     def __init__(self, db_path = ''):
         self._sqlbuilder = ndlaborm.Sqlbuilder()  
@@ -41,7 +43,9 @@ class Dblink:
 
         Just avoiding talking directly with the db connection
         """
-       
+        if(self.print_debug):
+            print(sql)
+
         return self._con_lite.execute(sql)
         
 
@@ -51,19 +55,23 @@ class Dblink:
         """
        
         try:
-            return self._con_lite.execute(self.query_build(fields, conditions))
+            return self.query_exec(self.query_build(fields, conditions))
         except:
-#            print('query error')
             try:
              if(not self._sqlbuilder.force_clean):
                 self.force_clean_query(True)
                 sql = self.query_build(fields, conditions)
                 self.force_clean_query(False)
                 try:
-                    return self._con_lite.execute(sql)
+                    return self.query_exec(sql)
                 except sqlite3.Error as er:
-                    print('"Error , check the rules for the fields and filter parameters\n": %s' % (' '.join(er.args)))
-                    print(sql)
+                    exc_msg = (' '.join(er.args))
+                    if(not self.print_sql):
+                        exc_msg = ""
+
+                    print('"Error, check the rules for the fields and filter parameters\n": %s' % exc_msg)
+                    if(self.print_sql):
+                        print(sql)
                     #print("Exception class is: ", er.__class__)
                     #print('SQLite traceback: ')
                     #exc_type, exc_value, exc_tb = sys.exc_info()
@@ -80,12 +88,19 @@ class Dblink:
         return self._sqlbuilder.query_desc(fields,conditions)
      
     def query_check(self,table, conditions=""):  
-        """ Checks if users parameters produce a valid query
+        """ Check if users parameters produce a valid query, return errors if any
 
         interface to sqlbuilder
         """
         
         return self._sqlbuilder.query_check(table, conditions)
+
+    def is_query_ok(self,table, conditions=""):  
+        """ Check if users parameters produce a valid query, return errors if any
+
+        interface to sqlbuilder
+        """
+        return self._sqlbuilder.is_query_ok(table, conditions)
      
     def query_build(self,fields, conditions=""):
         """Produces an sql from users' parameters

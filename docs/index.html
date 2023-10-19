@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Beta Testing User Guide &mdash; NDLab 0.1 documentation</title>
@@ -137,6 +138,13 @@
 <li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">1. Getting the data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#parameters-and-return-formats">2. Parameters and return formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#examples">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#deal-with-http-error-403">4. Deal with HTTP Error 403</a></li>
+</ul>
 
             
           
@@ -208,10 +216,10 @@
  <b></b>
 </div>
 
-<div style="margin-bottom:30px">&nbsp;</div><div class="section" id="beta-testing-user-guide">
-<h1>Beta Testing User Guide<a class="headerlink" href="#beta-testing-user-guide" title="Permalink to this heading">¶</a></h1>
+<div style="margin-bottom:30px">&nbsp;</div><section id="beta-testing-user-guide">
+<span id="index-label"></span><h1>Beta Testing User Guide<a class="headerlink" href="#beta-testing-user-guide" title="Permalink to this heading">¶</a></h1>
 <div class="line-block">
-<div class="line"><strong>NDlab</strong> is a package for nuclear (mainly)structure data analysis, calculation, and modelling.</div>
+<div class="line"><strong>NDlab</strong> is a package for nuclear (mainly) structure data analysis, calculation, and modelling.</div>
 <div class="line">It caters for users that need to process and navigate the data via software, having no knowledge about the formats and data structures of the original data libraries.</div>
 </div>
 <div class="admonition attention">
@@ -238,18 +246,19 @@ and note that for accurate structure and decay description, one should revert to
 <li><p>customizable Pyhton modules to write algorithms and simulations</p></li>
 <li><p>automatic propagation of uncertainties when performing calculations</p></li>
 <li><p>option to directly access the underlying SQL database</p></li>
+<li><p>option to get the data from Nuclear Data Section’s servers using API</p></li>
 </ul>
 <div class="line-block">
 <div class="line">In case you wanted to collaborate to the development, you should write</div>
 <div class="line">to <a class="reference external" href="mailto:nds&#46;contact-point&#37;&#52;&#48;iaea&#46;org">nds<span>&#46;</span>contact-point<span>&#64;</span>iaea<span>&#46;</span>org</a></div>
 </div>
-<div class="section" id="hands-on-tutorial">
+<section id="hands-on-tutorial">
 <h2>Hands-on tutorial<a class="headerlink" href="#hands-on-tutorial" title="Permalink to this heading">¶</a></h2>
-<p>Besides this documentation, the package comprises ndlab-tutorial.ipynb, a Notebook with live exercises and examples.</p>
+<p>Besides this documentation, in the package you can find ndlab-tutorial.ipynb, a Notebook with live exercises and examples.</p>
 <p>You can preview it without installing, look at the static <a class="reference external" href="_static/ndlab-tutorial.html">HTML version</a></p>
-</div>
-</div>
-<div class="section" id="contents">
+</section>
+</section>
+<section id="contents">
 <h1>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
@@ -263,8 +272,9 @@ and note that for accurate structure and decay description, one should revert to
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#change-log">5. Change log</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#version-v-0-1-1-db-0-1-1-beta">Version v.0.1.1.db.0.1.1-beta</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#version-v-0-1-1-db-0-2-2-beta">Version v.0.1.1.db.0.2.2-beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#version-v0-1-2-db-0-2-2-beta">Version v0.1.2.db.0.2.2-beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#version-v0-1-1-db-0-2-2-beta">Version v0.1.1.db.0.2.2-beta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#version-v0-1-1-db-0-1-1-beta">Version v0.1.1.db.0.1.1-beta</a></li>
 </ul>
 </li>
 </ul>
@@ -358,7 +368,16 @@ and note that for accurate structure and decay description, one should revert to
 <li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
 </ul>
 </div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">1. Getting the data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#parameters-and-return-formats">2. Parameters and return formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#examples">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#deal-with-http-error-403">4. Deal with HTTP Error 403</a></li>
+</ul>
 </div>
+</section>
 
 
            </div>

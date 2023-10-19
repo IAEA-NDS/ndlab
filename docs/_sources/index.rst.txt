@@ -11,11 +11,12 @@
 
       <div style="margin-bottom:30px">&nbsp;</div>
 
+.. _index-label:
 
 Beta Testing User Guide
 =======================
 
-| **NDlab** is a package for nuclear (mainly)structure data analysis, calculation, and modelling. 
+| **NDlab** is a package for nuclear (mainly) structure data analysis, calculation, and modelling. 
 | It caters for users that need to process and navigate the data via software, having no knowledge about the formats and data structures of the original data libraries. 
 
 .. attention::
@@ -47,6 +48,7 @@ Its main features are:
 * customizable Pyhton modules to write algorithms and simulations
 * automatic propagation of uncertainties when performing calculations
 * option to directly access the underlying SQL database
+* option to get the data from Nuclear Data Section's servers using API
 
 
 | In case you wanted to collaborate to the development, you should write
@@ -55,7 +57,7 @@ Its main features are:
 Hands-on tutorial
 -----------------
 
-Besides this documentation, the package comprises ndlab-tutorial.ipynb, a Notebook with live exercises and examples.
+Besides this documentation, in the package you can find ndlab-tutorial.ipynb, a Notebook with live exercises and examples.
 
 You can preview it without installing, look at the static `HTML version <_static/ndlab-tutorial.html>`_ 
 
@@ -100,4 +102,10 @@ Contents
    :caption: The Database
 
    database
+
+.. toctree::
+   :maxdepth: 2
+   :caption: The Data API
+
+   api
 

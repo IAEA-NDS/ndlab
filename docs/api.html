@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Getting the data from the Web &mdash; NDLab 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/ndlab.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. The search engine" href="database.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/ndlab.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">1. Get NDLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#change-log">5. Change log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#retrieval-functions">1. Retrieval functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-fields-parameter">2. The fields parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#the-filter-parameter">3. The filter parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#examples">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#j-p-values">5. J <sup>p</sup> values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#decay-modes">6. Decay modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#three-lines-of-code">7. Three lines of code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#sql-through-python">8. SQL through Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interrogation.html#sql-direct-connection">9. SQL direct connection</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming.html">0. Cheat sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#programming-overview">1. Programming overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#classes-and-functions">2. Classes and functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#pandas">3. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming.html#work-with-measurements">3. Work with Measurements</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Constructing &quot;fields&quot; and &quot;filter&quot;</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">1. Legend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#entities">2. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html#constants">3. Constants</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="code.html">1. ndlab module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html#ndlaborm-module">2. ndlaborm module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html#ndlabdblink-module">3. ndlabdblink module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Database</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="database.html">1. The search engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Getting the data from the Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#parameters-and-return-formats">2. Parameters and return formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#examples">3. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#deal-with-http-error-403">4. Deal with HTTP Error 403</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">NDLab</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>1. Getting the data from the Web</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="getting-the-data-from-the-web">
+<span id="api-label"></span><h1>1. Getting the data from the Web<a class="headerlink" href="#getting-the-data-from-the-web" title="Permalink to this heading">¶</a></h1>
+<p><strong>It</strong> is possible to retrieve NDLab data from the Nuclear Data Section servers using its data API. This might be useful
+in case one does not want to download the NDLab package, or is not using Python.</p>
+<p>Here how to construct the request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://nds.iaea.org/cgi-bin/ndlab_server.py?fields=&lt;fields list&gt;&amp;filter=&lt;filter to apply&gt;
+</pre></div>
+</div>
+<p>and here a concrete example to retrive the gamma transition energies and multipolarities of Lithium isotopes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://nds.iaea.org/cgi-bin/ndlab_server.py?fields=GAMMA.ENERGY,GAMMA.MULTIPOLARITY&amp;filter=GAMMA.NUC.Z=3
+</pre></div>
+</div>
+<p>The sections of the guide relevant to the API are:</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="index.html#index-label"><span class="std std-ref">The Index</span></a> : gives an overview of NDLab</div>
+<div class="line"><a class="reference internal" href="interrogation.html#fields-label"><span class="std std-ref">The fields parameter</span></a> : explains how to construct the <strong>fields</strong></div>
+<div class="line"><a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">The filter parameter</span></a> : for the <strong>filter</strong></div>
+<div class="line"><a class="reference internal" href="interrogation.html#retrieve-examples-label"><span class="std std-ref">Examples</span></a> : provides some cases with explanation, and the</div>
+<div class="line"><a class="reference internal" href="interrogation.html#jp-label"><span class="std std-ref">Jp values</span></a> and <a class="reference internal" href="interrogation.html#decaymodes-label"><span class="std std-ref">Decay modes</span></a> : gives further details about these fields</div>
+<div class="line"><a class="reference internal" href="entities.html#ndm-label"><span class="std std-ref">Constructing “Fields” and “Filter”</span></a> : gives the list of fields that can be retireved</div>
+</div>
+<p><a class="reference internal" href="database.html#database-label"><span class="std std-ref">The Database</span></a> page explains how the database is constructed, what are the sources,
+and what are the differences with the <a class="reference external" href="https://www-nds.iaea.org/relnsd/vcharthtml/api_v0_guide.html">Livechart data API</a></p>
+</section>
+<section id="parameters-and-return-formats">
+<h1>2. Parameters and return formats<a class="headerlink" href="#parameters-and-return-formats" title="Permalink to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><strong>The base</strong> URL of the service is</div>
+<div class="line"><a class="reference external" href="https://nds.iaea.org/cgi-bin/ndlab_server.py">https://nds.iaea.org/cgi-bin/ndlab_server.py</a>?</div>
+</div>
+<p>and accepts the following parametres:</p>
+<div class="line-block">
+<div class="line"><strong>fields</strong>, mandatory, see <a class="reference internal" href="interrogation.html#fields-label"><span class="std std-ref">The fields parameter</span></a></div>
+<div class="line"><strong>filter</strong>, optional,  see <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">The filter parameter</span></a></div>
+<div class="line"><strong>return_type</strong>, optional, can be <em>csv</em> or <em>json</em>. If not specified, the data are returned as csv</div>
+<div class="line"><strong>action</strong>, optional, can only be <em>check</em>, performs a test of the validity of the <em>fields</em> and <em>filter</em> parameters</div>
+</div>
+</section>
+<section id="examples">
+<h1>3. Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
+<p><strong>Any</strong> of the <em>fields</em> and <em>filter</em> values given in this guide can be passed as parameters, here below some samples:</p>
+<ul class="simple">
+<li><p>Xe-135 levels in json <a class="reference external" href="http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.ALL&amp;filter=LEVEL.NUC.NUC_ID='135XE'&amp;return_type=json">[try it]</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.ALL&amp;filter=LEVEL.NUC.NUC_ID=&#39;135XE&#39;&amp;return_type=json
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Remember the <em>rule 6</em> of the <a class="reference internal" href="interrogation.html#filter-label"><span class="std std-ref">The filter parameter</span></a>: 135XE must be between single quotes</div>
+</div>
+<ul class="simple">
+<li><p>Ground state properties <a class="reference external" href="http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.HALF_LIFE_SEC,LEVEL.NUC.BINDING_EN,LEVEL.NUC.SN&amp;filter=LEVEL.SEQNO=0">[try it]</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8123/cgi-bin/ndlab_server.py?fields=LEVEL.HALF_LIFE_SEC,LEVEL.NUC.BINDING_EN,LEVEL.NUC.SN&amp;filter=LEVEL.SEQNO=0
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">The ground state is the LEVEL with SEQNO=0. To access the overall properites of the nuclide, use LEVEL.NUC.</div>
+</div>
+<ul class="simple">
+<li><p>Auger electrons from the decay of Xe-135 <a class="reference external" href="http://localhost:8123/cgi-bin/ndlab_server.py?fields=DR_AUGER.ALL&amp;filter=DR_AUGER.PARENT.NUC_ID='135XE'">[try it]</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8123/cgi-bin/ndlab_server.py?fields=DR_AUGER.ALL&amp;filter=DR_AUGER.PARENT.NUC_ID=&#39;135XE&#39;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>All Xe-135 levels that decay, with decay properties <a class="reference external" href="http://localhost:8123/cgi-bin/ndlab_server.py?fields=L_DECAY.LEVEL.ALL,L_DECAY.ALL&amp;filter=L_DECAY.NUC.NUC_ID='135XE'">[try it]</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8123/cgi-bin/ndlab_server.py?fields=L_DECAY.LEVEL.ALL,L_DECAY.ALL&amp;filter=L_DECAY.NUC.NUC_ID=&#39;135XE&#39;
+</pre></div>
+</div>
+</section>
+<section id="deal-with-http-error-403">
+<h1>4. Deal with HTTP Error 403<a class="headerlink" href="#deal-with-http-error-403" title="Permalink to this heading">¶</a></h1>
+<p><strong>There</strong> have been cases in which the service returns an <em>HTTP Error 403: Forbidden</em>
+The workaround is to add an user agent to the request.</p>
+<p>Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lc_read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0&#39;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">content</span>
+</pre></div>
+</div>
+<p>Java:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">protected</span> <span class="n">String</span> <span class="n">lc_read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">){</span>
+
+    <span class="n">URL</span> <span class="n">murl</span> <span class="o">=</span> <span class="n">new</span> <span class="n">URL</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+    <span class="n">URLConnection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">murl</span><span class="o">.</span><span class="n">openConnection</span><span class="p">();</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">setRequestProperty</span><span class="p">(</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0&quot;</span><span class="p">);</span>
+
+    <span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BufferedReader</span><span class="p">(</span>
+                <span class="n">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">getInputStream</span><span class="p">()));</span>
+
+    <span class="n">String</span> <span class="n">inputLine</span><span class="p">;</span>
+    <span class="n">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StringBuffer</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">readLine</span><span class="p">())</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inputLine</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">br</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="n">toString</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For other languages, add the suggested user agent to the request using the avaliable function</p>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="database.html" class="btn btn-neutral float-left" title="1. The search engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, IAEA Nuclear Data Section.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

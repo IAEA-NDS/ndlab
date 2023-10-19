@@ -97,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html#dependencies">2. Dependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#test-it-s-working">3. Test it’s working</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html#optional-packages">4. Optional packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#change-log">5. Change log</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Interrogation</span></p>
 <ul class="current">
@@ -136,6 +137,10 @@
 <li class="toctree-l1"><a class="reference internal" href="database.html">1. The search engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html#underlying-databases">2. Underlying databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html#data-sources">3. Data sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">The Data API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">1. Getting the data from the Web</a></li>
 </ul>
 
             
@@ -339,7 +344,8 @@ these two parameters in a way close to the physics of the problem.</p>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p><strong>Rules</strong> for the <em>fields</em> parameter</p>
+<blockquote>
+<div><p><strong>Rules</strong> for the <em>fields</em> parameter</p>
 <ol class="arabic simple">
 <li><p>use <strong>uppercase</strong></p></li>
 <li><p><strong>maximum two dots</strong> : <em>entity.quantity</em> or <em>entity.link.quantity</em></p></li>
@@ -353,6 +359,18 @@ these two parameters in a way close to the physics of the problem.</p>
 <div class="line">If you do not want to use the autocompletion, you do not need to import the ndlaborm module.</div>
 <div class="line">But if ndlaborm was imported using an alias, e.g. <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">ndlaborm</span> <span class="pre">as</span> <span class="pre">no</span></code>, when using the autocompletion pay attention not include the alias in the fields variable. <code class="code docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">&quot;no.GAMMA.ENERGY&quot;</span></code> is not valid, remove the ‘no.’.</div>
 </div>
+</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In case of doubt, or unexpected errors, one can use the following two functions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns false if there are issues</span>
+<span class="n">nl</span><span class="o">.</span><span class="n">is_query_ok</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+
+<span class="c1"># returns a list with the errors found</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="the-filter-parameter">
@@ -361,7 +379,8 @@ these two parameters in a way close to the physics of the problem.</p>
 Here below the rules to follow when writing a filter</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p><strong>Rules</strong> for the <em>filter</em> parameter</p>
+<blockquote>
+<div><p><strong>Rules</strong> for the <em>filter</em> parameter</p>
 <ol class="arabic simple">
 <li><p>use <strong>uppercase</strong></p></li>
 <li><p><strong>maximum two dots</strong> : <em>entity.quantity</em> or <em>entity.link.quantity</em></p></li>
@@ -377,6 +396,18 @@ Here below the rules to follow when writing a filter</p>
 <li><p>use <strong>in</strong> to filter a set of values, e.g. <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.NUC_ID</span> <span class="pre">IN</span> <span class="pre">(</span> <span class="pre">'235U',</span> <span class="pre">'135XE'</span> <span class="pre">)</span></code> (notice the single quotes), or <code class="code docutils literal notranslate"><span class="pre">NUCLIDE.Z</span> <span class="pre">IN</span> <span class="pre">(5,</span> <span class="pre">10)</span></code></p></li>
 <li><p>use <strong>like</strong> to filter the content of a text, e.g. <code class="code docutils literal notranslate"><span class="pre">LEVEL.JP</span> <span class="pre">like</span> <span class="pre">'%2+%'</span></code> will filter the jp values containing the string “2+”. See <a class="reference internal" href="#jp-label"><span class="std std-ref">jp values</span></a> for more</p></li>
 </ul>
+</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In case of doubt, or unexpected errors, one can use the following two functions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns false if there are issues</span>
+<span class="n">nl</span><span class="o">.</span><span class="n">is_query_ok</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+
+<span class="c1"># returns a list with the errors found</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">query_check</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="examples">
@@ -481,7 +512,7 @@ group the data by Jp, or transitin type. Then do this:</p>
 </div>
 </div>
 <div class="section" id="decay-modes">
-<h1>6. Decay modes<a class="headerlink" href="#decay-modes" title="Permalink to this heading">¶</a></h1>
+<span id="decaymodes-label"></span><h1>6. Decay modes<a class="headerlink" href="#decay-modes" title="Permalink to this heading">¶</a></h1>
 <p><strong>The</strong> various decay radiations (<em>DR_GAMMA, DR_BETAM, etc…</em>) and <em>L_DECAY</em> have the <em>MODE</em> field which indicates the type of decay. Use the set of constants <em>DECAY_*</em> to
 specify a decay mode, for example <code class="code docutils literal notranslate"><span class="pre">L_DECAY.MODE</span> <span class="pre">=</span> <span class="pre">DECAY_Bp</span></code></p>
 <p>The section <a class="reference internal" href="entities.html#decay-const-label"><span class="std std-ref">constants</span></a> provides the list of decays</p>
