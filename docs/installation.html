@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>1. Get NDLab &mdash; NDLab 0.1 documentation</title>
@@ -102,6 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#change-log">5. Change log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-v-0-2-2db-0-2-3-beta">Version v.0.2.2db.0.2.3-beta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-v0-1-2-db-0-2-2-beta">Version v0.1.2.db.0.2.2-beta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-v0-1-1-db-0-2-2-beta">Version v0.1.1.db.0.2.2-beta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-v0-1-1-db-0-1-1-beta">Version v0.1.1.db.0.1.1-beta</a></li>
@@ -220,7 +222,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="get-ndlab">
+  <section id="get-ndlab">
 <span id="installation-label"></span><h1>1. Get NDLab<a class="headerlink" href="#get-ndlab" title="Permalink to this heading">¶</a></h1>
 <p><strong>NDLab</strong> can be downloaded from <a class="reference external" href="https://github.com/IAEA-NDS/ndlab/">GitHub</a></p>
 <p>Decompress the file <em>ndlab_db.s3db.zip</em> in the same directory, keeping the resulting file name as <em>ndlab_db.s3db</em>.
@@ -239,8 +241,8 @@ This is what should be listed in the installation directory:</p>
 <div class="line">The zip file can then be removed.</div>
 <div class="line">A Notebook tutorial is available in <em>ndlab-tutorial.ipynb</em></div>
 </div>
-</div>
-<div class="section" id="dependencies">
+</section>
+<section id="dependencies">
 <h1>2. Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h1>
 <p><strong>NDLab</strong> uses the <a class="reference external" href="https://pythonhosted.org/uncertainties/">uncertainties</a> page, wich can be installed using</p>
 <blockquote>
@@ -248,8 +250,8 @@ This is what should be listed in the installation directory:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="test-it-s-working">
+</section>
+<section id="test-it-s-working">
 <h1>3. Test it’s working<a class="headerlink" href="#test-it-s-working" title="Permalink to this heading">¶</a></h1>
 <p><strong>Open</strong> a Python shell and issue the following statements</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
@@ -266,10 +268,10 @@ This is what should be listed in the installation directory:</p>
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="optional-packages">
+</section>
+<section id="optional-packages">
 <h1>4. Optional packages<a class="headerlink" href="#optional-packages" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="pandas-and-plotly">
+<section id="pandas-and-plotly">
 <h2>Pandas and Plotly<a class="headerlink" href="#pandas-and-plotly" title="Permalink to this heading">¶</a></h2>
 <p>To run the NDLab Notebook tutorial you will find useful <a class="reference external" href="https://plotly.com/python/getting-started/">plotly</a> for data visualization, and <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/install.html">pandas</a> for data analysis</p>
 <p>To install plotly:</p>
@@ -288,35 +290,39 @@ $ jupyter labextension install jupyterlab-plotly
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="sqlite-db-browser">
+</section>
+<section id="sqlite-db-browser">
 <h2>SQLite DB Browser<a class="headerlink" href="#sqlite-db-browser" title="Permalink to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">Description and schema of the underlying SQL database are presented <a class="reference external" href="./schema/index.html">here</a>.</div>
 <div class="line">The engine is <a class="reference external" href="https://sqlite.org/index.html">SQLite</a>. To directly access it with a graphical interface, download the  <a class="reference external" href="https://sqlitebrowser.org">DB Browser for SQLite</a></div>
 </div>
-</div>
-</div>
-<div class="section" id="change-log">
+</section>
+</section>
+<section id="change-log">
 <h1>5. Change log<a class="headerlink" href="#change-log" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="version-v0-1-2-db-0-2-2-beta">
+<section id="version-v-0-2-2db-0-2-3-beta">
+<h2>Version v.0.2.2db.0.2.3-beta<a class="headerlink" href="#version-v-0-2-2db-0-2-3-beta" title="Permalink to this heading">¶</a></h2>
+<p>Nuclear Moments from N.J. Stone, more coding examples</p>
+</section>
+<section id="version-v0-1-2-db-0-2-2-beta">
 <h2>Version v0.1.2.db.0.2.2-beta<a class="headerlink" href="#version-v0-1-2-db-0-2-2-beta" title="Permalink to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">More robust parsing of the query parameters</div>
 </div>
-</div>
-<div class="section" id="version-v0-1-1-db-0-2-2-beta">
+</section>
+<section id="version-v0-1-1-db-0-2-2-beta">
 <h2>Version v0.1.1.db.0.2.2-beta<a class="headerlink" href="#version-v0-1-1-db-0-2-2-beta" title="Permalink to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">The energy and intensities of neutrini emitted by electron capture process where added to the database.</div>
 <div class="line">See the <a class="reference external" href="code.html#ndlab.Dr_nu">ndlab.Dr_nu</a>  class, and the  <a class="reference external" href="entities.html#dr-nu">ndlaborm.DR_NU entity</a></div>
 </div>
-</div>
-<div class="section" id="version-v0-1-1-db-0-1-1-beta">
+</section>
+<section id="version-v0-1-1-db-0-1-1-beta">
 <h2>Version v0.1.1.db.0.1.1-beta<a class="headerlink" href="#version-v0-1-1-db-0-1-1-beta" title="Permalink to this heading">¶</a></h2>
 <p>First test release</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

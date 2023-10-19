@@ -86,6 +86,11 @@ SQLite DB Browser
 5. Change log
 --------------------
 
+Version v.0.2.2db.0.2.3-beta
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Nuclear Moments from N.J. Stone, more coding examples
+
 Version v0.1.2.db.0.2.2-beta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
