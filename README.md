@@ -40,6 +40,9 @@ If you have made an addition to this package and would like to contribute it to 
 
 # Legal note
 
-This code is distributed under the MIT license
+This code is distributed under the MIT license.
+
+Nothing in this license shall be construed as a waiver, either express or implied, 
+of any of the privileges and immunities accorded to the IAEA by its Member States.
 
 Copyright (c) International Atomic Energy Agency (IAEA)
